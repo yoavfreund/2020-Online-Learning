@@ -1,0 +1,355 @@
+\message{ !name(talk1.tex)}% $Header: /data/cvsroot/Courses/OnlineLearning/talks/talk1/talk1.tex,v 1.5 2006/01/11 03:23:33 yfreund Exp $
+
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Montpellier}
+
+  %\setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage{xmpmulti} % package that defines \multiinclude
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title[Introduction] % (optional, use only with long paper titles)
+{Introduction to Online Learning Algorithms}
+
+\author[Freund] % (optional, use only with lots of authors)
+{Yoav Freund}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+
+\subject{Machine Learning}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+\input{../macros.tex}
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%% \AtBeginSubsection[]
+%% {
+%%   \begin{frame}<beamer>
+%%     \frametitle{Outline}
+%%     \tableofcontents[currentsection,currentsubsection]
+%%   \end{frame}
+%% }
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+\beamerdefaultoverlayspecification{<+->}
+
+%\newcommand{\W}{\vec{W}}
+%\newcommand{\V}{\vec{V}}
+%\newcommand{\X}{\vec{X}}
+%\newcommand{\loss}{\vec{\ell}}
+%\newcommand{\HedgeLoss}{L_{\mbox{\footnotesize Hedge}}}
+
+\begin{document}
+
+\message{ !name(talk1.tex) !offset(-3) }
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+%\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Halving Algorithm}
+
+\begin{frame} 
+\frametitle{Example trace for Halving Algorithm} 
+
+%\newcommand{\uncovered}[1]{\onslide<{#1}->\color<{#1}>{red}}
+
+\begin{columns} 
+\column[t]{3cm}
+\onslide<1->\color<1>{red} 
+~ \\ expert1\\ expert2\\ expert3\\ expert4 \\ expert5\\ expert6\\ expert7\\ expert8 \\ ~\\
+\onslide<{2}->\color<2>{red} alg.\\
+\onslide<3->\color<3>{red} outcome 
+%\uncovered{3} outcome 
+
+\column[t]{1cm}
+\onslide<4->\color<4>{red} $t=1$   \\ 1 \\ 1 \\ 0  \\ 1 \\ 1 \\ 0 \\ 1  \\ 1 \\ ~ \\
+\onslide<5->\color<5>{red} 1 \\
+\onslide<6->\color<6>{red} 1 \\
+		   			   
+\column[t]{1cm}	   		   
+\onslide<7->\color<7>{red} $t=2$   \\ 1 \\ 0 \\ -  \\ 0 \\ 0 \\ - \\ 1  \\ 1 \\ ~ \\
+\onslide<8->\color<8>{red} 0 \\
+\onslide<9->\color<9>{red} 1 \\
+
+\column[t]{1cm}
+\onslide<10->\color<10>{red} $t=3$ \\ 1 \\ - \\ -  \\ - \\ - \\ - \\ 1  \\ 1 \\ ~ \\
+\onslide<11->\color<11>{red} 1 \\
+\onslide<12->\color<12>{red} 1 \\
+		    			     
+\column[t]{1cm}	    		     
+\onslide<13->\color<13>{red} $t=4$ \\ 1 \\ - \\ -  \\ - \\ - \\ - \\ 1  \\ 0 \\ ~ \\
+\onslide<14->\color<14>{red} 1 \\
+\onslide<15->\color<15>{red} 0 \\
+		    			     
+\column[t]{1cm}	    		     
+\onslide<16->\color<16>{red} $t=5$ \\ - \\ - \\ -  \\ - \\ - \\ - \\ 0  \\ - \\ ~ \\
+\onslide<17->\color<17>{red} 0 \\
+\onslide<18->\color<18>{red} 0 \\
+
+\end{columns} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Mistake bound for Halving algorithm}
+\begin{itemize}
+\item 
+Each time algorithm makes a mistakes, the pool of perfect experts is halved (at least).
+\item
+We assume that at least one expert is perfect.
+\item
+Number of mistakes is at most $\log_2 N$.
+\item
+No stochastic assumptions whatsoever.
+\item
+Proof is based on combining a lower and upper bounds on the number of perfect experts.
+\end{itemize}
+\end{frame}
+
+%\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Perceptron}
+
+\begin{frame}
+\frametitle{The Perceptron Problem}
+\begin{columns}
+\begin{column}[T]{5.2cm}
+\multiinclude[graphics={width=7cm},format=pdf]{perceptronAnim/Perceptron}
+\end{column}
+
+\begin{column}[T]{4cm}
+\begin{itemize}
+\item
+$\| \V \| =1$
+\item 
+Example = $(\X,y)$, $y \in \{-1,+1\}$.
+\item
+$\forall \X,\;\; \| \X \| \leq R$.
+\item
+$\forall (\X,y),$\\$y(\X \cdot \V) \geq g$
+\end{itemize}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{The Perceptron learning algorithm}
+\begin{itemize}
+\item An online algorithm. Examples presented one by one.
+\item start with $\W_0 = \vec{0}$.
+\item If mistake: $(\W_i \cdot \X_i) y_i \leq  0$
+\begin{itemize}
+\item Update $\W_{i+1} = \W_i + y_i X_i$.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example trace for the perceptron algorithm}
+\multiinclude[graphics={height=8cm},format=pdf]{perceptronAnim/PerceptronLearning}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bound on number of mistakes}
+\begin{itemize}
+\item The number of mistakes that the perceptron algorithm can make is at most
+$\left(\frac{R}{g}\right)^2$.
+\item Proof by combining upper and lower bounds on $\| \W \|$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pythagorian Lemma}
+~\\
+If $(\W_i \cdot X_i) y <0$ then\\
+\pause
+\[
+\| \W_{i+1} \|^2 = \|\W_i + y_i \X_i\|^2 \leq \|\W_i\|^2 + \|\X_i\|^2 
+\]
+\pause
+\includegraphics[height=10cm]{PerceptronAnim/PerceptronError.pdf}
+\end{frame}
+
+\begin{frame}
+\frametitle{Upper bound on $\| \W_i \|$}
+\pause
+Proof by induction
+\begin{itemize}
+\item Claim: $ \| \W_{i} \|^2 \leq i R^2 $
+\item Base: $i=0$, $\|\W_0\|^2 = 0$
+\item Induction step (assume for $i$ and prove for $i+1$):\\
+$ \| \W_{i+1} \|^2 \leq \|\W_i\|^2 + \|\X_i\|^2 $ \\
+$\leq \|\W_i\|^2 + R^2 \leq (i+1) R^2$
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lower bound on $\| \W_i \|$}
+\pause
+$\|\W_i\| \geq \W_{i} \cdot \V$ because $\| \V \|=1$.\\
+\pause
+We prove a lower bound on $\W_{i} \cdot \V$ using induction over $i$
+\begin{itemize}
+\item Claim: $ \W_{i} \cdot \V \geq i g $
+\item Base: $i=0$, $\W_0 \cdot \V = 0$
+\item Induction step (assume for $i$ and prove for $i+1$):\\
+$ \W_{i+1} \cdot \V  = \left( \W_i + \X_i y_i \right) \V$
+\pause
+$= \W_i \cdot \V + y_i \X_i \cdot \V$ \\
+$\geq i g + g = (i+1) g$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Combining the upper and lower bounds}
+~\\
+~\\
+\pause
+$$(ig)^2 \leq \|\W_i\|^2 \leq i R^2$$
+\pause
+Thus:
+$$ i \leq \left(\frac{R}{g} \right)^2 $$
+\end{frame}
+
+\section{Estimating the mean}
+
+\begin{frame}
+\frametitle{The mean estimation game}
+\begin{itemize}
+\item 
+An adversary choses a real number $y_t in [0,1]$ and keeps it secret.
+\item
+You make a guess of the secret number $x_t$
+\item
+The adversary reveals the secret and you pay $(x_t-y_t)^2$ 
+\end{itemize}
+\begin{itemize}
+\item You want to minimize $\frac{1}{T}\sum_{t=1}^T \left(x_t-y_t \right)^2$
+\item Impossible without additional constraints.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Adversary is a fixed distribution}
+\begin{itemize}
+\item 
+Suppose that the adversary draws $y_1,y_2,\ldots,y_T$ IID from a fixed
+distribution over $[0,1]$ with mean $\mu$ and std $\sigma$.
+\item
+Optimal prediction $x_t = \mu$ 
+\item 
+  $\exval{Y}{(\mu-Y)^2} = \sigma^2$
+\item Online prediction: predict $x_{t+1}$ from $Y^t = \langle
+  Y_1,Y_2,\ldots,Y_t \rangle$.
+\item {\bf Expected regret}: compare performance of algorithm to
+  
+  $ \regret = \exval{Y^T}{(x_t-Y_t)^2} - \sigma^2$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Individual sequence bounds}
+\begin{itemize}
+\item Make no assumption about how the sequence is generated.
+\item The best constant value for $x$ in hind-sight:\\
+  $$x^*_T \doteq \argmin_{x \in [0,1]} \sum_{t=1}^T (x-y_t)^2,\;\; x^*_t=\frac{1}{T}
+  \sum_{t=1}^T X_t$$ 
+\item Regret: the loss over and above the loss of $x^*_T$. {\bf for the
+    worst-case sequence}
+  $ \regret_T = \sum_{t=1}^T (x_t-y_t)^2 - \sum_{t=1}^T (x^*_T-y_t)^2
+  $
+\item {\bf Goal:} sublinear regret $\lim_{T \to \infty} \frac{\regret_T}{T} = 0$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Follow the Leader}
+\begin{itemize}
+\item Idea: set $x_{t+1}$ to be the best constant prediction on $y_1,\ldots,y_t$
+\item 
+  $x_{t+1} = \argmin_{x \in [0,1]} \sum_{i=1}^t (x-y_i)^2$ 
+\item We will prove that the regret of this algorithm is upper bound
+  by $4+4 \ln T$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A more general setup}
+\begin{itemize}
+\item Suppose predictions $\bx$ are elements in $V \in \RR^d$
+\item The loss function for time step $t$ maps $\bx$ to $\RR$:\\
+  $\elloss{t}{}: V \to \RR$
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+\begin{frame}
+\frametitle{~}
+\begin{itemize}
+\item~
+\end{itemize}
+\end{frame}
+
+
+\message{ !name(talk1.tex) !offset(-355) }

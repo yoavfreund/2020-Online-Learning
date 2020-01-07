@@ -1,0 +1,105 @@
+\section{Hedge Algorithm}
+
+\begin{frame}
+\frametitle{The hedging problem}
+
+\begin{itemize}
+\item $N$ possible actions 
+
+\item At each time step $t$:
+\begin{itemize}
+\item Algorithm chooses a distribution $\vec{P}^t$ over actions.
+\item Losses $0 \leq \ell_i^t \leq 1$ of all actions $i=1,\ldots,N$ are revealed.
+\item Algorithm suffers {\bf expected} loss.
+\end{itemize}
+\item {{\bf Goal:} minimize total expected loss}
+\item {Here we have stochasticity - but only in {\bf algorithm}, not in {\bf outcome}}
+\item {Fits nicely in game theory}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Hedging vs. Halving}
+\begin{itemize}
+\item Like halving - we want to zoom into best action (expert).
+\item Unlike halving - no action is perfect.
+\item Basic idea - reduce probability of lossy actions, \\
+but {\color{red}not all the way to zero}.
+\item {\bf Modified Goal:}
+minimize {\color{red}{difference between}} \\
+expected total loss \\
+{\color{red}{and}} \\
+minimal total loss of repeating one action.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Hedge Algorithm}
+Consider action $i$ at time $t$
+\begin{itemize}
+\item Total loss:
+$$L_i^t = \sum_{s=1}^{t-1} \ell_i^s$$
+\item Weight:
+$$W_i^t = e^{-\eta L_i^t}$$
+\item
+$\eta>0$ is the learning rate parameter. Halving: $\eta=\infty$ 
+\item Probability:
+$$P_i^t = \frac{W_i^t}{\sum_{j=1}^N W_j^t} $$
+\end{itemize}
+\end{frame}
+
+\begin{frame} 
+\frametitle{Example trace for Hedge Algorithm} 
+
+$\eta=1$\\
+\begin{columns} 
+\column[t]{3cm}
+\onslide<1->\color<1>{red}
+~\\  expert1\\ expert2\\ expert3\\ expert4 \\ expert5\\ expert6\\ expert7\\ expert8 \\ ~\\ 
+\onslide<2->\color<2>{red} alg. 
+
+\column[t]{1cm}
+\onslide<3->\color<3>{red} $\W^1$ \\  1 \\  1  \\  1  \\  1  \\  1 \\  1 \\  1  \\  1 
+\column[t]{1cm}
+\onslide<4->\color<4,5>{red} $\loss^1$ \\ .1 \\ .8  \\ .3  \\ .1  \\ .9 \\  0 \\  1  \\ .8 \\ ~ \\
+\onslide<5->\color<5>{red} .5 \\
+
+\column[t]{1cm}
+\onslide<6->\color<6>{red} $\W^2$ \\  .90\\  .45\\.74 \\ .90 \\ .41\\  1 \\ .37 \\ .45 
+\column[t]{1cm}
+\onslide<7->\color<7,8>{red} $\loss^2$ \\ .1 \\ .5 \\ .2  \\ .7 \\ 1 \\  .1 \\  .5  \\ .2 \\ ~ \\
+\onslide<8->\color<8>{red} .36 \\
+
+\column[t]{1cm}
+\onslide<9->\color<9>{red}  $\W^3$ \\0.82\\ 0.27\\0.61\\0.45\\0.15\\ 0.91\\0.22 \\ 0.37 
+\column[t]{1cm}
+\onslide<10->\color<10,11>{red}$\loss^3$ \\ 0 \\ .2 \\ .2  \\ .8 \\ .8 \\  .2 \\  .4  \\ .6 \\ ~ \\
+\onslide<11->\color<11>{red} .30 \\
+
+\column[t]{2cm}
+\onslide<12->\color<12,13>{red} total\\ .2 \\ 1.5 \\ .7  \\ 1.6 \\ 2.7 \\ .3 \\ 1.9  \\ 1.6 \\ ~ \\
+\onslide<13->\color<13>{red} 1.16 \\
+
+\end{columns} 
+\end{frame} 
+
+\begin{frame}
+\frametitle{Bound for Hedge Algorithm}
+\begin{itemize}
+\item
+$\HedgeLoss^t$: Expected total loss of Hedge algorithm for time $1,2,\ldots,t$ 
+\item
+\[
+\forall t,i, \;\;\;
+\HedgeLoss \leq \frac{\ln N + \eta L_i^t}{1-e^{-\eta}}
+\]
+\item Which implies
+\[
+\forall t, \;\;\;
+\HedgeLoss \leq \min_i \left( \frac{\ln N + \eta L_i^t}{1-e^{-\eta}} \right)
+\]
+\item
+Proof and choice of $\eta$: next class.
+\end{itemize}
+\end{frame}
+

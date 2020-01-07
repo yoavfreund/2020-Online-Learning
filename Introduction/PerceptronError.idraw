@@ -1,0 +1,2469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Dimensions</key>
+	<string>{550, 500}</string>
+	<key>Frames</key>
+	<array>
+		<dict>
+			<key>BackgroundColor</key>
+			<dict>
+				<key>BlueComponent</key>
+				<real>1</real>
+				<key>GreenComponent</key>
+				<real>1</real>
+				<key>RedComponent</key>
+				<real>1</real>
+			</dict>
+			<key>Duration</key>
+			<real>1</real>
+			<key>Label</key>
+			<string>Frame 1</string>
+			<key>Shapes</key>
+			<array>
+				<dict>
+					<key>FillAlpha</key>
+					<real>0.46000000834465027</real>
+					<key>FillColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.0</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.0</real>
+					</dict>
+					<key>FillType</key>
+					<integer>1</integer>
+					<key>IsImagePatterned</key>
+					<false/>
+					<key>IsStroked</key>
+					<true/>
+					<key>LineAlpha</key>
+					<real>0.46000000834465027</real>
+					<key>LineColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.0</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.0</real>
+					</dict>
+					<key>LineWidth</key>
+					<real>1</real>
+					<key>Path</key>
+					<dict>
+						<key>PathElements</key>
+						<array>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-30, 20}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{30, -20}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{30, -20}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{26, -7}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{16, -20}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{30, -20}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+						</array>
+					</dict>
+					<key>RotationAngle</key>
+					<real>52</real>
+					<key>ScaleX</key>
+					<real>1.3499996662139893</real>
+					<key>ScaleY</key>
+					<real>1.3099997043609619</real>
+					<key>ShearX</key>
+					<real>0.0</real>
+					<key>ShearY</key>
+					<real>0.0</real>
+					<key>Transforms</key>
+					<array/>
+					<key>TranslateX</key>
+					<real>274</real>
+					<key>TranslateY</key>
+					<real>172</real>
+				</dict>
+				<dict>
+					<key>FillAlpha</key>
+					<real>1</real>
+					<key>FillColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>1</real>
+						<key>GreenComponent</key>
+						<real>1</real>
+						<key>RedComponent</key>
+						<real>1</real>
+					</dict>
+					<key>FillType</key>
+					<integer>1</integer>
+					<key>IsImagePatterned</key>
+					<false/>
+					<key>IsStroked</key>
+					<true/>
+					<key>LineAlpha</key>
+					<real>1</real>
+					<key>LineColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.5</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.5</real>
+					</dict>
+					<key>LineWidth</key>
+					<real>1</real>
+					<key>Path</key>
+					<dict>
+						<key>PathElements</key>
+						<array>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{47.5, 40}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-47.5, -40}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-47.5, -40}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-42.5, -20}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-47.5, -40}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-25.5, -36}</string>
+							</dict>
+						</array>
+					</dict>
+					<key>RotationAngle</key>
+					<real>180</real>
+					<key>ScaleX</key>
+					<real>1</real>
+					<key>ScaleY</key>
+					<real>1</real>
+					<key>ShearX</key>
+					<real>0.0</real>
+					<key>ShearY</key>
+					<real>0.0</real>
+					<key>Transforms</key>
+					<array/>
+					<key>TranslateX</key>
+					<real>327.5</real>
+					<key>TranslateY</key>
+					<real>165</real>
+				</dict>
+				<dict>
+					<key>FillAlpha</key>
+					<real>1</real>
+					<key>FillColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.0</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.0</real>
+					</dict>
+					<key>FillType</key>
+					<integer>1</integer>
+					<key>IsImagePatterned</key>
+					<false/>
+					<key>IsStroked</key>
+					<true/>
+					<key>LineAlpha</key>
+					<real>1</real>
+					<key>LineColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.0</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.0</real>
+					</dict>
+					<key>LineWidth</key>
+					<real>1</real>
+					<key>Path</key>
+					<dict>
+						<key>PathElements</key>
+						<array>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-31.8795, 21.2801}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{31.8795, -21.2801}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{31.8795, -21.2801}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{27.8795, -8.28014}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{17.8795, -21.2801}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{31.8795, -21.2801}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+						</array>
+					</dict>
+					<key>RotationAngle</key>
+					<real>336</real>
+					<key>ScaleX</key>
+					<real>1.3499996662139893</real>
+					<key>ScaleY</key>
+					<real>1.3099997043609619</real>
+					<key>ShearX</key>
+					<real>0.0</real>
+					<key>ShearY</key>
+					<real>0.0</real>
+					<key>Transforms</key>
+					<array/>
+					<key>TranslateX</key>
+					<real>322</real>
+					<key>TranslateY</key>
+					<real>211.5</real>
+				</dict>
+				<dict>
+					<key>FillAlpha</key>
+					<real>1</real>
+					<key>FillColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>1</real>
+						<key>GreenComponent</key>
+						<real>1</real>
+						<key>RedComponent</key>
+						<real>1</real>
+					</dict>
+					<key>FillType</key>
+					<integer>1</integer>
+					<key>IsImagePatterned</key>
+					<false/>
+					<key>IsStroked</key>
+					<true/>
+					<key>LineAlpha</key>
+					<real>1</real>
+					<key>LineColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.0</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.0</real>
+					</dict>
+					<key>LineWidth</key>
+					<real>2.2037036418914795</real>
+					<key>Path</key>
+					<dict>
+						<key>PathElements</key>
+						<array>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-106, -16}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{106, 2}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-7, 16}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-31, 14}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-31, 14}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-29, -10}</string>
+							</dict>
+						</array>
+					</dict>
+					<key>RotationAngle</key>
+					<real>0.0</real>
+					<key>ScaleX</key>
+					<real>1</real>
+					<key>ScaleY</key>
+					<real>1</real>
+					<key>ShearX</key>
+					<real>0.0</real>
+					<key>ShearY</key>
+					<real>0.0</real>
+					<key>Transforms</key>
+					<array/>
+					<key>TranslateX</key>
+					<real>283</real>
+					<key>TranslateY</key>
+					<real>130</real>
+				</dict>
+				<dict>
+					<key>FillAlpha</key>
+					<real>1</real>
+					<key>FillColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.0</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.0</real>
+					</dict>
+					<key>FillType</key>
+					<integer>1</integer>
+					<key>IsImagePatterned</key>
+					<false/>
+					<key>IsStroked</key>
+					<false/>
+					<key>LineAlpha</key>
+					<real>1</real>
+					<key>LineColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.0</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.0</real>
+					</dict>
+					<key>LineWidth</key>
+					<real>1</real>
+					<key>Path</key>
+					<dict>
+						<key>PathElements</key>
+						<array>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{0.658115, -4.11955}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-0.0431702, -3.8559}</string>
+								<key>Point2</key>
+								<string>{0.177768, -4.09757}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-0.513891, -2.71341}</string>
+								<key>Point2</key>
+								<string>{-0.28336, -3.58127}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-1.99332, 2.93314}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-2.27192, 2.93314}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-3.77057, -2.54863}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-3.78977, -2.54863}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-5.27881, 2.93314}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-5.54779, 2.93314}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-7.22896, -3.31761}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-8.21845, -4.11955}</string>
+								<key>Point2</key>
+								<string>{-7.43071, -4.07561}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-8.21845, -4.3942}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-5.67269, -4.3942}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-5.67269, -4.11955}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-6.20105, -4.05364}</string>
+								<key>Point2</key>
+								<string>{-6.04733, -4.10857}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-6.47003, -3.69112}</string>
+								<key>Point2</key>
+								<string>{-6.47003, -3.95478}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-6.43161, -3.49338}</string>
+								<key>Point2</key>
+								<string>{-6.47003, -3.63619}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-5.17314, 1.19742}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-5.15392, 1.19742}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-3.94349, -3.17481}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-4.33735, -3.91083}</string>
+								<key>Point2</key>
+								<string>{-4.10682, -3.70211}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-5.05785, -4.11955}</string>
+								<key>Point2</key>
+								<string>{-4.56791, -4.10857}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-5.05785, -4.3942}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-2.40642, -4.3942}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-2.40642, -4.11955}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-3.23259, -3.65816}</string>
+								<key>Point2</key>
+								<string>{-3.23261, -4.0866}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-3.20377, -3.51535}</string>
+								<key>Point2</key>
+								<string>{-3.23259, -3.62521}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-1.91648, 1.20841}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-1.89726, 1.20841}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-0.802096, -2.94411}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-0.706033, -3.60324}</string>
+								<key>Point2</key>
+								<string>{-0.706033, -3.30662}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-1.44574, -4.11955}</string>
+								<key>Point2</key>
+								<string>{-0.706033, -4.0866}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-1.44574, -4.3942}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{0.658115, -4.3942}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{3.29038, 4.33928}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.10785, 4.548}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{1.84937, 2.97707}</string>
+								<key>Point2</key>
+								<string>{2.25286, 3.69113}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{1.13848, 0.0109888}</string>
+								<key>Point2</key>
+								<string>{1.13848, 1.69176}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{1.81095, -2.93312}</string>
+								<key>Point2</key>
+								<string>{1.13848, -1.6698}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.05021, -4.54799}</string>
+								<key>Point2</key>
+								<string>{2.19522, -3.64718}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.24235, -4.3942}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{2.38736, -2.99903}</string>
+								<key>Point2</key>
+								<string>{2.63713, -3.65815}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{1.92623, -0.0109795}</string>
+								<key>Point2</key>
+								<string>{1.92622, -1.84555}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{2.37775, 2.8782}</string>
+								<key>Point2</key>
+								<string>{1.92623, 1.74671}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.29038, 4.33928}</string>
+								<key>Point2</key>
+								<string>{2.63713, 3.53733}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{4.98111, -4.03167}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.837, -3.66915}</string>
+								<key>Point2</key>
+								<string>{4.98111, -3.81196}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.48156, -3.52633}</string>
+								<key>Point2</key>
+								<string>{4.6929, -3.52633}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.1261, -3.68013}</string>
+								<key>Point2</key>
+								<string>{4.2702, -3.52633}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.98201, -4.03167}</string>
+								<key>Point2</key>
+								<string>{3.98201, -3.82295}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.18374, -4.43813}</string>
+								<key>Point2</key>
+								<string>{3.98201, -4.29533}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.51037, -4.54799}</string>
+								<key>Point2</key>
+								<string>{4.33746, -4.548}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.837, -4.40517}</string>
+								<key>Point2</key>
+								<string>{4.68329, -4.54799}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.98111, -4.03167}</string>
+								<key>Point2</key>
+								<string>{4.98111, -4.26237}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{5.52869, 2.73539}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.56893, 2.73539}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.56893, 2.46076}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.07807, 2.31794}</string>
+								<key>Point2</key>
+								<string>{3.94357, 2.44976}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.21257, 1.72472}</string>
+								<key>Point2</key>
+								<string>{4.21257, 2.19709}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{4.21257, -0.790949}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.49207, -1.34022}</string>
+								<key>Point2</key>
+								<string>{4.21257, -1.30726}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.49207, -1.61487}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{4.73132, -2.05429}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{4.86582, -2.05429}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{4.86582, 1.96641}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{5.52869, 2.46076}</string>
+								<key>Point2</key>
+								<string>{4.86582, 2.4278}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{7.80542, 0.0109888}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{7.09452, 2.97707}</string>
+								<key>Point2</key>
+								<string>{7.80542, 1.69178}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{5.83605, 4.548}</string>
+								<key>Point2</key>
+								<string>{6.69105, 3.69113}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{5.66312, 4.33928}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{6.56616, 2.8782}</string>
+								<key>Point2</key>
+								<string>{6.30677, 3.53733}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{7.01766, -0.0109795}</string>
+								<key>Point2</key>
+								<string>{7.01768, 1.7467}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{6.56616, -2.99903}</string>
+								<key>Point2</key>
+								<string>{7.01766, -1.84556}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{5.71115, -4.3942}</string>
+								<key>Point2</key>
+								<string>{6.30677, -3.65816}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{5.89369, -4.54799}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{7.13294, -2.93312}</string>
+								<key>Point2</key>
+								<string>{6.74868, -3.64717}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{7.80542, 0.0109888}</string>
+								<key>Point2</key>
+								<string>{7.8054, -1.66978}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{8.21845, 2.73539}</string>
+							</dict>
+						</array>
+					</dict>
+					<key>RotationAngle</key>
+					<real>0.0</real>
+					<key>ScaleX</key>
+					<real>1</real>
+					<key>ScaleY</key>
+					<real>1</real>
+					<key>ShearX</key>
+					<real>0.0</real>
+					<key>ShearY</key>
+					<real>0.0</real>
+					<key>Transforms</key>
+					<array/>
+					<key>TranslateX</key>
+					<real>264.34445190429688</real>
+					<key>TranslateY</key>
+					<real>185.48199462890625</real>
+				</dict>
+				<dict>
+					<key>FillAlpha</key>
+					<real>1</real>
+					<key>FillColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.0</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.0</real>
+					</dict>
+					<key>FillType</key>
+					<integer>1</integer>
+					<key>IsImagePatterned</key>
+					<false/>
+					<key>IsStroked</key>
+					<false/>
+					<key>LineAlpha</key>
+					<real>1</real>
+					<key>LineColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.0</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.0</real>
+					</dict>
+					<key>LineWidth</key>
+					<real>1</real>
+					<key>Path</key>
+					<dict>
+						<key>PathElements</key>
+						<array>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-4.53748, -4.57245}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-5.20062, -4.27982}</string>
+								<key>Point2</key>
+								<string>{-4.9917, -4.54805}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-5.64574, -3.01171}</string>
+								<key>Point2</key>
+								<string>{-5.42775, -3.97499}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-7.0447, 3.2556}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-7.30814, 3.2556}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-8.72528, -2.82882}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-8.74344, -2.82882}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-10.1515, 3.2556}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-10.4058, 3.2556}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-11.9956, -3.68235}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-12.9312, -4.57245}</string>
+								<key>Point2</key>
+								<string>{-12.1863, -4.52368}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-12.9312, -4.87729}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-10.5239, -4.87729}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-10.5239, -4.57245}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-11.0236, -4.49929}</string>
+								<key>Point2</key>
+								<string>{-10.8782, -4.56026}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-11.2779, -4.09692}</string>
+								<key>Point2</key>
+								<string>{-11.2779, -4.38956}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-11.2416, -3.87743}</string>
+								<key>Point2</key>
+								<string>{-11.2779, -4.03595}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-10.0516, 1.32907}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-10.0334, 1.32907}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-8.88879, -3.52384}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-9.26123, -4.34078}</string>
+								<key>Point2</key>
+								<string>{-9.04324, -4.10911}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-9.94255, -4.57245}</string>
+								<key>Point2</key>
+								<string>{-9.47925, -4.56026}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-9.94255, -4.87729}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-7.43533, -4.87729}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-7.43533, -4.57245}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-8.21657, -4.06034}</string>
+								<key>Point2</key>
+								<string>{-8.21658, -4.53588}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-8.18931, -3.90183}</string>
+								<key>Point2</key>
+								<string>{-8.21657, -4.02375}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-6.97204, 1.34126}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-6.95386, 1.34126}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-5.91827, -3.26778}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-5.82743, -3.99937}</string>
+								<key>Point2</key>
+								<string>{-5.82743, -3.67015}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-6.5269, -4.57245}</string>
+								<key>Point2</key>
+								<string>{-5.82743, -4.53588}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-6.5269, -4.87729}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-4.53748, -4.87729}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-2.04839, 4.81633}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-2.221, 5.048}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-3.41102, 3.30437}</string>
+								<key>Point2</key>
+								<string>{-3.02948, 4.09693}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-4.08325, 0.0121969}</string>
+								<key>Point2</key>
+								<string>{-4.08325, 1.87775}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-3.44735, -3.25558}</string>
+								<key>Point2</key>
+								<string>{-4.08325, -1.85337}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-2.2755, -5.04799}</string>
+								<key>Point2</key>
+								<string>{-3.08399, -4.04815}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-2.09381, -4.87729}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-2.9023, -3.32874}</string>
+								<key>Point2</key>
+								<string>{-2.66611, -4.06032}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-3.33834, -0.0121865}</string>
+								<key>Point2</key>
+								<string>{-3.33836, -2.04844}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-2.91138, 3.19463}</string>
+								<key>Point2</key>
+								<string>{-3.33834, 1.93874}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-2.04839, 4.81633}</string>
+								<key>Point2</key>
+								<string>{-2.66611, 3.92622}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-0.44963, -4.4749}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-0.585902, -4.07253}</string>
+								<key>Point2</key>
+								<string>{-0.44963, -4.23104}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-0.922008, -3.91401}</string>
+								<key>Point2</key>
+								<string>{-0.722159, -3.91401}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-1.25813, -4.08472}</string>
+								<key>Point2</key>
+								<string>{-1.12187, -3.91401}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-1.39439, -4.4749}</string>
+								<key>Point2</key>
+								<string>{-1.39439, -4.24324}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-1.20362, -4.92605}</string>
+								<key>Point2</key>
+								<string>{-1.39439, -4.76756}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-0.894763, -5.04799}</string>
+								<key>Point2</key>
+								<string>{-1.05826, -5.048}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-0.585902, -4.88947}</string>
+								<key>Point2</key>
+								<string>{-0.731246, -5.04799}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-0.44963, -4.4749}</string>
+								<key>Point2</key>
+								<string>{-0.44963, -4.73097}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{0.0681668, 3.03612}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-1.785, 3.03612}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-1.785, 2.73129}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-1.30355, 2.57277}</string>
+								<key>Point2</key>
+								<string>{-1.43073, 2.71908}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-1.17636, 1.91434}</string>
+								<key>Point2</key>
+								<string>{-1.17636, 2.43864}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-1.17636, -0.877905}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-1.85768, -1.48756}</string>
+								<key>Point2</key>
+								<string>{-1.17636, -1.45098}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-1.85768, -1.7924}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-0.685827, -2.28013}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-0.558641, -2.28013}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-0.558641, 2.1826}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{0.0681668, 2.73129}</string>
+								<key>Point2</key>
+								<string>{-0.558641, 2.69471}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{5.68212, -0.195088}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.51101, -0.195088}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.51101, 2.41427}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.03863, 2.41427}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.03863, -0.195088}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{0.876604, -0.195088}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{0.876604, -0.768164}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.03863, -0.768164}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.03863, -3.37752}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.51101, -3.37752}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.51101, -0.768164}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{5.68212, -0.768164}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{10.0426, 3.03612}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{6.9358, 3.03612}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{6.9358, 2.73129}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{7.46268, 2.73129}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{8.0259, 2.51181}</string>
+								<key>Point2</key>
+								<string>{7.86238, 2.73129}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{8.16215, 1.88996}</string>
+								<key>Point2</key>
+								<string>{8.16215, 2.32891}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{8.16215, -3.0483}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{7.97139, -3.65796}</string>
+								<key>Point2</key>
+								<string>{8.16215, -3.49944}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{7.17198, -3.80428}</string>
+								<key>Point2</key>
+								<string>{7.78061, -3.80427}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{6.83587, -3.81647}</string>
+								<key>Point2</key>
+								<string>{6.92671, -3.80428}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{6.83587, -4.10911}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{8.67995, -4.79193}</string>
+								<key>Point2</key>
+								<string>{7.84421, -4.292}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{8.80714, -4.79193}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{8.80714, 1.85337}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{8.98881, 2.56059}</string>
+								<key>Point2</key>
+								<string>{8.80714, 2.36549}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{9.51569, 2.73129}</string>
+								<key>Point2</key>
+								<string>{9.14326, 2.73129}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{10.0426, 2.73129}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{12.5407, 0.0121969}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{11.8684, 3.30437}</string>
+								<key>Point2</key>
+								<string>{12.5407, 1.87777}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{10.6784, 5.048}</string>
+								<key>Point2</key>
+								<string>{11.4869, 4.09693}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{10.5149, 4.81633}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{11.3688, 3.19463}</string>
+								<key>Point2</key>
+								<string>{11.1235, 3.92622}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{11.7958, -0.0121865}</string>
+								<key>Point2</key>
+								<string>{11.7958, 1.93873}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{11.3688, -3.32874}</string>
+								<key>Point2</key>
+								<string>{11.7958, -2.04846}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{10.5603, -4.87729}</string>
+								<key>Point2</key>
+								<string>{11.1235, -4.06034}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{10.7329, -5.04799}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{11.9048, -3.25558}</string>
+								<key>Point2</key>
+								<string>{11.5414, -4.04814}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{12.5407, 0.0121969}</string>
+								<key>Point2</key>
+								<string>{12.5407, -1.85335}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{12.9312, 3.03612}</string>
+							</dict>
+						</array>
+					</dict>
+					<key>RotationAngle</key>
+					<real>0.0</real>
+					<key>ScaleX</key>
+					<real>1</real>
+					<key>ScaleY</key>
+					<real>1</real>
+					<key>ShearX</key>
+					<real>0.0</real>
+					<key>ShearY</key>
+					<real>0.0</real>
+					<key>Transforms</key>
+					<array/>
+					<key>TranslateX</key>
+					<real>331.05728149414062</real>
+					<key>TranslateY</key>
+					<real>224.98199462890625</real>
+				</dict>
+				<dict>
+					<key>FillAlpha</key>
+					<real>1</real>
+					<key>FillColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.5</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.5</real>
+					</dict>
+					<key>FillType</key>
+					<integer>1</integer>
+					<key>IsImagePatterned</key>
+					<false/>
+					<key>IsStroked</key>
+					<false/>
+					<key>LineAlpha</key>
+					<real>1</real>
+					<key>LineColor</key>
+					<dict>
+						<key>BlueComponent</key>
+						<real>0.0</real>
+						<key>GreenComponent</key>
+						<real>0.0</real>
+						<key>RedComponent</key>
+						<real>0.0</real>
+					</dict>
+					<key>LineWidth</key>
+					<real>1</real>
+					<key>Path</key>
+					<dict>
+						<key>PathElements</key>
+						<array>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{-0.675268, 3.33684}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-3.84503, 3.33684}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-3.84503, 3.00182}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-2.97362, 2.63999}</string>
+								<key>Point2</key>
+								<string>{-2.97363, 2.97502}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-3.02808, 2.41218}</string>
+								<key>Point2</key>
+								<string>{-2.97362, 2.54618}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-3.08254, 2.26477}</string>
+								<key>Point2</key>
+								<string>{-3.04987, 2.33177}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-4.56393, -0.495824}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-6.01266, 1.95654}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-6.14338, 2.41218}</string>
+								<key>Point2</key>
+								<string>{-6.14338, 2.23796}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-5.2175, 3.00182}</string>
+								<key>Point2</key>
+								<string>{-6.14338, 2.94821}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-5.2175, 3.33684}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-7.89708, 3.33684}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-7.89708, 3.00182}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-6.58996, 2.18436}</string>
+								<key>Point2</key>
+								<string>{-7.02568, 2.93482}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-4.79267, -0.924658}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-6.5355, -4.19449}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-7.89708, -5.02535}</string>
+								<key>Point2</key>
+								<string>{-6.96031, -4.98515}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-7.89708, -5.36038}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-4.85803, -5.36038}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-4.85803, -5.02535}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-5.69677, -4.71712}</string>
+								<key>Point2</key>
+								<string>{-5.69677, -4.99854}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-5.60963, -4.43571}</string>
+								<key>Point2</key>
+								<string>{-5.69677, -4.54293}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-4.22627, -1.84933}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-2.97362, -4.02028}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-2.81021, -4.54291}</string>
+								<key>Point2</key>
+								<string>{-2.8102, -4.30171}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-3.64896, -5.02535}</string>
+								<key>Point2</key>
+								<string>{-2.81021, -4.97175}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-3.64896, -5.36038}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-1.05651, -5.36038}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-1.05651, -5.02535}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-2.46166, -4.10069}</string>
+								<key>Point2</key>
+								<string>{-1.96061, -4.95834}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-4.01931, -1.44729}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{-2.13487, 2.07715}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-1.43776, 2.84101}</string>
+								<key>Point2</key>
+								<string>{-1.82988, 2.63999}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-0.675268, 3.00182}</string>
+								<key>Point2</key>
+								<string>{-1.17633, 2.97502}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{2.30934, 5.29339}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{2.10237, 5.548}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{0.675434, 3.63166}</string>
+								<key>Point2</key>
+								<string>{1.13293, 4.50272}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{-0.130621, 0.013405}</string>
+								<key>Point2</key>
+								<string>{-0.130621, 2.06374}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{0.631869, -3.57804}</string>
+								<key>Point2</key>
+								<string>{-0.130621, -2.03695}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{2.03701, -5.54799}</string>
+								<key>Point2</key>
+								<string>{1.06759, -4.44911}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{2.25488, -5.36038}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{1.28544, -3.65845}</string>
+								<key>Point2</key>
+								<string>{1.56862, -4.4625}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{0.762583, -0.0133936}</string>
+								<key>Point2</key>
+								<string>{0.762583, -2.25134}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{1.27454, 3.51105}</string>
+								<key>Point2</key>
+								<string>{0.762583, 2.13077}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{2.30934, 5.29339}</string>
+								<key>Point2</key>
+								<string>{1.56866, 4.31511}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{4.22638, -4.91814}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.06298, -4.47591}</string>
+								<key>Point2</key>
+								<string>{4.22638, -4.65012}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.65996, -4.30169}</string>
+								<key>Point2</key>
+								<string>{3.8996, -4.30169}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.25693, -4.48931}</string>
+								<key>Point2</key>
+								<string>{3.42033, -4.30169}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.09354, -4.91814}</string>
+								<key>Point2</key>
+								<string>{3.09354, -4.66353}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.32228, -5.41398}</string>
+								<key>Point2</key>
+								<string>{3.09354, -5.23978}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.69263, -5.54799}</string>
+								<key>Point2</key>
+								<string>{3.49658, -5.548}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.06298, -5.37377}</string>
+								<key>Point2</key>
+								<string>{3.8887, -5.54799}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.22638, -4.91814}</string>
+								<key>Point2</key>
+								<string>{4.2264, -5.19956}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{4.84726, 3.33684}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{2.62517, 3.33684}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{2.62517, 3.00182}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.20247, 2.8276}</string>
+								<key>Point2</key>
+								<string>{3.04998, 2.98841}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{3.35497, 2.10395}</string>
+								<key>Point2</key>
+								<string>{3.35495, 2.68018}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.35497, -0.964861}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{2.53802, -1.6349}</string>
+								<key>Point2</key>
+								<string>{3.35497, -1.5947}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{2.53802, -1.96994}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{3.94316, -2.50598}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{4.09567, -2.50598}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{4.09567, 2.39878}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{4.84726, 3.00182}</string>
+								<key>Point2</key>
+								<string>{4.09567, 2.96162}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{7.42876, 0.013405}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{6.6227, 3.63166}</string>
+								<key>Point2</key>
+								<string>{7.42876, 2.06376}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{5.19577, 5.548}</string>
+								<key>Point2</key>
+								<string>{6.16521, 4.50272}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{4.9997, 5.29339}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{6.02361, 3.51105}</string>
+								<key>Point2</key>
+								<string>{5.72948, 4.31511}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{6.53555, -0.0133936}</string>
+								<key>Point2</key>
+								<string>{6.53555, 2.13076}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{6.02361, -3.65845}</string>
+								<key>Point2</key>
+								<string>{6.53555, -2.25136}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{5.05416, -5.36038}</string>
+								<key>Point2</key>
+								<string>{5.72952, -4.46251}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>LineTo</string>
+								<key>Point1</key>
+								<string>{5.26112, -5.54799}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{6.66627, -3.57804}</string>
+								<key>Point2</key>
+								<string>{6.23056, -4.4491}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>QuadCurveTo</string>
+								<key>Point1</key>
+								<string>{7.42876, 0.013405}</string>
+								<key>Point2</key>
+								<string>{7.42876, -2.03693}</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>Close</string>
+							</dict>
+							<dict>
+								<key>ElementType</key>
+								<string>MoveTo</string>
+								<key>Point1</key>
+								<string>{7.89708, 3.33684}</string>
+							</dict>
+						</array>
+					</dict>
+					<key>RotationAngle</key>
+					<real>326</real>
+					<key>ScaleX</key>
+					<real>1</real>
+					<key>ScaleY</key>
+					<real>1</real>
+					<key>ShearX</key>
+					<real>0.0</real>
+					<key>ShearY</key>
+					<real>0.0</real>
+					<key>Transforms</key>
+					<array/>
+					<key>TranslateX</key>
+					<real>335.0230712890625</real>
+					<key>TranslateY</key>
+					<real>158.48199462890625</real>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	<key>Images</key>
+	<array/>
+	<key>Version</key>
+	<real>1.2999999523162842</real>
+</dict>
+</plist>

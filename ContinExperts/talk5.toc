@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.06pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Review}{3}{0}{1}
+\beamer@sectionintoc {2}{The Universal prediction machine}{6}{0}{2}
+\beamer@sectionintoc {3}{The biased coins set of experts}{10}{0}{3}
+\beamer@sectionintoc {4}{Bayes using Jeffrey's prior}{11}{0}{4}
+\beamer@subsectionintoc {4}{1}{Laplace Approximation}{13}{0}{4}
+\beamer@subsectionintoc {4}{2}{Choosing the optimal prior}{16}{0}{4}
+\beamer@subsectionintoc {4}{3}{Kritchevski Trofimov Prediction Rule}{20}{0}{4}
+\beamer@subsectionintoc {4}{4}{Laplace Rule of Succession}{21}{0}{4}
+\beamer@sectionintoc {5}{Shtarkov lower bound for finite horizon}{22}{0}{5}
+\beamer@sectionintoc {6}{Generalization to larger sets of distributions}{23}{0}{6}

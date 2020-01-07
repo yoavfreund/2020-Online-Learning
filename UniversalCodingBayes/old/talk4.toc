@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.01pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Combining experts in the log loss framework}{10}{0}{1}
+\beamer@sectionintoc {2}{The online Bayes Algorithm}{21}{0}{2}
+\beamer@sectionintoc {3}{The performance bound}{31}{0}{3}
+\beamer@sectionintoc {4}{Comparison with Bayesian Statistics}{57}{0}{4}
+\beamer@sectionintoc {5}{Computational issues}{66}{0}{5}
+\beamer@sectionintoc {6}{The Universal prediction machine}{79}{0}{6}
+\beamer@sectionintoc {7}{The biased coins set of experts}{106}{0}{7}
+\beamer@sectionintoc {8}{Generalization to larger sets of distributions}{148}{0}{8}

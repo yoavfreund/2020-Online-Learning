@@ -1,0 +1,444 @@
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Montpellier}
+
+  %\setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage{xmpmulti} % package that defines \multiinclude
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title %[Vovk's algorithm] %(optional, use only with long paper titles)
+{Tracking the best Expert}
+
+\author[Freund] % (optional, use only with lots of authors)
+{Yoav Freund}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+
+\subject{Machine Learning}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%% \AtBeginSubsection[]
+%% {
+%%   \begin{frame}<beamer>
+%%     \frametitle{Outline}
+%%     \tableofcontents[currentsection,currentsubsection]
+%%   \end{frame}
+%% }
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+\beamerdefaultoverlayspecification{<+->}
+
+\input{../macros}
+
+\begin{document}
+
+\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[pausesections]
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+\section{Review}
+
+\begin{frame}
+\frametitle{Vovk's general prediction game}
+\R{$\Gamma$} - \B{prediction} space.
+\R{$\Omega$} - \B{outcome} space. \\
+\pause
+On each trial \R{$t=1,2,\ldots$}
+\pause
+\begin{enumerate}
+\item
+Each expert \R{$i \in \{1 \ldots n \}$} makes a prediction 
+\R{$\gamma_i^t \in \Gamma$}
+\item
+The learner, after observing \R{$\langle \gamma_1^t \ldots \gamma_n^t \rangle$}, \\
+makes its own prediction \R{$\gamma^t$}
+\item
+Nature chooses an outcome \R{$\omega^t \in \Omega$}
+\item
+Each expert incurs loss \R{$\elloss{i}{t} = \lambda(\omega^t,\gamma_i^t)$} \\
+The learner incurs loss \R{$\elloss{A}{t} = \lambda(\omega^t,\gamma^t)$}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Vovk's algorithm is the the highest achiever {\color{green} [Vovk95]}}
+
+The pair \R{$(a,c)$} is achieved by \B{some} algorithm 
+if and only if it is achieved by \B{Vovk's} algorithm.
+\pause \\
+The separation curve is
+\R{$ \left\{ \left. \left( a(\eta),{a(\eta) \over \eta} \right) \right| 
+           \eta \in [0,\infty] \right\} $}
+\pause
+\begin{center}
+\includegraphics[height=5cm]{figures/achievable2.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Log loss (Entropy loss)} 
+\begin{itemize}
+\item
+\R{\[ \lambda_{\text{ent}}(\omega,\gamma) = \omega \ln \frac{\omega}{\gamma} 
+                              +(1-\omega) \ln \frac{1-\omega}{1-\gamma} \]}
+\item
+When \R{$q_t \in \{0,1\}$} Cumulative log loss \R{$=$} coding length \R{$\pm 1$}
+\item
+If \R{$P[\omega_t=1]=q$}, optimal prediction \R{$\gamma^t=q$}
+\item
+\B{Un}bounded loss.
+\item
+\B{Not} symmetric \R{$\exists p,q\;\; \lambda(p,q) \neq \lambda(q,p)$}.
+\item
+\B{No} triangle inequality
+\R{$ \exists p_1,p_2,p_3\;\; \lambda(p_1,p_3) > \lambda(p_1,p_2) + \lambda(p_2,p_3)$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Square loss (Breier Loss)}
+\begin{itemize}
+\item
+\R{\[ \lambda_{\text{sq}}(\omega,\gamma)  = (\omega-\gamma)^2 \]}
+\item
+\R{$P[\omega^t=1]=q,\;\; P[\omega^t=0]=1-q$}, \\
+optimal prediction \R{$\gamma^t=q$}
+\item
+Bounded loss.
+\item
+Defines a metric (symmetric and triangle ineq.)
+\item
+Corresponds to regression.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Absolute loss}
+
+\begin{itemize}
+\item
+\R{\[ \lambda(\omega,\gamma) = | \omega -\gamma | \]}
+\item
+Probability of making a mistake if predicting 0 or 1 
+using a biased coin\\
+\item
+If \R{$P[\omega^t=1]=q,\;\; P[\omega^t=0]=1-q$}, then the optimal prediction is 
+\R{\[
+\gamma^t = 
+\begin{cases} 1 & \text{if $q>1/2$,} \\
+              0 & \text{otherwise}
+\end{cases}
+\]}
+\end{itemize}
+\end{frame}
+
+\subsection{mixable loss functions}
+\begin{frame}
+\frametitle{Mixable Loss Functions}
+\begin{itemize}
+\item A Loss function is \B{mixable} if a pair of the form \R{$(1,c),\; c<\infty$} is achievable.
+\R{\[
+\TAloss \leq \BEloss + c \ln n 
+\]}
+\item Vovk's algorithm with \R{$\eta = 1/c$} achieves this bound.
+\item \R{$\lambda_{\text{ent}},\lambda_{\text{sq}},\lambda_{\text{hel}}$} are \B{mixable}
+\item \R{$\lambda_{\text{abs}},\lambda_{\text{dot}}$} are \B{not mixable}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary of bounds for mixable losses}
+\includegraphics[height=6cm]{figures/summarytable.jpg}
+\end{frame}
+
+\section{Switching Experts}
+
+
+\begin{frame}
+\frametitle{Switching experts setup}
+\begin{itemize}
+\item \B{Usually:} compare algorithm's total loss to total
+  loss of the best expert.
+\item \B{Switching experts:} compare algorithm's total loss to total
+  loss of \B{best expert sequence} with \R{$k$} \B{switches}.
+\item
+\includegraphics[width=4.5in]{figures/SwitchingExperts.pdf}
+\end{itemize}
+\end{frame}
+
+\section{An inefficient algorithm}
+
+\begin{frame}
+\frametitle{An inefficient algorithm}
+\begin{itemize}
+\item Fix:
+\begin{itemize}
+\item \R{$l$} - sequence length
+\item \R{$k$} - number of switches
+\item \R{$n$} - number of experts
+\end{itemize}
+\item Consider one \B{partition-expert} per sequence of switching experts.
+\item No. of \B{partition-expert}s : 
+\R{${l \choose k-1} n (n-1)^k = O \paren{n^{k+1} \paren{\frac{el}{k}}^k} $}
+\item The log-loss regret is at most 
+\R{$(k+1) \log n + k \log \frac{l}{k} +k$}
+\item Requires maintaining \R{$O \paren{n^{k+1} \paren{\frac{el}{k}}^k}$} weights.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{generalization to mixable losses}
+\begin{itemize}
+\item In this lecture we assume loss function is \B{mixable}.
+\item There is an exponential weights algorithm with learning rate \R{$\eta$} that 
+achieves (in the non-switching case) a bound 
+\R{\[
+L_A \leq \min_i L_i + \frac{1}{\eta} \log n
+\]}
+\item Then using the \B{partition-expert} algorithm for the switching-experts case 
+we get a bound on the regret 
+\R{$\frac{1}{\eta} \paren{(k+1) \log n + k \log \frac{l}{k} +k}$}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Weight sharing algorithms}
+\begin{itemize}
+\item Update weights in two stages: loss update then share update.
+\item Prediction uses the normalized \R{$s$} weights \R{$w_{t,i}^s / \sum_j w_{t,j}^s$}
+\item \B{Loss update} is the same as always, but defines intermediate \R{$m$} weights:
+\R{\[
+w_{t,i}^m = w_{t,i}^s e^{-\eta L(y_t,x_{t,i})}
+\]}
+\item \B{Share update}: redistribute the weights
+\item \B{Fixed-share}: 
+\R{\begin{eqnarray*}
+pool & = & \alpha \sum_{i=1}^n w_{t,i}^m \\
+w_{t+1,i}^s & = & (1-\alpha) w_{t,i}^m + \frac{1}{n-1} \paren{pool - \alpha w_{t,i}^m}
+\end{eqnarray*}}
+\end{itemize}
+\end{frame}
+
+\section{The fixed-share algorithm}
+
+\begin{frame}
+\frametitle{The fixed-share algorithm}
+\multiinclude[graphics={width=11cm},format=pdf]{figures/IntermediateWeights}
+\end{frame}
+
+\begin{frame}
+\frametitle{Proving a bound on the fixed-share}
+\begin{itemize}
+\item The relation between algorithm loss and total weight does not change
+because share update does not change the total weight.
+\item Thus we still have 
+\R{\[
+L_A \leq \frac{1}{\eta} \sum_{i=1}^n w_{l+1,i}^s
+\]}
+\item The harder question is how to lower bound \R{$\sum_{i=1}^n w_{l+1,i}^s$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lower bounding the final total weight}
+\begin{itemize}
+\item Fix some switching experts sequence:
+\includegraphics[width=4.5in]{figures/SwitchingExperts.pdf}
+\item \B{``follow''} the weight of the chosen expert $i_t$.
+\item The loss update reduces the weight by a factor of \R{$e^{-\eta \ell_{t,i_t}}$}.
+\item The share update reduces the weight by a factor larger than:
+\begin{itemize}
+\item \R{$1-\alpha$} on iterations with no switch.
+\item \R{$\frac{\alpha}{n-1}$} on iterations where a switch occurs.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bound for arbitrary $\alpha$}
+\begin{itemize}
+\item
+Combining we lower bound the final weight of the last expert in the sequence
+\R{\[
+w^s_{l+1,e_k} \geq \frac{1}{n} e^{-\eta L_*} (1-\alpha)^{l-k-1} \paren{\frac{\alpha}{n-1}}^k
+\]}
+Where \R{$L_*$} is the cumulative loss of the switching sequence of experts.
+\item
+Combining the upper and lower bounds we get that for any sequence 
+\R{\[
+L_A \leq L_* + 
+\frac{1}{\eta} \paren{ \ln n + \paren{l-k-1} \ln \frac{1}{1-\alpha}
+                       +k \paren{ \ln \frac{1}{\alpha} + \ln (n-1)}}
+\]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tuning $\alpha$}
+\begin{itemize}
+\item let \R{$k^*$} be the best number of switches (in hind sight) 
+and \R{$\alpha^* = k^* / l$}
+\item Suppose we use \R{$\alpha \approx \alpha^*$} then the bound that we get is
+\R{\[
+L_A \leq L_* + \frac{1}{\eta} \paren{(k+1) \ln n 
++ (l-1)\paren{H(\alpha^*) + D_{\text{KL}}(\alpha^* || \alpha)}}
+\]}
+Where
+\R{
+\[
+H(\alpha^*) = -\alpha^* \ln \alpha^* - (1-\alpha^*) \ln (1-\alpha^*)
+\]
+\[
+D_{\text{KL}}(\alpha^* || \alpha) = 
+\alpha^* \ln \frac{\alpha^*}{\alpha}  (1-\alpha^*) \ln \frac{1-\alpha^*}{1-\alpha}
+\]
+}
+\item This is very close to the loss of the computationally inefficient algorithm.
+\item For the log loss case this is essentially optimal.
+\item Not so for square loss!
+\end{itemize}
+\end{frame}
+
+\section{The variable-share algorithm}
+
+\begin{frame}
+\frametitle{What can we hope to improve?}
+\begin{itemize}
+\item In the fixed-share algorithm, the 
+weight of a suboptimal expert never decreases below
+\R{$\alpha/n$}.
+\item The algorithm does not concentrate only on the best expert, even
+if the last switch is in the distant past.
+\item The regret depends on the length of the sequence.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The idea of variable-share}
+\begin{itemize}
+\item Let the fraction of the total weight given to the 
+best expert get arbitrarily close to \R{$1$}.
+\item we can get a regret bound that depends only on the number of
+switches, not on the lenght of the sequence.
+\item Requires that the loss be bounded.
+\item Works for \B{square} loss, but not for \B{log} loss!
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Variable-share}
+\R{\begin{eqnarray*}
+pool & = & \sum_{i=1}^n \paren{1-\paren{1-\alpha}^{\ell_{t,i}}} w_{t,i}^m \\
+w_{t+1,i}^s & = & (1-\alpha)^{\ell_{t,i}} w_{t,i}^m + 
+\frac{1}{n-1} \paren{pool - \paren{1-\paren{1-\alpha}^{\ell_{t,i}}} w_{t,i}^m}
+\end{eqnarray*}}
+\pause
+If \R{$\ell_{t,i} = 0$}, then expert \R{$i$} does not contribute to the pool.\\
+\pause
+Expert can get fraction of the total weight arbitrarily close to \R{$1$}.\\
+\pause
+Shares the weight quickly if \R{$\ell_{t,i}>0$}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bound for variable share}
+\begin{itemize}
+\item
+\R{
+\[
+\frac{1}{\eta} \ln n +
+\paren{ 1+ \frac{1}{(1-\alpha)\eta}} L_* +
+k \paren{1 + \frac{1}{\eta} \paren{ \ln {n-1} + \ln \frac{1}{\alpha} + \ln \frac{1}{1-\alpha} }}
+\]
+}
+\item \R{$\alpha$} should be tuned so that it is (close to) 
+\R{$\frac{k}{2k+L_*}$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{An experiment using variable share}
+\includegraphics[height=6cm]{figures/VariableShareFigure.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{Next Class}
+\begin{itemize}
+\item Suppose the best switching sequence is repeatedly switching among a small subset of the experts
+\R{$n' \ll n$}
+\item In the context of speech recognition - the speaker repeatedly uses a small number of phonemes.
+\item If we know the subset, we can pay \R{$\ln n'$} per switch rather than \R{$\ln n$}
+\item Can track switches much more closely.
+\item Easy to describe an inefficient algorithm (consider all \R{${n \choose n'}$} subsets.)
+\item Next class - how to do as well with just one weight per expert.
+\end{itemize}
+\end{frame}
+
+\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+

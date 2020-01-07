@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.06pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Review}{3}{0}{1}
+\beamer@sectionintoc {2}{Fixed Length Markov Models}{6}{0}{2}
+\beamer@sectionintoc {3}{Variable Length Markov Model (VMM)}{8}{0}{3}
+\beamer@sectionintoc {4}{Assigning weights to trees}{11}{0}{4}
+\beamer@sectionintoc {5}{Learning the structure, an inefficient solution}{11}{0}{5}
+\beamer@sectionintoc {6}{Efficient Implementation}{12}{0}{6}

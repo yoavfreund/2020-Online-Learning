@@ -1,0 +1,164 @@
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2005.12.28)  20 FEB 2006 18:00
+entering extended mode
+**journal.tex
+(./journal.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
+ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
+stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
+h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
+kish, ukrainian, nohyphenation, loaded.
+(/sw/share/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2004/02/16 v1.4f Standard LaTeX document class
+(/sw/share/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2004/02/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/sw/share/texmf-dist/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip43
+)
+(/sw/share/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2004/09/15 PSNFSS-v9.2 (SPQR) 
+)
+(/sw/share/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+(/sw/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\@emptytoks=\toks14
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+)
+\c@dummytheorem=\count87
+\c@pproof=\count88
+ (./journal.aux)
+\openout1 = `journal.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 177.
+
+
+(/sw/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 216.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 216.
+
+(/sw/share/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 216.
+
+(/sw/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 216.
+
+(/sw/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 216.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 221.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 251.
+
+Underfull \hbox (badness 10000) in paragraph at lines 251--253
+
+ []
+
+[1
+
+{/sw/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 427.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 427.
+ [4]
+\colwidth=\skip44
+\alglength=\skip45
+ [5]
+Underfull \hbox (badness 10000) in paragraph at lines 550--550
+
+ []
+
+[6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 808--808
+
+ []
+
+[9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 1573--1573
+
+ []
+
+[20] [21] [22]
+Underfull \hbox (badness 10000) in paragraph at lines 1745--1745
+
+ []
+
+[23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] (./journal.aux
+) ) 
+Here is how much of TeX's memory you used:
+ 726 strings out of 94500
+ 8008 string characters out of 1176113
+ 61593 words of memory out of 1000000
+ 3893 multiletter control sequences out of 10000+50000
+ 44240 words of font info for 113 fonts, out of 500000 for 2000
+ 580 hyphenation exceptions out of 1000
+ 29i,19n,22p,206b,350s stack positions out of 1500i,500n,5000p,200000b,5000s
+PDF statistics:
+ 189 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 1 words of extra memory for PDF output out of 65536
+</sw/share/texmf-dist/fonts/type1/bluesky/cm/cmti7.pfb></sw/share/texmf-dist
+/fonts/type1/bluesky/cm/cmti8.pfb></sw/share/texmf-dist/fonts/type1/bluesky/cm/
+cmmi7.pfb></sw/share/texmf-dist/fonts/type1/bluesky/cm/cmr7.pfb></sw/share/texm
+f-dist/fonts/type1/bluesky/symbols/msbm10.pfb></sw/share/texmf-dist/fonts/type1
+/bluesky/cm/cmsy6.pfb></sw/share/texmf-dist/fonts/type1/bluesky/cm/cmbx10.pfb><
+/sw/share/texmf-dist/fonts/type1/bluesky/latex/lasy10.pfb></sw/share/texmf-dist
+/fonts/type1/bluesky/cm/cmbx8.pfb></sw/share/texmf-dist/fonts/type1/bluesky/cm/
+cmbx12.pfb></sw/share/texmf-dist/fonts/type1/bluesky/cm/cmmi6.pfb></sw/share/te
+xmf-dist/fonts/type1/bluesky/cm/cmr6.pfb></sw/share/texmf-dist/fonts/type1/blue
+sky/cm/cmmib10.pfb></sw/share/texmf-dist/fonts/type1/bluesky/cm/cmr12.pfb></sw/
+share/texmf-dist/fonts/type1/bluesky/cm/cmmi12.pfb></sw/share/texmf-dist/fonts/
+type1/bluesky/cm/cmsy7.pfb></sw/share/texmf-dist/fonts/type1/bluesky/cm/cmr10.p
+fb>{/sw/share/texmf-dist/fonts/enc/dvips/psnfss/8r.enc}</sw/share/texmf-dist/fo
+nts/type1/urw/times/utmri8a.pfb></sw/share/texmf-dist/fonts/type1/bluesky/cm/cm
+mi8.pfb></sw/share/texmf-dist/fonts/type1/bluesky/cm/cmr8.pfb></sw/share/texmf-
+dist/fonts/type1/bluesky/cm/cmsy8.pfb></sw/share/texmf-dist/fonts/type1/bluesky
+/cm/cmex10.pfb></sw/share/texmf-dist/fonts/type1/bluesky/cm/cmmi10.pfb></sw/sha
+re/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></sw/share/texmf-dist/fonts/type
+1/bluesky/cm/cmsy10.pfb></sw/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb>
+
+Output written on journal.pdf (35 pages, 294985 bytes).

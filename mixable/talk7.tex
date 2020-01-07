@@ -1,0 +1,533 @@
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Montpellier}
+
+  %\setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage{xmpmulti} % package that defines \multiinclude
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title [Vovk's algorithm] %(optional, use only with long paper titles)
+{Vovk's algorithm \\ Mixable and unmixable loss functions}
+
+\author[Freund] % (optional, use only with lots of authors)
+{Yoav Freund}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+
+\subject{Machine Learning}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%% \AtBeginSubsection[]
+%% {
+%%   \begin{frame}<beamer>
+%%     \frametitle{Outline}
+%%     \tableofcontents[currentsection,currentsubsection]
+%%   \end{frame}
+%% }
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+\beamerdefaultoverlayspecification{<+->}
+
+\input{../macros}
+
+\begin{document}
+
+\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[pausesections]
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+\section{Review}
+
+\begin{frame}
+\frametitle{The log-loss game}
+\begin{itemize}
+\item Prediction algorithm \R{$A$} has access to \R{$N$} experts.
+\item The following is repeated for \R{$t=1,\ldots,T$}
+\begin{itemize}
+\item Experts generate predictive distributions: \R{$\vp_1^t,\ldots,\vp_N^t$}
+\item Algorithm generates its own prediction \R{$\vp_A^t$}
+\item \R{$c^t$} is revealed.
+\end{itemize}
+\item {\bf Goal:} minimize regret:
+\R{\[
+-\sum_{t=1}^T \log p_A^t(c^t) + \min_{i=1,\dots,N} \paren{-\sum_{t=1}^T \log p_i^t(c^t)} 
+\]}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{The online Bayes Algorithm}
+\begin{itemize}
+\item {\color{blue} Total loss} of expert \R{$i$}
+\R{$$L_i^t = - \sum_{s=1}^{t} \log p_i^s(c^s);\;\;\; L_i^0 = 0$$}
+\item {\color{blue}Weight} of expert \R{$i$}
+\R{$$\wt{t}{i} = \wt{1}{i} e^{-L_i^{t-1}} = \wt{1}{i} \prod_{s=1}^{t-1} p_i^s(c^s)$$}
+\item
+Freedom to choose initial weights.\\
+ \R{$\wt{1}{t} \geq 0$}, \R{$\sum_{i=1}^n \wt{1}{i} = 1$}
+\item {\color{blue}Prediction} of algorithm \R{$A$}
+\R{\[
+\vp_A^t = \frac{\sum_{i=1}^N \wt{t}{i} \vp_i^t}{\sum_{i=1}^N \wt{t}{i}}
+\]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cumulative loss vs. Final total weight}
+
+\onslide<1-> Total weight: \R{$W^t \doteq \sum_{i=1}^N \wt{t}{i}$}
+
+\onslide<2-> \R{$$
+\frac{W^{t+1}}{W^t}  =  \frac{\sum_{i=1}^N \wt{t}{i} e^{\log p_i^t(c^t)}}{\sum_{i=1}^N \wt{t}{i}} 
+\onslide<3->          =   \frac{\sum_{i=1}^N \wt{t}{i} p_i^t(c^t)}{\sum_{i=1}^N \wt{t}{i}} 
+\onslide<4->        =  p_A^t(c^t)
+$$}
+\onslide<5-> \R{$$ -\log \frac{W^{t+1}}{W^t} = -\log p_A^t(c^t) $$}
+\R{\[
+\onslide<8-> -\log W^{T+1} =
+\onslide<6-> -\log \frac{W^{T+1}}{W^1} = -\sum_{t=1}^T \log p_A^t(c^t)
+\onslide<7-> = L_A^T
+\]}
+\onslide<9-> \R{\bf EQUALITY} not bound!
+\end{frame}
+
+\section{The general prediction game}
+
+\begin{frame}
+\frametitle{Vovk's general prediction game}
+\R{$\Gamma$} - \B{prediction} space.
+\R{$\Omega$} - \B{outcome} space. \\
+\pause
+On each trial \R{$t=1,2,\ldots$}
+\pause
+\begin{enumerate}
+\item
+Each expert \R{$i \in \{1 \ldots N \}$} makes a prediction 
+\R{$\gamma_i^t \in \Gamma$}
+\item
+The learner, after observing \R{$\langle \gamma_1^t \ldots \gamma_N^t \rangle$}, \\
+makes its own prediction \R{$\gamma^t$}
+\item
+Nature chooses an outcome \R{$\omega^t \in \Omega$}
+\item
+Each expert incurs loss \R{$\elloss{i}{t} = \lambda(\omega^t,\gamma_i^t)$} \\
+The learner incurs loss \R{$\elloss{A}{t} = \lambda(\omega^t,\gamma^t)$}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Achievable loss bounds}
+\begin{itemize}
+\item \R{$\TAloss \doteq \sum_{t=1}^T \elloss{A}{t}$} - total loss of algorithm
+\item \R{$\TEloss{i} \doteq \sum_{t=1}^T \elloss{i}{t}$} - total loss of expert \R{$i$}
+\item \B{\bf Goal:} find an algorithm which guarantees that 
+\R{\[
+(a,c) \in [0,\infty),\;\; \TAloss \leq a \BEloss + c \ln N 
+\]}
+For any sequence of events.
+\item We say that the pair \R{$(a,c)$} is \B{achievable}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The set of achievable bounds}
+\begin{itemize}
+\item 
+Fix loss function \R{$\lambda: \Omega \times \Gamma \to [0,\infty)$}
+\item
+The pair \R{$(a,c)$} is {\em achievable} if there exists 
+{\em some} prediction algorithm
+such that for \B{\em any} \R{$N>0$}, \B{\em any} set of \R{$N$} prediction
+sequences and \B{\em any} sequence of outcomes
+\R{\[
+\TAloss \leq a \BEloss + c \ln N
+\]}
+\item
+\begin{center}
+\includegraphics[height=5cm]{figures/achievable1.pdf}
+\end{center}
+\end{itemize}
+\end{frame}
+
+\section{Some useful loss functions}
+
+\begin{frame}
+\frametitle{Some useful loss functions}
+\begin{itemize}
+\item
+\B{Outcomes:} \R{$\omega^1,\omega_2,\ldots$ $\omega^t \in [0,1]$}  
+\item
+\B{Predictions:} \R{$\gamma^1,\gamma^2,\ldots$  $\gamma^t \in [0,1]$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Log loss (Entropy loss)} 
+\begin{itemize}
+\item
+\R{\[ \lambda_{\text{ent}}(\omega,\gamma) = \omega \ln \frac{\omega}{\gamma} 
+                              +(1-\omega) \ln \frac{1-\omega}{1-\gamma} \]}
+\item
+When \R{$q_t \in \{0,1\}$} Cumulative log loss \R{$=$} coding length \R{$\pm 1$}
+\item
+If \R{$P[\omega_t=1]=q$}, optimal prediction \R{$\gamma^t=q$}
+\item
+\B{Un}bounded loss.
+\item
+\B{Not} symmetric \R{$\exists p,q\;\; \lambda(p,q) \neq \lambda(q,p)$}.
+\item
+\B{No} triangle inequality
+\R{$ \exists p_1,p_2,p_3\;\; \lambda(p_1,p_3) > \lambda(p_1,p_2) + \lambda(p_2,p_3)$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Square loss (Breier Loss)}
+\begin{itemize}
+\item
+\R{\[ \lambda_{\text{sq}}(\omega,\gamma)  = (\omega-\gamma)^2 \]}
+\item
+\R{$P[\omega^t=1]=q,\;\; P[\omega^t=0]=1-q$}, \\
+optimal prediction \R{$\gamma^t=q$}
+\item
+Bounded loss.
+\item
+Defines a metric (symmetric and triangle ineq.)
+\item
+Corresponds to regression.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Hellinger Loss}
+
+\begin{itemize}
+\item
+\R{\[ \lambda_{\text{hel}}(\omega,\gamma)  = \frac{1}{2} \paren{
+\paren{\sqrt{\omega} +\sqrt{\gamma}}^2 + 
+\paren{\sqrt{1-\omega}+\sqrt{1-\gamma}}^2 
+} \] } 
+\item
+If \R{$P[\omega^t=1]=q,\;\; P[\omega^t=0]=1-q$}, \\
+optimal prediction \R{$\gamma^t=q$}
+\item
+Loss is bounded.
+\item
+Defines a metric.
+\item 
+\R{$\lambda_{\text{hel}}(p,q)  \approx \lambda_{\text{ent}}(p,q)$} when 
+\R{$p \approx q$} and \R{$p,q \in (0,1)$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Absolute loss}
+
+\begin{itemize}
+\item
+\R{\[ \lambda(\omega,\gamma) = | \omega -\gamma | \]}
+\item
+Probability of making a mistake if predicting 0 or 1 
+using a biased coin\\
+\item
+If \R{$P[\omega^t=1]=q,\;\; P[\omega^t=0]=1-q$}, then the optimal prediction is 
+\R{\[
+\gamma^t = 
+\begin{cases} 1 & \text{if $q>1/2$,} \\
+              0 & \text{otherwise}
+\end{cases}
+\]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Structureless bounded loss}
+
+\begin{itemize}
+\item Prediction is a distribution 
+\R{$\gamma = \langle p_1,\ldots,p_N \rangle$, $p_i \geq 0$, $\sum_{i=1}^N p_i = 1$}
+\item Outcome is a loss vector \R{$\omega = \langle \omega_1,\ldots,\omega_N \rangle$, 
+$0 \leq \omega_i \leq 1$}
+\item Loss is the dot product: \R{$\lambda_{\text{dot}}(\omega,\gamma) = \gamma \cdot \omega$}
+\item Corresponds to the hedging game.
+\item For hedge loss the regret is \R{$\Omega(\sqrt{T \log N})$}.
+\item For the log loss the regret is \R{$O(\log N)$}
+\item {\bf Which losses behave like \B{entropy loss} and which behave like \B{hedge loss}}?
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Some technical requirements}
+\begin{itemize}
+\item There should be a \B{topology} on the prediction set \R{$\Gamma$} such that
+\item
+\R{$\Gamma$} is compact.
+\item
+\R{$\forall \omega \in \Omega$}, the function 
+\R{$\gamma \to \lambda(\omega,\gamma)$} is \B{continuous}
+\item
+There is a \B{universally reasonable prediction} \\
+\R{$\exists \gamma \in \Gamma$, $\forall \omega \in \Omega$,
+$\lambda(\omega,\gamma) < \infty$}
+\item
+There is \B{no universally optimal prediction} \\
+\R{$\neg \exists \gamma \in \Gamma$, $\forall \omega \in \Omega$,
+$\lambda(\omega,\gamma) = 0$}
+\end{itemize}
+\end{frame}
+
+
+\section{Vovk's algorithm}
+
+\begin{frame}
+\frametitle{Vovk's meta-algorithm}
+\begin{itemize}
+\item Fix an \B{achievable} pair \R{$(a,c)$} and set \R{$\eta=a/c$}
+\item \begin{enumerate}
+\item
+\R{$$
+	\weight{i}{t} = {1 \over N} \; e^{-\eta \TEloss{i}^{t}}
+$$}
+\item
+Choose $\gamma_t$ so that, for all $\omega^t \in \Omega$:
+\R{\[
+\lambda(\omega^t,\gamma^t) - c \ln \sum_i \weight{i}{t} 
+\leq
+- c \ln \left( \sum_i 
+      \weight{i}{t}e^{-\eta \lambda(\omega^t,\gamma_i^t)}
+        \right)
+\]}
+\end{enumerate}
+\item
+If choice of \R{$\gamma_t$} always exists, then the total loss satisfies:
+\R{\[
+\sum_t \lambda(\omega^t,\gamma^t)
+\leq
+- c \ln \sum_i \weight{i}{T+1}
+\leq
+a \BEloss + c \ln N
+\]}
+\item
+Vovk's result: \B{\em yes!} a good choice for \R{$\gamma_t$} always exists!
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Vovk's algorithm is the the highest achiever {\color{green} [Vovk95]}}
+
+The pair \R{$(a,c)$} is achieved by \B{some} algorithm 
+if and only if it is achieved by \B{Vovk's} algorithm.
+\pause \\
+The separation curve is
+\R{$ \left\{ \left. \left( a(\eta),{a(\eta) \over \eta} \right) \right| 
+           \eta \in [0,\infty] \right\} $}
+\pause
+\begin{center}
+\includegraphics[height=5cm]{figures/achievable2.pdf}
+\end{center}
+\end{frame}
+
+\section{mixable loss functions}
+\begin{frame}
+\frametitle{Mixable Loss Functions}
+\begin{itemize}
+\item A Loss function is \B{mixable} if a pair of the form \R{$(1,c),\; c<\infty$} is achievable.
+\R{\[
+\TAloss \leq \BEloss + c \ln N 
+\]}
+\item Vovk's algorithm with \R{$\eta = 1/c$} achieves this bound.
+\item \R{$\lambda_{\text{ent}},\lambda_{\text{sq}},\lambda_{\text{hel}}$} are \B{mixable}
+\item \R{$\lambda_{\text{abs}},\lambda_{\text{dot}}$} are \B{not mixable}
+\end{itemize}
+\end{frame}
+
+
+\section{The convexity condition}
+
+\begin{frame}
+\frametitle{The convexity condition}
+\begin{itemize}
+\item requirement for loss to be \R{$(1,1/\eta)$} mixable
+\item 
+\R{$\forall \langle (\gamma_1,\weight{1}{}),\ldots,(\gamma_N,\weight{N}{}) \rangle$} \\
+\R{$\exists \B{\gamma} \in \Gamma$} \\
+\R{$\forall \omega \in \Omega$}:
+\R{\[
+\lambda(\omega,\B{\gamma}) - \frac{1}{\eta} \ln \sum_i \weight{i}{} 
+\leq
+- \frac{1}{\eta} \ln \left( \sum_i 
+      \weight{i}{}e^{-\eta \lambda(\omega,\gamma_i)}
+        \right)
+\]}
+\item
+Can be re-written as:
+\R{\[
+e^{-\eta \lambda(\omega,\B{\gamma})}
+\geq
+\sum_i 
+\left({\weight{i}{} \over \sum_j \weight{j}{}}\right)
+e^{-\eta \lambda(\omega,\gamma_i)}
+\]}
+%% \item \B{Assumption:}
+%% fix \R{$\lambda(\omega,\gamma_i)$} for all but \R{$i \not\in \{j,k\}$}
+%% then increasing \R{$\lambda(\omega,\gamma_j)$} decreases
+%% \R{$\lambda(\omega,\gamma_k)$}
+\item
+Equivalently - the image of the set \R{$\Gamma$} under the
+mapping
+\R{$F(\gamma) = 
+\left\langle 
+   e^{-\eta \lambda(\omega,\gamma)} 
+\right\rangle_{\omega \in \Omega}
+$} is concave.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{convexity condition: Pictorially}
+\begin{itemize}
+\item
+\noindent {\bf Example:} Suppose $\Omega=\{0,1\}$, $\Gamma = [0,1]$.
+then
+\[
+F(\gamma) = \left\langle
+  e^{-\eta \lambda(0,\gamma)},e^{-\eta \lambda(1,\gamma)}
+\right\rangle
+\]
+\item
+\begin{center}
+\includegraphics[height=5cm]{figures/convex.pdf}
+\end{center}
+\end{itemize}
+\end{frame}
+
+\section{Log loss}
+
+\begin{frame}
+\frametitle{Vovk Algorithm for log loss}
+\begin{itemize}
+\item The log loss is mixable with \R{$\eta=1$}
+\item The image of \R{$[0,1]$} through \R{$F(\gamma) = \left\langle
+  e^{-\eta \lambda(0,\gamma)},e^{-\eta \lambda(1,\gamma)} \right\rangle$} is a straight line segment.
+\item The \B{only} satisfactory prediction is 
+\R{\[
+\gamma = \frac{\sum_i \weight{i}{} \gamma_i}{\sum_i \weight{i}{}}
+\]}
+\item
+We are back to the online Bayes algorithm.
+\end{itemize}
+\end{frame}
+
+\section{Square loss}
+
+\begin{frame}
+\frametitle{Vovk algorithm for square loss}
+\begin{itemize}
+\item The square loss is mixable with $\eta=2$.
+\item Prediction must satisfy
+\R{\[
+1-\sqrt{ -{1 \over 2} \ln \sum_i \Nweight{i}{t} e^{-2(1-p^t_i)^2} }
+\leq
+p^t
+\leq
+\sqrt{ -{1 \over 2} \ln \sum_i \Nweight{i}{t} e^{-2(p^t_i)^2} }
+\]}
+where
+\R{$
+	\Nweight{i}{t} = {\weight{i}{t} \over \sum_s \weight{i}{s}}~.
+$}
+\item
+\R{$$ \TAloss \leq \BEloss + \frac{1}{2}\ln N $$}
+\end{itemize}
+\end{frame}
+
+\subsection{Square loss using simple averaging}
+
+\begin{frame}
+\frametitle{Simple prediction for square loss}
+\begin{itemize}
+\item We can use the prediction
+\R{\[
+\gamma = \frac{\sum_i \weight{i}{} \gamma_i}{\sum_i \weight{i}{}}
+\]}
+\item But in that case we must use \R{$\eta=1/2$} when updating the weights.
+\item Which yields the bound
+\R{$$ \TAloss \leq \BEloss + 2 \ln N $$}
+\end{itemize}
+\end{frame}
+
+\section{Summary table}
+
+\begin{frame}
+\frametitle{Summary of bounds for mixable losses}
+\includegraphics[height=6cm]{figures/summarytable.jpg}
+\end{frame}
+
+\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+

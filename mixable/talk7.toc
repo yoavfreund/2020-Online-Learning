@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.06pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Review}{3}{0}{1}
+\beamer@sectionintoc {2}{The general prediction game}{6}{0}{2}
+\beamer@sectionintoc {3}{Some useful loss functions}{9}{0}{3}
+\beamer@sectionintoc {4}{Vovk's algorithm}{16}{0}{4}
+\beamer@sectionintoc {5}{mixable loss functions}{18}{0}{5}
+\beamer@sectionintoc {6}{The convexity condition}{19}{0}{6}
+\beamer@sectionintoc {7}{Log loss}{21}{0}{7}
+\beamer@sectionintoc {8}{Square loss}{22}{0}{8}
+\beamer@subsectionintoc {8}{1}{Square loss using simple averaging}{23}{0}{8}
+\beamer@sectionintoc {9}{Summary table}{24}{0}{9}

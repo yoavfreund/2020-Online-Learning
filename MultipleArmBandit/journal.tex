@@ -1,0 +1,2446 @@
+%Peter: Submitted to SIAM J. Computing on Nov 18, 2001
+
+\documentclass[12pt]{article}
+
+\sloppy
+
+\usepackage{fullpage}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+
+%\renewcommand{\baselinestretch}{1.5}
+%\addtolength{\textheight}{-0.5in}
+%\addtolength{\oddsidemargin}{-0.5in}
+%\addtolength{\topmargin}{-0.5in}
+
+%%%%%% these allow definition of math commands which behave correctly
+%%%%%% in or out of math environment
+\newcommand{\newmcommand}[2]{\newcommand{#1}{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\newmcommandi}[2]{\newcommand{#1}[1]{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\newmcommandii}[2]{\newcommand{#1}[2]{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\newmcommandiii}[2]{\newcommand{#1}[3]{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+
+\newcommand{\hg}{\hat{g}}
+\renewcommand{\ss}{\tilde{s}}
+\newcommand{\sg}{\tilde{g}}
+\newcommand{\E}{\mbox{\rm\bf E}}
+\newcommand{\V}{\mbox{\rm Var}}
+\newcommand{\cX}{{\cal X}}
+
+\newcommand{\Aplay}{{\bf Hedge}}
+\newcommand{\Aest}{{\bf Exp3}}
+\newcommand{\Aesthp}{{\bf Exp3.P}}
+\newcommand{\Aestg}{{\bf Exp3.P.1}}
+\newcommand{\Aests}{{\bf Exp3.S}}
+\newcommand{\Aessg}{{\bf Exp3.S.1}}
+\newcommand{\Astrat}{{\bf Exp4}}
+\newcommand{\Abound}{{\bf Exp3.1}}
+
+\renewcommand{\P}{{\bf P}}
+\newcommand{\field}[1]{\mathbb{#1}}
+\newcommand{\R}{\field{R}}
+\newcommand{\Nat}{\field{N}}
+\newmcommand{\bx}{\mbox{\boldmath$x$}}
+\newmcommand{\bhx}{\hat{\bx}}
+\newmcommand{\bp}{\mbox{\boldmath$p$}}
+\newmcommand{\bhp}{\hat{\bp}}
+\newcommand{\theset}[2]{\{ {#1} \,:\, {#2} \}}
+\newcommand{\paren}[1]{\left({#1}\right)}
+\newcommand{\brackets}[1]{\left[{#1}\right]}
+\newcommand{\braces}[1]{\left\{{#1}\right\}}
+\newcommand{\expb}[1]{\exp\left(#1\right)}
+\newcommand{\defeq}{\stackrel{\rm def}{=}}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\compl}{\mbox{\sc h}}
+
+\newcommand{\bigO}[1]{O\left(#1\right)}
+\newcommand{\qued}{\hfill $\Box$}
+\newcommand{\prop}[1]{\mbox{\bf P}\left\{#1\right\}}
+\newcommand{\Et}[1]{\mbox{\bf E$_t$}\left[#1\right]}
+
+\newcommand{\x}[2]{x_{#1}({#2})}
+\newcommand{\w}[2]{w_{#1}({#2})}
+\renewcommand{\i}[1]{i_{#1}}
+\newcommand{\xit}{\x{\i{t}}{t}}
+\newcommand{\s}[2]{s_{#1}(#2)}
+\newcommand{\hs}[2]{\hat{s}_{#1}(#2)}
+\newcommand{\phif}[2]{\Phi_{#1}({#2})}
+\newcommand{\phifKge}{\phif{K/\gamma}{\eta}}
+\newcommand{\hG}[2]{\hat{G}_{#1}({#2})}
+\newcommand{\hV}[2]{\hat{V}_{#1}({#2})}
+\newcommand{\hsigma}[2]{\hat{\sigma}_{#1}({#2})}
+\newcommand{\hU}{\hat{U}}
+
+\newcommand{\G}[2]{G_{#1}({#2})}
+\newcommand{\Gh}[1]{\hat{G}_{#1}}
+\newcommand{\Ghbest}{\hat{G}_{\rm max}}
+\newcommand{\Gest}{G_{\Aest}}
+\newcommand{\Ghedge}{G_{\Aplay}}
+\newcommand{\Gbest}{G_{\rm max}}
+\newcommand{\Gactbest}{G_{\rm max}}
+\newcommand{\Gbestst}{\tilde{G}_{\rm max}}
+\newcommand{\Gstrat}{G_{\Astrat}}
+\newcommand{\p}[2]{p_{#1}(#2)}
+\newcommand{\q}[2]{q_{#1}(#2)}
+
+\newcommand{\hx}[2]{\hat{x}_{#1}(#2)}
+\newcommand{\hxit}{\hx{\i{t}}{t}}
+\newcommand{\pit}{\p{\i{t}}{t}}
+
+\newcommand{\tune}{ {K^5(\ln K)} }
+
+\newmcommand{\vecp}{\mbox{\boldmath$p$}}
+\newmcommand{\vecq}{\mbox{\boldmath$q$}}
+\newmcommand{\vecpopt}{\bf \overline{p}}
+\newmcommand{\popt}{\overline{p}}
+
+\newmcommandi{\xv}{\bx({#1})}
+\newmcommand{\xvt}{\xv{t}}
+\newmcommand{\qvt}{\mbox{\boldmath$q$}(t)}
+\newmcommand{\pvt}{\bp(t)}
+\newmcommand{\qtj}{q_j(t)}
+\newmcommand{\qti}{q_i(t)}
+\newmcommand{\ppvt}{\bhp(t)}
+\newmcommand{\xxvt}{\bhx(t)}
+\newmcommand{\yvt}{\mbox{\boldmath$y$}(t)}
+\newmcommand{\ytj}{y_j(t)}
+\newmcommand{\yti}{y_i(t)}
+\newmcommand{\yhvt}{{\bf \hat{y}}(t)}
+\newmcommand{\yhtj}{\hat{y}_j(t)}
+\newmcommand{\yhti}{\hat{y}_i(t)}
+
+\newmcommandi{\regret}{R_{#1}}
+\newmcommandi{\stregret}{\tilde{R}_{#1}}
+
+\newmcommandii{\stratv}{\mbox{\boldmath $\xi$}^{#1}({#2})}
+\newmcommandiii{\strat}{{\xi}_{#3}^{#1}({#2})}
+\newmcommand{\stratjti}{\strat{j}{t}{i}}
+\newmcommand{\stratjtit}{\strat{j}{t}{\i{t}}}
+\newmcommand{\stratvjt}{\stratv{j}{t}}
+\newmcommand{\stratvit}{\stratv{i}{t}}
+
+\newcommand{\mat}{{\bf M}}
+
+\newcommand{\dt}{\displaystyle}
+
+\newcommand{\theoremnumber}{section}                            
+\newtheorem{dummytheorem}{DUMMYTHEOREM}[\theoremnumber]
+\newcommand{\nntheorem}[2]{\newtheorem{#1}[dummytheorem]{#2}}                  
+\nntheorem{lemma}{Lemma}
+\nntheorem{cor}{Corollary}
+\nntheorem{theorem}{Theorem}
+\nntheorem{remark}{Remark}
+\nntheorem{fact}{Fact}
+\newtheorem{pproof}{Proof.}
+\renewcommand{\thepproof}{}
+\newenvironment{proof}{
+\begin{pproof}
+        \begin{rm}\begin{rm}}{
+        \hspace*{\fill} $\Box$
+        \end{rm}\end{rm}
+        \end{pproof}
+}
+
+\newcommand{\distcom}[2]{#1 \{#2\}}
+
+\newcommand{\Pud}{{\bf P}_{\it unif}}
+\newcommand{\Ped}{{\bf P}_{*}}
+\newcommand{\Peid}{{\bf P}_{i}}
+\newcommand{\Pdd}{{\bf P}}
+\newcommand{\Qdd}{{\bf Q}}
+
+\newcommand{\Pu}[1]{\distcom{\Pud}{#1}} % {\bf P}_{\it unif} \left\{#1\right\}}
+\newcommand{\Pe}[1]{\distcom{\Ped}{#1}}  % {\bf P}_{*} \left\{#1\right\}}
+\newcommand{\Pei}[1]{\distcom{\Peid}{#1}}% {\bf P}_{i} \left\{#1\right\}}
+\newcommand{\Pd}[1]{\distcom{\Pdd}{#1}}  % {\bf P} \left\{#1\right\}}
+\newcommand{\Qd}[1]{\distcom{\Qdd}{#1}}  % {\bf Q} \left\{#1\right\}}
+
+\newcommand{\Eu}[1]{{\bf E}_{\it unif} \left[#1\right]}
+\newcommand{\Ee}[1]{{\bf E}_{*} \left[#1\right]}
+\newcommand{\Ei}[1]{{\bf E}_{i} \left[#1\right]}
+\newcommand{\gooda}{{I}}
+\renewcommand{\r}[1]{{r_{#1}}}
+\newcommand{\rvec}[1]{{{\bf r}^{#1}}}
+\newcommand{\rv}{\rvec{}}
+\newcommand{\given}{\;\mid\;}
+\newcommand{\numai}{{N_i}}
+\newcommand{\lneps}{\ln(1-4\epsilon^2)}
+\newcommand{\lgeps}{\lg(1-4\epsilon^2)}
+\newcommand{\vardist}[2]{{\left\|{#1}-{#2}\right\|_1}}
+\newcommand{\vardistsq}[2]{{\left\|{#1}-{#2}\right\|^2_1}}
+\newcommand{\kldist}[2]{{{\rm KL}\paren{{#1} \;\parallel\; {#2}}}}
+
+\newcommand{\sfrac}[2]{\mbox{$\frac{#1}{#2}$}}
+
+
+\begin{document}
+
+%PA New title and abstract
+\title{\Large\bf
+The non-stochastic multi-armed bandit problem\thanks{
+An early extended abstract of this paper appeared in the proceedings of
+the {\em 36th Annual Symposium on Foundations of Computer Science},
+pages 322--331, 1995.
+}}
+
+
+\author{
+{\bf Peter Auer}\\
+\normalsize Institute for Theoretical Computer Science\\
+\normalsize Graz University of Technology\\
+\normalsize A-8010 Graz (Austria)\\
+\normalsize pauer@igi.tu-graz.ac.at
+\and
+{\bf Nicol\`o Cesa-Bianchi}\\
+\normalsize Department of Information Technology\\
+\normalsize University of Milan\\
+\normalsize I-26013~~Crema (Italy)\\
+\normalsize cesa-bianchi@dti.unimi.it
+\and
+{\bf Yoav Freund}\\
+\normalsize Banter Inc.\\ 
+\normalsize and\\ 
+\normalsize Hebrew University,
+\normalsize Jerusalem (Israel)\\ 
+\normalsize yoavf@cs.huji.ac.il 
+\and
+{\bf Robert E.\ Schapire}\\
+\normalsize AT\&T Labs -- Research\\
+\normalsize Shannon Laboratory\\
+\normalsize Florham Park, NJ 07932-0971 (USA)\\
+\normalsize schapire@research.att.com
+}
+
+
+\maketitle
+
+\thispagestyle{empty}
+
+\vspace{-1ex}
+\begin{abstract}
+In the multi-armed bandit problem, a gambler must decide which arm
+of $K$ non-identical slot machines to play in a sequence of trials
+so as to maximize his reward.  This classical problem has received
+much attention because of the simple model it provides of the
+trade-off between exploration (trying out each arm to find the best
+one) and exploitation (playing the arm believed to give the best
+payoff).  Past solutions for the bandit problem have almost always
+relied on assumptions about the statistics of the slot machines.
+
+In this work, we make no statistical assumptions whatsoever about
+the nature of the process generating the payoffs of the slot
+machines.  We give a solution to the bandit problem in which an
+adversary, rather than a well-behaved stochastic process, has
+complete control over the payoffs.  In a sequence of $T$ plays, we
+prove that the per-round payoff of our algorithm approaches that of
+the best arm at the rate $O\left(T^{-1/2}\right)$. We show by a
+matching lower bound that this is best possible.
+
+We also prove that our algorithm approaches the per-round payoff of
+{\em any} set of strategies at a similar rate: if the best strategy
+is chosen from a pool of $N$ strategies then our algorithm
+approaches the per-round payoff of the strategy at the rate
+$O\left((\log N)^{1/2} T^{-1/2}\right)$.
+%
+Finally, we apply our results to the problem of playing an unknown
+repeated matrix game. We show that our algorithm approaches the
+minimax payoff of the unknown game at the rate
+$O\left(T^{-1/2}\right)$.
+\end{abstract}
+{\bf Keywords:} adversarial bandit problem, unknown matrix games\\ 
+{\bf AMS subject classification:} 68Q32 68T05 91A20\\
+
+\section{Introduction}
+\label{s:intro}
+In the multi-armed bandit problem, originally proposed by Robbins~\cite{Robbins52},
+a gambler must choose which of $K$ slot machines to play. At each time step, he pulls
+the arm of one of the machines and receives a reward or payoff (possibly zero
+or negative). The gambler's purpose is to maximize his return, i.e.\ the sum of the
+rewards he receives over a sequence of pulls.  In this model, each arm is assumed
+to deliver rewards that are independently drawn from a fixed and unknown distribution.
+As reward distributions differ from arm to arm, the goal is to find the arm with the
+highest expected payoff as early as possible, and then to keep gambling using that
+best arm.
+
+The problem is a paradigmatic example of the trade-off between exploration and
+exploitation. On the one hand, if the gambler plays exclusively on the machine
+that he thinks is best (``exploitation''), he may fail to discover that one of
+the other arms actually has a higher expected payoff. On the other hand, if he
+spends too much time trying out all the machines and gathering statistics
+(``exploration''), he may fail to play the best arm often enough to get a high return.
+
+The gambler's performance is typically measured in terms of ``regret''.
+This is the difference between the expected return of the optimal
+strategy (pulling consistently the best arm) and the gambler's expected return.
+Lai and Robbins proved that the gambler's regret over $T$ pulls can be made,
+for $T\to\infty$, as small as $O(\ln T)$. Furthermore, they prove that this bound
+is optimal in the following sense: there is no strategy for the gambler
+with a better asymptotic performance.
+
+Though this formulation of the bandit problem allows an elegant
+statistical treatment of the exploration-exploitation trade-off, it may not
+be adequate to model certain environments. As a motivating example, consider
+the task of repeatedly choosing a route for transmitting packets between two
+points in a communication network.
+To cast this scenario within the bandit problem, suppose there is a only
+a fixed number of possible routes and the transmission cost is reported back to
+the sender. Now, it is likely that the costs associated with each route cannot
+be modeled by a stationary distribution, so
+a more sophisticated set of statistical assumptions would be required.
+In general, it may be difficult or impossible to determine the right statistical
+assumptions for a given domain, and some domains may exhibit dependencies to
+an extent that no such assumptions are appropriate.
+
+To provide a framework where one could model scenarios like the one sketched above,
+we present the adversarial bandit problem,
+a variant of the bandit problem in which {\em no} statistical assumptions are
+made about the generation of rewards. We only assume that each slot machine
+is initially assigned an arbitrary and unknown sequence of rewards, one for each
+time step, chosen from a bounded real interval. Each time the gambler pulls the arm of
+a slot-machine he receives the corresponding reward from the sequence assigned to
+that slot-machine. To measure the gambler's performance in this setting we replace
+the notion of (statistical) regret with that of worst-case regret.
+Given any sequence $(j_1,\ldots,j_T)$ of pulls, where $T>0$ is an arbitrary time
+horizon and each $j_t$ is the index of an arm, the worst-case regret of a gambler
+for this sequence of pulls is the difference between the return the gambler
+would have had by pulling arms $j_1,\ldots,j_T$ and the actual gambler's return, where
+both returns are determined by the initial assignment of rewards.
+It is easy to see that, in this model, the gambler cannot keep his regret small
+(say, sublinear in $T$) for {\em all} sequences of pulls and with respect to the
+worst-case assignment of rewards to the arms. Thus, to make the problem feasible,
+we allow the regret to depend on the ``hardness'' of the sequence of pulls for
+which it is measured, where the hardness of a sequence is roughly the number of times
+one has to change the slot machine currently being played in order to pull the arms
+in the order given by the sequence. This trick allows us to effectively control the
+worst-case regret {\em simultaneously} for all sequences of pulls, even though
+(as one should expect) our regret bounds become trivial when the hardness of
+the sequence $(j_1,\ldots,j_T)$ we compete against gets too close to $T$.
+
+As a remark, note that a deterministic bandit problem was also considered
+by Gittins~\cite{Gittins89} and Ishikida and Varaiya~\cite{IshikidaVa94}.
+However, their version of the bandit problem is very different from
+ours: they assume that the player can compute ahead of time exactly what
+payoffs will be received from each arm, and their problem is thus one of
+optimization, rather than exploration and exploitation.
+
+Our most general result is a very efficient, randomized player algorithm whose expected
+regret for any sequence of pulls is\footnote{Though in this introduction
+we use the compact asymptotic notation, our bounds are proven for each
+finite $T$ and almost always with explicit constants.}
+$O(S\sqrt{KT\ln(KT)})$,
+where $S$ is the hardness of the sequence (see Theorem~\ref{th:shifting} and
+Corollaries~\ref{cor:shifting-tuned1},~\ref{cor:shifting-guess1}).
+Note that this bound holds simultaneously for all sequences
+of pulls, for any assignments of rewards to the arms, and uniformly
+over the time horizon $T$. If the gambler
+is willing to impose an upper bound $S$ on the hardness of the sequences
+of pulls for which he wants to measure his regret, an improved bound
+$O(\sqrt{SKT\ln(KT)})$ on the expected regret for these sequences
+can be proven (see Corollaries~\ref{cor:shifting-tuned2}
+and~\ref{cor:shifting-guess2}).
+
+With the purpose of establishing connections with certain results in game theory,
+we also look at a special case of the worst-case regret, which we call ``weak regret.''
+Given a time horizon $T$, call ``best arm'' the arm that has the highest return
+(sum of assigned rewards) up to time $T$ with respect to the initial assignment of rewards.
+The gambler's weak regret is the difference between the return
+of this best arm and the actual gambler's return.
+In the paper we introduce a randomized player algorithm, tailored to
+this notion of regret, whose expected weak regret is
+$O(\sqrt{K\Gbest\ln K})$, where $\Gbest$ is the return of the best arm
+--- see Theorem~\ref{th:Abound} in Section~\ref{s:guessp}.
+As before, this bound holds for any assignments of rewards to the arms
+and uniformly over the choice of the time horizon $T$.
+Using a more complex player algorithm, we also prove that the weak regret
+is $O(\sqrt{KT\ln(KT/\delta)})$ with probability at least $1-\delta$ over
+the algorithm's randomization, for
+any fixed $\delta > 0$, see Theorems~\ref{t:hp} and~\ref{th:aestg} in
+Section~\ref{sec:hp}. This also implies that, asymptotically for $T\to\infty$
+and $K$ constant, the weak regret is $O(\sqrt{T(\ln T)^{1+\ve}})$ with probability 1
+for any fixed $\ve > 0$, see Corollary~\ref{cor:prob-one}.
+
+Our worst-case bounds may appear weaker than the bounds proved using
+statistical assumptions, such as those shown by Lai and Robbins~\cite{LaiRo85}
+of the form $O(\ln T)$.
+However, when comparing our results to those in the statistics
+literature, it is important to point out an important difference in
+the asymptotic quantification. In the work of Lai and Robbins the assumption
+is that the distribution of rewards that is
+associated with each arm is {\em fixed} as the total number of iterations $T$
+increases to infinity. In contrast, our bounds hold for any finite
+$T$, and, by the generality of our model, these bounds are applicable
+when the payoffs are randomly (or adversarially) chosen in a manner
+that does depend on $T$.
+It is this quantification order, and not the adversarial nature of our
+framework, which is the cause for the apparent gap. We prove this
+point in Theorem~\ref{thm:lower-bound} where we show that, for {\em any}
+player algorithm for the $K$-armed bandit problem and for any $T$, there
+exists a set of $K$ reward distributions such that the expected weak regret
+of the algorithm when playing on these arms for $T$ time steps is
+$\Omega(\sqrt{KT})$.
+
+So far we have considered notions of regret that compare the return of
+the gambler to the return of a sequence of pulls or to the return of the
+best arm. A further notion of regret which we explore is the regret for
+the best strategy in a given set of strategies that are available to the
+gambler. The notion of ``strategy'' generalizes that of ``sequence of pulls'':
+at each time step a strategy gives a recommendation, in the form of a probability
+distribution over the $K$ arms, as to which arm to play next.
+Given an assignment of rewards to the arms and a set of $N$ strategies
+for the gambler, call ``best strategy'' the strategy that yields the highest return
+with respect to this assignment. Then the regret for the best strategy is the
+difference between the return of this best strategy and the actual gambler's
+return. Using a randomized player that combines the choices of the $N$ strategies
+(in the same vein as the algorithms for ``prediction with expert advice''
+from~\cite{CesabianchiFrHeHaScWa97}), we show that the expected regret for
+the best strategy is $O(\sqrt{KT\ln N})$ --- see Theorem~\ref{thm:astrat}.
+Note that the dependence on the number of strategies is only logarithmic,
+and therefore the bound is quite reasonable even when the player is
+combining a very large number of strategies.
+
+The adversarial bandit problem is closely related to the problem of
+learning to play an unknown N-person finite game, where the same game
+is played repeatedly by $N$ players. A desirable property for a player
+is Hannan-consistency, which is similar to saying (in our bandit framework)
+that the weak regret per time step of the player converges to 0 with probability 1.
+Examples of Hannan-consistent player strategies have
+been provided by several authors in the past (see~\cite{FV97} for a survey of these
+results). By applying (slight extensions of) Theorems~\ref{t:hp} and~\ref{th:aestg},
+we can prove provide an example of a simple Hannan-consistent player whose
+convergence rate is optimal up to logarithmic factors.
+
+Our player algorithms are based in part on an algorithm presented by 
+Freund and Schapire~\cite{FreundSc97,FreundSc9?}, 
+which in turn is a variant of Littlestone and
+Warmuth's~\cite{LittlestoneWa94} weighted majority algorithm, and
+Vovk's~\cite{Vovk90} aggregating strategies.
+In the setting analyzed by Freund and Schapire
+the player scores on each pull the reward of the chosen arm, but
+gains access to the rewards associated with {\em all} of the arms
+(not just the one that was chosen).
+
+\section{Notation and terminology}
+\label{s:notation}
+An {\em adversarial bandit problem} is specified by the number $K$ of possible
+actions, where each action is denoted by an integer $1 \leq i \leq K$,
+and by an {\em assignment of rewards}, i.e.\ an infinite sequence $\xv{1},\xv{2},\ldots$
+of vectors $\xvt=(\x{1}{t},\ldots,\x{K}{t})$, where $\x{i}{t} \in [0,1]$ denotes
+the reward obtained if action $i$ is chosen at time step (also called ``trial'')
+$t$.
+(Even though throughout the paper we will assume that all rewards belong to
+the $[0,1]$ interval, the generalization of our results to rewards in $[a,b]$
+for arbitrary $a < b$ is straightforward.)
+We assume that the player knows the number $K$ of actions. Furthermore,
+after each trial $t$, we assume the player only knows the rewards
+$\x{\i{1}}{1},\ldots,\x{\i{t}}{t}$ of the previously chosen actions $i_1,\ldots,i_t$.
+In this respect, we can view the player algorithm as a sequence $I_1,I_2,\ldots$,
+where each $I_t$ is a mapping from the set $(\{1,\ldots,K\} \times [0,1])^{t-1}$
+of action indices and previous rewards to the set of action indices.
+
+For any reward assignment and for any $T > 0$, let
+\[
+        G_A(T) \defeq \sum_{t=1}^T \xit
+\]
+be the {\em return at time horizon $T$} of algorithm $A$ choosing actions
+$\i{1},\i{2},\ldots$.
+In what follows, we will write $G_A$ instead of $G_A(T)$ whenever the value of $T$
+is clear from the context.
+
+Our measure of performance for a player algorithm is the {\em worst-case regret},
+and in this paper we explore variants of the notion of regret.
+Given any time horizon $T>0$ and any sequence of actions $(j_1,\ldots,j_T)$,
+the (worst-case) regret of algorithm $A$ for $(j_1,\ldots,j_T)$ is the difference
+\begin{equation}
+\label{eq:regret-def}
+        G_{(j_1,\ldots,j_T)} - G_A(T)
+\end{equation}
+where
+\[
+        G_{(j_1,\ldots,j_T)} \defeq \sum_{t=1}^T \x{j_t}{t}
+\]
+is the return, at time horizon $T$, obtained by choosing actions $j_1,\ldots,j_T$.
+Hence, the regret~(\ref{eq:regret-def}) measures how much the player lost
+(or gained, depending on the sign of the difference) by following
+strategy $A$ instead of choosing actions $j_1,\ldots,j_T$.
+A special case of this is the regret of $A$ for the best single action
+(which we will call {\em weak regret} for short), defined by
+\[
+        \Gbest(T) - G_A(T)
+\]
+where
+\[
+        \Gbest(T) \defeq \max_j \sum_{t=1}^T \x{j}{t}
+\]
+is the return of the single globally best action at time horizon $T$.
+As before, we will write $\Gbest$ instead of $\Gbest(T)$ whenever the value of $T$
+is clear from the context.
+
+As our player algorithms will be randomized, fixing a player algorithm
+defines a probability distribution over the set of all sequences of actions.
+All the probabilities $\P\{\cdot\}$ and expectations $\E[\cdot]$ considered
+in this paper will be taken with respect to this distribution.
+
+In what follows, we will prove two kinds of bounds on the performance of a
+(randomized) player $A$. The first is a bound on the {\em expected regret}
+\[
+        G_{(j_1,\ldots,j_T)} - \E\left[G_A(T)\right]
+\]
+of $A$ for an arbitrary sequence $(j_1,\ldots,j_T)$ of actions.
+The second is a confidence bound on the weak regret. This has the form
+\[
+        \P\left\{ \Gbest(T) > G_A(T) + \ve \right\} \leq \delta
+\]
+and states that, with high probability, the return of $A$ up to time $T$ is not
+much smaller than that of the globally best action.
+
+Finally, we remark that all of our bounds hold for {\em any} sequence
+$\xv{1},\xv{2},\ldots$ of reward assignments, and most of them hold
+{\em uniformly} over the time horizon $T$ (i.e., they hold for all $T$ without
+requiring $T$ as input parameter).
+
+\newlength{\colwidth}
+\setlength{\colwidth}{\textwidth}
+% the following commands are for making the figures one column wide
+%\setlength{\colwidth}{0.5\textwidth}
+%\addtolength{\colwidth}{-0.5\columnsep}
+\newlength{\alglength}
+\setlength{\alglength}{\colwidth}
+\addtolength{\alglength}{-3ex}
+\newcommand{\algorithm}[1]{%
+\framebox[\colwidth]{%
+\begin{minipage}{\alglength}
+\hspace*{1mm}\\[2ex]
+#1
+\hspace*{1mm}
+\end{minipage}}}
+
+\section{Upper bounds on the weak regret}
+\label{s:approx}
+%
+\begin{figure}[t]
+\algorithm{%
+{\bf Algorithm $\Aest$}\\
+{\bf Parameters:} Real $\gamma\in (0,1]$ \\
+{\bf Initialization:}
+$\w{i}{1}=1$ for $i=1,\ldots,K$.\\ \\
+{\bf For each} $t=1,2,\ldots$
+\begin{enumerate}
+\item
+Set
+\[
+        \p{i}{t} = (1-\gamma)\frac{\w{i}{t}}{\sum_{j=1}^K \w{j}{t}} + \frac{\gamma}{K}
+        \qquad i=1,\ldots,K.
+\]
+\item      
+Draw $\i{t}$ randomly accordingly to the probabilities $\p{1}{t},\ldots,\p{K}{t}$.
+\item
+Receive reward $\xit \in [0,1]$. 
+\item 
+For $j=1,\ldots,K$ set 
+\begin{eqnarray*} 
+        \hx{j}{t} &=& \left\{ \begin{array}{cl}
+                \x{j}{t}/\p{j}{t} & \mbox{\rm if $j=\i{t}$}
+        \\
+                0 & \mbox{\rm otherwise,}
+        \end{array} \right.
+\\
+        \w{j}{t+1} &=& \w{j}{t}\,\expb{\gamma\hx{j}{t}/K}~.
+\end{eqnarray*}
+\end{enumerate}}
+\caption{ \label{f:est}
+Pseudo-code of algorithm $\Aest$ for the weak regret.}
+\end{figure}
+%
+In this section we present and analyze our simplest player algorithm, $\Aest$
+(which stands for ``{Exp}onential-weight algorithm for {Exp}loration and
+{Exp}loitation''). We will show a bound on the expected regret of $\Aest$
+with respect to the single best action. In the next sections, we will
+greatly strengthen this result.
+
+The algorithm $\Aest$, described in Figure~\ref{f:est}, is a variant of the
+algorithm $\Aplay$ introduced by Freund and Schapire~\cite{FreundSc97} for
+solving a different worst-case sequential allocation problem.
+On each time step $t$, $\Aest$ draws an action $\i{t}$ according to the
+distribution $\p{1}{t},\ldots,\p{K}{t}$. This distribution is a mixture of the
+uniform distribution and a distribution which assigns to each action a
+probability mass exponential in the estimated cumulative reward for
+that action. Intuitively, mixing in the uniform distribution
+is done to make sure that the algorithm tries out all $K$ actions and gets
+good estimates of the rewards for each. Otherwise, the algorithm might miss
+a good action because the initial rewards it observes for this action are
+low and large rewards that occur later are not observed because the action
+is not selected.
+
+For the drawn action $\i{t}$, $\Aest$ sets the estimated reward $\hxit$ to
+$\xit/\pit$. Dividing the actual gain by the probability that the action
+was chosen compensates the reward of actions that are unlikely to be chosen.
+This choice of estimated rewards guarantees that their expectations are
+equal to the actual rewards for each action; that is,
+$\E[\hx{j}{t} \mid \i{1},\ldots,\i{t-1}] = \x{j}{t}$,
+where the expectation is taken with respect to the random choice of $i_t$ at trial
+$t$ given the choices $\i{1},\ldots,\i{t-1}$ in the previous $t-1$ trials.
+
+We now give the first main theorem of this paper, which bounds the expected
+weak regret of algorithm~$\Aest$.
+%
+\begin{theorem}
+\label{th:est-gain}
+For any $K > 0$ and for any $\gamma\in(0,1]$,
+\[
+    \Gbest-\E[G_{\Aest}]
+\leq
+    (e-1)\gamma\Gbest + \frac{K\ln K}{\gamma}
+\]
+holds for any assignment of rewards and for any $T > 0$.
+\end{theorem}
+%
+To understand this theorem, it is helpful to consider a simpler bound
+which can be obtained by an appropriate choice of the parameter $\gamma$.
+%
+\begin{cor}
+\label{cor:est-reg}
+For any $T > 0$, assume that $g \geq \Gbest$ and that algorithm~$\Aest$
+is run with input parameter 
+\[
+        \gamma = \min\braces{1,\sqrt{\frac{K\ln K}{(e-1)g}}}.
+\]
+Then
+\[
+        \Gbest-\E[G_{\Aest}]
+\leq
+        2\sqrt{e-1} \sqrt{g K \ln K} \leq 2.63 \sqrt{g K \ln K}
+\]
+holds for any assignment of rewards.
+\end{cor}
+%
+\begin{proof}
+If $g\leq (K\ln K)/(e-1)$, then the bound is trivial since the
+expected regret cannot be more than $g$.
+Otherwise, by Theorem~\ref{th:est-gain}, the expected regret is at most
+\[
+    (e-1)\gamma\Gbest + \frac{K\ln K}{\gamma}
+\le
+        2\sqrt{e-1} \sqrt{g K \ln K}
+\]
+as desired.
+\end{proof}
+%
+To apply Corollary~\ref{cor:est-reg}, it is necessary that an upper
+bound $g$ on $\Gbest(T)$ be available for tuning $\gamma$.
+For example, if the time horizon $T$ is known then, 
+since no action can have payoff greater than $1$ on any trial, we can
+use $g=T$ as an upper bound.
+In Section~\ref{s:guessp}, we give a technique that does not require
+prior knowledge of such an upper bound, yielding a result which holds
+uniformly over $T$.
+
+If the rewards $\x{i}{t}$ are in the range $[a,b]$, $a<b$, then $\Aest$
+can be used after the rewards have been translated and rescaled to the
+range $[0,1]$.
+Applying Corollary~\ref{cor:est-reg} with $g=T$ gives the bound
+$(b-a)2\sqrt{e-1}\sqrt{T K \ln K})$ on the regret.
+For instance, this is applicable to a standard loss model where the
+``rewards'' fall in the range $[-1,0]$.
+
+\medskip\noindent
+{\bf Proof of Theorem~\ref{th:est-gain}.\ }
+The theorem is clearly true for $\gamma = 1$, so assume $0 < \gamma < 1$.
+Here (and also throughout the paper without explicit mention) we use the following
+simple facts, which are immediately derived from the definitions,
+\begin{eqnarray}
+\label{eq:exp-cond}
+        \hx{i}{t} & \leq & 1/\p{i}{t} \leq K/\gamma
+\\
+\label{eqn:term2}
+        \sum_{i=1}^K \p{i}{t} \hx{i}{t}
+        &=& \pit \frac{\xit}{\pit} = \xit
+\\
+\label{eqn:term3}
+\label{eqn:hxit}
+        \sum_{i=1}^K \p{i}{t} \hx{i}{t}^2
+        &=& \pit \frac{\xit}{\pit} \hxit \leq \hxit = \sum_{i=1}^K \hx{i}{t}~.
+\end{eqnarray}
+Let $W_t = \w{1}{t}+\ldots+\w{K}{t}$.
+For all sequences $i_1,\ldots,i_T$ of actions drawn by $\Aest$,
+\begin{eqnarray}
+        \frac{W_{t+1}}{W_{t}} 
+& = &
+        \sum_{i=1}^K \frac{\w{i}{t+1}}{W_t}
+\nonumber
+\\ & = &
+        \sum_{i=1}^K \frac{\w{i}{t}}{W_t} \expb{\frac{\gamma}{K}\hx{i}{t}}
+\nonumber
+\\ & = &
+        \sum_{i=1}^K \frac{\p{i}{t}-\gamma/K}{1-\gamma} \expb{\frac{\gamma}{K}\hx{i}{t}}
+\label{eqn:a1}
+\\ & \leq &
+        \sum_{i=1}^K \frac{\p{i}{t}-\gamma/K}{1-\gamma}
+    \left[1 + \frac{\gamma}{K}\hx{i}{t}
+        + (e-2)\left(\frac{\gamma}{K}\hx{i}{t}\right)^2 \right]
+\label{eqn:a2}
+%\\ &&\quad\mbox{\rm using~(\ref{eq:exp-cond}) and $e^a \leq 1 + a + (e-2)a^2$
+%               for $a \leq 1$}
+\\ & \leq &
+        1 + \frac{\gamma/K}{1-\gamma} \sum_{i=1}^K \p{i}{t} \hx{i}{t}
+    + \frac{(e-2)(\gamma/K)^2}{1-\gamma}\sum_{i=1}^K \p{i}{t} \hx{i}{t}^2
+\\ & \leq &
+        1 + \frac{\gamma/K}{1-\gamma} \xit
+    + \frac{(e-2)(\gamma/K)^2}{1-\gamma}\sum_{i=1}^K \hx{i}{t}.
+\label{eqn:a3}
+\end{eqnarray}
+Eq.~(\ref{eqn:a1}) uses the definition of $\p{i}{t}$ in
+Figure~\ref{f:est}.
+Eq.~(\ref{eqn:a2}) uses the fact that $e^x \leq 1+x+(e-2)x^2$ for
+$x\leq 1$; the expression in the preceding line is at most~$1$ by
+Eq.~(\ref{eq:exp-cond}).
+Eq.~(\ref{eqn:a3}) uses Eqs.~(\ref{eqn:term2}) and~(\ref{eqn:term3}).
+Taking logarithms and using $1+x\leq e^x$ gives
+\[
+  \ln\frac{W_{t+1}}{W_t} \leq \frac{\gamma/K}{1-\gamma} \xit
+            + \frac{(e-2)(\gamma/K)^2}{1-\gamma}\sum_{i=1}^K \hx{i}{t}.
+\]
+Summing over $t$ we then get
+\begin{equation} \label{eqn:a4}
+        \ln\frac{W_{T+1}}{W_1} \leq \frac{\gamma/K}{1-\gamma} G_{\Aest}
+        + \frac{(e-2)(\gamma/K)^2}{1-\gamma}
+        \sum_{t=1}^T\sum_{i=1}^K \hx{i}{t}~.
+\end{equation}
+For any action $j$,
+\[
+        \ln\frac{W_{T+1}}{W_1} \geq \ln\frac{\w{j}{T+1}}{W_1}
+        = \frac{\gamma}{K}\sum_{t=1}^T \hx{j}{t} - \ln K.
+\]
+Combining with Eq.~(\ref{eqn:a4}),
+we get
+\begin{equation}
+\label{eqn:combined}
+    G_{\Aest}
+\geq
+    (1-\gamma)\sum_{t=1}^T \hx{j}{t} - \frac{K\ln K}{\gamma}
+    - (e-2)\frac{\gamma}{K}\sum_{t=1}^T\sum_{i=1}^K \hx{i}{t}~.
+\end{equation}
+We next take the expectation of both sides of~(\ref{eqn:combined}) with respect
+to the distribution of $\langle i_1,\ldots,i_T\rangle$.
+For the expected value of each $\hx{i}{t}$, we have:
+\begin{equation}
+\label{eq:exp-hxj}
+        \E[\hx{i}{t} \mid \i{1},\ldots,\i{t-1}]
+ = 
+        \E\brackets{\p{i}{t} \cdot \frac{\x{i}{t}}{\p{i}{t}}
+        + (1-\p{i}{t})\cdot 0}
+=
+        \x{i}{t}~.
+\end{equation}
+Combining~(\ref{eqn:combined}) and~(\ref{eq:exp-hxj}), we find that
+\[
+    \E[G_{\Aest}]
+\geq
+    (1 - \gamma)\sum_{t=1}^T \x{j}{t}
+    - \frac{K\ln K}{\gamma}
+    - (e-2)\frac{\gamma}{K}\sum_{t=1}^T \sum_{i=1}^K \x{i}{t}~.
+\]
+Since $j$ was chosen arbitrarily and
+\[
+        \sum_{t=1}^T \sum_{i=1}^K \x{i}{t} \leq K\;\Gbest
+\]
+we obtain the inequality in the statement of the theorem.
+\hfill $\Box$
+
+\paragraph{Additional notation.}
+As our other player algorithms will be variants of~$\Aest$, we find it convenient
+to define some further notation based on the quantities used in the analysis
+of~$\Aest$.
+
+For each $1 \leq i \leq K$ and for each $t \geq 1$ define
+\begin{eqnarray*}
+        G_i(t+1) & \defeq & \sum_{s=1}^t \x{i}{s}
+\\
+        \Gh{i}(t+1) & \defeq & \sum_{s=1}^t \hx{i}{s}
+\\
+        \Ghbest(t+1) & \defeq & \max_{1 \leq i \leq K} \Gh{i}(t+1)
+\end{eqnarray*}
+
+
+\renewcommand{\ss}[1]{\tilde{s}_{#1}}
+\newcommand{\hy}[2]{\hat{y}_{#1}(#2)}
+\newcommand{\prob}[1]{{\rm\bf P}\left\{#1\right\}}
+\newcommand{\Y}[1]{Y(#1)}
+\newcommand{\Q}[1]{Q(#1)}
+
+\section{Bounds on the weak regret that hold uniformly over time}
+\label{s:guessp}
+%
+\begin{figure}[t]
+\algorithm{%
+{\bf Algorithm $\Abound$}\\
+{\bf Initialization:}
+Let $t = 1$, and $\Gh{i}(1) = 0$ for $i=1,\ldots,K$\\ \\
+{\bf Repeat for} $r=0,1,2,\ldots$
+\begin{enumerate}
+\item
+Let $g_r = (K\ln K)/(e-1)\;4^r$.
+
+\item
+Restart $\Aest$ choosing $\displaystyle \gamma_r 
+            = \min\braces{1,\sqrt{\frac{K\ln K}{(e-1)g_r}}}$.
+
+% as in Corollary~\protect{\ref{cor:est-reg}}
+%(with $g=g_r$).
+
+\item
+{\bf While} $\max_i \Gh{i}(t) \leq g_r - K / \gamma_r$ {\bf do}:
+\begin{enumerate}
+
+\item
+Let $\i{t}$ be the random action chosen by $\Aest$ and $\xit$ the corresponding
+reward.
+
+\item
+$\Gh{i}(t+1) = \Gh{i}(t) + \hx{i}{t}$ for $i=1,\ldots,K$.
+
+\item
+$t := t+1$
+
+\end{enumerate}
+
+\end{enumerate}
+}
+\caption{
+\label{f:bound}
+Pseudo-code of algorithm $\Abound$ to control the weak regret uniformly over time.}
+\end{figure}
+%
+In Section~\ref{s:approx}, we showed that~$\Aest$
+yields an expected regret of $O(\sqrt{Kg\ln K})$ whenever 
+an upper bound $g$ on the return $\Gbest$ of the best
+action is known in advance. A bound of $O(\sqrt{KT\ln K})$, which
+holds uniformly over $T$, could be easily proven via the ``guessing
+techniques'' which will be used to prove Corollaries~\ref{cor:shifting-guess1}
+and~\ref{cor:shifting-guess2} in Section~\ref{s:shifting}.
+In this section, instead, we describe an algorithm, called $\Abound$, whose
+expected weak regret is $O(\sqrt{K\Gbest\ln K})$ uniformly over $T$.
+As $\Gbest = \Gbest(T) \le T$, this bound is never worse than $O(\sqrt{KT\ln K})$
+and is substantially better whenever the return of the best arm is small
+compared to $T$.
+
+Our algorithm~$\Abound$, described in Figure~\ref{f:bound},
+proceeds in {\em epochs}, where each epoch consists of a sequence of
+trials. We use $r=0,1,2,\ldots$ to index the epochs.
+On epoch $r$, the algorithm ``guesses'' a bound $g_r$ for the 
+return of the best action. It then uses this guess
+to tune the parameter $\gamma$ of $\Aest$, restarting
+$\Aest$ at the beginning of each epoch.
+As usual, we use $t$ to denote the current time step.\footnote{%
+Note that, in general, this $t$ may differ from the ``local variable''
+$t$ used by $\Aest$ which we now regard as a subroutine.
+Throughout this section, we will only use $t$ to refer to the total
+number of trials as in Figure~\ref{f:bound}.%
+}
+$\Abound$ maintains an estimate $\Gh{i}(t+1)$ of the return of each action $i$.
+Since $\E[\hx{i}{t}] = \x{i}{t}$, this estimate will be unbiased
+in the sense that $\E[\Gh{i}(t+1)] = G_i(t+1)$ for all $i$ and $t$.
+Using these estimates, the algorithm detects (approximately) when the
+actual gain of some action has advanced beyond $g_r$.
+When this happens, the algorithm goes on to the next epoch,
+restarting $\Aest$ with a larger bound on the maximal gain.
+
+The performance of the algorithm is characterized by the following
+theorem which is the main result of this section.
+
+%
+\begin{theorem}
+\label{th:Abound}
+For any $K > 0$,
+\begin{eqnarray*}
+        \Gbest - \E[G_{\Abound}]
+&\leq&
+8\sqrt{e-1}\sqrt{ \Gbest K \ln K}
++
+8(e-1)K
++
+2 K \ln K\\
+&\leq&
+10.5\;\sqrt{ \Gbest K \ln K}
++
+13.8\;K
++
+2 K \ln K
+\end{eqnarray*}
+holds for any assignment of rewards and for any $T > 0$.
+\end{theorem}
+%
+The proof of the theorem is divided into two lemmas.  
+The first bounds the regret suffered on each epoch, and the second
+bounds the total number of epochs.
+
+Fix $T$ arbitrarily and define the following random variables:
+Let $R$ be the total number of epochs (i.e., the final value of $r$).
+Let $S_r$ and $T_r$ be the first and last time steps completed on epoch
+$r$ (where, for convenience, we define $T_R = T$).
+Thus, epoch $r$ consists of trials $S_r,S_r+1,\ldots,T_r$.
+Note that, in degenerate cases, some epochs may be empty in which case
+$S_r = T_r + 1$. Let $\Ghbest = \Ghbest(T+1)$.
+%
+\begin{lemma} \label{lemma:bound-per-round}
+For any action $j$ and for every epoch $r$,
+\[
+\sum_{t=S_r}^{T_r} \xit
+\geq
+\sum_{t=S_r}^{T_r} \hx{j}{t}
+- 2 \sqrt{e-1} \sqrt{g_r K \ln K}~.
+\]
+\end{lemma}
+
+\begin{proof}
+If $S_r > T_r$ (so that no trials occur on epoch $r$), then the lemma
+holds trivially since both summations will be equal to zero.
+Assume then that $S_r \leq T_r$.
+Let $g=g_r$ and $\gamma = \gamma_r$.
+We use~(\ref{eqn:combined}) from the proof of
+Theorem~\ref{th:est-gain}:
+\[
+\sum_{t=S_r}^{T_r} \x{i_t}{t}
+        \geq
+  \sum_{t=S_r}^{T_r} \hx{j}{t}
+  - \gamma \sum_{t=1}^{T_r} \hx{j}{t}
+  - \frac{K\ln K}{\gamma}
+  - (e-2)\frac{\gamma}{K}\sum_{t=S_r}^{T_r}\sum_{i=1}^K \hx{i}{t}~.
+\]
+ From the definition of the
+termination condition we know that $\Gh{i}(T_r) \leq g - K/\gamma$.
+Using~(\ref{eq:exp-cond}), we get $\hx{i}{t} \leq K/\gamma$.
+This implies that $\Gh{i}(T_r+1) \leq g$ for all $i$.
+Thus,
+\[
+\sum_{t=S_r}^{T_r} \x{i_t}{t}
+ \geq 
+  \sum_{t=S_r}^{T_r} \hx{j}{t}
+  - g \left(\gamma + \gamma(e-2)\right)
+  - \frac{K \ln K}{\gamma}~.
+\]
+By our choice for $\gamma$, we get the statement of the lemma.
+\end{proof}
+%
+The next lemma gives an implicit upper bound on the number of epochs
+$R$.
+Let $c = (K \ln K)/(e-1)$.
+
+\begin{lemma} \label{lemma:no-of-rounds}
+The number of epochs $R$ satisfies
+\[ 2^{R-1} \leq \frac{K}{c} + \sqrt{\frac{\Ghbest}{c}} + \frac{1}{2}~.
+\]
+\end{lemma}
+
+\begin{proof}
+If $R=0$, then the bound holds trivially.
+So assume $R \geq 1$. Let $z=2^{R-1}$.
+Because epoch $R-1$ was completed, by the termination condition,
+\begin{equation}
+\label{eqn:epoch-lem}
+\Ghbest \geq \Ghbest(T_{R-1}+1) > g_{R-1} - \frac{K}{\gamma_{R-1}} 
+ = c\; 4^{R-1} - K\; 2^{R-1} = c z^2 - K z~.
+\end{equation}
+Suppose the claim of the lemma is false.
+Then $z > K/c + \sqrt{\Ghbest/c}$.
+Since the function $c x^2 - K x$ is increasing for $x>K/(2c)$,
+this implies that
+\[
+c z^2 - K z
+ > c \paren{\frac{K}{c} + \sqrt{\frac{\Ghbest}{c}}}^2
+  - K \paren{\frac{K}{c} + \sqrt{\frac{\Ghbest}{c}}}
+ = K \sqrt{\frac{\Ghbest}{c}} + \Ghbest~,
+\]
+contradicting~(\ref{eqn:epoch-lem}).
+\end{proof}
+%
+{\bf Proof of Theorem~\ref{th:Abound}.}
+Using the lemmas, we have that
+\begin{eqnarray}
+G_{\Abound} =
+    \sum_{t=1}^T \xit
+&=&
+    \sum_{r=0}^R \sum_{t=S_r}^{T_r} \xit
+\nonumber \\ & \geq &
+    \max_j \sum_{r=0}^R \paren{\sum_{t=S_r}^{T_r} \hx{j}{t}
+                               - 2\sqrt{e-1}\sqrt{g_r K\ln K}}
+\nonumber \\ &=&
+    \max_j \Gh{j}(T+1) - 2 K\ln K \sum_{r=0}^R 2^r
+\nonumber \\ &=&
+    \Ghbest - 2 K\ln K (2^{R+1} - 1)
+\nonumber \\ &\geq&
+    \Ghbest + 2 K\ln K
+        - 8 K\ln K \paren{
+              \frac{K}{c} + \sqrt{\frac{\Ghbest}{c}} + \frac{1}{2} }
+\nonumber \\ &=&
+    \Ghbest - 2 K\ln K - 8(e-1)K - 8\sqrt{e-1}\sqrt{ \Ghbest K \ln K}~.
+\label{eqn:ghbnd}
+\end{eqnarray}
+Here, we used Lemma~\ref{lemma:bound-per-round} for the first inequality and
+Lemma~\ref{lemma:no-of-rounds} for the second inequality.
+The other steps follow from definitions and simple algebra.
+
+Let $f(x) = x - a\sqrt{x} - b$ for $x\geq 0$ where
+$a=8\sqrt{e-1}\sqrt{K \ln K}$ and
+$b=2 K\ln K + 8(e-1)K$.
+Taking expectations of both sides of~(\ref{eqn:ghbnd}) gives
+\begin{equation} \label{eqn:b1}
+\E[G_{\Abound}] \geq \E[f(\Ghbest)]~.
+\end{equation}
+Since the second derivative of $f$ is positive for $x>0$, $f$ is
+convex so that, by Jensen's inequality,
+\begin{equation} \label{eqn:b2}
+\E[f(\Ghbest)] \geq f(\E[\Ghbest])~.
+\end{equation}
+Note that,
+\[
+\E[\Ghbest] = \E\brackets{\max_j \Gh{j}(T+1)}
+\geq \max_j \E[\Gh{j}(T+1)]
+= \max_j \sum_{t=1}^T \x{j}{t} = \Gbest~.
+\]
+The function $f$ is increasing if and only if $x>a^2/4$.
+Therefore, if $\Gbest > a^2/4$ then
+$f(\E[\Ghbest]) \geq f(\Gbest)$.
+Combined with~(\ref{eqn:b1}) and~(\ref{eqn:b2}), this gives that
+$\E[G_{\Abound}] \geq f(\Gbest)$ which is equivalent to the statement
+of the theorem.
+On the other hand, if $\Gbest \leq a^2/4$ then, because $f$ is
+non-increasing on $[0,a^2/4]$,
+\[ f(\Gbest)\leq f(0) = -b \leq 0 \leq \E[G_\Abound] \]
+so the theorem follows trivially in this case as well.
+\hfill $\Box$
+
+\section{Lower bounds on the weak regret}
+\label{s:lower}
+%
+In this section, we state a lower bound on the expected weak regret of any player.
+More precisely, for any choice of the time horizon $T$ we show that there exists
+a strategy for assigning the rewards to the actions such that the expected weak
+regret of any player algorithm is $\Omega(\sqrt{KT})$.
+Observe that this does not match the upper bound for our algorithms $\Aest$
+and $\Abound$ (see Corollary~\ref{cor:est-reg} and
+Theorem~\ref{th:Abound}); it is an open problem to close this gap. 
+
+Our lower bound is proven using the classical (statistical) bandit
+model with an crucial difference: the reward distribution depends
+on the number $K$ of actions and on the time horizon $T$. 
+This dependence is the reason why our lower bound does not contradict
+the upper bounds of the form $O(\ln T)$ for the classical bandit
+model~\cite{LaiRo85}. There, the distribution over the rewards is fixed
+as $T \to \infty$.
+
+Note that our lower bound has a considerably stronger dependence on the
+number $K$ of action than the lower bound $\Theta(\sqrt{T \ln K})$,
+which could have been proven directly from the results
+in~\cite{CesabianchiFrHeHaScWa97,FreundSc97}.
+Specifically, our lower bound implies that no upper bound is possible
+of the form $O(T^{\alpha}(\ln K)^{\beta})$ where $0 \leq \alpha < 1$, $\beta>0$.
+%
+\begin{theorem} \label{thm:lower-bound}
+For any number of actions $K \geq 2$ and for any time horizon $T$, there
+exists a distribution over the assignment of rewards such that the expected
+weak regret of any algorithm (where the expectation is taken with respect to both the
+randomization over rewards and the algorithm's internal randomization) is at least
+\[
+        \frac{1}{20} \min\{\sqrt{KT},T\}.
+\]
+\end{theorem}
+%
+The proof is given in Appendix~\ref{sec:lowerproof}.
+
+The lower bound implies, of course, that for any algorithm there is a particular
+choice of rewards that will cause the expected weak regret (where the expectation
+is now with respect to the algorithm's internal randomization only) to be larger than this
+value. 
+
+\section{Bounds on the weak regret that hold with probability 1}
+\label{sec:hp}
+In Section~\ref{s:guessp} we showed that the {\em expected} weak regret
+of algorithm $\Abound$ is $O(\sqrt{KT\ln K})$.
+In this section we show that a modification of $\Aest$ achieves
+a weak regret of $O(\sqrt{KT\ln(KT/\delta)})$ with probability at least
+$1-\delta$, for any fixed $\delta$ and uniformly over $T$. From this, a bound
+on the weak regret that holds with probability 1 follows easily.
+
+The modification of $\Aest$ is necessary since the variance
+of the regret achieved by this algorithm is large, so large that an interesting
+high probability bound may not hold. The large variance of the regret
+comes from the large variance of the estimates $\hx{i}{t}$ for the
+payoffs $\x{i}{t}$. In fact, the variance of $\hx{i}{t}$ can be close to
+$1/\p{i}{t}$ which, for $\gamma$ in our range of interest, is (ignoring the
+dependence of $K$) of magnitude $\sqrt{T}$.
+Summing over trials, the variance of the return of $\Aest$ is about $T^{3/2}$,
+so that the regret might be as large as $T^{3/4}$.
+
+To control the variance we modify algorithm~$\Aest$ so that it uses
+estimates which are based on upper confidence bounds instead of
+estimates with the correct expectation. The modified algorithm
+$\Aesthp$ is given in Figure~\ref{f:esthp}.
+\begin{figure}[t]
+\algorithm{%
+{\bf Algorithm $\Aesthp$}\\
+{\bf Parameters:} Reals $\alpha>0$ and $\gamma\in (0,1]$ \\
+{\bf Initialization:} For $i=1,\ldots,K$
+\[
+%PA \exp was missing
+    \w{i}{1} = \exp\left(\frac{\alpha\gamma}{3}\sqrt{\frac{T}{K}}\right)~.
+\]
+{\bf For each} $t=1,2,\ldots,T$
+\begin{enumerate}
+\item
+For $i=1,\ldots,K$ set
+\[
+        \p{i}{t} = (1-\gamma)\frac{\w{i}{t}}{\sum_{j=1}^K \w{j}{t}} + \frac{\gamma}{K}~.
+\]
+\item      
+Choose $\i{t}$ randomly according to the distribution $\p{1}{t},\ldots,\p{K}{t}$.
+\item
+Receive reward $\xit \in [0,1]$. 
+\item 
+For $j=1,\ldots,K$ set 
+\begin{eqnarray*}
+\hx{j}{t} &=& \left\{ \begin{array}{cl}
+\x{j}{t}/\p{j}{t} & \mbox{if $j=\i{t}$} \\
+0 & \mbox{otherwise,}
+\end{array} \right.
+\\
+    \w{j}{t+1} &=& \w{j}{t}\expb{\frac{\gamma}{3K}\left(\hx{j}{t} + \frac{\alpha}{\p{j}{t}\sqrt{KT}}\right)}~.
+\end{eqnarray*}
+\end{enumerate}}
+\caption{ \label{f:esthp}
+Pseudo-code of algorithm $\Aesthp$ achieving small weak regret with high probability.}
+\end{figure}
+Let
+\[
+    \hsigma{i}{t+1} \defeq \sqrt{KT} + \sum_{s=1}^t \frac{1}{\p{i}{t}\sqrt{KT}}~.
+\]
+Whereas algorithm~$\Aest$ directly uses the estimates $\hG{i}{t}$
+when choosing $\i{t}$ at random, algorithm~$\Aesthp$ uses the upper
+confidence bounds $\hG{i}{t}+\alpha\hsigma{i}{t}$. The next lemma
+shows that, for appropriate $\alpha$, these are indeed upper confidence
+bounds.
+Fix some time horizon $T$.
+In what follows, we will use $\hat{\sigma}_i$ to denote $\hsigma{i}{T+1}$ and
+$\hat{G}_i$ to denote $\hG{i}{T+1}$.
+
+\begin{lemma} \label{l:hp}
+If $2\sqrt{\ln(KT/\delta)}\leq\alpha\leq 2\sqrt{KT}$, then
+\[ \prop{\exists i: \hat{G}_i + \alpha\hat{\sigma}_i < G_i} 
+   \leq \delta. \]
+\end{lemma}
+\begin{proof}
+Fix some $i$ and set 
+\[ s_t \defeq \frac{\alpha}{2\hsigma{i}{t+1}}. \]
+Since $\alpha \leq 2\sqrt{KT}$ and $\hsigma{i}{t+1} \geq \sqrt{KT}$,
+we have $s_t \leq 1$. Now
+\begin{eqnarray}
+\nonumber
+\lefteqn{\prop{\hat{G}_i + \alpha\hat{\sigma}_i < G_i}}\\
+\nonumber
+& = & \prop{\sum_{t=1}^T \left(\x{i}{t} - \hx{i}{t}\right) 
+               - \frac{\alpha}{2}\hat{\sigma}_i
+         > \frac{\alpha}{2}\hat{\sigma}_i}\\
+\label{eq:hp-step1}
+& \leq & \prop{s_T\sum_{t=1}^T \left(\x{i}{t} - \hx{i}{t} 
+               - \frac{\alpha}{2\p{i}{t}\sqrt{KT}} \right)
+         > \frac{\alpha^2}{4}}\\
+\nonumber
+& = & \prop{\expb{s_T \sum_{t=1}^T \left(\x{i}{t} - \hx{i}{t}
+               - \frac{\alpha}{2\p{i}{t}\sqrt{KT}} \right)}
+         > \expb{\alpha^2/4}} \\
+\label{eq:hp-step2}
+& \leq & e^{-\alpha^2/4}\E\left[\expb{s_T \sum_{t=1}^T \left(\x{i}{t} - \hx{i}{t}
+               - \frac{\alpha}{2\p{i}{t}\sqrt{KT}}\right)}\right]
+\end{eqnarray}
+where in step~(\ref{eq:hp-step1}) we multiplied both sides by $s_T$ and
+used $\hat{\sigma}_i \geq \sum_{t=1}^T 1/(\p{i}{t}\sqrt{KT})$, while in
+step~(\ref{eq:hp-step2}) we used Markov's inequality.
+For $t=1,\ldots,T$ set
+\[ Z_t \defeq \expb{s_t \sum_{\tau=1}^t \left(\x{i}{\tau} - \hx{i}{\tau} 
+               - \frac{\alpha}{2\p{i}{\tau}\sqrt{KT}}\right)}~. \]
+Then, for $t=2,\ldots,T$
+\[ Z_t = \expb{s_t \left(\x{i}{t} - \hx{i}{t} 
+               - \frac{\alpha}{2\p{i}{t}\sqrt{KT}}\right)} 
+         \cdot (Z_{t-1})^{\frac{s_t}{s_{t-1}}}~. \]               
+Denote by $\Et{Z_t}=\E\left[Z_t \mid i_1,\ldots,i_{t-1}\right]$ the expectation
+of $Z_t$ with respect to the random choice in trial $t$ and conditioned on the past
+$t-1$ trials.  Note that when the past $t-1$ trials are fixed the only random
+quantities in $Z_t$ are % $\x{i}{t}$ and
+the $\hx{i}{t}$'s.
+Note also that $\x{i}{t}-\hx{i}{t} \leq 1$,
+and that
+\begin{eqnarray}
+\Et{(\x{i}{t}-\hx{i}{t})^2} &=& \Et{\hx{i}{t}^2} - \x{i}{t}^2
+\nonumber\\
+&\leq&
+\Et{\hx{i}{t}^2}
+\nonumber\\
+&=& \frac{\x{i}{t}^2}{\p{i}{t}}
+\le \frac{1}{\p{i}{t}}
+\label{eqn:c0}
+\end{eqnarray}
+Hence, for each $t=2,\ldots,T$
+\begin{eqnarray}
+        \Et{Z_t}
+&\leq& 
+        \Et{\exp{s_t\paren{\x{i}{t}-\hx{i}{t} - \frac{s_t}{\p{i}{t}}}}}
+         (Z_{t-1})^{\frac{s_t}{s_{t-1}}}
+\label{eqn:c1}
+\\ & \leq &
+        \Et{1 + s_t(\x{i}{t}-\hx{i}{t}) + s_t^2 (\x{i}{t}-\hx{i}{t})^2}
+         \expb{-\frac{s_t^2}{\p{i}{t}}}
+         (Z_{t-1})^{\frac{s_t}{s_{t-1}}}
+\label{eqn:c2}
+%\\ && \quad \mbox{\rm since $e^a \leq 1 + a + a^2$ for $a < 1$ and
+%       $\hsigma{i}{t+1}\geq\sqrt{KT}$}
+\\ & \leq &
+        \left(1 + s_t^2 / \p{i}{t}\right)
+         \expb{-\frac{s_t^2}{\p{i}{t}}}
+         (Z_{t-1})^{\frac{s_t}{s_{t-1}}}
+\label{eqn:c3}
+%\quad \mbox{\rm since $\Et{\x{i}{t}-\hx{i}{t}}=0$}
+\\ & \leq &
+        (Z_{t-1})^{\frac{s_t}{s_{t-1}}}
+\label{eqn:c4}
+\\ & \leq &
+        1 + Z_{t-1}.
+\label{eqn:c5}
+\end{eqnarray}
+Eq.~(\ref{eqn:c1}) uses
+\[ \frac{\alpha}{2 \p{i}{t} \sqrt{K T}} \geq
+  \frac{\alpha}{2 \p{i}{t} \hsigma{i}{t+1}} =
+  \frac{s_t}{\p{i}{t}}
+\]
+since $\hsigma{i}{t+1} \geq \sqrt{K T}$.
+Eq.~(\ref{eqn:c2}) uses
+$e^a \leq 1 + a + a^2$ for $a \leq 1$.
+Eq.~(\ref{eqn:c3}) uses
+$\Et{\hx{i}{t}} = \x{i}{t}$.
+Eq.~(\ref{eqn:c4}) uses $1+x\leq e^x$ for any real $x$.
+Eq.~(\ref{eqn:c5}) uses $s_t \leq s_{t-1}$
+and $z^u \leq 1+z$ for any $z>0$ and $u \in [0,1]$.
+Observing that $\E\left[Z_1\right] \leq 1$,
+we get by induction that $\E[Z_T] \leq T$, and the lemma follows by our choice
+of $\alpha$.
+\end{proof}
+%
+The next lemma shows that the return achieved by algorithm
+$\Aesthp$ is close to its upper confidence bounds.
+Let 
+\[ \hU \defeq \max_{1 \leq i \leq K}
+\left(\hat{G}_i+\alpha\hat{\sigma}_i\right)~. \] 
+\begin{lemma}
+\label{l:hedge.hp}
+If $\alpha\leq 2\sqrt{KT}$ then 
+\[ G_{\Aesthp} \geq 
+     \left(1-\frac{5\gamma}{3}\right)\hU 
+     -\frac{3}{\gamma}K\ln K 
+     - 2 \alpha\sqrt{KT} 
+     - 2 \alpha^2~. \]
+\end{lemma}
+\begin{proof} We proceed as in the analysis of algorithm~$\Aest$. Set
+  $\eta=\gamma/(3K)$ and consider any sequence $i_1,\ldots,i_T$ of
+  actions chosen by $\Aesthp$.  As $\hx{i}{t} \leq K/\gamma$,
+%PA $\p{i}{t} \geq K/\gamma$, 
+$\p{i}{t} \geq \gamma/K$, 
+and $\alpha \leq 2\sqrt{KT}$, we have
+\[
+        \eta\hx{i}{t}+\frac{\alpha\eta}{\p{i}{t}\sqrt{KT}} \leq 1~.
+\]
+Therefore,
+\begin{eqnarray*}
+\frac{W_{t+1}}{W_{t}} 
+& = & \sum_{i=1}^K \frac{\w{i}{t+1}}{W_t} \\
+& = & \sum_{i=1}^K \frac{\w{i}{t}}{W_t} 
+      \expb{\eta\hx{i}{t}+\frac{\alpha\eta}{\p{i}{t}\sqrt{KT}}} \\
+& = & \sum_{i=1}^K \frac{\p{i}{t}-\gamma/K}{1-\gamma}
+      \expb{\eta\hx{i}{t}+\frac{\alpha\eta}{\p{i}{t} \sqrt{KT}}}\\
+& \leq & \sum_{i=1}^K \frac{\p{i}{t}-\gamma/K}{1-\gamma}
+      \left[1 + \eta\hx{i}{t}+\frac{\alpha\eta}{\p{i}{t} \sqrt{KT}}
+         + 2\eta^2\hx{i}{t}^2+\frac{2\alpha^2\eta^2}{\p{i}{t}^2 KT} 
+         \right] \\
+& \leq & 1 
+         + \frac{\eta}{1-\gamma} \sum_{i=1}^K \p{i}{t} \hx{i}{t}
+         + \frac{\alpha\eta}{1-\gamma} \sum_{i=1}^K
+              \frac{1}{\sqrt{KT}} \\ &&
+         + \frac{2\eta^2}{1-\gamma} \sum_{i=1}^K \p{i}{t} \hx{i}{t}^2
+         + \frac{2\alpha^2\eta^2}{1-\gamma} \sum_{i=1}^K 
+                                          \frac{1}{\p{i}{t} KT} \\
+& \leq & 1  
+         + \frac{\eta}{1-\gamma} \xit
+         + \frac{\alpha\eta}{1-\gamma} \sqrt{\frac{K}{T}}
+         + \frac{2\eta^2}{1-\gamma} \sum_{i=1}^K \hx{i}{t}
+         + \frac{2 \alpha^2\eta}{1-\gamma} \frac{1}{T}~.
+\end{eqnarray*}
+The second inequality uses $e^a\leq 1+a+a^2$ for $a\leq 1$, and
+$(a+b)^2\leq 2(a^2 + b^2)$ for any $a,b$.
+The last inequality uses Eqs.~(\ref{eq:exp-cond}),~(\ref{eqn:term2})
+and~(\ref{eqn:term3}).
+Taking logarithms, using $\ln(1+x)\leq x$
+and summing over $t=1,\ldots,T$ we get
+\[ \ln \frac{W_{T+1}}{W_1} \leq 
+         \frac{\eta}{1-\gamma} G_{\Aesthp}
+         + \frac{\alpha\eta}{1-\gamma} \sqrt{KT}
+         + \frac{2\eta^2}{1-\gamma} \sum_{i=1}^K \hat{G}_i
+         + \frac{2\alpha^2\eta}{1-\gamma}~. \]
+Since 
+\[ \ln W_1 = \alpha\eta\sqrt{KT} + \ln K \] 
+and for any $j$
+\[ \ln W_{T+1} \geq \ln \w{j}{T+1} 
+   \geq \eta \hat{G}_j + \alpha\eta\hat{\sigma}_j \]
+this implies
+\[
+G_{\Aesthp} \geq (1-\gamma)\left(\hat{G}_j + \alpha\hat{\sigma}_j\right)
+         - \frac{1}{\eta}\ln K
+     - 2\alpha\sqrt{KT}
+     - 2\eta\sum_{i=1}^K \hat{G}_i
+     - 2 \alpha^2~. 
+\]
+for any $j$. Finally, using $\eta=\gamma/(3K)$ and
+\[
+        \sum_{i=1}^K \hat{G}_i \leq K\hU
+\]
+yields the lemma.
+\end{proof}
+%
+Combining Lemmas~\ref{l:hp} and~\ref{l:hedge.hp} gives the main result
+of this section.
+\begin{theorem} \label{t:hp}
+For any fixed $T > 0$, for all $K \geq 2$ and for all $\delta > 0$,
+if
+\[
+        \gamma=\min\left\{\frac{3}{5},\,2\sqrt{\frac{3}{5}\frac{K\ln K}{T}}\right\}
+\qquad\mbox{\rm and}\qquad
+        \alpha=2\sqrt{\ln(KT/\delta)}~,
+\]
+then
+\[
+        \Gbest - G_{\Aesthp} \leq 4\sqrt{KT\ln\frac{KT}{\delta}} + 4\sqrt{\frac{5}{3}KT\ln K}
+        + 8\ln\frac{KT}{\delta}
+\]
+holds for any assignment of rewards with probability at least $1-\delta$.
+\end{theorem}
+\begin{proof}
+We assume without loss of generality that $T \ge (20/3)K\ln K$ and that $\delta \ge KT e^{-KT}$.
+If either of these conditions do not hold, then the theorem holds trivially.
+Note that $T \ge (20/3)K\ln K$ ensures $\gamma \leq 3/5$.
+Note also that $\delta \ge KT e^{-KT}$ implies $\alpha \leq 2\sqrt{KT}$ for our
+choice of $\alpha$. So we can apply Lemmas~\ref{l:hp} and~\ref{l:hedge.hp}.
+By Lemma~\ref{l:hedge.hp} we have 
+\[ G_{\Aesthp} \geq 
+     \left(1-\frac{5\gamma}{3}\right)\hU
+     -\frac{3}{\gamma}K\ln K 
+     - 2\alpha\sqrt{KT} 
+     - 2\alpha^2~. \]
+By Lemma~\ref{l:hp} we have
+$\hU \geq \Gbest$ with probability at least $1-\delta$.
+Collecting terms and using $\Gbest\leq T$ gives the theorem.
+\end{proof}
+%
+It is not difficult to obtain an algorithm that does not need the time horizon
+$T$ as input parameter and whose regret is only slightly worse than that proven for
+the algorithm $\Aesthp$ in Theorem~\ref{t:hp}. This new algorithm, called
+$\Aestg$ and shown in Figure~\ref{f:aestg}, simply restarts $\Aesthp$ doubling
+its guess for $T$ each time.
+The only crucial issue is the choice of the confidence parameter $\delta$ and
+of the minimum length of the runs to ensure that Lemma~\ref{l:hp} holds for all
+the runs of $\Aesthp$.
+\begin{figure}[t]
+\algorithm{%
+{\bf Algorithm $\Aestg$}\\
+{\bf Parameters:} Real $0 < \delta < 1$.\\
+{\bf Initialization:} 
+let
+        $T_r = 2^r$,
+        $\displaystyle \delta_r = \frac{\delta}{(r+1)(r+2)}$
+and
+\begin{equation}
+\label{eq:r-star}
+        r^* = \min\theset{r \in \Nat}{\delta_r \geq KT_r e^{-KT_r}}~.
+\end{equation}
+{\bf Repeat for} $r=r^*,r^*+1,\ldots$
+\begin{description}
+\item[]
+Run $\Aesthp$ for $T_r$ trials choosing $\alpha$ and $\gamma$
+as in Theorem~\protect{\ref{t:hp}} with $T=T_r$ and $\delta = \delta_r$.
+\end{description}
+}
+\caption{
+\label{f:aestg}
+Pseudo-code of algorithm $\Aestg$ (see Theorem~\ref{th:aestg}).}
+\end{figure}
+%%NCb Changed leading constant in bound due to fix of alg Exp3.P
+\begin{theorem}
+\label{th:aestg}
+Let $r^*$ be as in~(\ref{eq:r-star}).
+Let $K \geq 2$, $\delta \in (0,1)$ and $T \geq 2^{r^*}$.
+Let $c_T = 2\ln(2+\log_2 T)$.
+Then
+\[
+        \Gbest - G_{\Aestg}
+\leq
+        \frac{10}{\sqrt{2}-1}\sqrt{2KT\left(\ln\frac{KT}{\delta} + c_T\right)}
+        + 10(1+\log_2 T)\left(\ln\frac{KT}{\delta} + c_T\right)~,
+\]
+holds with probability at least $1-\delta$.
+\end{theorem}
+
+\begin{proof} 
+Choose the time horizon $T$ arbitrarily and call {\em epoch} the
+sequence of trials between two successive restarts of algorithm $\Aesthp$.
+
+For each $r > r^*$, where $r^*$ is defined in~(\ref{eq:r-star}), let
+\[
+        \G{i}{r} \defeq \sum_{t=2^r+1}^{2^{r+1}} \x{i}{t}~,
+\quad
+        \hG{i}{r} \defeq \sum_{t=2^r+1}^{2^{r+1}} \hx{i}{t}~,
+\quad
+        \hsigma{i}{r}
+        \defeq \sqrt{KT_r} + \sum_{t=2^r+1}^{2^{r+1}} \frac{1}{\p{i}{t}\sqrt{KT_r}}
+\]
+and similarly define the quantities $\G{i}{r^*}$ and $\hG{i}{r^*}$ with sums
+that go from $t=1$ to $t=2^{r^*+1}$.
+
+For each $r \geq r^*$, we have $\delta_r \geq KT_r e^{-KT_r}$.
+Thus we can find numbers $\alpha_r$ such that, by Lemma~\ref{l:hp},
+\begin{eqnarray*}
+        \prop{(\exists r \geq r^*)(\exists i):\, \hG{i}{r}
+        + \alpha_r\hsigma{i}{r} < \G{i}{r}}
+& \leq &
+        \sum_{r=r^*}^{\infty}
+        \prop{\exists i:\, \hG{i}{r} + \alpha_r\hsigma{i}{r} < \G{i}{r}}
+\\ & \leq &
+        \sum_{r=0}^{\infty}\frac{\delta}{(r+1)(r+2)}
+\\ &=&
+        \delta~.
+\end{eqnarray*}
+We now apply Theorem~\ref{t:hp} to each epoch. Since $T \ge 2^{r^*}$,
+there is an $\ell \ge 1$ such that
+\[
+        2^{r^*+\ell-1} \le T = \sum_{r=0}^{\ell-1} 2^{r^*+r} < 2^{r^*+\ell}~.
+\]
+With probability at least $1-\delta$
+over the random draw of $\Aestg$'s actions $i_1,\ldots,i_T$,
+\begin{eqnarray*}
+\lefteqn{
+        \Gbest - G_{\Aestg}
+}
+\\ & \leq &
+        \sum_{r=0}^{\ell-1} 10\left[ \sqrt{KT_{r^*+r}\ln\frac{KT_{r^*+r}}{\delta_{r^*+r}}}
+        + \ln\frac{KT_{r^*+r}}{\delta_{r^*+r}}\right]
+\\ & \leq &
+        10\left[ \sqrt{K\ln\frac{KT_{r^*+\ell-1}}{\delta_{r^*+\ell-1}}}
+        \sum_{r=0}^{\ell-1}\sqrt{T_{r^*+r}}
+        + \ell\ln\frac{KT_{r^*+\ell-1}}{\delta_{r^*+\ell-1}}\right]
+\\ & \leq &
+        10\left[ \sqrt{K\ln\frac{KT_{r^*+\ell-1}}{\delta_{r^*+\ell-1}}}
+        \left(\frac{2^{(r^*+\ell)/2}}{\sqrt{2}-1}\right)
+        + \ell\ln\frac{KT_{r^*+\ell-1}}{\delta_{r^*+\ell-1}}\right]
+\\ & \leq &
+        \frac{10}{\sqrt{2}-1}\sqrt{2KT\left(\ln\frac{KT}{\delta} + c_T\right)}
+        + 10(1+\log_2 T)\left(\ln\frac{KT}{\delta} + c_T\right)
+\end{eqnarray*}
+where $c_T = 2\ln(2+\log_2 T)$.
+\end{proof}
+%
+ From the above theorem we get, as a simple corollary, a statement about
+the almost sure convergence of the return of algorithm~$\Aesthp$.
+The rate of convergence is almost optimal, as one can see from our lower
+bound in Section~\ref{s:lower}.
+%
+\begin{cor}
+\label{cor:prob-one}
+For any $K\geq 2$ and for any function $f:\R\to\R$ with
+$\lim_{T\to\infty} f(T) = \infty$,
+\[
+        \lim_{T \to \infty} \frac{\Gbest - G_{\Aestg}}{\sqrt{T(\ln T)f(T)}} = 0~.
+\] 
+holds for any assignment of rewards with probability 1.
+\end{cor}
+\begin{proof}
+Let $\delta = 1/T^2$. Then, by Theorem~\ref{th:aestg}, there exists a constant $C$ such
+that for all $T$ large enough
+\[
+        \Gbest - G_{\Aestg}
+\leq
+        C\sqrt{KT\ln T}
+\]
+with probability at least $1-1/T^2$. This implies that
+\[
+        \prop{\frac{\Gbest - G_{\Aestg}}{\sqrt{(T\ln T)f(T)}} >
+        C\sqrt{\frac{K}{f(T)}}} \leq \frac{1}{T^2}
+\]
+and the theorem follows from the Borel-Cantelli lemma.
+\end{proof}
+
+%PA new heading
+\section{The regret against the best strategy from a pool}
+\label{s:experts}
+Consider a setting where the player has preliminarily fixed a set of
+strategies that could be used for choosing actions. These strategies
+might select different actions at different iterations.
+The strategies can be computations performed by the player or they
+can be external advice given to the player by ``experts.''
+We will use the more general term ``expert'' 
+(borrowed from Cesa-Bianchi et al.~\cite{CesabianchiFrHeHaScWa97})
+because we place no restrictions on the generation of the advice. 
+The player's goal in this case is to combine the advice of the experts
+in such a way that its return is close to that of the best expert.
+
+%NCB Changed def of expert.
+Formally, an expert $i$ is an infinite sequence 
+$\stratv{i}{1},\stratv{i}{2},\ldots \in [0,1]^K$
+of probability vectors, where the $j$-th component
+$\strat{i}{t}{j}$ of $\stratv{i}{t}$ represents
+the recommended probability of playing action $j$
+at time $t$. An {\em adversarial bandit problem with $N$ experts}
+is thus specified by both an assignment of rewards to
+actions and by an assignment of probability vectors to
+each expert. We assume that the player, prior to choosing
+an action at time $t$, is provided with the set
+$\stratv{1}{t},\ldots,\stratv{N}{t} \in [0,1]^K$.
+(As a special case, the distribution can be concentrated on a single action,
+which represents a deterministic recommendation.)
+If the vector of rewards at time $t$ is \xvt, then the expected
+reward for expert $i$, with respect to the chosen probability vector
+$\stratv{i}{t}$, is simply $\stratv{i}{t}\cdot\xvt$.
+In analogy of $\Gbest$, we define
+\[
+\Gbestst \defeq \max_{1\leq i \leq N} \sum_{t=1}^T \stratv{i}{t}\cdot\xvt
+\]
+measuring the expected return of the best strategy.
+Then the {\em regret for the best strategy} at time horizon $T$,
+defined by $\Gbestst(T) - G_A(T)$, measures the difference between the
+return of the best expert and player's $A$ return up to time $T$.
+
+%NCB Deleted to be consistent with new def of expert.
+% Our results hold for any finite set of experts.
+% Formally, we regard each $\stratv{i}{t}$ as a random variable which is an
+% arbitrary function of the random sequence of plays
+% $\i{1},\ldots,\i{t-1}$.
+% This definition allows for experts whose advice 
+% depends on the entire past history as observed by the player, as well
+% as other side information which may be available.
+
+We could at this point view each expert as a ``meta-action'' in a
+higher-level bandit problem with payoff vector defined at trial $t$ as
+$(\stratv{1}{t}\cdot\xvt,\ldots,\stratv{N}{t}\cdot\xvt)$.
+We could then immediately apply Corollary~\ref{cor:est-reg} to obtain a bound 
+of $O(\sqrt{g N \log N})$ on the player's regret relative to
+the best expert (where $g$ is an upper bound on $\Gbestst$).
+However, this bound is quite weak if the player is combining
+many experts (i.e., if $N$ is very large).
+We show below that the algorithm~$\Aest$ from Section~\ref{s:approx} can be
+modified yielding a regret term of the form
+$O(\sqrt{g K \log N})$.
+This bound is very reasonable when the number of actions is small, but
+the number of experts is quite large (even exponential).
+%
+\begin{figure}[t]
+\algorithm{%
+{\bf Algorithm $\Astrat$}\\
+{\bf Parameters:} Real $\gamma\in (0,1]$ \\
+{\bf Initialization:} $\w{i}{1}=1$ for $i=1,\ldots,N$.\\ \\
+{\bf For each} $t=1,2,\ldots$
+\begin{enumerate}
+\item
+Get advice vectors $\stratv{1}{t},\ldots,\stratv{N}{t}$.
+\item
+Set ${\dt W_t = \sum_{i=1}^N \w{i}{t}}$ and for $j=1,\ldots,K$ set
+\[
+        \p{j}{t} = (1-\gamma)\sum_{i=1}^N\frac{\w{i}{t}\xi_j^i(t)}{W_t} + \frac{\gamma}{K}~.
+\]
+\item
+Draw action $i_t$ randomly according to the probabilities $\p{1}{t},\ldots,\p{K}{t}$.
+\item
+Receive reward $\xit \in [0,1]$.
+\item
+For $j=1,\ldots,K$ set 
+\[
+        \hx{j}{t} = \left\{ \begin{array}{cl}
+                \x{j}{t}/\p{j}{t} & \mbox{\rm if $j=\i{t}$}
+        \\
+                0 & \mbox{\rm otherwise,}
+        \end{array} \right.
+\]
+\item
+For $i=1,\ldots,N$ set 
+\begin{eqnarray*} 
+        \hy{i}{t} &=& \stratv{i}{t}\cdot\xxvt
+\\
+        \w{i}{t+1} &=& \w{i}{t}\,\expb{\gamma\hy{i}{t}/K}~.
+\end{eqnarray*}
+\end{enumerate}}
+\caption{ \label{f:strat-alg}
+Pseudo-code of algorithm $\Astrat$ for using expert advice.}
+\end{figure}
+
+Our algorithm~$\Astrat$ is shown in Figure~\ref{f:strat-alg}, and is
+only a slightly modified version of $\Aest$. ($\Astrat$ stands for
+``{Exp}onential-weight algorithm for {Exp}loration and {Exp}loitation
+using Expert advice.'')
+Let us define $\yvt\in [0,1]^N$ to be the vector with components
+corresponding to the gains of the experts:
+$y_i(t) = \stratv{i}{t} \cdot \xvt$.
+
+The simplest possible expert is one which always assigns uniform
+weight to all actions so that $\strat{}{t}{j} = 1/K$ on each round
+$t$. We call this the {\em uniform expert}.
+To prove our results, we need to assume that the uniform expert is
+included in the family of experts.\footnote{%
+In fact, we can use a slightly weaker sufficient condition, namely,
+that the uniform expert is included in the convex hull of the family
+of experts, i.e., that there exists nonnegative numbers
+$\alpha_1,\ldots,\alpha_N$ with $\sum_{j=1}^N \alpha_j=1$ such that, for
+all $t$ and all $i$, $\sum_{j=1}^N \alpha_j \stratjti = 1/K$.}
+Clearly, the uniform expert can always be added to any given family of
+experts at the very small expense of increasing $N$ by one.
+%
+\begin{theorem} \label{thm:astrat}
+For any $K,T > 0$, for any $\gamma\in(0,1]$, and for any family of experts which
+includes the uniform expert,
+\[
+        \Gbestst -\E[G_{\Astrat}]
+        \leq 
+    (e-1)\gamma\Gbestst + \frac{K\ln N}{\gamma}~.
+\]
+holds for any assignment of rewards.
+\end{theorem}
+%
+\begin{proof}
+We prove this theorem along the lines of the proof of Theorem~\ref{th:est-gain}.
+Let $\q{i}{t} = \w{i}{t}/W_t$. Then
+\begin{eqnarray*}
+        \frac{W_{t+1}}{W_{t}} 
+& = &
+        \sum_{i=1}^N \frac{\w{i}{t+1}}{W_t}
+\\ & = &
+        \sum_{i=1}^N \q{i}{t} \expb{\frac{\gamma}{K}\hy{i}{t}}
+\\ & \leq &
+        \sum_{i=1}^N \q{i}{t}
+    \left[1 + \frac{\gamma}{K}\hy{i}{t}
+        + (e-2)\left(\frac{\gamma}{K}\hy{i}{t}\right)^2 \right]
+\\ & = &
+        1 + (\gamma/K)\sum_{i=1}^N \q{i}{t} \hy{i}{t}
+    + (e-2)(\gamma/K)^2\sum_{i=1}^N \q{i}{t} \hy{i}{t}^2~.
+\end{eqnarray*}
+Taking logarithms and summing over $t$ we get
+\[
+        \ln\frac{W_{T+1}}{W_1} \leq (\gamma/K) \sum_{t=1}^T\sum_{i=1}^N \q{i}{t} \hy{i}{t}
+        + (e-2)(\gamma/K)^2 \sum_{t=1}^T\sum_{i=1}^N \q{i}{t}\hy{i}{t}^2~.
+\]
+Since, for any expert $k$,
+\[
+        \ln\frac{W_{T+1}}{W_1} \geq \ln\frac{\w{k}{T+1}}{W_1}
+        = \frac{\gamma}{K}\sum_{t=1}^T \hy{k}{t} - \ln N
+\]
+we get
+\[
+    \sum_{t=1}^T \sum_{i=1}^N \q{i}{t}\hy{i}{t}
+\geq
+    \sum_{t=1}^T \hy{k}{t} - \frac{K\ln N}{\gamma}
+    - (e-2)\frac{\gamma}{K}\sum_{t=1}^T\sum_{i=1}^N \q{i}{t}\hy{i}{t}^2~.
+\]
+Note that
+\begin{eqnarray*}
+        \sum_{i=1}^N \q{i}{t}\hy{i}{t}
+        &=& \sum_{i=1}^N \q{i}{t}\left(\sum_{j=1}^K \xi^i_j(t) \hx{j}{t} \right)
+\\ &=&
+        \sum_{j=1}^K \left( \sum_{i=1}^N \q{i}{t} \xi^i_j(t) \right) \hx{j}{t}
+\\ &=&
+        \sum_{j=1}^K \left( \frac{\p{j}{t}-\gamma/K}{1-\gamma} \right) \hx{j}{t}
+    \leq \frac{\x{j}{t}}{1-\gamma}~.
+\end{eqnarray*}
+Also
+\begin{eqnarray*}
+\sum_{i=1}^N \q{i}{t} \hy{i}{t}^2
+&=&
+        \sum_{i=1}^N \q{i}{t} (\strat{i}{t}{i_t} \hxit)^2
+\\ & \leq &
+        \hxit^2\,\frac{\p{i_t}{t}}{1-\gamma}
+\\ & \leq &
+        \frac{\hxit}{1-\gamma}~.
+\end{eqnarray*}
+Therefore, for all experts $k$,
+\[
+    G_{\Astrat} = \sum_{t=1}^T \hxit
+\geq
+    (1-\gamma)\sum_{t=1}^T \hy{k}{t} - \frac{K\ln N}{\gamma}
+    - (e-2)\frac{\gamma}{K}\sum_{t=1}^T\sum_{j=1}^K \hx{j}{t}~.
+\]
+We now take expectations of both sides of this inequality.
+Note that
+\[
+\E[\hy{k}{t}] = 
+  \E\brackets{\sum_{j=1}^K \strat{k}{t}{j} \hx{j}{t}}
+=
+  \sum_{j=1}^K \strat{k}{t}{j} \x{j}{t} = y_k(t)~.
+\]
+Further,
+\[
+\frac{1}{K}\E\brackets{\sum_{t=1}^T \sum_{j=1}^K \hx{j}{t}}
+=
+\sum_{t=1}^T \frac{1}{K} \sum_{j=1}^K \x{j}{t}
+\leq \max_{1 \leq i \leq N} \sum_{t=1}^T y_i(t) = \Gbestst
+\]
+since we have assumed that the uniform expert is included in the
+family of experts.
+Combining these facts immediately implies the statement of the theorem.
+\end{proof} 
+
+%PA new heading
+\section{The regret against arbitrary strategies}
+\label{s:shifting}
+%
+In this section we present a variant of algorithm $\Aest$ and prove a
+bound on its expected regret for any sequence $(j_1,\ldots,j_T)$ of actions.
+To prove this result, we rank all sequences of actions according to their
+``hardness''. The {\em hardness} of a sequence $(j_1,\ldots,j_T)$ is defined by
+\[
+        \compl(j_1,\ldots,j_T)
+        \defeq 1 + \left|\theset{1 \leq \ell < T}{ j_\ell \neq j_{\ell+1}}\right|~.
+\]
+So, $\compl(1,\ldots,1)=1$ and $\compl(1,1,3,2,2)=3$.
+The bound on the regret which we will prove grows with the hardness
+of the sequence for which we are measuring the regret. In particular,
+we will show that the player algorithm $\Aests$ described in Figure~\ref{fig:aests}
+has an expected regret of $O(\compl(j^T)\sqrt{KT\ln(KT)})$
+for any sequence $j^T=(j_1,\ldots,j_T)$ of actions. On the other hand,
+if the regret is measured for any sequence $j^T$ of actions of hardness
+$\compl(j^T) \leq S$, then the expected regret of $\Aests$ (with parameters tuned
+to this $S$) reduces to $O(\sqrt{SKT\ln(KT)})$.
+In what follows, we will use $G_{j^T}$ to denote the return
+$\x{j_1}{1}+\ldots\x{j_T}{T}$ of a sequence $j^T=(j_1,\ldots,j_T)$ of actions.
+%
+\begin{figure}[t]
+\algorithm{%
+{\bf Algorithm $\Aests$}\\
+{\bf Parameters:} Reals $\gamma\in (0,1]$ and $\alpha > 0$. \\
+{\bf Initialization:}
+$\w{i}{1}=1$ for $i=1,\ldots,K$.\\ \\
+{\bf For each} $t=1,2,\ldots$
+\begin{enumerate}
+\item
+Set
+\[
+        \p{i}{t} = (1-\gamma)\frac{\w{i}{t}}{\sum_{j=1}^K \w{j}{t}} + \frac{\gamma}{K}
+        \qquad i=1,\ldots,K.
+\]
+\item      
+Draw $\i{t}$ according to the probabilities $\p{1}{t},\ldots,\p{K}{t}$.
+\item
+Receive reward $\xit \in [0,1]$. 
+\item 
+For $j=1,\ldots,K$ set 
+\begin{eqnarray*} 
+        \hx{j}{t} &=& \left\{ \begin{array}{cl}
+                \x{j}{t}/\p{j}{t} & \mbox{\rm if $j=\i{t}$}
+        \\
+                0 & \mbox{\rm otherwise,}
+        \end{array} \right.
+\\
+        \w{j}{t+1} &=& \w{j}{t}\,\expb{\gamma\hx{j}{t}/K}
+        + \frac{e\alpha}{K}\sum_{i=1}^K \w{i}{t}~.
+\end{eqnarray*}
+\end{enumerate}}
+\caption{ \label{fig:aests}
+Pseudo-code of algorithm $\Aests$ to control the expected regret.}
+\end{figure}
+%
+\begin{theorem}
+\label{th:shifting}
+For any $K > 0$, for any $\gamma\in(0,1]$, and for any $\alpha > 0$,
+\[
+    G_{j^T} - \E\left[G_{\Aests}\right]
+\leq
+    \frac{K(\compl(j^T)\ln(K/\alpha)+e\alpha T)}{\gamma} + (e-1)\gamma T
+\]
+holds for any assignment of rewards, for any $T > 0$, and for any sequence
+$j^T=(j_1,\ldots,j_T)$ of actions.
+\end{theorem}
+%
+\begin{cor}
+\label{cor:shifting-tuned1}
+Assume that algorithm~$\Aests$ is run with input parameters
+$\alpha=1/T$ and
+\[
+        \gamma = \min\braces{1,\sqrt{\frac{K\ln(KT)}{T}}}~.
+\]
+Then
+\[
+        G_{j^T} - \E\left[G_{\Aests}\right]
+\leq
+        \compl(j^T)\sqrt{KT\ln(KT)} + 2e\sqrt{\frac{KT}{\ln(KT)}}
+\]
+holds for any sequence $j^T=(j_1,\ldots,j_T)$ of actions.
+\end{cor}
+Note that the statement of Corollary~\ref{cor:shifting-tuned1}
+can be equivalently written as
+\begin{eqnarray*}
+        \E\left[G_{\Aests}\right]
+& \geq &
+        \max_{j^T} \left( G_{j^T} - 
+        \compl(j^T)\sqrt{KT\ln(KT)} \right)
+\\ &&
+        -\, 2e\sqrt{\frac{KT}{\ln(KT)}}
+\end{eqnarray*}
+revealing that algorithm~$\Aests$ is able to automatically trade-off between
+the return $G_{j^T}$ of a sequence $j^T$ and its hardness $\compl(j^T)$.
+\begin{cor}
+\label{cor:shifting-tuned2}
+Assume that algorithm~$\Aests$ is run with input parameters
+$\alpha=1/T$ and
+\[
+        \gamma = \min\braces{1,\sqrt{\frac{K(S\ln(KT)+e)}{(e-1)T}}}~.
+\]
+Then
+\[
+        G_{j^T} - \E\left[G_{\Aests}\right]
+\leq
+        2\sqrt{e-1} \sqrt{KT\left(S\ln(KT)+e\right)}
+\]
+holds for any sequence $j^T=(j_1,\ldots,j_T)$ of actions such that $\compl(j^T) \leq S$.
+\end{cor}
+%
+{\bf Proof of Theorem~\ref{th:shifting}.\ }
+Fix any sequence $j^T=(j_1,\ldots,j_T)$ of actions.
+With a technique that follows closely the proof of Theorem~\ref{th:est-gain},
+we can prove that for all sequences $i_1,\ldots,i_T$ of actions drawn by $\Aests$,
+\begin{equation}
+\label{eq:shift-basic}
+        \frac{W_{t+1}}{W_t} 
+\leq
+        1 + \frac{\gamma/K}{1-\gamma} \xit
+    + \frac{(e-2)(\gamma/K)^2}{1-\gamma}\sum_{i=1}^K \hx{i}{t} + e\alpha~.
+\end{equation}
+where, as usual, $W_t=\w{1}{t}+\ldots+\w{K}{t}$.
+Now let $S=\compl(j^T)$ and partition $(1,\ldots,T)$ in {\em segments}
+\[
+        [T_1,\ldots,T_2),[T_2,\ldots,T_3),\ldots,[T_S,\ldots,T_{S+1})
+\]
+where $T_1=1$, $T_{S+1}=T+1$, and $j_{T_s}=j_{T_s+1}=\ldots=j_{T_{s+1}-1}$
+for each segment $s=1,\ldots,S$. Fix an arbitrary segment $[T_s,T_{s+1})$
+and let $\Delta_s=T_{s+1}-T_s$.
+Furthermore, let
+\[
+\G{\Aests}{s} \defeq \sum_{t=T_s}^{T_{s+1}-1} \x{i_t}{t}~.
+\]
+Taking logarithms on both sides of~(\ref{eq:shift-basic}) and summing over
+$t=T_s,\ldots,T_{s+1}-1$ we get
+\begin{equation}
+\label{eq:shift1}
+        \ln\frac{W_{T_{s+1}}}{W_{T_s}}
+        \leq \frac{\gamma/K}{1-\gamma} \G{\Aests}{s}
+        + \frac{(e-2)(\gamma/K)^2}{1-\gamma}
+        \sum_{t=T_s}^{T_{s+1}-1}\sum_{i=1}^K \hx{i}{t}
+        + e\alpha\Delta_s~.
+\end{equation}
+Now let $j$ be the action such that $j_{T_s}=\ldots=j_{T_{s+1}-1}=j$.
+Since
+\begin{eqnarray*}
+        \w{j}{T_{s+1}}
+& \geq &
+        \w{j}{T_s+1} \expb{\frac{\gamma}{K}\sum_{t=T_s+1}^{T_{s+1}-1}\hx{j}{t}}
+\\ & \geq &
+        \frac{e\alpha}{K}W_{T_s}
+        \expb{\frac{\gamma}{K}\sum_{t=T_s+1}^{T_{s+1}-1}\hx{j}{t}}
+\\ & \geq &
+        \frac{\alpha}{K}W_{T_s}
+        \expb{\frac{\gamma}{K}\sum_{t=T_s}^{T_{s+1}-1}\hx{j}{t}}
+\end{eqnarray*}
+where the last step uses $\gamma\hx{j}{t}/K \leq 1$, we have
+\begin{equation}
+\label{eq:shift2}
+        \ln\frac{W_{T_{s+1}}}{W_{T_s}} \geq \ln\frac{\w{j}{T_{s+1}}}{W_{T_s}}
+        \geq \ln\left(\frac{\alpha}{K}\right)
+        + \frac{\gamma}{K}\sum_{t=T_s}^{T_{s+1}-1} \hx{j}{t}~.
+\end{equation}
+Piecing together~(\ref{eq:shift1}) and~(\ref{eq:shift2}) we get
+\[
+    \G{\Aests}{s}
+\geq
+    (1-\gamma)\sum_{t=T_s}^{T_{s+1}-1} \hx{j}{t} - \frac{K\ln(K/\alpha)}{\gamma}
+    - (e-2)\frac{\gamma}{K}\sum_{t=T_s}^{T_{s+1}-1}\sum_{i=1}^K \hx{i}{t}
+        - \frac{e\alpha K\Delta_s}{\gamma}~.
+\]
+Summing over all segments $s=1,\ldots,S$, taking expectation with respect to the
+random choices of algorithm $\Aests$, and using
+\[
+        G_{(j_1,\ldots,j_T)} \leq T
+\qquad\mbox{\rm and}\qquad
+        \sum_{t=1}^T\sum_{i=1}^K \x{i}{t} \leq KT
+\]
+yields the inequality in the statement of the theorem.
+\hfill $\Box$
+
+\medskip\noindent
+If the time horizon $T$ is not known, we can apply techniques similar to those
+applied for proving Theorem~\ref{th:aestg} in Section~\ref{sec:hp}.
+More specifically, we introduce a new algorithm, $\Aessg$, that runs $\Aests$ as
+a subroutine.
+Suppose that at each new run (or epoch) $r=0,1,\ldots$, $\Aests$ is started with 
+its parameters set as prescribed in Corollary~\ref{cor:shifting-tuned1}, where
+$T$ is set to $T_r=2^r$, and then stopped after $T_r$ iterations. Clearly, for
+any fixed sequence $j^T=(j_1,\ldots,j_T)$ of actions, the number of segments
+(see proof of Theorem~\ref{th:shifting} for a definition of segment) within each
+epoch $r$ is at most $\compl(j^T)$. Hence the expected regret of $\Aessg$ for
+epoch $r$ is certainly not more than
+\[
+        (\compl(j^T)+2e)\sqrt{KT_r\ln(KT_r)}~.
+\]
+Let $\ell$ be such that $2^{\ell} \leq T < 2^{\ell+1}$. Then the last epoch
+is $\ell \leq \log_2 T$ and the overall regret (over the $\ell+1$ epochs) is
+at most
+\[
+        (\compl(j^T)+2e)\sum_{r=0}^{\ell}\sqrt{KT_r\ln(KT_r)}
+\leq
+        (\compl(j^T)+2e)\sqrt{K\ln(KT_\ell)}\sum_{r=0}^{\ell}\sqrt{T_r}~.
+\]
+Finishing up the calculations proves the following.
+\begin{cor}
+\label{cor:shifting-guess1}
+\[
+    G_{j^T} - \E\left[G_{\Aessg}\right]
+\leq
+    \frac{\compl(j^T)+2e}{\sqrt{2}-1}\sqrt{2KT\ln(KT)}
+\]
+for any $T > 0$ and for any sequence $j^T=(j_1,\ldots,j_T)$ of actions.
+\end{cor}
+On the other hand, if $\Aessg$ runs $\Aests$ with parameters set as prescribed
+in Corollary~\ref{cor:shifting-tuned2}, with a reasoning similar to the one above
+we conclude the following.
+\begin{cor}
+\label{cor:shifting-guess2}
+\[
+    G_{j^T} - \E\left[G_{\Aessg}\right]
+\leq
+    \frac{2\sqrt{e-1}}{\sqrt{2}-1}\sqrt{2KT(S\ln(KT)+e)}
+\]
+for any $T > 0$ and for any sequence $j^T=(j_1,\ldots,j_T)$ of actions such that
+$\compl(j^T) \leq S$.
+\end{cor}
+
+\newcommand{\bs}{\mbox{\boldmath$s$}}
+
+\section{Applications to game theory}
+\label{s:game}
+The adversarial bandit problem can be easily related to the problem of
+playing repeated games.
+For $N > 1$ integer, an $N$-person finite game is defined by $N$ finite sets
+$S_1,\ldots,S_N$ of pure strategies, one set for each player, and by $N$ functions
+$u_1,\ldots,u_N$, where function $u_i : S_1 \times\ldots\times S_N \to \R$ is
+player's $i$ payoff function. Note the each player's payoff depends both
+on the pure strategy chosen by the player and on the pure strategies chosen by
+the other players.
+Let $S = S_1 \times\ldots\times S_N$ and let
+$S_{-i} = S_1 \times\ldots\times S_{i-1} \times S_{i+1} \times\ldots\times S_N$.
+We use $\bs$ and $\bs_{-i}$ to denote typical members of, respectively,
+$S$ and $S_{-i}$. Given $\bs \in S$, we will often write $(j,\bs_{-i})$ to denote
+$(s_1,\ldots,s_{i-1},j,s_{i+1},\ldots,s_N)$, where $j \in S_i$.
+Suppose that the game is played repeatedly through time. Assume for now that
+each player knows all payoff functions and, after each repetition (or round) $t$,
+also knows the vector $\bs(t)=(s_1(t),\ldots,s_N(t))$ of pure strategies chosen by
+the players. Hence, the pure strategy $s_i(t)$, chosen by player $i$ at round $t$
+may depend on what player $i$ and the other players chose in the past rounds.
+The {\em average regret} of player $i$ for the pure strategy $j$ after $T$ rounds
+is defined by
+\[
+        R_i^{(j)}(T) = \frac{1}{T} \sum_{t=1}^T
+        \left[ u_i(j,\bs_{-i}(t)) - u_i(\bs(t)) \right]~.
+\]
+This is how much player $i$ lost on average for not playing the pure strategy $j$
+on all rounds, given that all the other players kept their choices fixed.
+
+A desirable property for a player is Hannan-consistency~\cite{FudenbergLe95},
+defined as follows. Player $i$ is {\em Hannan-consistent} if
+\[
+        \limsup_{T\to\infty} \max_{j \in S_i} R_i^{(j)}(T) = 0
+\qquad
+        \mbox{\rm with probability 1.}
+\]
+The existence and properties of Hannan-consistent players have been first
+investigated by Hannan~\cite{Hannan57} and Blackwell~\cite{Blackwell56b},
+and later by many others (see~\cite{FV97} for a nice survey).
+
+Hannan-consistency can be also studied in the so-called ``unknown game setup'',
+where it is further assumed that: (1) each player knows neither the total number of
+players nor the payoff function of any player (including itself), (2) after each
+round each player sees its own payoffs but it sees neither the choices of the
+other players nor the resulting payoffs. This setup was previously studied
+by Ba\~nos~\cite{Banos68}, Megiddo~\cite{Megiddo80}, and by Hart and
+Mas-Colell~\cite{HMC98,HMC99}.
+
+We can apply the results of Section~\ref{sec:hp} to prove that a player
+using algorithm~$\Aestg$ as mixed strategy is Hannan-consistent in the
+unknown game setup whenever the payoffs obtained by the player belong
+to a known bounded real interval.
+To do that, we must first extend our results to the case when the assignment
+of rewards can be chosen adaptively. More precisely, we can view the
+payoff $\x{i_t}{t}$, received by the gambler at trial $t$ of the bandit problem,
+as the payoff $u_i(i_t,\bs_{-i}(t))$ received by player $i$ at the $t$-th round
+of the game.
+However, unlike our adversarial bandit framework where all the rewards were
+assigned to each arm at the beginning, here the payoff $u_i(i_t,\bs_{-i}(t))$
+depends on the (possibly randomized) choices of all players which, in turn,
+are functions of their realized payoffs.
+In our bandit terminology, this corresponds to assuming that the vector
+$(\x{1}{t},\ldots,\x{K}{t})$ of rewards for each trial $t$ is chosen by an adversary
+who knows the gambler's strategy and the outcome of the gambler's random draws up
+to time $t-1$. We leave to the interested reader the easy but lengthy task of checking
+that {\em all} of our results (including those of Section~\ref{sec:hp}) hold under
+this additional assumption.
+
+Using Theorem~\ref{th:aestg} we then get the following.
+\begin{theorem}
+\label{th:hannan}
+If player $i$ has $K \geq 2$ pure strategies and plays in the unknown game setup
+(with payoffs in $[0,1]$) using the mixed strategy $\Aestg$, then
+\[
+        \max_{j \in S_i} R_i^{(j)}(T)
+\leq
+        \frac{10}{\sqrt{2}-1}\sqrt{\frac{2K}{T}\left(\ln\frac{KT}{\delta} + c_T\right)}
+        + \frac{10(1+\log_2 T)}{T}\left(\ln\frac{KT}{\delta} + c_T\right)~,
+\]
+where $c_T = 2\ln(2+\log_2 T)$, holds with probability at least $1-\delta$,
+%NCB Changed lower bound on T according to Peter's calculations.
+for all $0 < \delta < 1$ and for all $T \ge (\ln(K/\delta))^{1/(K-1)}$.
+\end{theorem}
+The constraint on $T$ in the statement of Theorem~\ref{th:hannan} is derived
+from the condition $T \ge 2^{r^*}$ in Theorem~\ref{th:aestg}.
+Note that, according to Theorem~\ref{thm:lower-bound}, the rate of convergence
+is optimal both in $T$ and $K$ up to logarithmic factors.
+
+Theorem~\ref{th:hannan}, along with Corollary~\ref{cor:prob-one}, immediately
+implies the result below.
+\begin{cor}
+Player's strategy $\Aestg$ is Hannan-consistent in the unknown game setup.
+\end{cor}
+%
+As pointed out in~\cite{FV97}, Hannan-consistency has an interesting consequence
+for repeated zero-sum games. These games are defined by an $n\times m$ matrix $\mat$.
+On each round $t$, the {\em row player} chooses a row $i$ of the matrix. At the
+same time, the {\em column player} chooses a column $j$. The row player then gains
+the quantity $\mat_{ij}$, while the column player loses the same quantity.
+In repeated play, the row player's goal is to maximize its expected total gain
+over a sequence of plays, while the column player's goal is to minimize its
+expected total loss.
+
+Suppose in some round the row player chooses its next move $i$ randomly
+according to a probability distribution on rows represented by a (column)
+vector $\vecp \in [0,1]^n$, and the column player similarly chooses according
+to a probability vector $\vecq\in [0,1]^m$. Then the expected payoff is
+$\vecp^T \mat \vecq$. Von Neumann's minimax theorem states that
+\[
+    \max_{\vecp} \min_{\vecq} \vecp^T \mat \vecq
+=
+    \min_{\vecq} \max_{\vecp} \vecp^T \mat \vecq~,
+\]
+where maximum and minimum are taken over the (compact) set of all distribution
+vectors $\vecp$ and $\vecq$.
+The quantity $v$ defined by the above equation is called the {\em value\/} of
+the zero-sum game with matrix $\mat$. In words, this says that
+there exists a mixed (randomized) strategy $\vecpopt$ for the row player that
+guarantees expected payoff at least $v$, regardless of the column player's
+action. Moreover, this payoff is optimal in the sense that the column player
+can choose a mixed strategy whose expected payoff is at most $v$, regardless
+of the row player's action.
+Thus, if the row player knows the matrix $\mat$, it can compute a strategy (for
+instance, using linear programming) that is certain to bring an expected
+optimal payoff not smaller than $v$ on each round.
+
+Suppose now that the game $\mat$ is entirely unknown to the row player.
+To be precise, assume the row player knows only the number of
+rows of the matrix and a bound on the magnitude of the entries
+of $\mat$.
+Then, using the results of Section~\ref{s:guessp}, we can show that the row
+player can play in such a manner that its payoff per round will rapidly
+converge to the optimal maximin payoff $v$.
+%
+\begin{theorem}
+Let $\mat$ be an unknown game matrix in $[a,b]^{n\times m}$ with value $v$.
+Suppose the row player, knowing only $a$, $b$ and $n$, uses the mixed strategy
+$\Abound$.  Then the row player's expected payoff per round is at least
+\[
+        v  - 8(b-a)\left(
+	\sqrt{e-1}\sqrt{\frac{n \ln n}{T}} - 8(e-1)\frac{n}{T} -2\frac{n\ln n}{T}\right)~.
+\]
+\end{theorem}
+%
+\begin{proof}
+We assume that $[a,b]=[0,1]$; the extension to the general case is
+straightforward. By Theorem~\ref{th:Abound}, we have
+\begin{eqnarray*}
+    \E\left[\sum_{t=1}^T \mat_{i_t j_t}\right]
+&=&
+    \E\left[\sum_{t=1}^T \xit\right] 
+\\ & \geq &
+        \max_{i} \E\left[\sum_{t=1}^T \x{i}{t}\right] 
+        - 8\sqrt{e-1}\sqrt{T n \ln n} - 8(e-1)n -2n\ln n~.
+\end{eqnarray*}
+Let $\vecpopt$ be a maxmin strategy for the row player such that
+\[
+v = \max_{\vecp} \min_{\vecq} \vecp^T \mat \vecq
+  = \min_{\vecq} \vecpopt^T \mat \vecq~,
+\]
+and let $\vecq(t)$ be a distribution vector whose $j_t$-th component is
+$1$.
+Then
+\[
+    \max_{i} \E\brackets{\sum_{t=1}^T \x{i}{t}}
+\geq
+        \sum_{i=1}^n \popt_i \E\brackets{\sum_{t=1}^T \x{i}{t}}
+=
+        \E\brackets{\sum_{t=1}^T \vecpopt\cdot\xvt}
+=
+    \E\brackets{\sum_{t=1}^T \vecpopt^T \mat \vecq(t)}
+\geq
+    v T
+\]
+since $\vecpopt^T \mat \vecq \geq v$ for all $\vecq$.
+
+Thus, the row player's expected payoff is at least
+\[
+        v T - 8\sqrt{e-1}\sqrt{T n \ln n} - 8(e-1)n -2n\ln n~.
+\]
+Dividing by $T$ to get the average per-round payoff gives the result.
+\end{proof}
+%
+Note that the theorem is independent of the number of columns of $\mat$
+and, with appropriate assumptions, the theorem can be easily
+generalized to column players with an infinite number of strategies.
+If the matrix $\mat$ is very large and all entries are small,
+then, even if $\mat$ is known to the player, our algorithm may be an
+efficient alternative to linear programming.
+
+\section*{Acknowledgments} We express special thanks to Kurt Hornik
+for his advice and his patience when listening to our ideas and proofs
+for an earlier draft of this paper. We thank Yuval
+Peres and Amir Dembo for their help regarding the analysis of martingales.
+Peter Auer and Nicol\`o Cesa-Bianchi gratefully
+acknowledge support of ESPRIT Working Group EP 27150,
+Neural and Computational Learning II (NeuroCOLT II)
+
+\begin{thebibliography}{10}
+
+\bibitem{Banos68}
+Alfredo Ba{\~{n}}os.
+\newblock On pseudo-games.
+\newblock {\em The Annals of Mathematical Statistics}, 39(6):1932--1945, 1968.
+
+\bibitem{Blackwell56b}
+David Blackwell.
+\newblock Controlled random walks.
+\newblock Invited address, Institute of Mathematical Statistics Meeting,
+  Seattle, Washington, 1956.
+
+\bibitem{CesabianchiFrHeHaScWa97}
+Nicol{\`o} Cesa-Bianchi, Yoav Freund, David Haussler, David~P. Helmbold,
+  Robert~E. Schapire, and Manfred~K. Warmuth.
+\newblock How to use expert advice.
+\newblock {\em Journal of the Association for Computing Machinery},
+  44(3):427--485, May 1997.
+
+\bibitem{CoverTh91}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock {\em Elements of Information Theory}.
+\newblock Wiley, 1991.
+
+\bibitem{FV97}
+Dean P. Foster and Rakesh Vohra.
+\newblock Regret in the on-line decision problem.
+\newblock {\em Games and Economic Behavior}, 29:7--36, 1999.
+
+\bibitem{FreundSc97}
+Yoav Freund and Robert~E. Schapire.
+\newblock A decision-theoretic generalization of on-line learning and an
+  application to boosting.
+\newblock {\em Journal of Computer and System Sciences}, 55(1):119--139, August
+  1997.
+
+\bibitem{FreundSc9?}
+Yoav Freund and Robert~E. Schapire.
+\newblock Adaptive game playing using multiplicative weights.
+\newblock {\em Games and Economic Behavior}, 29:79--103, 1999.
+
+\bibitem{FudenbergLe95}
+Drew Fudenberg and David~K. Levine.
+\newblock Consistency and cautious fictitious play.
+\newblock {\em Journal of Economic Dynamics and Control}, 19:1065--1089, 1995.
+
+\bibitem{Gittins89}
+J.~C. Gittins.
+\newblock {\em Multi-armed Bandit Allocation Indices}.
+\newblock John Wiley \& Sons, 1989.
+
+\bibitem{Hannan57}
+James Hannan.
+\newblock Approximation to {B}ayes risk in repeated play.
+\newblock In M.~Dresher, A.~W. Tucker, and P.~Wolfe, editors, {\em
+  Contributions to the Theory of Games}, volume III, pages 97--139. Princeton
+  University Press, 1957.
+
+\bibitem{HMC98}
+Sergiu Hart and Andreu Mas-Colell.
+\newblock A simple procedure leading to correlated equilibrium.
+\newblock {\em Econometrica}, 68:1127--1150, 2000.
+
+\bibitem{HMC99}
+Sergiu Hart and Andreu Mas-Colell.
+\newblock A general class of adaptive strategies.
+\newblock {\em Journal of Economic Theory}, 98(1):26--54, 2001.
+
+\bibitem{IshikidaVa94}
+T.~Ishikida and P.~Varaiya.
+\newblock Multi-armed bandit problem revisited.
+\newblock {\em Journal of Optimization Theory and Applications},
+  83(1):113--154, October 1994.
+
+\bibitem{LaiRo85}
+T.~L. Lai and Herbert Robbins.
+\newblock Asymptotically efficient adaptive allocation rules.
+\newblock {\em Advances in Applied Mathematics}, 6:4--22, 1985.
+
+\bibitem{LittlestoneWa94}
+Nick Littlestone and Manfred~K. Warmuth.
+\newblock The weighted majority algorithm.
+\newblock {\em Information and Computation}, 108:212--261, 1994.
+
+\bibitem{Megiddo80}
+N.~Megiddo.
+\newblock On repeated games with incomplete information played by
+  non-{Bayesian} players.
+\newblock {\em International Journal of Game Theory}, 9(3):157--167, 1980.
+
+\bibitem{Robbins52}
+H.~Robbins.
+\newblock Some aspects of the sequential design of experiments.
+\newblock {\em Bulletin American Mathematical Society}, 55:527--535, 1952.
+
+\bibitem{Vovk90}
+Volodimir~G. Vovk.
+\newblock Aggregating strategies.
+\newblock In {\em Proceedings of the Third Annual Workshop on Computational
+  Learning Theory}, pages 371--383, 1990.
+
+\end{thebibliography}
+
+\appendix
+
+\section{Proof of Theorem~\protect{\ref{thm:lower-bound}}}
+\label{sec:lowerproof}
+We construct the random distribution of rewards as follows.
+First, before play begins,
+one action $\gooda$ is chosen uniformly at random to be the
+``good'' action.
+The $T$ rewards $\x{\gooda}{t}$ associated with the good action are chosen independently
+at random to be $1$ with probability $1/2+\epsilon$ and $0$
+otherwise for some small, fixed constant $\epsilon\in (0,1/2]$ to be
+chosen later in the proof.
+The rewards $\x{j}{t}$
+associated with the other actions $j\neq\gooda$ are chosen
+independently at random
+to be $0$ or $1$ with equal odds.
+Then the expected reward of the best action is at least
+$(1/2+\epsilon){T}$.
+The main part of the proof below is a derivation of an upper bound on
+the expected gain of any algorithm for this distribution of rewards.
+
+We write $\Pe{\cdot}$ to denote probability with respect to this
+random choice of rewards, and we also write $\Pei{\cdot}$ to denote
+probability conditioned on $i$ being the good action:
+$\Pei{\cdot} = \Pe{\cdot \given \gooda = i}$.
+Finally, we write $\Pu{\cdot}$ to denote probability with respect to a
+uniformly random choice of rewards for {\em all\/} actions (including
+the good action).
+Analogous expectation notation $\Ee{\cdot}$, $\Ei{\cdot}$ and
+$\Eu{\cdot}$ will also be used.
+
+Let $A$ be the player strategy.
+Let $\r{t}=\xit$ be a random variable denoting the reward received
+at time $t$, and let $\rvec{t}$ denote the sequence of rewards
+received up through trial $t$:
+$\rvec{t} = \langle \r{1},\ldots,\r{t}\rangle$.
+For shorthand, $\rv=\rvec{T}$ is the entire sequence of
+rewards.
+
+Any randomized playing strategy is equivalent to an a-priori
+random choice from the set of all deterministic strategies. 
+Thus, because the adversary strategy we have defined is oblivious to
+the actions of the player,
+it suffices to prove an upper bound on the expected gain of any
+{\em deterministic\/} strategy (this is not crucial for the proof but
+simplifies the notation).
+Therefore, we can formally regard the algorithm $A$ as a fixed
+function which, at each step $t$, maps the reward history $\rvec{t-1}$ to
+its next action $\i{t}$.
+
+As usual, $G_A = \sum_{t=1}^T \r{t}$ denotes the return of the
+algorithm, and $\Gactbest = \max_{j} \sum_{t=1}^T \x{j}{t}$ is the
+return of the best action.
+
+Let $\numai$ be a random variable denoting the number of times action
+$i$ is chosen by $A$.
+Our first lemma bounds the difference between expectations when
+measured using $\Ei{\cdot}$ or $\Eu{\cdot}$.
+
+\begin{lemma} \label{lem:distdif}
+Let $f:\{0,1\}^T\rightarrow [0,M]$ be any function defined on reward
+sequences $\rv$.
+Then for any action $i$,
+\[
+\Ei{f(\rv)} \leq \Eu{f(\rv)} + \frac{M}{2} \sqrt{-\Eu{\numai}\lneps}.
+\]
+\end{lemma}
+
+\begin{proof}
+We apply standard methods that can be found, for instance, in Cover
+and Thomas~\cite{CoverTh91}.
+For any distributions $\Pdd$ and $\Qdd$, let
+\[
+\vardist{\Pdd}{\Qdd} \doteq \sum_{\rv\in\{0,1\}^T} |\Pd{\rv} - \Qd{\rv}|
+\]
+be the variational distance, and let
+\[
+\kldist{\Pdd}{\Qdd} \doteq  \sum_{\rv\in\{0,1\}^T}
+      \Pd{\rv}\lg\paren{\frac{\Pd{\rv}}{\Qd{\rv}}}
+\]
+be the Kullback-Liebler divergence or relative entropy between the two
+distributions.
+(We use $\lg$ to denote $\log_2$.)
+We also use the notation
+\[\kldist{ \Pd{\r{t} \given \rvec{t-1}}}{ \Qd{\r{t} \given \rvec{t-1}}}
+   \doteq \sum_{\rvec{t}\in\{0,1\}^{t}}
+         \Pd{\rvec{t}} \lg \paren{\frac{\Pd{\r{t} \given \rvec{t-1}}}
+                                       {\Qd{\r{t} \given \rvec{t-1}}}}
+\]
+for the conditional relative entropy of $\r{t}$ given $\rvec{t-1}$.
+Finally, for $p,q\in [0,1]$, we use
+\[
+\kldist{p}{q} \doteq p \lg\paren{\frac{p}{q}}
+                + (1-p) \lg\paren{\frac{1-p}{1-q}}
+\]
+as shorthand for the
+relative entropy between two Bernoulli random variables with
+parameters $p$ and $q$.
+
+We have that
+\begin{eqnarray}
+\Ei{f(\rv)} - \Eu{f(\rv)}
+  &=&
+\sum_{\rv} f(\rv) (\Pei{\rv} - \Pu{\rv}) \nonumber \\
+ &\leq&
+\sum_{\rv: \Pei{\rv}\geq \Pu{\rv}} f(\rv) (\Pei{\rv} - \Pu{\rv}) \nonumber \\
+ &\leq&
+M \sum_{\rv: \Pei{\rv}\geq \Pu{\rv}} (\Pei{\rv} - \Pu{\rv}) \nonumber \\
+&=&
+\frac{M}{2} \vardist{\Peid}{\Pud}.
+ \label{eqn:bnd1}
+\end{eqnarray}
+Also, Cover and Thomas's Lemma~12.6.1 states that
+\begin{equation} \label{eqn:bnd2}
+\vardistsq{\Pud}{\Peid} \leq (2\ln 2) \kldist{\Pud}{\Peid}.
+\end{equation}
+The ``chain rule for relative entropy'' (Cover and Thomas's
+Theorem~2.5.3) gives that
+\begin{eqnarray}
+\kldist{\Pud}{\Peid} &=& \sum_{t=1}^T
+       \kldist{ \Pu{\r{t} \given \rvec{t-1}}}{ \Pei{\r{t} \given \rvec{t-1}}}
+                       \nonumber \\
+   &=& \sum_{t=1}^T \paren{\Pu{\i{t} \neq i}\; \kldist{\sfrac{1}{2}}{\sfrac{1}{2}} + 
+                    \Pu{\i{t} = i}\; \kldist{\sfrac{1}{2}}{\sfrac{1}{2}+\epsilon}}
+                       \nonumber \\
+   &=& \sum_{t=1}^T \Pu{\i{t} = i} \paren{-\sfrac{1}{2}\lgeps}
+                       \nonumber \\
+   &=& \Eu{\numai}  \paren{-\sfrac{1}{2}\lgeps}.
+                 \label{eqn:bnd3}
+\end{eqnarray}
+The second equality can be seen as follows:
+Regardless of the past history of rewards
+$\rvec{t-1}$, the conditional probability
+distribution $\Pu{\r{t} \given \rvec{t-1}}$
+on the next reward $\r{t}$ is uniform on $\{0,1\}$.
+The conditional distribution $\Pei{\r{t} \given \rvec{t-1}}$ is also
+easily computed:
+Given $\rvec{t-1}$, the next action $\i{t}$ is fixed
+by $A$.
+If this action is not the good action $i$, then the
+conditional distribution is uniform on $\{0,1\}$; otherwise,
+if $\i{t}=i$, then $\r{t}$ is $1$ with probability $1/2+\epsilon$ and
+$0$ otherwise.
+
+The lemma now follows by combining~(\ref{eqn:bnd1}),~(\ref{eqn:bnd2})
+and~(\ref{eqn:bnd3}).
+\end{proof}
+%
+We are now ready to prove the theorem.
+Specifically, we show the following:
+%
+\begin{theorem} \label{thm:lowbnd}
+For any player strategy $A$, and for the distribution on rewards
+described above, the expected regret of algorithm $A$ is lower bounded
+by:
+\[
+\Ee{\Gactbest - G_A} \geq
+\epsilon\paren{T-\frac{T}{K} - \frac{T}{2}\sqrt{-\frac{T}{K}\lneps}}.
+\]
+\end{theorem}
+
+\begin{proof}
+If action $i$ is chosen to be the good action, then clearly the
+expected payoff at time $t$ is $1/2+\epsilon$ if $\i{t}=i$ and $1/2$
+if $\i{t}\neq i$:
+\begin{eqnarray*}
+\Ei{\r{t}} &=& \paren{\sfrac{1}{2}+\epsilon} \Pei{\i{t}=i}
+               + \sfrac{1}{2} \Pei{\i{t}\neq i} \\
+     &=& \sfrac{1}{2} + \epsilon\;  \Pei{\i{t}=i}.
+\end{eqnarray*}
+Thus, the expected gain of algorithm $A$ is
+\begin{equation} \label{eqn:t2}
+\Ei{G_A} = \sum_{t=1}^T \Ei{\r{t}} = \frac{T}{2} + \epsilon\; \Ei{\numai}.
+\end{equation}
+
+Next, we apply Lemma~\ref{lem:distdif} to $\numai$, which is a
+function of the reward sequence $\rv$ since the actions of player
+strategy $A$ are determined by the past rewards.
+Clearly, $\numai\in [0,T]$.
+Thus,
+\[
+\Ei{\numai}\leq \Eu{\numai} + \frac{T}{2} \sqrt{-\Eu{\numai}\lneps}
+\]
+and so
+\begin{eqnarray*}
+\sum_{i=1}^K \Ei{\numai}
+&\leq&
+ \sum_{i=1}^K \paren{\Eu{\numai} + \frac{T}{2} \sqrt{-\Eu{\numai}\lneps}}\\
+&\leq&
+ T + \frac{T}{2}\sqrt{-TK\lneps}
+\end{eqnarray*}
+using the fact that $\sum_{i=1}^K \Eu{\numai} = T$, which implies that
+$\sum_{i=1}^K \sqrt{\Eu{\numai}} \leq \sqrt{TK}$.
+Therefore, combining with~(\ref{eqn:t2}),
+\[
+\Ee{G_A} = \frac{1}{K}\sum_{i=1}^K \Ei{G_A}
+    \leq \frac{T}{2} 
+   + \epsilon \paren{\frac{T}{K} +
+                       \frac{T}{2}\sqrt{-\frac{T}{K}\lneps}}.
+\]
+The expected gain of the best action is at least the expected gain of
+the good action, so
+$\Ee{\Gactbest} \geq T(1/2+\epsilon)$.
+Thus, we get that the regret is lower bounded by the bound given in
+the statement of the theorem.
+\end{proof}
+%
+For small $\epsilon$, the bound given in Theorem~\ref{thm:lowbnd}
+is of the order
+\[
+\Theta\paren{T\epsilon - T\epsilon^2\sqrt{\frac{T}{K}}}.
+\]
+Choosing $\epsilon=c\sqrt{K/T}$ for some small constant $c$, gives a
+lower bound of $\Omega(\sqrt{KT})$.
+Specifically, the lower bound given in Theorem~\ref{thm:lower-bound}
+is obtained from Theorem~\ref{thm:lowbnd}
+by choosing $\epsilon = (1/4) \min\{\sqrt{K/T},1\}$ and using the
+inequality $-\ln(1-x)\leq (4\ln(4/3)) x$ for $x\in[0,1/4]$.
+
+\end{document}

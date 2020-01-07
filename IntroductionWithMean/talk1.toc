@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Halving Algorithm}{3}{0}{1}
+\beamer@sectionintoc {2}{Perceptron}{5}{0}{2}
+\beamer@sectionintoc {3}{Estimating the mean}{13}{0}{3}

@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.06pt}
+\select@language {english}
+\beamer@sectionintoc {1}{The multiple-arm bandits problem}{3}{0}{1}
+\beamer@sectionintoc {2}{The classical analysis - Gittins Index}{5}{0}{2}
+\beamer@sectionintoc {3}{The adversarial setup}{6}{0}{3}
+\beamer@sectionintoc {4}{The basic algorithm}{9}{0}{4}
+\beamer@sectionintoc {5}{Lower bound}{12}{0}{5}
+\beamer@sectionintoc {6}{Tuning $\gamma $ online}{13}{0}{6}
+\beamer@sectionintoc {7}{the non stationary scenario}{15}{0}{7}
+\beamer@sectionintoc {8}{Combining strategies}{17}{0}{8}
+\beamer@sectionintoc {9}{Summary}{19}{0}{9}

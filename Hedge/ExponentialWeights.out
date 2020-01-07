@@ -1,0 +1,10 @@
+\BOOKMARK [1][]{Outline1}{The Halving Algorithm}{}
+\BOOKMARK [1][]{Outline2}{Hedge\(\)Algorithm}{}
+\BOOKMARK [2][]{Outline2.1.4}{Hedging vs. Halving}{Outline2}
+\BOOKMARK [1][]{Outline3}{Bound on total loss}{}
+\BOOKMARK [2][]{Outline3.1.9}{Upper bound on i=1N wT+1i}{Outline3}
+\BOOKMARK [2][]{Outline3.2.13}{Lower bound on i=1N wT+1i}{Outline3}
+\BOOKMARK [2][]{Outline3.3.14}{Combining Upper and Lower bounds}{Outline3}
+\BOOKMARK [1][]{Outline4}{tuning }{}
+\BOOKMARK [1][]{Outline5}{Lower Bounds}{}
+\BOOKMARK [1][]{Outline6}{Some useful loss functions}{}

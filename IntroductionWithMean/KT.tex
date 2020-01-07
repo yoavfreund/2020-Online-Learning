@@ -1,0 +1,64 @@
+%\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Laplace law of succession}
+
+\begin{frame}
+\frametitle{Estimating the bias of a coin}
+
+\begin{itemize}
+\item We observe $n$ coin flips:\\
+{\bf H,T,T,H,H,T,H,T,T}
+\item
+We want to estimate the {\bf probability} that the next flip will be {\bf H}ead.
+\item
+Natural Answer:
+\[
+\frac{\#\mbox{\bf H}}{n} = \frac{4}{9}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{What if the estimation has to be done online?}
+
+\begin{itemize}
+\item We observe a {bf sequence} of coin flips, and have to predict the probability of {\bf H}ead at each step:
+\\ $p_0$,\pause 
+{\bf H},\pause 
+$p_1$,\pause
+{\bf T},\pause
+$p_2$,\pause 
+$\ldots$
+\item
+What would be a good value for $p_0$?
+\item
+For $p_1$?
+\item
+Laplace Law of succession
+\[
+\frac{\#\mbox{\bf H} +1}{n+2}
+\]
+\item 
+Turns out that a better rule is 
+\[
+\frac{\#\mbox{\bf H} +1/2}{n+1}
+\]
+Krichevsky and Trofimov, 1981
+\item
+Why? 
+\item 
+What does ``better'' mean?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{To be continued...}
+Please
+\begin{itemize}
+\item Register on twiki (follow directions on my home page)
+\item Follow link from main twiki page to ``Online learning course''
+\item Add yourself to the list and the table on {\tt ClassParticipants}
+\item Go to {\tt CoursePlan/LessonNo1} to see slides and to post questions and answers.
+\item See you on Thursday!
+\end{itemize}
+\end{frame}
+%\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

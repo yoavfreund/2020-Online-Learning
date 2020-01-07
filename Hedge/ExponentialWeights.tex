@@ -1,0 +1,545 @@
+% $Header: /data/cvsroot/Courses/OnlineLearning/talks/talk2/talk2.tex,v 1.5 2006/01/17 08:11:25 yfreund Exp $
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Montpellier}
+
+  %\setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage{xmpmulti} % package that defines \multiinclude
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title[\ouralg] % (optional, use only with long paper titles)
+{Exponential Weights Algorithms for Online Learning}
+
+\author[Freund] % (optional, use only with lots of authors)
+{Yoav Freund}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+
+\subject{Machine Learning}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%% \AtBeginSubsection[]
+%% {
+%%   \begin{frame}<beamer>
+%%     \frametitle{Outline}
+%%     \tableofcontents[currentsection,currentsubsection]
+%%   \end{frame}
+%% }
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+\beamerdefaultoverlayspecification{<+->}
+
+%\newcommand{\R}[1]{{\color{red}{#1}}}
+%\newcommand{\W}{\vec{W}}
+%\newcommand{\V}{\vec{V}}
+%\newcommand{\X}{\vec{X}}
+%\newcommand{\loss}{\vec{\ell}}
+%\newcommand{\HedgeLoss}{L_{\mbox{\footnotesize Hedge}}}
+
+\input{../macros}
+
+\begin{document}
+
+%\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[pausesections]
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+\section{The Halving Algorithm}
+% put slides from talk1 here
+
+
+\section{\ouralg Algorithm}
+
+\begin{frame}
+\frametitle{The hedging problem}
+
+\begin{itemize}
+\item \R{$N$} possible actions 
+
+\item At each time step \R{$t=1,2,\ldots,T$}:
+\begin{itemize}
+\item Algorithm chooses a distribution \R{$\distvec{t}$} over actions.
+\item Losses \R{$0 \leq \cost{t}{i} \leq 1$} of all actions \R{$i=1,\ldots,N$} are revealed.
+\item Algorithm suffers {\bf expected} loss \R{$\distvec{t} \cdot \costvec{t}$}
+\end{itemize}
+\item {{\bf Goal:} minimize total expected loss}
+\item {Here we have stochasticity - but only in {\bf algorithm}, not in {\bf outcome}}
+\item {Fits nicely in game theory}
+\end{itemize}
+\end{frame}
+
+\subsection{Hedging vs. Halving}
+
+\begin{frame}
+\frametitle{Hedging vs. Halving}
+\begin{itemize}
+\item Like halving - we want to zoom into best action (expert).
+\item Unlike halving - no action is perfect.
+\item Basic idea - reduce probability of lossy actions, \\
+but {\color{blue}not all the way to zero}.
+\item {\bf Modified Goal:}
+minimize {\color{blue}{difference between}} \\
+expected total loss \\
+{\color{blue}{and}} \\
+minimal total loss of repeating one action.
+\R{\[
+\sum_{t=1}^T \distvec{t} \cdot \costvec{t} - \min_i \left(\sum_{t=1}^T \cost{t}{i} \right)
+\]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Using hedge to generalize halving alg.}
+\begin{itemize}
+\item Suppose that there is no perfect expert.
+\item action \R{$i\;\;$} = use prediction of expert \R{$i$}
+\item Now each iteration of game consistst of \R{three} steps:
+\begin{itemize}
+\item Experts make predictions \R{$e^t_i \in \{0,1\}$}
+\item Algorithm predicts \R{$1$} with probability \R{$\sum_{i: e^t_i=1} \dist{t}{i}$}.
+\item outcome \R{$o^t_i$} is revealed. \R{$\cost{t}{i}=0$} if \R{$e^t_i = o^t_i$}, \R{$\cost{t}{i}=1$} otherwise.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The \ouralg Algorithm}
+Consider action \R{$i$} at time \R{$t$}
+\begin{itemize}
+\item Total loss:
+\R{$$L_i^t = \sum_{s=1}^{t-1} \ell_i^s$$}
+\item Weight:
+\R{$$\wt{t}{i} = \wt{1}{i} e^{-\eta L_i^t}$$}
+Note freedom to choose initial weight (\R{$\wt{1}{i}$})
+\R{$\sum_{i=1}^n \wt{1}{i} = 1$}.
+\item
+\R{$\eta>0$} is the learning rate parameter. Halving: \R{$\eta \to \infty$}
+\item Probability:
+\R{$$\dist{t}{i} = \frac{\wt{t}{i}}{\sum_{j=1}^N \wt{t}{i}},\;\;
+\pause     \distvec{t} = \frac{\wtvec{t}}{\sum_{j=1}^N \wt{t}{i}}$$}
+\end{itemize}
+\end{frame}
+
+\begin{frame} 
+\frametitle{Choosing the initial weights} 
+
+\begin{itemize}
+\item Giving an action high initial weight makes alg perform well
+  \R{if} that action performs well.
+\item If good action has low initial weight, our total loss will
+  be larger.
+\item As \R{$\sum_{i=1}^n \wt{1}{i} = 1$} increasing one weight
+  implies decreasing some others.
+\item Plays a similar role to prior distribution in Bayesian
+  algorithms.
+\end{itemize}
+
+\end{frame} 
+
+\section{Bound on total loss}
+\begin{frame}
+\frametitle{Bound on the loss of \ouralg Algorithm}
+\begin{itemize}
+\item
+\begin{theorem}[main theorem] \label{thm:basic-bnd}
+For any sequence of loss vectors \R{$\costvec{1},\ldots,\costvec{\iter}$},
+and for any \R{$i\in\{1,\ldots,N\}$}, we have
+\R{\begin{equation*}
+\lossouralg \leq \frac{-\ln(\wt{1}{i}) + \eta \lossi{i}}
+		      {1-e^{-\eta}}.
+\end{equation*}}
+%% More generally, for any nonempty set $S\subseteq\{1,\ldots,N\}$, we have
+%% \begin{equation}\label{eqn:set-bnd}
+%% \lossouralg \leq \frac{-\ln(\sum_{i\in S}\wt{1}{i})
+%% 			 - \eta \max_{i\in S} \lossi{i}}
+%% 		      {1-e^{-eta}}.
+%% \end{equation}
+\end{theorem}
+\item
+\R{Proof}: by combining upper and lower bounds on \R{$\sumwts{\iter+1}$}
+\end{itemize}
+\end{frame}
+
+\subsection{Upper bound on $\sumwts{\iter+1}$}
+
+\begin{frame}
+\frametitle{Upper bound on \R{$\sumwts{\iter+1}$}}
+\begin{lemma}[upper bound] 
+For any sequence of loss vectors \R{$\costvec{1},\ldots,\costvec{\iter}$}
+we have
+\R{\[
+\ln\paren{\sumwts{\iter+1}} \leq -(1-e^{-\eta}) \lossouralg.
+\]}
+\end{lemma}
+\end{frame}
+
+\begin{frame}
+\frametitle{Proof of upper bound (slide 1)}
+\begin{itemize}
+\item
+If \R{$a \geq 0$} then \R{$a^r$} is convex.
+\item For \R{$r\in [0,1]$}, \R{$a^r \leq 1-(1-a)r$}
+\item
+\includegraphics[height=6cm]{figures/Convexity.pdf}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Proof of upper bound (slide 2)}
+Applying \R{$a^r \leq 1-(1-a)^r$} where \R{$a=e^{-\eta}$,$r=\cost{t}{i}$}
+\R{
+\begin{eqnarray*}
+\sumwts{t+1} &= & 
+ \sum_{i=1}^N \wt{t}{i} e^{-\eta \cost{t}{i}} \\
+~\pause  &\leq&  
+ \sum_{i=1}^N \wt{t}{i} \left( 1-(1-e^{-\eta})\cost{t}{i}\right) \\
+~\pause  &=& 
+ \paren{\sumwts{t}} \paren{ 1-(1-e^{-\eta}) \frac{\wtvec{t}}{\sumwts{t}} \cdot \costvec{t}}\\
+~\pause  &=& 
+ \paren{\sumwts{t}} \paren{ 1-(1-e^{-\eta}) \distvec{t}\cdot\costvec{t} }
+\end{eqnarray*}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Proof of upper bound (slide 3)}
+\begin{itemize}
+\item Combining 
+\R{\[
+\sumwts{t+1} \leq  \paren{\sumwts{t}} \left( 1-(1-e^{-\eta}) \distvec{t}\cdot\costvec{t} \right)
+\]}
+\item
+for \R{$t=1,\ldots,T$} 
+\item yields
+\R{\begin{eqnarray*}
+\sumwts{T+1} &\leq& \prod_{t=1}^T (1-(1-e^{-\eta})
+                         \distvec{t}\cdot\costvec{t}) \\
+~\pause &\leq& \exp\paren{-(1-e^{-\eta}) \sum_{t=1}^T
+                         \distvec{t}\cdot\costvec{t}} \\
+\end{eqnarray*}}
+since \R{$1+x\leq e^x$} for $x = -(1-e^{-\eta})$.
+\end{itemize}
+\end{frame}
+
+\subsection{Lower bound on $\sumwts{\iter+1}$}
+
+\begin{frame}
+\frametitle{Lower bound on $\sumwts{\iter+1}$}
+
+For any \R{$j=1,\ldots,N$}:
+\R{\[
+\sumwts{\iter+1} \geq \wt{\iter+1}{j} = \wt{1}{j} e^{-\eta \lossi{j}}
+\]}
+
+\end{frame}
+
+\subsection{Combining Upper and Lower bounds}
+
+\begin{frame}
+\frametitle{Combining Upper and Lower bounds}
+\begin{itemize}
+\item
+Combining bounds on \R{$\ln \paren{\sumwts{\iter+1}}$}
+\R{\[
+ \ln \wt{1}{j} -\eta \lossi{j} \leq \ln \sumwts{\iter+1} 
+ \leq -(1-e^{-\eta}) \sum_{t=1}^T \distvec{t}\cdot\costvec{t}
+\]}
+\item
+Reversing signs, using \R{$\lossouralg = \sum_{t=1}^T \distvec{t}\cdot\costvec{t}$} 
+and reorganizing we get
+\R{\[
+\lossouralg \leq \frac{-\ln(\wt{1}{i}) + \eta \lossi{i}}
+		      {1-e^{-\eta}}
+\]}
+\end{itemize}
+\end{frame}
+
+\section{tuning $\eta$}
+
+\begin{frame}
+\frametitle{Tuning \R{$\eta$}}
+\includegraphics[height=7cm]{figures/beta-bounds.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tuning \R{$\eta$}}
+\begin{itemize}
+\item Suppose \R{$\min_i \lossi{i} \leq \upbnd{L}$}
+\item set
+\R{\[
+\eta = \ln \paren{ 1+ \sqrt{\frac{2 \ln N}{\upbnd{L}}}} \approx \sqrt{\frac{2 \ln N}{\upbnd{L}}}
+\]}
+\item use uniform initial weights \R{$\wtvec{1} = \langle 1/N,\ldots,1/N \rangle$}
+\item Then
+\R{\[
+\lossouralg \leq \frac{-\ln(\wt{1}{i}) + \eta \lossi{i}}
+		      {1-e^{-\eta}}
+\leq \min_i \lossi{i} + \sqrt{2 \upbnd{L} \ln N} + \ln N
+\]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tuning \R{$\eta$} as a function of \R{$T$}}
+\begin{itemize}
+\item trivially \R{$\min_i \lossi{i} \leq T$}, yielding
+\R{\[
+\lossouralg \leq \min_i \lossi{i} + \sqrt{2 T \ln N} + \ln N
+\]}
+\item per iteration we get:
+\R{\[
+\frac{\lossouralg}{T} \leq \min_i \frac{\lossi{i}}{T} + \sqrt{\frac{2 \ln N}{T}} + \frac{\ln N}{T}
+\]}
+\end{itemize}
+\end{frame}
+
+\section{Lower Bounds}
+\begin{frame}
+\frametitle{How good is this bound?}
+\begin{itemize}
+\item
+{\color{blue} Very good!} There is a closely matching lower bound!
+\item
+There exists a stochastic adversarial strategy such that with high
+probability for \alert{any} hedging strategy \R{${\algfnt S}$} after \R{$T$} trials
+\R{\[
+\lossS - \min_i \lossi{i} \geq (1-o(1)) \sqrt{2T \ln N}
+\]}
+\item
+The adversarial strategy is random, extremely simple, and does not
+depend on the hedging strategy! 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The adversarial strategy}
+\begin{itemize}
+\item
+Adversary sets each loss \R{$\cost{t}{i}$} indepedently at random \\
+to \R{$0$} or \R{$1$} with equal probabilities $(1/2,1/2)$.
+\item
+Obviously, nothing to learn !\\
+\R{$\lossS \approx T/2$.}
+\item
+On the other hand \R{$\min_i \lossi{i} \approx T/2 - \sqrt{2T \ln N}$}
+\item
+The difference \R{$\lossS - \min_i \lossi{i}$} is due to unlearnable
+random fluctuations!
+\item
+Detailed proof quite involved. See games paper.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+\item Given learning rate \R{$\eta$} the \ouralg algorithm satisfies
+\R{\[
+\lossouralg \leq \frac{\ln N + \eta \lossi{i}}
+		      {1-e^{-\eta}}
+\]}
+\item Setting \R{$\eta \approx \sqrt{\frac{2 \ln N}{T}}$} guarantees
+\R{\[
+\lossouralg \leq \min_i \lossi{i} + \sqrt{2 T \ln N} + \ln N
+\]}
+\item
+A trivial random data, in which there is nothing to be learned forces
+\alert{any} algorithm to suffer this total loss
+\end{itemize}
+\end{frame}
+
+\iffalse
+\begin{frame}
+\frametitle{Some loose threads}
+\begin{itemize}
+\item Total Loss of best action usually scales linearly with time, but we can't change 
+$\eta$ on the fly. (I think El Yaniv proposed a reasonable solution).
+\item Observing only the loss of chosen action - the multi-armed
+  bandit problem. Will get to that later in the course.
+\item Next time: cumulative log loss and lossless data compression.
+\item Register on TWiki, add yourself to lists, and post your questions there!
+\item Office hour: 2-3pm on tuesdays.
+\end{itemize}
+\end{frame}
+\fi
+
+% Add slides about other losses, vovk's achievable, square loss, log
+% loss.
+\section{Some useful loss functions}
+
+\begin{frame}
+\frametitle{Some useful loss functions}
+\begin{itemize}
+\item
+\B{Outcomes:} \R{$\omega^1,\omega_2,\ldots$ $\omega^t \in [0,1]$}  
+\item
+\B{Predictions:} \R{$\gamma^1,\gamma^2,\ldots$  $\gamma^t \in [0,1]$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Log loss (Entropy loss)} 
+\begin{itemize}
+\item
+\R{\[ \lambda_{\text{ent}}(\omega,\gamma) = \omega \ln \frac{\omega}{\gamma} 
+                              +(1-\omega) \ln \frac{1-\omega}{1-\gamma} \]}
+\item
+When \R{$q_t \in \{0,1\}$} Cumulative log loss \R{$=$} coding length \R{$\pm 1$}
+\item
+If \R{$P[\omega_t=1]=q$}, optimal prediction \R{$\gamma^t=q$}
+\item
+\B{Un}bounded loss.
+\item
+\B{Not} symmetric \R{$\exists p,q\;\; \lambda(p,q) \neq \lambda(q,p)$}.
+\item
+\B{No} triangle inequality
+\R{$ \exists p_1,p_2,p_3\;\; \lambda(p_1,p_3) > \lambda(p_1,p_2) + \lambda(p_2,p_3)$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Square loss (Breier Loss)}
+\begin{itemize}
+\item
+\R{\[ \lambda_{\text{sq}}(\omega,\gamma)  = (\omega-\gamma)^2 \]}
+\item
+\R{$P[\omega^t=1]=q,\;\; P[\omega^t=0]=1-q$}, \\
+optimal prediction \R{$\gamma^t=q$}
+\item
+Bounded loss.
+\item
+Defines a metric (symmetric and triangle ineq.)
+\item
+Corresponds to regression.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Hellinger Loss}
+
+\begin{itemize}
+\item
+\R{\[ \lambda_{\text{hel}}(\omega,\gamma)  = \frac{1}{2} \paren{
+\paren{\sqrt{\omega} +\sqrt{\gamma}}^2 + 
+\paren{\sqrt{1-\omega}+\sqrt{1-\gamma}}^2 
+} \] } 
+\item
+If \R{$P[\omega^t=1]=q,\;\; P[\omega^t=0]=1-q$}, \\
+optimal prediction \R{$\gamma^t=q$}
+\item
+Loss is bounded.
+\item
+Defines a metric.
+\item 
+\R{$\lambda_{\text{hel}}(p,q)  \approx \lambda_{\text{ent}}(p,q)$} when 
+\R{$p \approx q$} and \R{$p,q \in (0,1)$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Absolute loss}
+
+\begin{itemize}
+\item
+\R{\[ \lambda(\omega,\gamma) = | \omega -\gamma | \]}
+\item
+Probability of making a mistake if predicting 0 or 1 
+using a biased coin\\
+\item
+If \R{$P[\omega^t=1]=q,\;\; P[\omega^t=0]=1-q$}, then the optimal prediction is 
+\R{\[
+\gamma^t = 
+\begin{cases} 1 & \text{if $q>1/2$,} \\
+              0 & \text{otherwise}
+\end{cases}
+\]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Structureless bounded loss}
+
+\begin{itemize}
+\item Prediction is a distribution 
+\R{$\gamma = \langle p_1,\ldots,p_N \rangle$, $p_i \geq 0$, $\sum_{i=1}^N p_i = 1$}
+\item Outcome is a loss vector \R{$\omega = \langle \omega_1,\ldots,\omega_N \rangle$, 
+$0 \leq \omega_i \leq 1$}
+\item Loss is the dot product: \R{$\lambda_{\text{dot}}(\omega,\gamma) = \gamma \cdot \omega$}
+\item Corresponds to the hedging game.
+\item For hedge loss the regret is \R{$\Omega(\sqrt{T \log N})$}.
+\item For the log loss the regret is \R{$O(\log N)$}
+\item {\bf Which losses behave like \B{entropy loss} and which behave like \B{hedge loss}}?
+\end{itemize}
+\end{frame}
+
+% Add slides on log loss. - Bayes algorithm.
+\section{Summary table}
+
+\begin{frame}
+\frametitle{Summary of bounds for mixable losses}
+\includegraphics[height=6cm]{figures/summarytable.jpg}
+\end{frame}
+
+\end{document}
+
+

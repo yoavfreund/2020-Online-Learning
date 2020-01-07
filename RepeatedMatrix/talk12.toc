@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Repeated Matrix Games}{3}{0}{1}
+\beamer@sectionintoc {2}{Fictitious play}{8}{0}{2}
+\beamer@sectionintoc {3}{Strategy using Hedge}{10}{0}{3}
+\beamer@sectionintoc {4}{The basic analysis}{11}{0}{4}
+\beamer@sectionintoc {5}{Proof of minmax theorem}{18}{0}{5}
+\beamer@sectionintoc {6}{Approximately solving games}{21}{0}{6}
+\beamer@subsectionintoc {6}{1}{Fixed Learning rate}{22}{0}{6}
+\beamer@subsectionintoc {6}{2}{Variable learning rate}{23}{0}{6}

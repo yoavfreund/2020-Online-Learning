@@ -1,0 +1,555 @@
+% $Header: /data/cvsroot/Courses/OnlineLearning/talks/talk5/talk5.tex,v 1.2 2006/02/19 18:48:02 yfreund Exp $
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Montpellier}
+
+  %\setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage{xmpmulti} % package that defines \multiinclude
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title[Infinite sets of experts]% (optional, use only with long paper titles)
+{Combining infinite sets of experts}
+
+\author[Freund] % (optional, use only with lots of authors)
+{Yoav Freund}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+
+\subject{Machine Learning}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%% \AtBeginSubsection[]
+%% {
+%%   \begin{frame}<beamer>
+%%     \frametitle{Outline}
+%%     \tableofcontents[currentsection,currentsubsection]
+%%   \end{frame}
+%% }
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+\beamerdefaultoverlayspecification{<+->}
+
+\input{../macros}
+
+\begin{document}
+
+%\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[pausesections]
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+\section{Review}
+
+\begin{frame}
+\frametitle{The online Bayes Algorithm}
+\begin{itemize}
+\item {\color{blue} Total loss} of expert \R{$i$}
+\R{$$L_i^t = - \sum_{s=1}^{t} \log p_i^s(c^s);\;\;\; L_i^0 = 0$$}
+\item {\color{blue}Weight} of expert \R{$i$}
+\R{$$\wt{t}{i} = \wt{1}{i} e^{-L_i^{t-1}} = \wt{1}{i} \prod_{s=1}^{t-1} p_i^s(c^s)$$}
+\item
+Freedom to choose initial weights.\\
+ \R{$\wt{1}{t} \geq 0$}, \R{$\sum_{i=1}^n \wt{1}{i} = 1$}
+\item {\color{blue}Prediction} of algorithm \R{$A$}
+\R{\[
+\vp_A^t = \frac{\sum_{i=1}^N \wt{t}{i} \vp_i^t}{\sum_{i=1}^N \wt{t}{i}}
+\]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cumulative loss vs. Final total weight}
+
+\onslide<1-> Total weight: \R{$W^t \doteq \sum_{i=1}^N \wt{t}{i}$}
+
+\onslide<2-> \R{$$
+\frac{W^{t+1}}{W^t}  =  \frac{\sum_{i=1}^N \wt{t}{i} e^{\log p_i^t(c^t)}}{\sum_{i=1}^N \wt{t}{i}} 
+\onslide<3->          =   \frac{\sum_{i=1}^N \wt{t}{i} p_i^t(c^t)}{\sum_{i=1}^N \wt{t}{i}} 
+\onslide<4->        =  p_A^t(c^t)
+$$}
+\onslide<5-> \R{$$ -\log \frac{W^{t+1}}{W^t} = -\log p_A^t(c^t) $$}
+\R{\[
+\onslide<8-> -\log W^{T+1} =
+\onslide<6-> -\log \frac{W^{T+1}}{W^1} = -\sum_{t=1}^T \log p_A^t(c^t)
+\onslide<7-> = L_A^T
+\]}
+\onslide<9-> \R{\bf EQUALITY} not bound!
+\end{frame}
+
+\begin{frame}
+\frametitle{Simple Bound}
+\begin{itemize}
+\item Use non-uniform initial weights \R{$\sum_i \wt{1}{i} = 1$}
+\item Total Weight is at least the weight of the best expert.
+\R{\begin{eqnarray*}
+L_A^T & = & -\log W^{T+1} 
+\pause = -\log \sum_{i=1}^N \wt{T+1}{i} \\
+\pause & = & -\log \sum_{i=1}^N \wt{1}{i} e^{-L_i^T} 
+\pause \leq  - \log \max_i \paren{ \wt{1}{i} e^{-L_i^T} } \\
+\pause & = & \min_i \paren{ L_i^T -\log \wt{1}{i} }
+\end{eqnarray*}}
+\end{itemize}
+\end{frame}
+
+\section{The Universal prediction machine}
+
+\begin{frame}
+\frametitle{Standardizing online prediction algorithms}
+\begin{itemize}
+\item Fix a universal Turing machine \R{$U$}.
+\item An online prediction algorithm \R{$E$} is a program that 
+\begin{itemize}
+\item
+given as input {\color{blue} The past} \R{$\X \in \{0,1\}^t$}
+\item runs finite time and outputs
+\item
+A prediction for the next bit \R{$p(\X) \in [0,1]$}.
+\item 
+To ensure \R{$p$} has a finite description. Restrict to {\color{blue}rational} numbers 
+\R{$n/m$}
+\end{itemize}
+
+\item \B{Any} online prediction algorithm can be represented as code \R{$\vb(E)$}
+for \R{$U$}. The code length is \R{$|\vb(E)|$}.
+\item Most sequences do not correspond to valid prediction algorithms. 
+\item 
+\R{$V(\vb,\X,t)=1$} if the program \R{$\vb$}, given \R{$\X$} as input, 
+halts within \R{$t$} steps and outputs a well-formed prediction. Otherwise \R{$V(\vb,\X,t)=0$}
+\item \R{$V(\vb,\X,t)$} is computable (recursively enumerable).
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A universal prediction machine}
+\begin{itemize}
+\item Assign to the code \R{$\vb$} the initial weight \R{$\wt{1}{\vb} = 2^{-|\vb|-\log_2 |\vb|}$}.
+\item The total initial weight over all finite binary sequences is one.
+\item Run the Bayes algorithm over ``all'' prediction algorithms.
+\item \B{technical details:} On iteration \R{$t$}, \R{$|\X|=t$}. 
+Use the predictions of 
+programs \R{$\vb$} such that \R{$|\vb| \leq t$} and for which \R{$V(\vb,\X,2^t)=1$}. Assing the remaining mass the prediction \R{$1/2$} (insuring a loss of \R{$1$})
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Performance of the universal prediction algorithm}
+\begin{itemize}
+\item Using \R{$ L_A \leq \min_i \paren{ L_i -\log \wt{1}{i}}$}
+\item Assume \R{$E$} is a prediction algorithm which generates the 
+\R{$t$}th prediction in time smaller than \R{$2^t$}
+\item When \R{$t \leq |\vb(E)|$} the algorithm is not used and thus it's loss is \R{$1$}
+\item We get that the loss of the Universal algorithm is at most 
+\R{$2|\vb(E)| + \log_2 |\vb(E)| + L_E$}
+\item More careful analysis can reduce \R{$2|\vb(E)| + \log_2 |\vb(E)|$} to \R{$|\vb(E)|$}
+\item Code length is arbitrarily close to the Kolmogorov Complexity of the sequence.
+\item Ridiculously bad running time.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bayes coding is better than two part codes}
+\begin{itemize}
+\item
+Simple bound as good as bound for two part codes (MDL) 
+but enables online compression
+\item Suppose we have \R{$K$} copies of each expert.
+\item Two part code has to point to one of the $KN$ experts
+\R{$ L_A \leq \log NK + \min_i L_i^T = \log NK + \min_i L_i^T$}
+\item If we use Bayes predictor + arithmetic coding we get:
+\R{$$ L_A = -\log W^{T+1} \leq \log  K \max_i \frac{1}{NK} e^{-L_i^T} 
+=\log N + \min_i L_i^T $$}
+\item We don't pay a penalty for copies.
+\item More generally, the regret is smaller if many of the experts perform well.
+\end{itemize}
+\end{frame}
+
+\section{The biased coins set of experts}
+\begin{frame}
+\frametitle{The biased coins set of experts}
+\begin{itemize}
+\item Each expert corresponds to a biased coin, predicts with a fixed \R{$\theta \in [0,1]$}.
+\item Set of experts is \R{uncountably infinite}.
+\item Only countably many experts can be assigned non-zero weight.
+\item Instead, we assign the experts a \R{Density Measure}.
+\item \R{$ L_A \leq \min_i \paren{ L_i -\log \wt{1}{i}}$} is meaningless.
+\item Can we still get a meaningful bound?
+\end{itemize}
+\end{frame}
+
+\section{Bayes using Jeffrey's prior}
+
+\begin{frame}
+\frametitle{Bayes Algorithm for biased coins}
+\begin{itemize}
+\item 
+Replace the initial weight by a density measure \R{$\dweight{\theta}{} =
+\dweight{\theta}{1}$, $\int_0^1 \dweight{\theta}{} d\theta=1$}
+\item 
+Relationship between final total weight and total log loss remains unchanged:
+\R{\[
+ \TAloss = \ln \int_0^1 \dweight{\theta}{} e^{-\TEloss{\theta}^{T+1}} d\theta
+\]}
+\item
+We need a new \B{lower bound} on the final total weight
+\end{itemize}
+\end{frame}
+
+ \begin{frame}
+\frametitle{Main Idea}
+If \R{$\dweight{\theta}{t}$} is large then \R{$\dweight{\theta+\epsilon}{t}$} is also large.
+~\pause
+\includegraphics[height=6cm]{figures/neighborhood.pdf}
+\end{frame}
+
+\subsection{Laplace Approximation}
+\begin{frame}
+\frametitle{Expanding the exponent around the peak}
+
+\begin{itemize}
+\item
+For log loss the best \R{$\theta$} is empirical distribution
+of the seq.
+\R{\[
+	\btheta = {\#\{x^t=1;\;\; 1 \leq t \leq T \} \over T} 
+\]}
+\item
+The total loss scales with \R{$T$}
+\R{\[
+\TEloss{\theta} =
+ T \cdot (\btheta \ell(\theta,1) + (1-\btheta)\ell(\theta,0))
+ \doteq T \cdot g(\btheta,\theta)
+\]}
+\end{itemize}
+\pause
+\R{ \begin{eqnarray*}
+\TAloss - \BEloss &\leq&
+\ln \int_0^1 \dweight{\theta}{} e^{- \TEloss{\theta}} d\theta
+- \ln e^{\BEloss} \\
+\pause &=&
+\ln \int_0^1 \dweight{\theta}{} e^{-
+(\TEloss{\theta}-\BEloss)} d\theta \\
+pause &=&
+\ln \int_0^1 \dweight{\theta}{} 
+e^{T (g(\btheta,\theta) - g(\btheta,\btheta))} d\theta
+\end{eqnarray*}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Laplace approximation (idea)}
+\begin{itemize}
+\item Taylor expansion of \R{$g(\btheta,\theta)-g(\btheta,\btheta)$} around \R{$\theta=\btheta$}.
+\item
+First and second terms in the expansion are zero.
+\item
+Third term gives a quadratic expression in the exponent
+\item
+$\Rightarrow$ a gaussian approximation of the posterior.
+\end{itemize}
+\pause
+\includegraphics[height=5cm]{figures/Laplace.pdf}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Laplace Approximation (details)}
+
+\R{\begin{eqnarray*}
+\lefteqn{\int_0^1  \dweight{\theta}{} 
+         e^{T (g(\btheta,\theta)-g(\btheta,\btheta))} d\theta}\\
+\pause &=& \dweight{\btheta}{} \sqrt{-2 \pi \over 
+T \left. {d^2 \over d\theta^2} \right|_{\theta=\btheta} 
+(g(\btheta,\theta)-g(\btheta,\btheta))}
++ O(T^{-3/2})
+\end{eqnarray*}}
+\end{frame}
+
+\subsection{Choosing the optimal prior}
+
+\begin{frame}
+\frametitle{Choosing the optimal prior}
+\begin{itemize}
+\item
+Choose \R{$\dweight{\theta}{}$} to maximize the worst-case final total weight
+\R{\[
+\min_{\btheta} \dweight{\btheta}{} \sqrt{-2 \pi \over 
+T \left. {d^2 \over d\theta^2} \right|_{\theta=\btheta} 
+(g(\btheta,\theta)-g(\btheta,\btheta))}
+\]}
+\item
+Make bound equal for all \R{$\btheta \in [0,1]$} by choosing
+\R{\[
+\dweight{\btheta}{*} =
+{1 \over Z}
+\sqrt{\left. {d^2 \over d\theta^2} \right|_{\theta=\btheta} 
+(g(\btheta,\theta)-g(\btheta,\btheta)) \over - 2 \pi}~,
+\]}
+where \R{$Z$} is the normalization factor:
+\R{\[
+Z =\sqrt{1 \over 2 \pi}\;\;
+\int_0^1 \;\;\sqrt{\left. {d^2 \over d\theta^2} \right|_{\theta=\btheta} 
+(g(\btheta,\btheta)-g(\btheta,\theta))} \;\;d\btheta
+\]}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The bound for the optimal prior}
+\begin{itemize}
+\item Plugging in we get
+\R{\begin{eqnarray*}
+\TAloss - \BEloss &\leq&
+\ln \int_0^1 \dweight{\theta}{*} 
+e^{T (g(\btheta,\theta) - g(\btheta,\btheta))} d\theta \\
+&=&
+\ln \left( \sqrt{2\pi Z \over T} + O(T^{-3/2}) \right) \\
+&=&
+{1 \over 2} \ln {T \over 2\pi} -{1 \over 2} \ln Z + O(1/T)~.
+\end{eqnarray*}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Solving for log-loss}
+\begin{itemize}
+\item
+The exponent in the integral is
+\R{\[
+g(\btheta,\theta) - g(\btheta,\btheta)
+=
+\btheta \ln {\btheta \over \theta} + 
+(1-\btheta) \ln {1-\btheta \over 1-\theta}
+=
+D_{KL} (\btheta || \theta)
+\]}
+\item
+The second derivative
+\R{\[
+\left. {d^2 \over d\theta^2} \right|_{\theta=\btheta} 
+D_{KL} (\btheta || \theta) = \btheta (1-\btheta)
+\]}
+Is called the \B{empirical Fisher information}
+\item
+The optimal prior:
+\R{\[
+\dweight{\btheta}{*} = \frac{1}{\pi \sqrt{\btheta (1-\btheta)}}
+\]}
+Known in general as \B{Jeffrey's prior}.  And, in this case, 
+the \B{Dirichlet-$(1/2,1/2)$ prior}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The cumulative log loss of Bayes using Jeffrey's prior}
+\begin{itemize}
+\item
+\R{\[
+\TAloss - \BEloss \leq {1 \over 2} \ln (T+1) 
+                     + {1 \over 2} \ln {\pi \over 2}
+                     + O(1/T)
+\]}
+\end{itemize}
+\end{frame}
+
+\subsection{Kritchevski Trofimov Prediction Rule}
+\begin{frame}
+\frametitle{But what is the prediction rule?}
+\begin{itemize}
+\item As luck would have it the Dirichlet prior is the \B{conjugate prior} for the Binomial distribution.
+\item
+Observed \R{$t$} bits, \R{$n$} of which were \R{$1$}. The posterior is:
+\R{\[
+\frac{1}{Z \sqrt{\theta(1-\theta)}} \theta^n (1-\theta)^{t-n} 
+ = 
+\frac{1}{Z} \theta^{n-1/2} (1-\theta)^{t-n-1/2} 
+\]}
+\item
+The posterior average is:
+\R{\[
+\frac{\int_0^1 \theta^{n+1/2} (1-\theta)^{t-n-1/2} d\theta}
+{\int_0^1 \theta^{n-1/2} (1-\theta)^{t-n-1/2} d\theta}
+=
+\frac{n+1/2}{t+1}
+\]}
+\item This is called the Trichevsky Trofimov prediction rule.
+\end{itemize}
+\end{frame}
+
+\subsection{Laplace Rule of Succession}
+\begin{frame}
+\frametitle{Laplace Rule of Succession}
+\begin{itemize}
+\item
+Laplace suggested using the uniform prior, which is also a conjugate prior.
+\item In this case the posterior average is:
+\R{\[
+\frac{\int_0^1 \theta^{n+1} (1-\theta)^{t-n} d\theta}
+{\int_0^1 \theta^{n} (1-\theta)^{t-n} d\theta}
+=
+\frac{n+1}{t+2}
+\]}
+\item
+The bound on the cumulative log loss is worse:
+\R{\[
+\TAloss - \BEloss = \ln T + O(1)
+\]}
+\item
+Suffers larger regret when \R{$\btheta$} is far from \R{$1/2$}
+\end{itemize}
+\end{frame}
+
+%\section{Priors for finite $t$}
+
+\section{Shtarkov lower bound for finite horizon}
+
+\begin{frame}
+\frametitle{Shtarkov Lower bound}
+\begin{itemize}
+\item What is the \B{optimal} prediction when \R{$T$} is know in
+  advance?
+\item
+\R{\[
+L_*^T - \min_\theta L_\theta^T \geq \frac{1}{2} \ln(T+1) + \frac{1}{2}
+\ln \frac{\pi}{2} - O(\frac{1}{\sqrt{T}})
+\]}
+\end{itemize}
+\end{frame}
+
+\section{Generalization to larger sets of distributions}
+
+\begin{frame}
+\frametitle{Multinomial Distributions}
+\begin{itemize}
+\item For a distribution over \R{$k$} elements (Multinomial) \B{[Xie and Barron]}
+\item Use the add 1/2 rule (KT).
+\R{\[
+p(i) = \frac{n_i+1/2}{t+k/2}
+\]}
+\item Bound is
+\R{\[\TAloss - \BEloss \leq \frac{k-1}{2}\ln T + C + o(1)\]}
+\item 
+The constant C is optimal.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exponential Distributions}
+\begin{itemize}
+\item For any set of distributions from the exponential family
+  defined by \R{$k$} parameters (Some technical conditions on closure
+  of set??) \B{[Rissanen??]}
+\item Use Bayes Algorithm with Jeffrey's prior:
+\R{\[
+\dweight{\btheta}{*} = \frac{1}{Z} 
+\frac{1}{\sqrt{
+\left| \left. {\mathbf H} \paren{D_{KL} (\btheta || \theta) } \right|_{\theta=\btheta} \right|
+}}
+\]}
+\R{$\mathbf H$} denotes the Hessian.
+\item
+\R{\[\TAloss - \BEloss \leq \frac{k-1}{2}\ln T - \ln Z + o(1)\]}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{General Distributions}
+\begin{itemize}
+\item Characterize distribution family by metric entropy.
+\item Fixed parameter set usually corresponds to polynomial metrix
+  entropy
+\R{ \[
+N(1/\epsilon) = O\paren{\frac{1}{\epsilon^d}}
+\]}
+\R{$d$} is the number of parameters.
+\item
+\B{[Haussler and Opper]} show that the coefficient in front of \R{$\ln
+  T$} is optimal for distribution families where the metric entropy is
+  up to 
+\R{\[ 
+N(1/\epsilon) = O\paren{e^{\epsilon^{-\alpha}}}
+\]}
+For all \R{$\alpha \leq 5/2$}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{next Class}
+\begin{itemize}
+\item Variable-length markov models - a set of distributions with
+  increasing number of parameters.
+\item THe context algorithm: An efficient implementation of the Bayes
+  algorithm which achieves close-to-optimal worst case bounds.
+\end{itemize}
+\end{frame}
+
+\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{XXX}
+\begin{itemize}
+\item XXX
+\end{itemize}
+\end{frame}
+
+\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+

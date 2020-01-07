@@ -1,0 +1,20 @@
+\BOOKMARK [2][]{Outline0.1}{Lossless data compression}{}% 1
+\BOOKMARK [2][]{Outline0.2}{The guessing game}{}% 2
+\BOOKMARK [2][]{Outline0.3}{Arithmetic coding}{}% 3
+\BOOKMARK [2][]{Outline0.4}{The performance of arithmetic coding}{}% 4
+\BOOKMARK [2][]{Outline0.5}{Source entropy}{}% 5
+\BOOKMARK [2][]{Outline0.6}{Other properties of log loss}{}% 6
+\BOOKMARK [3][]{Outline0.6.1.11}{Unbiased prediction}{Outline0.6}% 7
+\BOOKMARK [3][]{Outline0.6.2.12}{Other examples for using log loss}{Outline0.6}% 8
+\BOOKMARK [2][]{Outline0.7}{universal coding}{}% 9
+\BOOKMARK [3][]{Outline0.7.1.15}{Two part codes}{Outline0.7}% 10
+\BOOKMARK [3][]{Outline0.7.2.16}{Combining expert advice for cumulative log loss}{Outline0.7}% 11
+\BOOKMARK [2][]{Outline0.8}{Combining experts in the log loss framework}{}% 12
+\BOOKMARK [2][]{Outline0.9}{The online Bayes Algorithm}{}% 13
+\BOOKMARK [2][]{Outline0.10}{The performance bound}{}% 14
+\BOOKMARK [2][]{Outline0.11}{Comparison with Bayesian Statistics}{}% 15
+\BOOKMARK [2][]{Outline0.12}{Computational issues}{}% 16
+\BOOKMARK [2][]{Outline0.13}{The Universal prediction machine}{}% 17
+\BOOKMARK [2][]{Outline0.14}{The biased coins set of experts}{}% 18
+\BOOKMARK [3][]{Outline0.14.1.31}{Bayes using Jeffrey's prior}{Outline0.14}% 19
+\BOOKMARK [2][]{Outline0.15}{Generalization to larger sets of distributions}{}% 20

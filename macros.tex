@@ -1,0 +1,269 @@
+\newcommand{\newmcommand}[2]{\newcommand{#1}{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\renewmcommand}[2]{\renewcommand{#1}{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\newmcommandi}[2]{\newcommand{#1}[1]{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\newmcommandii}[2]{\newcommand{#1}[2]{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\newmcommandiii}[2]{\newcommand{#1}[3]{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+
+\newcommand{\algfnt}{\bf}
+
+\newmcommand{\ouralg}{{\mbox{\algfnt Hedge}({\eta})}}
+
+\newmcommand{\iter}{T}
+
+\newfont{\cmmib}{cmmib10}
+\newcommand{\boldell}{{\mbox{\cmmib \symbol{'140}}}}
+
+
+\newmcommandi{\costvec}{{\boldell}^{#1}}
+\newmcommandii{\cost}{{\ell}^{#1}_{#2}}
+
+\newmcommandi{\rd}{\tilde{#1}}
+
+\newmcommandi{\distvec}{{\bf p}^{#1}}
+\newmcommandi{\rddistvec}{\rd{\bf p}^{#1}}
+\newmcommandii{\dist}{{p}^{#1}_{#2}}
+\newmcommandii{\rddist}{\rd{p}^{#1}_{#2}}
+
+\newmcommandi{\bdistvec}{{\bf q}^{#1}}
+\newmcommandii{\bdist}{{q}^{#1}_{#2}}
+
+\newmcommandi{\wtvec}{{\bf w}^{#1}}
+\newmcommandi{\rdwtvec}{\rd{\bf w}^{#1}}
+\newmcommandii{\wt}{{w}^{#1}_{#2}}
+\newmcommandii{\rdwt}{\rd{w}^{#1}_{#2}}
+
+
+\newcommand{\Nweight}[2]{V_{#1}^{#2}}	%the normalized weight
+\newcommand{\dweight}[2]{w^{#2}(#1)} % initial density measure
+\newcommand{\TEloss}[1]{L_{#1}}	%total loss of expert i
+\newcommand{\BEloss}{L_{\min}}	%total loss of the best expert
+\newcommand{\TAloss}{L_A}	%total loss of algorithm
+\newcommand{\weight}[2]{W_{#1}^{#2}} % weight assigned to expert
+\newcommand{\btheta}{\hat{\theta}}
+
+\newcommand{\R}[1]{{\color{red}{#1}}}
+\newcommand{\B}[1]{{\color{blue}{#1}}}
+\newcommand{\RM}[1]{{\color{red}{$#1$}}}
+
+
+%BANDITS
+\newcommand{\Aplay}{{\bf Hedge}}
+\newcommand{\Aest}{{\bf Exp3}}
+\newcommand{\Aesthp}{{\bf Exp3.P}}
+\newcommand{\Aestg}{{\bf Exp3.P.1}}
+\newcommand{\Aests}{{\bf Exp3.S}}
+\newcommand{\Aessg}{{\bf Exp3.S.1}}
+\newcommand{\Astrat}{{\bf Exp4}}
+\newcommand{\Abound}{{\bf Exp3.1}}
+\newcommand{\Gbest}{G_{\rm max}}
+
+\newcommand{\defeq}{\stackrel{\rm def}{=}}
+\newcommand{\compl}{\mbox{\sc h}}
+\newcommand{\theset}[2]{\{ {#1} \,:\, {#2} \}}
+
+\newmcommandii{\stratv}{\mbox{\boldmath $\xi$}^{#1}({#2})}
+
+%Games paper
+\newmcommand{\M}{\bf M}
+\newmcommand{\dM}{\M'}
+\newmcommand{\Row}{\bf R}
+\newmcommand{\dRow}{\R'}
+\newmcommand{\C}{\bf C}
+\newmcommand{\dC}{\C'}
+\newmcommand{\D}{D}
+\renewmcommand{\P}{\bf P}
+\newmcommand{\Q}{\bf Q}
+\newmcommand{\Dt}{\D_t}
+\newmcommand{\Pt}{\P_t}
+\newmcommand{\Qt}{\Q_t}
+\newmcommand{\Pstar}{\P^*}	% the min/max optimal mixed strategy
+\newmcommand{\Pref}{\tilde{\P}}	% a reference mixed strategy (not
+				% necessarily min/max)
+\newmcommand{\Qstar}{\Q^*}
+\newmcommand{\Pa}{\overline{\P}}
+\newmcommand{\Qa}{\overline{\Q}}
+\newmcommand{\Qh}{\hat{\Q}}
+\newmcommandi{\trans}{{#1}^{\rm T}}
+\newmcommand{\mhx}{\M(h,x)}
+\newmcommand{\mxh}{\dM(x,h)}
+\newmcommand{\mpq}{\M(\P,\Q)}
+\newmcommand{\mpsq}{\M(\Pstar,\Q)}
+\newmcommand{\mpsqt}{\M(\Pstar,\Qt)}
+\newmcommand{\mptqt}{\M(\Pt,\Qt)}
+\newmcommand{\mptt}{\M(\Pt,t)}
+\newmcommand{\mptq}{\M(\Pt,\Q)}
+\newmcommand{\mpqt}{\M(\P,\Qt)}
+\newcommand{\minp}{\min_{\P}}
+\newcommand{\maxq}{\max_{\Q}}
+\newcommand{\RE}[2]{{\rm RE}\left( {#1} \; \parallel \; {#2} \right) }
+
+\newmcommand{\sumt}{\sum_{t=1}^T}
+\newmcommand{\sumin}{\sum_{i=1}^n}
+\newmcommand{\delt}{\Delta_{T,n}}
+\newcommand{\nextline}{\vspace{0.2cm}\\}   % a little space for equation arrays
+
+\newcommand{\lwalg}{\mbox{\rm MW}}
+\newcommand{\lwalgvar}{\mbox{\rm vMW}}
+
+%%
+\newcommand{\E}{\mbox{\rm\bf E}}
+\newcommand{\p}[2]{p_{#1}(#2)}
+\newcommand{\q}[2]{q_{#1}(#2)}
+\newcommand{\x}[2]{x_{#1}({#2})}
+\newmcommand{\bx}{\mbox{\boldmath$x$}}
+\newmcommandi{\xv}{\bx({#1})}
+\newmcommand{\xvt}{\xv{t}}
+%\newcommand{\w}[2]{w_{#1}({#2})} replaced by \wt, but remember to switch order of parameters i and t
+\renewcommand{\i}[1]{i_{#1}}
+\newcommand{\hx}[2]{\hat{x}_{#1}(#2)}
+\newcommand{\hxit}{\hx{\i{t}}{t}}
+\newcommand{\pit}{\p{\i{t}}{t}}
+\newcommand{\xit}{\x{\i{t}}{t}}
+\newcommand{\expb}[1]{\exp\left(#1\right)}
+
+%\newcommand{\vp}{{\mathbf p}}
+\newcommand{\vu}{{\mathbf u}}
+\newcommand{\vv}{{\mathbf v}}
+\newcommand{\vx}{{\mathbf x}}
+\newcommand{\vy}{{\mathbf y}}
+
+\newcommand{\HedgeLoss}{L_{\mbox{\footnotesize Hedge}}}
+
+\newcommand{\W}{\vec{W}}
+\newcommand{\V}{\vec{V}}
+\newcommand{\X}{\vec{X}}
+\newcommand{\vb}{\vec{b}}
+%\newcommand{\loss}{\vec{\ell}}
+\newcommand{\loss}{L}
+%\newcommand{\elloss}[2]{\ell_{#1}^{#2}} %loss of expert i at time t
+\newcommand{\elloss}[2]{\ell_{#2}\left( #1 \right)} %loss of expert i at time t
+\newcommand{\w}[1]{\makebox[12pt]{{#1}}}
+\newcommand{\Rps}{\mbox{\tt R}}
+\newcommand{\rPs}{\mbox{\tt P}}
+\newcommand{\rpS}{\mbox{\tt S}}
+\newcommand{\rpstie}{\w{$\frac{1}{2}$}}
+\newcommand{\rpswin}{\w{$0$}}
+\newcommand{\rpsloss}{\w{$1$}}
+
+\newmcommand{\decspace}{\Delta}
+\newmcommand{\decsym}{\delta}
+\newmcommandi{\dec}{\decsym^{#1}}
+\newmcommand{\decdistsym}{\cal D}
+\newmcommandi{\decdist}{{\decdistsym}^{#1}}
+
+\newmcommand{\simpdistspace}{{\bf \cal S}}
+\newmcommand{\domset}{{\rm dom}(\decdistsym)}
+
+\newmcommand{\expdistsym}{{\cal E}}
+\newmcommandii{\expdist}{{\expdistsym}^{#1}_{#2}}
+\newmcommand{\expdecsym}{{\varepsilon}}
+\newmcommandii{\expdec}{\expdecsym^{#1}_{#2}}
+
+\newmcommand{\outspace}{\Omega}
+\newmcommand{\outsym}{\omega}
+\newmcommandi{\out}{\outsym^{#1}}
+
+%\newmcommandii{\Dkl}{D_{\mbox{kl}}\paren{#1||#2}}
+\newmcommandii{\Dkl}{{\rm {KL}}\paren{{#1}\;||\;{#2}}}
+
+\newmcommandi{\sumwts}{\sum_{i=1}^N \wt{#1}{i}}
+
+\newmcommand{\lossalg}{L_A}
+\newmcommand{\lossouralg}{{L_{\mbox{\scriptsize\algfnt Hedge}(\eta)}}}
+\newmcommand{\lossS}{{L_{\mbox{\scriptsize\algfnt S}}}}
+\newmcommandi{\lossi}{L_{#1}}
+\newmcommandii{\lossit}{L_{#1}^{#2}}
+
+\newmcommandi{\upbnd}{\tilde{#1}}
+
+\newcommand{\angles}[1]{{\left\langle {#1} \right\rangle}}
+\newcommand{\paren}[1]{{\left( {#1} \right)}}
+\newcommand{\brac}[1]{{\left[ {#1} \right]}}
+\newcommand{\braces}[1]{{\left\{ {#1} \right\}}}
+
+\newcommand{\abs}[1]{{\left| {#1} \right|}}
+\newcommand{\ceiling}[1]{{\left\lceil {#1} \right\rceil}}
+
+\newfont{\msym}{msbm10}
+\newcommand{\real}{\mbox{\msym R}}
+
+\newmcommand{\updatefcn}{U_\eta}
+
+%% \newtheorem{theorem}{Theorem}	
+%% \newtheorem{lemma}[theorem]{Lemma}
+%% \newtheorem{corollary}[theorem]{Corollary}
+%% \newtheorem{definition}{Definition}
+
+%\newcommand{\proof}{\noindent{\bf Proof:} }
+%\newcommand{\example}[1]{{\em Example #1.} }
+%\newcommand{\qed}{\rule{0.7em}{0.7em}}
+
+\newcommand{\WeakAlg}{\mbox{\algfnt WeakLearn}}
+\newcommand{\Boost}{\mbox{\algfnt AdaBoost}}
+\newcommand{\EX}{\mbox{\bf EX}}
+\newmcommand{\hf}{h_{{f}}}
+\newmcommand{\rdhf}{\rd{h}_{{f}}}
+\newmcommand{\hfT}{h^T_{{f}}}
+\newmcommand{\ranh}{{b}}
+
+\newmcommand{\conclass}{{\cal C}}
+
+\newmcommand{\badvec}{{\bf b}}
+\newmcommandi{\bad}{{b}_{#1}}
+
+%%%%%%%% New commands defined for the game-playing paper
+
+\newmcommand{\hedge}{\algfnt Hedge}
+\newmcommand{\play}{\algfnt Play}
+\newmcommandi{\Glossvec}{{\bg y}^{#1}}
+\newmcommandii{\Gloss}{{y}^{#1}_{#2}}
+%\newmcommandi{\action}{{I}_{#1}}
+\newmcommandi{\Gdistvec}{{\bf \tilde{p}}^{#1}}
+\newmcommandii{\Gdist}{{\teilde{p}}^{#1}_{#2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newmcommand{\Idistvec}{{D}}
+\newmcommandi{\Idist}{\Idistvec({#1})}
+\newmcommand{\Idistt}{\Idistvec_t}
+
+\newmcommand{\Xdist}{{\cal P}}
+\newmcommand{\emp}{\hat{\epsilon}}
+
+\newmcommand{\classpc}{Y}
+\newmcommand{\numclass}{k}
+\newmcommandii{\prob}{\mbox{\rm Pr}_{#1}\left[{#2}\right]}
+\newmcommandii{\exval}{\mbox{\rm E}_{#1}\left[{#2}\right]}
+
+%\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{argmax} % thin space, limits underneath in displays
+\DeclareMathOperator*{\argmin}{argmin} 
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\regret}{\mbox{Regret}}
+
+%%% Conditional probabilities
+\newmcommandii{\condp}{p\left( #1 \left| #2 \right. \right)}
+
+\newmcommand{\lab}{y}
+\newmcommand{\ploss}{\mbox{ploss}}
+\newmcommandii{\avploss}{\ploss_{#1}({#2})}
+\newcommand{\sfrac}[2]{\mbox{$\frac{#1}{#2}$}}
+
+\newcommand{\mboosta}{\mbox{\algfnt AdaBoost.M1}}
+\newcommand{\mboostb}{\mbox{\algfnt AdaBoost.M2}}
+\newcommand{\mboostr}{\mbox{\algfnt AdaBoost.R}}
+
+%\newmcommand{\slos}{\mbox{ploss}}
+%\newmcommandiii{\sloss}{\slos_{#1}({#2},{#3})}
+%\newmcommandiii{\avsloss}{\slos_{{#1},{#2}}({#3})}
+
+\newmcommandii{\vwt}{{W}^{#1}_{#2}}
+
+\newcommand{\figline}{\rule{\textwidth}{1pt}}
+
+%\newmcommandi{\1}{{\bf 1}({#1})}
+\newmcommandi{\1}{[\![{#1}]\!]}
+
+\newmcommand{\confcn}{\kappa}
+\newmcommandi{\erint}{\abs{\int_{y_i}^{h_t(x_i)} {#1} dy}}
+%\newmcommandi{\erint}{\int_{\min\{y_i,h_t(x_i)\}}^{\max\{y_i,h_t(x_i)\}}{#1}dy}

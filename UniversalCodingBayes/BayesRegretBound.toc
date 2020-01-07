@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Classical Bayesian Statistics}{6}{0}{1}
+\beamer@sectionintoc {2}{Combining experts in the log loss framework}{16}{0}{2}
+\beamer@sectionintoc {3}{Review: The online Bayes Algorithm}{27}{0}{3}
+\beamer@subsectionintoc {3}{1}{Comparison to {\unhbox \voidb@x \hbox {${{\unhbox \voidb@x \hbox {\bf Hedge}({\eta })}}$}}}{31}{0}{3}
+\beamer@sectionintoc {4}{Review: The performance bound}{37}{0}{4}
+\beamer@subsectionintoc {4}{1}{Comparison to {\unhbox \voidb@x \hbox {${{\unhbox \voidb@x \hbox {\bf Hedge}({\eta })}}$}}}{54}{0}{4}
