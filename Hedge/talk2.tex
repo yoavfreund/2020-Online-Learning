@@ -1,5 +1,3 @@
-% $Header: /data/cvsroot/Courses/OnlineLearning/talks/talk2/talk2.tex,v 1.5 2006/01/17 08:11:25 yfreund Exp $
-
 %\documentclass{beamer}
 \documentclass[handout]{beamer}
 % This file is a solution template for:
@@ -80,14 +78,14 @@
 
 \beamerdefaultoverlayspecification{<+->}
 
-\newcommand{\R}[1]{{\color{red}{#1}}}
-\newcommand{\W}{\vec{W}}
-\newcommand{\V}{\vec{V}}
-\newcommand{\X}{\vec{X}}
-\newcommand{\loss}{\vec{\ell}}
-\newcommand{\HedgeLoss}{L_{\mbox{\footnotesize Hedge}}}
+% \newcommand{\R}[1]{{\color{red}{#1}}}
+% \newcommand{\W}{\vec{W}}
+% \newcommand{\V}{\vec{V}}
+% \newcommand{\X}{\vec{X}}
+% \newcommand{\loss}{\vec{\ell}}
+% \newcommand{\HedgeLoss}{L_{\mbox{\footnotesize Hedge}}}
 
-\input{macros}
+\input{../macros}
 
 \begin{document}
 
@@ -96,6 +94,10 @@
 
 \begin{frame}
   \titlepage
+  \begin{small}
+    slides in \B{Hedge/talk2.handout.pdf} on:\\ \B{\tt
+      https://github.com/yoavfreund/2020-Online-Learning}
+  \end{small}
 \end{frame}
 
 \begin{frame}
@@ -104,7 +106,6 @@
   % You might wish to add the option [pausesections]
 \end{frame}
 
-\section{The Halving Algorithm}
 
 \section{\ouralg Algorithm}
 
@@ -417,7 +418,81 @@ A trivial random data, in which there is nothing to be learned forces
     would like to have a tighter bound.
 \item Observing only the loss of chosen action - the multi-armed
   bandit problem. Will get to that later in the course.
-\item Register to the class on the google drive.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Homework}
+\begin{itemize}
+\item
+  Due thursday January 16, 2020
+\item
+  Turn in a latex-generated PDF printout.
+\item
+  From Prediction, Learning and Games by Cesa-Bianchi and Lugosi.
+\item
+\includegraphics[width=4in]{HW1.png}
+\end{itemize}
+\end{frame}
+
+\section{Repeated Matrix Games}
+
+\begin{frame}
+\frametitle{Zero sum games in matrix form}
+\begin{itemize}
+\item Game between two players.
+\item Defined by \R{$n \times m$} matrix \R{$\M$}
+\item \B{Row} player chooses \R{$i \in \{1,\ldots,n\}$}
+\item \B{Column} player chooses \R{$j \in \{1,\ldots,m\}$}
+\item \B{Row} player gains \R{$\M(i,j) \in [0,1]$}
+\item \B{Column} player looses \R{$\M(i,j)$}
+\item Game repeated many times.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pure vs. mixed strategies}
+\begin{itemize}
+\item Choosing a \B{single} action = \B{pure} strategy.
+\item Choosing a \B{Distribution} over actions = \B{mixed} strategy.
+\item \B{Row} player chooses dist. over rows \R{$\P$}
+\item \B{Column} player chooses dist. over columns \R{$\Q$}
+\item \B{Row} player gains \R{$\M(\P,\Q)$}.
+\item \B{Column} player looses \R{$\M(\P,\Q)$}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mixed strategies in matrix notation}
+\includegraphics[width=8cm]{figures/matrixProduct.jpg}
+\pause \\
+\R{$\Q$} is a \B{column} vector. \R{$\P^T$} is a row vector.
+%\R{$\P = \angles{ \P(1),\ldots,\P(n) }, \Q = \angles{ \Q(1),\ldots,\Q(m)}$}
+\pause \\ ~\\
+\R{$\M(\P,\Q) = \P^T \M \Q = \sum_{i=1}^n \sum_{j=1}^m \P(i) \M(i,j) \Q(j)$}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The minmax Theorem}
+~\\
+When using pure strategies, second player has an advantage.
+~\\~\\ ~\pause
+\B{John von Neumann, 1928.}
+\\ ~ \\ 
+\R{\[ \minp \maxq \mpq = \maxq \minp \mpq \]}
+\\ ~ \\ 
+In words: for \B{mixed} strategies, choosing second gives no advantage.
+\end{frame}
+
+\begin{frame}
+\frametitle{Minmax is weaker than diminishing regret}
+\begin{itemize}
+\item The minmax theorem proves the existence of an \B{Equilibrium}.
+\item Learning guarantees no regret with respect to the past.
+\item If all sides use learning, then game will converge to minmax equilibrium.
+\item If opponent is not optimally adversarial (limited by knowledge, computationa power...) then learning gives \B{better} performance than min-max.
+\item Our goal is to minimize regret.
 \end{itemize}
 \end{frame}
 

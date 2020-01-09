@@ -1,9 +1,9 @@
-\BOOKMARK [2][]{Outline0.1}{The Halving Algorithm}{}% 1
-\BOOKMARK [2][]{Outline0.2}{Hedge\(\)Algorithm}{}% 2
-\BOOKMARK [3][]{Outline0.2.1.4}{Hedging vs. Halving}{Outline0.2}% 3
-\BOOKMARK [2][]{Outline0.3}{Bound on total loss}{}% 4
-\BOOKMARK [3][]{Outline0.3.1.9}{Upper bound on i=1N wT+1i}{Outline0.3}% 5
-\BOOKMARK [3][]{Outline0.3.2.13}{Lower bound on i=1N wT+1i}{Outline0.3}% 6
-\BOOKMARK [3][]{Outline0.3.3.14}{Combining Upper and Lower bounds}{Outline0.3}% 7
-\BOOKMARK [2][]{Outline0.4}{tuning }{}% 8
-\BOOKMARK [2][]{Outline0.5}{Lower Bounds}{}% 9
+\BOOKMARK [2][]{Outline0.1}{Hedge\(\)Algorithm}{}% 1
+\BOOKMARK [3][]{Outline0.1.1.4}{Hedging vs. Halving}{Outline0.1}% 2
+\BOOKMARK [2][]{Outline0.2}{Bound on total loss}{}% 3
+\BOOKMARK [3][]{Outline0.2.1.9}{Upper bound on i=1N wT+1i}{Outline0.2}% 4
+\BOOKMARK [3][]{Outline0.2.2.13}{Lower bound on i=1N wT+1i}{Outline0.2}% 5
+\BOOKMARK [3][]{Outline0.2.3.14}{Combining Upper and Lower bounds}{Outline0.2}% 6
+\BOOKMARK [2][]{Outline0.3}{tuning }{}% 7
+\BOOKMARK [2][]{Outline0.4}{Lower Bounds}{}% 8
+\BOOKMARK [2][]{Outline0.5}{Repeated Matrix Games}{}% 9

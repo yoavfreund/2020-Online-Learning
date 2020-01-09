@@ -1,11 +1,11 @@
 \beamer@endinputifotherversion {3.33pt}
 \select@language {english}
-\beamer@sectionintoc {1}{The Halving Algorithm}{3}{0}{1}
-\beamer@sectionintoc {2}{{\unhbox \voidb@x \hbox {${{\unhbox \voidb@x \hbox {\bf Hedge}({\eta })}}$}}Algorithm}{3}{0}{2}
-\beamer@subsectionintoc {2}{1}{Hedging vs. Halving}{4}{0}{2}
-\beamer@sectionintoc {3}{Bound on total loss}{8}{0}{3}
-\beamer@subsectionintoc {3}{1}{Upper bound on ${\unhbox \voidb@x \hbox {${\DOTSB \sum@ \slimits@ _{i=1}^N {\unhbox \voidb@x \hbox {${{w}^{{\unhbox \voidb@x \hbox {${T}$}}+1}_{i}}$}}}$}}$}{9}{0}{3}
-\beamer@subsectionintoc {3}{2}{Lower bound on ${\unhbox \voidb@x \hbox {${\DOTSB \sum@ \slimits@ _{i=1}^N {\unhbox \voidb@x \hbox {${{w}^{{\unhbox \voidb@x \hbox {${T}$}}+1}_{i}}$}}}$}}$}{13}{0}{3}
-\beamer@subsectionintoc {3}{3}{Combining Upper and Lower bounds}{14}{0}{3}
-\beamer@sectionintoc {4}{tuning $\eta $}{15}{0}{4}
-\beamer@sectionintoc {5}{Lower Bounds}{18}{0}{5}
+\beamer@sectionintoc {1}{{\unhbox \voidb@x \hbox {${{\unhbox \voidb@x \hbox {\bf Hedge}({\eta })}}$}}Algorithm}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Hedging vs. Halving}{4}{0}{1}
+\beamer@sectionintoc {2}{Bound on total loss}{8}{0}{2}
+\beamer@subsectionintoc {2}{1}{Upper bound on ${\unhbox \voidb@x \hbox {${\DOTSB \sum@ \slimits@ _{i=1}^N {\unhbox \voidb@x \hbox {${{w}^{{\unhbox \voidb@x \hbox {${T}$}}+1}_{i}}$}}}$}}$}{9}{0}{2}
+\beamer@subsectionintoc {2}{2}{Lower bound on ${\unhbox \voidb@x \hbox {${\DOTSB \sum@ \slimits@ _{i=1}^N {\unhbox \voidb@x \hbox {${{w}^{{\unhbox \voidb@x \hbox {${T}$}}+1}_{i}}$}}}$}}$}{13}{0}{2}
+\beamer@subsectionintoc {2}{3}{Combining Upper and Lower bounds}{14}{0}{2}
+\beamer@sectionintoc {3}{tuning $\eta $}{15}{0}{3}
+\beamer@sectionintoc {4}{Lower Bounds}{18}{0}{4}
+\beamer@sectionintoc {5}{Repeated Matrix Games}{23}{0}{5}
