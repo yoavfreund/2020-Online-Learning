@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Halving Algorithm}{3}{0}{1}
+\beamer@sectionintoc {2}{Hedge Algorithm}{33}{0}{2}
+\beamer@sectionintoc {3}{Perceptron}{66}{0}{3}
+\beamer@sectionintoc {4}{Laplace law of succession}{108}{0}{4}

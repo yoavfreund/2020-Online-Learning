@@ -1,24 +1,5 @@
-% $Header: /data/cvsroot/Courses/OnlineLearning/talks/talk1/talk1.tex,v 1.5 2006/01/11 03:23:33 yfreund Exp $
-
 \documentclass{beamer}
 %\documentclass[handout]{beamer}
-% This file is a solution template for:
-
-% - Giving a talk on some subject.
-% - The talk is between 15min and 45min long.
-% - Style is ornate.
-
-% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
-%
-% In principle, this file can be redistributed and/or modified under
-% the terms of the GNU Public License, version 2.
-%
-% However, this file is supposed to be a template to be modified
-% for your own needs. For this reason, if you use this file as a
-% template and not specifically distribute it as part of a another
-% package/program, I grant the extra permission to freely copy and
-% modify this file as you see fit and even to delete this copyright
-% notice. 
 
 \mode<presentation>
 {
@@ -38,6 +19,8 @@
 \usepackage[T1]{fontenc}
 % Or whatever. Note that the encoding and the font should match. If T1
 % does not look nice, try deleting the line with the fontenc.
+
+\input{../macros}
 
 \title[Introduction] % (optional, use only with long paper titles)
 {Introduction to Online Learning Algorithms}
@@ -79,11 +62,11 @@
 
 \beamerdefaultoverlayspecification{<+->}
 
-\newcommand{\W}{\vec{W}}
-\newcommand{\V}{\vec{V}}
-\newcommand{\X}{\vec{X}}
-\newcommand{\loss}{\vec{\ell}}
-\newcommand{\HedgeLoss}{L_{\mbox{\footnotesize Hedge}}}
+% \newcommand{\W}{\vec{W}}
+% \newcommand{\V}{\vec{V}}
+% \newcommand{\X}{\vec{X}}
+% \newcommand{\loss}{\vec{\ell}}
+% \newcommand{\HedgeLoss}{L_{\mbox{\footnotesize Hedge}}}
 
 \begin{document}
 
@@ -150,10 +133,38 @@ Each time algorithm makes a mistakes, the pool of perfect experts is halved (at 
 We assume that at least one expert is perfect.
 \item
 Number of mistakes is at most $\log_2 N$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Characteristics of individual sequence analysis}
+\begin{itemize}
 \item
-No stochastic assumptions whatsoever.
+No stochastic assumptions.
 \item
-Proof is based on combining a lower and upper bounds on the number of perfect experts.
+  Proof is based on combining a lower and upper bounds on a \R{Potential}
+\item Here, \R{Potential} = number of experts in pool.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Optimality of Halving algorithm}
+\begin{itemize}
+\item Adversary chooses expert predictions and outcomes so as to
+  maximize the number of mistakes.
+\item
+The best strategy for the adversary: split a pool with \R{$m$} experts
+into \\
+\R{$\lfloor m/2 \rfloor$} predicting 0 \\
+\R{$\lceil m/2 \rceil$} predicting $1$\\
+Make the actual output $0$.
+\item The halving algorithm can be forced to $k^*$ mistakes. $k^* \leq
+  \log N$.
+\item \R{$k^ :$} $m_0=N$, $m_{i+1} = \lfloor m_i \rfloor$, $m_{k^*} = 1$.
+\item If $N=2^k$ then $k^*=k$, otherwise $k^* < \log N$
+\item $k^*$ is  the \B{Min-Max number of mistakes}: algorithm never
+  makes more than $k^*$ mistakes, adversary can force $k^*$ mistakes.
 \end{itemize}
 \end{frame}
 
@@ -162,6 +173,8 @@ Proof is based on combining a lower and upper bounds on the number of perfect ex
 \begin{frame}
 \frametitle{The hedging problem}
 
+What should we do if none of the experts is perfect, and we have no
+a-priori knowledge how good the best expert is?
 \begin{itemize}
 \item $N$ possible actions 
 
@@ -421,20 +434,17 @@ What does ``better'' mean?
 \end{itemize}
 \end{frame}
 
-\iffalse
 \begin{frame}
-\frametitle{To be continued...}
-Please
+\frametitle{Next time}
+Analysis of the Hedge Algorithm.
 \begin{itemize}
-\item Register on twiki (follow directions on my home page)
-\item Follow link from main twiki page to ``Online learning course''
-\item Add yourself to the list and the table on {\tt ClassParticipants}
-\item Go to {\tt CoursePlan/LessonNo1} to see slides and to post questions and answers.
+\item slides in \B{talk1.handout.pdf} on: \B{\tt
+    https://github.com/yoavfreund/2020-Online-Learning}
+\item {\bf Grading:} 4HW (40\%), Midterm (20\%) Final (40\%)
 \item See you on Thursday!
 \end{itemize}
 \end{frame}
 %\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fi
 
 \end{document}
 
