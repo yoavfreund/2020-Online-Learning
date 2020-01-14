@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  15 JAN 2018 21:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  13 JAN 2020 17:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -927,15 +927,12 @@ LaTeX Info: Redefining \includegraphics on input line 85.
 [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-(./talk3.toc)
-Overfull \vbox (60.67789pt too high) detected at line 97
- []
-
-[2
+(./talk3.toc) [2
 
 ]
 LaTeX Font Info:    Try loading font information for U+msa on input line 129.
- (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 129.
@@ -1095,7 +1092,7 @@ Overfull \hbox (3.24268pt too wide) in paragraph at lines 167--167
 
 ] [6
 
-] <figures/ArithmeticCoding-0.pdf, id=189, 614.295pt x 794.97pt>
+] <figures/ArithmeticCoding-0.pdf, id=157, 614.295pt x 794.97pt>
 File: figures/ArithmeticCoding-0.pdf Graphic file (type pdf)
 
 <use figures/ArithmeticCoding-0.pdf>
@@ -1103,7 +1100,7 @@ Package pdftex.def Info: figures/ArithmeticCoding-0.pdf used on input line 220.
 
 (pdftex.def)             Requested size: 142.26378pt x 184.1008pt.
 
-<figures/ArithmeticCoding-1.pdf, id=190, 614.295pt x 794.97pt>
+<figures/ArithmeticCoding-1.pdf, id=158, 614.295pt x 794.97pt>
 File: figures/ArithmeticCoding-1.pdf Graphic file (type pdf)
 
 <use figures/ArithmeticCoding-1.pdf>
@@ -1111,7 +1108,7 @@ Package pdftex.def Info: figures/ArithmeticCoding-1.pdf used on input line 220.
 
 (pdftex.def)             Requested size: 142.26378pt x 184.1008pt.
 
-<figures/ArithmeticCoding-2.pdf, id=191, 614.295pt x 794.97pt>
+<figures/ArithmeticCoding-2.pdf, id=159, 614.295pt x 794.97pt>
 File: figures/ArithmeticCoding-2.pdf Graphic file (type pdf)
 
 <use figures/ArithmeticCoding-2.pdf>
@@ -1119,7 +1116,7 @@ Package pdftex.def Info: figures/ArithmeticCoding-2.pdf used on input line 220.
 
 (pdftex.def)             Requested size: 142.26378pt x 184.1008pt.
 
-<figures/ArithmeticCoding-3.pdf, id=192, 614.295pt x 794.97pt>
+<figures/ArithmeticCoding-3.pdf, id=160, 614.295pt x 794.97pt>
 File: figures/ArithmeticCoding-3.pdf Graphic file (type pdf)
 
 <use figures/ArithmeticCoding-3.pdf>
@@ -1127,7 +1124,7 @@ Package pdftex.def Info: figures/ArithmeticCoding-3.pdf used on input line 220.
 
 (pdftex.def)             Requested size: 142.26378pt x 184.1008pt.
 
-<figures/ArithmeticCoding-4.pdf, id=193, 614.295pt x 794.97pt>
+<figures/ArithmeticCoding-4.pdf, id=161, 614.295pt x 794.97pt>
 File: figures/ArithmeticCoding-4.pdf Graphic file (type pdf)
 
 <use figures/ArithmeticCoding-4.pdf>
@@ -1135,7 +1132,7 @@ Package pdftex.def Info: figures/ArithmeticCoding-4.pdf used on input line 220.
 
 (pdftex.def)             Requested size: 142.26378pt x 184.1008pt.
 
-<figures/ArithmeticCoding-5.pdf, id=194, 614.295pt x 794.97pt>
+<figures/ArithmeticCoding-5.pdf, id=162, 614.295pt x 794.97pt>
 File: figures/ArithmeticCoding-5.pdf Graphic file (type pdf)
 
 <use figures/ArithmeticCoding-5.pdf>
@@ -1154,11 +1151,11 @@ pdfTeX warning: pdflatex (file ./figures/ArithmeticCoding-5.pdf): PDF inclusion
 
 ]
 
-LaTeX Warning: Command \l invalid in math mode on input line 265.
+LaTeX Warning: Command \l invalid in math mode on input line 266.
 
 Missing character: There is no ª in font cmss10!
 
-Overfull \vbox (39.92752pt too high) detected at line 265
+Overfull \vbox (39.92752pt too high) detected at line 266
  []
 
 [9
@@ -1179,26 +1176,26 @@ Overfull \vbox (39.92752pt too high) detected at line 265
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <8> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 395.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 396.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <6> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 395.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 396.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <5> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 395.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 396.
  [17
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 412.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 413.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 412.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 413.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 412.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 413.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 412.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 413.
  [18
 
 ]
-Overfull \vbox (9.24234pt too high) detected at line 431
+Overfull \vbox (9.24234pt too high) detected at line 432
  []
 
 [19
@@ -1212,84 +1209,6 @@ Overfull \vbox (9.24234pt too high) detected at line 431
 ] [23
 
 ]
-Overfull \vbox (16.01646pt too high) detected at line 528
- []
-
-[24
-
-] [25
-
-] [26
-
-] [27
-
-] [28
-
-] [29
-
-] [30
-
-] [31
-
-]
-<figures/neighborhood.pdf, id=1064, 494.84875pt x 240.9pt>
-File: figures/neighborhood.pdf Graphic file (type pdf)
-
-<use figures/neighborhood.pdf>
-Package pdftex.def Info: figures/neighborhood.pdf used on input line 663.
-(pdftex.def)             Requested size: 350.68816pt x 170.71652pt.
-
-Overfull \hbox (43.39828pt too wide) in paragraph at lines 663--663
-[]  
- []
-
-[32
-
- <./figures/neighborhood.pdf>]
-
-Package amsmath Warning: Foreign command \over;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 696.
-
-
-Overfull \vbox (10.06133pt too high) detected at line 696
- []
-
-[33
-
-] <figures/Laplace.pdf, id=1103, 494.84875pt x 240.9pt>
-File: figures/Laplace.pdf Graphic file (type pdf)
-
-<use figures/Laplace.pdf>
-Package pdftex.def Info: figures/Laplace.pdf used on input line 712.
-(pdftex.def)             Requested size: 292.23761pt x 142.26378pt.
- [34
-
- <./figures/Laplace.pdf>] [35
-
-] [36
-
-] [37
-
-]
-Overfull \vbox (3.31497pt too high) detected at line 801
- []
-
-[38
-
-] [39
-
-] [40
-
-] [41
-
-] [42
-
-] [43
-
-] [44
-
-]
 \tf@nav=\write6
 \openout6 = `talk3.nav'.
 
@@ -1299,11 +1218,11 @@ Overfull \vbox (3.31497pt too high) detected at line 801
 \tf@snm=\write8
 \openout8 = `talk3.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 914.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 914.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 505.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 505.
  (./talk3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 914.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 914.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 505.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 505.
 
 
 Package rerunfilecheck Warning: File `talk3.out' has changed.
@@ -1311,107 +1230,100 @@ Package rerunfilecheck Warning: File `talk3.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `talk3.out':
-(rerunfilecheck)             Before: 3A1970B6277DAB1C2FE2FA580A503975;1346
-(rerunfilecheck)             After:  35E57439411138FE26B5F8F445F3DE39;1341.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 914.
+(rerunfilecheck)             Before: CDFCBF89B0A8B74A58BCE8B134ACD02E;910
+(rerunfilecheck)             After:  41F390CA0998A0FC7A992A505FE9868C;902.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 505.
  ) 
 Here is how much of TeX's memory you used:
- 17805 strings out of 493117
- 332899 string characters out of 6135433
- 414000 words of memory out of 5000000
- 20682 multiletter control sequences out of 15000+600000
- 72953 words of font info for 86 fonts, out of 8000000 for 9000
+ 17686 strings out of 493117
+ 331880 string characters out of 6135433
+ 414934 words of memory out of 5000000
+ 20613 multiletter control sequences out of 15000+600000
+ 75843 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,15n,56p,385b,612s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Navigation267} has been referenced but does not e
+pdfTeX warning (dest): name{Navigation138} has been referenced but does not e
 xist, replaced by a fixed one
 
-pdfTeX warning (dest): name{Navigation231} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{Navigation225} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{Navigation198} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{Navigation185} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{Navigation176} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{Navigation149} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{Navigation145} has been referenced but does not exi
-st, replaced by a fixed one
-
 pdfTeX warning (dest): name{Navigation134} has been referenced but does not exi
-st, replaced by a fixed one
-
-pdfTeX warning (dest): name{Navigation129} has been referenced but does not exi
 st, replaced by a fixed one
 
 pdfTeX warning (dest): name{Navigation123} has been referenced but does not exi
 st, replaced by a fixed one
 
-pdfTeX warning (dest): name{Navigation120} has been referenced but does not exi
+pdfTeX warning (dest): name{Navigation118} has been referenced but does not exi
 st, replaced by a fixed one
 
-pdfTeX warning (dest): name{Navigation104} has been referenced but does not exi
+pdfTeX warning (dest): name{Navigation112} has been referenced but does not exi
 st, replaced by a fixed one
 
-pdfTeX warning (dest): name{Navigation100} has been referenced but does not exi
+pdfTeX warning (dest): name{Navigation109} has been referenced but does not exi
 st, replaced by a fixed one
 
-pdfTeX warning (dest): name{Navigation88} has been referenced but does not exis
+pdfTeX warning (dest): name{Navigation93} has been referenced but does not exis
 t, replaced by a fixed one
 
-pdfTeX warning (dest): name{Navigation80} has been referenced but does not exis
+pdfTeX warning (dest): name{Navigation89} has been referenced but does not exis
 t, replaced by a fixed one
 
-pdfTeX warning (dest): name{Navigation52} has been referenced but does not exis
+pdfTeX warning (dest): name{Navigation77} has been referenced but does not exis
 t, replaced by a fixed one
 
-pdfTeX warning (dest): name{Navigation273} has been referenced but does not exi
+pdfTeX warning (dest): name{Navigation69} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation41} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Navigation164} has been referenced but does not exi
 st, replaced by a fixed one
 
-pdfTeX warning (dest): name{Outline0.14.1.231} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Outline0.7.2.129} has been referenced but does not 
+pdfTeX warning (dest): name{Outline0.4.2.138} has been referenced but does not 
 exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{Outline0.7.1.123} has been referenced but does not 
+pdfTeX warning (dest): name{Outline0.4.1.134} has been referenced but does not 
 exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{Outline0.6.2.104} has been referenced but does not 
+pdfTeX warning (dest): name{Outline0.3.2.118} has been referenced but does not 
 exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{Outline0.6.1.100} has been referenced but does not 
+pdfTeX warning (dest): name{Outline0.3.1.112} has been referenced but does not 
 exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.2.2.89} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.2.1.77} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.1.3.69} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.1.2.41} has been referenced but does not e
+xist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Outline0.1.1.19} has been referenced but does not e
+xist, replaced by a fixed one
 
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
 live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texl
 ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2
-014/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/20
-14/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texm
-f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/local/texlive/20
-14/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texm
-f-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/
-fonts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/urw/times/utmr8a.pfb>
-Output written on talk3.pdf (44 pages, 429002 bytes).
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/te
+xmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/te
+xmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dis
+t/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2014/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb>
+Output written on talk3.pdf (23 pages, 296080 bytes).
 PDF statistics:
- 1312 PDF objects out of 1440 (max. 8388607)
- 849 compressed objects within 9 object streams
- 132 named destinations out of 1000 (max. 500000)
- 243 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1052 PDF objects out of 1200 (max. 8388607)
+ 650 compressed objects within 7 object streams
+ 83 named destinations out of 1000 (max. 500000)
+ 177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
