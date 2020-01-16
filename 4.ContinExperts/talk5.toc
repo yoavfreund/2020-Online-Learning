@@ -1,12 +1,13 @@
 \beamer@endinputifotherversion {3.33pt}
 \select@language {english}
-\beamer@sectionintoc {1}{Review}{3}{0}{1}
-\beamer@sectionintoc {2}{The Universal prediction machine}{7}{0}{2}
-\beamer@sectionintoc {3}{The biased coins set of experts}{11}{0}{3}
-\beamer@sectionintoc {4}{Bayes using Jeffrey's prior}{12}{0}{4}
-\beamer@subsectionintoc {4}{1}{Laplace Approximation}{14}{0}{4}
-\beamer@subsectionintoc {4}{2}{Choosing the optimal prior}{17}{0}{4}
-\beamer@subsectionintoc {4}{3}{Kritchevski Trofimov Prediction Rule}{21}{0}{4}
-\beamer@subsectionintoc {4}{4}{Laplace Rule of Succession}{22}{0}{4}
-\beamer@sectionintoc {5}{Shtarkov lower bound for finite horizon}{23}{0}{5}
-\beamer@sectionintoc {6}{Generalization to larger sets of distributions}{24}{0}{6}
+\beamer@sectionintoc {1}{Dates}{9}{0}{1}
+\beamer@sectionintoc {2}{Review}{12}{0}{2}
+\beamer@sectionintoc {3}{The Universal prediction machine}{36}{0}{3}
+\beamer@sectionintoc {4}{The biased coins set of experts}{63}{0}{4}
+\beamer@sectionintoc {5}{Bayes using Jeffrey's prior}{69}{0}{5}
+\beamer@subsectionintoc {5}{1}{Laplace Approximation}{74}{0}{5}
+\beamer@subsectionintoc {5}{2}{Choosing the optimal prior}{88}{0}{5}
+\beamer@subsectionintoc {5}{3}{Kritchevski Trofimov Prediction Rule}{95}{0}{5}
+\beamer@subsectionintoc {5}{4}{Laplace Rule of Succession}{99}{0}{5}
+\beamer@sectionintoc {6}{Shtarkov lower bound for finite horizon}{103}{0}{6}
+\beamer@sectionintoc {7}{Generalization to larger sets of distributions}{105}{0}{7}

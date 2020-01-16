@@ -1,82 +1,87 @@
 \beamer@endinputifotherversion {3.33pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
-\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
-\headcommand {\beamer@framepages {2}{2}}
-\headcommand {\sectionentry {1}{Review}{3}{Review}{0}}
-\headcommand {\beamer@sectionpages {1}{2}}
-\headcommand {\beamer@subsectionpages {1}{2}}
-\headcommand {\slideentry {1}{0}{3}{3/3}{}{0}}
-\headcommand {\beamer@framepages {3}{3}}
-\headcommand {\slideentry {1}{0}{4}{4/4}{}{0}}
-\headcommand {\beamer@framepages {4}{4}}
-\headcommand {\slideentry {1}{0}{5}{5/5}{}{0}}
-\headcommand {\beamer@framepages {5}{5}}
-\headcommand {\slideentry {1}{0}{6}{6/6}{}{0}}
-\headcommand {\beamer@framepages {6}{6}}
-\headcommand {\sectionentry {2}{The Universal prediction machine}{7}{The Universal prediction machine}{0}}
-\headcommand {\beamer@sectionpages {3}{6}}
-\headcommand {\beamer@subsectionpages {3}{6}}
-\headcommand {\slideentry {2}{0}{7}{7/7}{}{0}}
-\headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {2}{0}{8}{8/8}{}{0}}
-\headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {2}{0}{9}{9/9}{}{0}}
-\headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {2}{0}{10}{10/10}{}{0}}
-\headcommand {\beamer@framepages {10}{10}}
-\headcommand {\sectionentry {3}{The biased coins set of experts}{11}{The biased coins set of experts}{0}}
-\headcommand {\beamer@sectionpages {7}{10}}
-\headcommand {\beamer@subsectionpages {7}{10}}
-\headcommand {\slideentry {3}{0}{11}{11/11}{}{0}}
-\headcommand {\beamer@framepages {11}{11}}
-\headcommand {\sectionentry {4}{Bayes using Jeffrey's prior}{12}{Bayes using Jeffrey's prior}{0}}
-\headcommand {\beamer@sectionpages {11}{11}}
-\headcommand {\beamer@subsectionpages {11}{11}}
-\headcommand {\slideentry {4}{0}{12}{12/12}{}{0}}
-\headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {4}{0}{13}{13/13}{}{0}}
-\headcommand {\beamer@framepages {13}{13}}
-\headcommand {\beamer@subsectionentry {0}{4}{1}{14}{Laplace Approximation}}\headcommand {\beamer@subsectionpages {12}{13}}
-\headcommand {\slideentry {4}{1}{1}{14/14}{Laplace Approximation}{0}}
-\headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {4}{1}{2}{15/15}{Laplace Approximation}{0}}
-\headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {4}{1}{3}{16/16}{Laplace Approximation}{0}}
-\headcommand {\beamer@framepages {16}{16}}
-\headcommand {\beamer@subsectionentry {0}{4}{2}{17}{Choosing the optimal prior}}\headcommand {\beamer@subsectionpages {14}{16}}
-\headcommand {\slideentry {4}{2}{1}{17/17}{Choosing the optimal prior}{0}}
-\headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {4}{2}{2}{18/18}{Choosing the optimal prior}{0}}
-\headcommand {\beamer@framepages {18}{18}}
-\headcommand {\slideentry {4}{2}{3}{19/19}{Choosing the optimal prior}{0}}
-\headcommand {\beamer@framepages {19}{19}}
-\headcommand {\slideentry {4}{2}{4}{20/20}{Choosing the optimal prior}{0}}
-\headcommand {\beamer@framepages {20}{20}}
-\headcommand {\beamer@subsectionentry {0}{4}{3}{21}{Kritchevski Trofimov Prediction Rule}}\headcommand {\beamer@subsectionpages {17}{20}}
-\headcommand {\slideentry {4}{3}{1}{21/21}{Kritchevski Trofimov Prediction Rule}{0}}
-\headcommand {\beamer@framepages {21}{21}}
-\headcommand {\beamer@subsectionentry {0}{4}{4}{22}{Laplace Rule of Succession}}\headcommand {\beamer@subsectionpages {21}{21}}
-\headcommand {\slideentry {4}{4}{1}{22/22}{Laplace Rule of Succession}{0}}
-\headcommand {\beamer@framepages {22}{22}}
-\headcommand {\sectionentry {5}{Shtarkov lower bound for finite horizon}{23}{Shtarkov lower bound for finite horizon}{0}}
-\headcommand {\beamer@sectionpages {12}{22}}
-\headcommand {\beamer@subsectionpages {22}{22}}
-\headcommand {\slideentry {5}{0}{2}{23/23}{}{0}}
-\headcommand {\beamer@framepages {23}{23}}
-\headcommand {\sectionentry {6}{Generalization to larger sets of distributions}{24}{Generalization to larger sets of distributions}{0}}
-\headcommand {\beamer@sectionpages {23}{23}}
-\headcommand {\beamer@subsectionpages {23}{23}}
-\headcommand {\slideentry {6}{0}{3}{24/24}{}{0}}
-\headcommand {\beamer@framepages {24}{24}}
-\headcommand {\slideentry {6}{0}{4}{25/25}{}{0}}
-\headcommand {\beamer@framepages {25}{25}}
-\headcommand {\slideentry {6}{0}{5}{26/26}{}{0}}
-\headcommand {\beamer@framepages {26}{26}}
-\headcommand {\slideentry {6}{0}{6}{27/27}{}{0}}
-\headcommand {\beamer@framepages {27}{27}}
-\headcommand {\beamer@partpages {1}{27}}
-\headcommand {\beamer@subsectionpages {24}{27}}
-\headcommand {\beamer@sectionpages {24}{27}}
-\headcommand {\beamer@documentpages {27}}
-\headcommand {\def \inserttotalframenumber {27}}
+\headcommand {\slideentry {0}{0}{2}{2/8}{}{0}}
+\headcommand {\beamer@framepages {2}{8}}
+\headcommand {\sectionentry {1}{Dates}{9}{Dates}{0}}
+\headcommand {\beamer@sectionpages {1}{8}}
+\headcommand {\beamer@subsectionpages {1}{8}}
+\headcommand {\slideentry {1}{0}{3}{9/11}{}{0}}
+\headcommand {\beamer@framepages {9}{11}}
+\headcommand {\sectionentry {2}{Review}{12}{Review}{0}}
+\headcommand {\beamer@sectionpages {9}{11}}
+\headcommand {\beamer@subsectionpages {9}{11}}
+\headcommand {\slideentry {2}{0}{4}{12/15}{}{0}}
+\headcommand {\beamer@framepages {12}{15}}
+\headcommand {\slideentry {2}{0}{5}{16/19}{}{0}}
+\headcommand {\beamer@framepages {16}{19}}
+\headcommand {\slideentry {2}{0}{6}{20/28}{}{0}}
+\headcommand {\beamer@framepages {20}{28}}
+\headcommand {\slideentry {2}{0}{7}{29/35}{}{0}}
+\headcommand {\beamer@framepages {29}{35}}
+\headcommand {\sectionentry {3}{The Universal prediction machine}{36}{The Universal prediction machine}{0}}
+\headcommand {\beamer@sectionpages {12}{35}}
+\headcommand {\beamer@subsectionpages {12}{35}}
+\headcommand {\slideentry {3}{0}{8}{36/45}{}{0}}
+\headcommand {\beamer@framepages {36}{45}}
+\headcommand {\slideentry {3}{0}{9}{46/49}{}{0}}
+\headcommand {\beamer@framepages {46}{49}}
+\headcommand {\slideentry {3}{0}{10}{50/56}{}{0}}
+\headcommand {\beamer@framepages {50}{56}}
+\headcommand {\slideentry {3}{0}{11}{57/62}{}{0}}
+\headcommand {\beamer@framepages {57}{62}}
+\headcommand {\sectionentry {4}{The biased coins set of experts}{63}{The biased coins set of experts}{0}}
+\headcommand {\beamer@sectionpages {36}{62}}
+\headcommand {\beamer@subsectionpages {36}{62}}
+\headcommand {\slideentry {4}{0}{12}{63/68}{}{0}}
+\headcommand {\beamer@framepages {63}{68}}
+\headcommand {\sectionentry {5}{Bayes using Jeffrey's prior}{69}{Bayes using Jeffrey's prior}{0}}
+\headcommand {\beamer@sectionpages {63}{68}}
+\headcommand {\beamer@subsectionpages {63}{68}}
+\headcommand {\slideentry {5}{0}{13}{69/71}{}{0}}
+\headcommand {\beamer@framepages {69}{71}}
+\headcommand {\slideentry {5}{0}{14}{72/73}{}{0}}
+\headcommand {\beamer@framepages {72}{73}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{74}{Laplace Approximation}}\headcommand {\beamer@subsectionpages {69}{73}}
+\headcommand {\slideentry {5}{1}{1}{74/79}{Laplace Approximation}{0}}
+\headcommand {\beamer@framepages {74}{79}}
+\headcommand {\slideentry {5}{1}{2}{80/85}{Laplace Approximation}{0}}
+\headcommand {\beamer@framepages {80}{85}}
+\headcommand {\slideentry {5}{1}{3}{86/87}{Laplace Approximation}{0}}
+\headcommand {\beamer@framepages {86}{87}}
+\headcommand {\beamer@subsectionentry {0}{5}{2}{88}{Choosing the optimal prior}}\headcommand {\beamer@subsectionpages {74}{87}}
+\headcommand {\slideentry {5}{2}{1}{88/89}{Choosing the optimal prior}{0}}
+\headcommand {\beamer@framepages {88}{89}}
+\headcommand {\slideentry {5}{2}{2}{90/90}{Choosing the optimal prior}{0}}
+\headcommand {\beamer@framepages {90}{90}}
+\headcommand {\slideentry {5}{2}{3}{91/93}{Choosing the optimal prior}{0}}
+\headcommand {\beamer@framepages {91}{93}}
+\headcommand {\slideentry {5}{2}{4}{94/94}{Choosing the optimal prior}{0}}
+\headcommand {\beamer@framepages {94}{94}}
+\headcommand {\beamer@subsectionentry {0}{5}{3}{95}{Kritchevski Trofimov Prediction Rule}}\headcommand {\beamer@subsectionpages {88}{94}}
+\headcommand {\slideentry {5}{3}{1}{95/98}{Kritchevski Trofimov Prediction Rule}{0}}
+\headcommand {\beamer@framepages {95}{98}}
+\headcommand {\beamer@subsectionentry {0}{5}{4}{99}{Laplace Rule of Succession}}\headcommand {\beamer@subsectionpages {95}{98}}
+\headcommand {\slideentry {5}{4}{1}{99/102}{Laplace Rule of Succession}{0}}
+\headcommand {\beamer@framepages {99}{102}}
+\headcommand {\sectionentry {6}{Shtarkov lower bound for finite horizon}{103}{Shtarkov lower bound for finite horizon}{0}}
+\headcommand {\beamer@sectionpages {69}{102}}
+\headcommand {\beamer@subsectionpages {99}{102}}
+\headcommand {\slideentry {6}{0}{2}{103/104}{}{0}}
+\headcommand {\beamer@framepages {103}{104}}
+\headcommand {\sectionentry {7}{Generalization to larger sets of distributions}{105}{Generalization to larger sets of distributions}{0}}
+\headcommand {\beamer@sectionpages {103}{104}}
+\headcommand {\beamer@subsectionpages {103}{104}}
+\headcommand {\slideentry {7}{0}{3}{105/108}{}{0}}
+\headcommand {\beamer@framepages {105}{108}}
+\headcommand {\slideentry {7}{0}{4}{109/111}{}{0}}
+\headcommand {\beamer@framepages {109}{111}}
+\headcommand {\slideentry {7}{0}{5}{112/114}{}{0}}
+\headcommand {\beamer@framepages {112}{114}}
+\headcommand {\slideentry {7}{0}{6}{115/116}{}{0}}
+\headcommand {\beamer@framepages {115}{116}}
+\headcommand {\beamer@partpages {1}{116}}
+\headcommand {\beamer@subsectionpages {105}{116}}
+\headcommand {\beamer@sectionpages {105}{116}}
+\headcommand {\beamer@documentpages {116}}
+\headcommand {\def \inserttotalframenumber {28}}
