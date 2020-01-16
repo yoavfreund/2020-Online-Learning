@@ -1,5 +1,3 @@
-% $Header: /data/cvsroot/Courses/OnlineLearning/talks/talk5/talk5.tex,v 1.2 2006/02/19 18:48:02 yfreund Exp $
-
 %\documentclass{beamer}
 \documentclass[handout]{beamer}
 % This file is a solution template for:
@@ -19,7 +17,6 @@
 % package/program, I grant the extra permission to freely copy and
 % modify this file as you see fit and even to delete this copyright
 % notice. 
-
 
 \mode<presentation>
 {
@@ -97,6 +94,17 @@
 \end{frame}
 
 \section{Review}
+
+\begin{frame}
+  \frametitle{Codes = Probabilities}
+  \begin{itemize}
+  \item \R{$M_1,\ldots,M_n$} - possible messages
+  \item \R{$P(M_i)$} - probability of message \R{$i$}
+  \item Arithmetic coding defines a code of length \R{$\lceil -\log_2
+      P(M_i) \rceil$} for message \R{$i$}
+  \item Conversely: a codebook defines a distribution.
+    \end{itemize}
+\end{frame}
 
 \begin{frame}
 \frametitle{The online Bayes Algorithm}
@@ -185,7 +193,9 @@ halts within \R{$t$} steps and outputs a well-formed prediction. Otherwise \R{$V
 \item Run the Bayes algorithm over ``all'' prediction algorithms.
 \item \B{technical details:} On iteration \R{$t$}, \R{$|\X|=t$}. 
 Use the predictions of 
-programs \R{$\vb$} such that \R{$|\vb| \leq t$} and for which \R{$V(\vb,\X,2^t)=1$}. Assing the remaining mass the prediction \R{$1/2$} (insuring a loss of \R{$1$})
+programs \R{$\vb$} such that \R{$|\vb| \leq t$} and for which
+\R{$V(\vb,\X,2^t)=1$}.\\
+the unused algorithms predict \R{$1/2$} (insuring a loss of \R{$1$})
 \end{itemize}
 \end{frame}
 
@@ -286,7 +296,7 @@ The total loss scales with \R{$T$}
 \pause &=&
 \ln \int_0^1 \dweight{\theta}{} e^{-
 (\TEloss{\theta}-\BEloss)} d\theta \\
-pause &=&
+\pause &=&
 \ln \int_0^1 \dweight{\theta}{} 
 e^{T (g(\btheta,\theta) - g(\btheta,\btheta))} d\theta
 \end{eqnarray*}}
@@ -309,7 +319,7 @@ $\Rightarrow$ a gaussian approximation of the posterior.
 \end{frame}
 
 \begin{frame}
-\frametitle{Laplace Approximation (details)}
+\frametitle{Laplace Approximation, Watson's lemma}
 
 \R{\begin{eqnarray*}
 \lefteqn{\int_0^1  \dweight{\theta}{} 
