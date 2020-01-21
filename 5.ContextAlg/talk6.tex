@@ -1,6 +1,5 @@
-
-%\documentclass{beamer}
-\documentclass[handout]{beamer}
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
 % This file is a solution template for:
 
 % - Giving a talk on some subject.
@@ -148,6 +147,26 @@ L_A^T & = & -\log W^{T+1}
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Universal Online coding}
+  \includegraphics[width=3in]{figures/ArithmeticCoding_key.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Combining large predictor families}
+  \begin{itemize}
+\item
+  Log loss is {\bf mixable} = each predictor in the family can use a
+  Bayesian combination of a family of sub-predictors, with no
+  additional loss.
+\item We talked about the KT preictor.
+\item Today we consider the much richer set of variable length
+  markov models.
+\item The set of predictors is of exponential size, but the
+  algorithm is efficient.
+\end{itemize}
+\end{frame}
+
 \section{Fixed Length Markov Models}
 
 %An Example
@@ -214,50 +233,39 @@ L_A^T & = & -\log W^{T+1}
 
 %defining complete trees
 \begin{frame}
-\frametitle{Prefix trees}
+\frametitle{Prefix trees / Tries}
 \begin{itemize}
 \item In a prefix binary tree each node has either \R{0} or \R{2} children.
-\item A node with \R{1} child means that some past histories are not covered.
+%\item A node with \R{1} child means that some past histories are not
+%  covered.
 \item A variable length markov model corresponds to a \B{prefix tree}.
-\item But we don't know which prefix tree to use!
+\item You can think of a prefix trees as different \B{prunings} of a
+  maximal tree.
+\item We don't know a-priori which pruning to use!
+\item The number of prunings trees increases exponentially with the
+  number of nodes in the maximal tree.
+\item We will use the Online Bayes to predict almost as well as the
+  best prefix tree in hind-sight.
+\item First - simple but inefficient algorithm, Second - efficient algorithms.
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{Assigning probabilities to complete sequences}
-\begin{itemize}
-\item Using the chain rule, we can use a prediction rule to 
-assign probabilities to a complete sequence.
-\R{\[
-P \paren{x_1=y_1,\ldots,x_T=y_T} = p \paren{x_1=y_1} p\paren{x_2=y_2|x_1=y_1} \ldots
-\]}
-\item
-We can translate probabilities for complete sequences back into predictions.
-\R{\begin{eqnarray*}
-p \paren{ x_t=1 | x_1=y_1,\ldots,x_{t-1}=y_{t-1}} = \\
-\frac{p\paren{x_1=y_1,\ldots,x_{t-1}=y_{t-1},x_t=1}}
-{p\paren{x_1=y_1,\ldots,x_{t-1}=y_{t-1}}}
-\end{eqnarray*}}
-\item
-Will come in handy soon!
-\end{itemize}
-\end{frame}
-
-\section{Assigning weights to trees}
+% \section{Assigning weights to trees}
 
 % Using bayesian method to perform almost as well as the best VMM
-\section{Learning the structure, an inefficient solution}
+\section{Universal coding, an inefficient solution}
 
 \begin{frame}
 \frametitle{Using online Bayes to learn the structure}
 \begin{itemize}
-\item We assign to each tree an initial weight of \R{$2^{-n}$} where \R{$n$} is the number of \B{nodes} in the 
-prefix tree.
+\item We assign to each tree an initial weight of \R{$2^{-n}$} where
+  \R{$n$} is the number of \B{nodes} in the  pruned tree.
 \item We combine the predictions of the trees using online Bayes.
 \item The total regret would be \R{$\frac{l}{2}\log T + n$} where \R{$l$} is the number of \B{leaves} in the prefix tree.
-\item The papers do things slightly differently because they bound the depth of the tree by \R{$k$}.
-\item This algorithm maintains a weight for each tree.
-\item Requires maintaining \R{$O(2^l)$} weights!
+%\item The papers do things slightly differently because they bound the depth of the tree by \R{$k$}.
+\item This algorithm maintains a weight for each prefix tree.
+\item The number of prunings of a full tree of depth $k$ is
+  $O(2^{2^k})$ while maintaining all of the counts requires $O(2^k)$. 
 \end{itemize}
 \end{frame}
 
@@ -265,6 +273,7 @@ prefix tree.
 
 \section{Efficient Implementation}
 
+\iffalse
 \begin{frame}
 \frametitle{Efficient implementation}
 \begin{itemize}
@@ -273,6 +282,8 @@ prefix tree.
 \item \B{Second idea:} Compute the average over the prior efficiently.
 \end{itemize}
 \end{frame}
+\fi
+
 
 \begin{frame}
 \frametitle{Efficient generation of prior}
@@ -295,7 +306,7 @@ prefix tree.
 \frametitle{Efficient averaging over the prior (observations)}
 \begin{itemize}
 \item Maintain a KT estimator at each node of the tree.
-\item Allocate counters only once node is visited.
+\item Allocate counters only for nodes that have been visited.
 \item At iteration \R{$t$} only \R{$t$} counters need to be updated.
 \item Only \R{$k$} counters if depth of tree is bounded.
 \item Each node is visited on a subset of the iterations.
@@ -303,20 +314,99 @@ prefix tree.
 \end{itemize}
 \end{frame}
 
-% Updating the weights takes linear time
 \begin{frame}
 \frametitle{Efficient averaging over the prior (procedure)}
 \begin{itemize}
-\item \R{$P_e\paren{a_s,b_s}$} the probability that the KT estimator at node 
-\R{$s=\left\langle y_1,..,y_k \right\rangle$} assigns to it's subsequence of the past.
-\item \R{$P_w^s$} the \B{average probability} assigned to the subsequence \B{over all VMM rooted} at the node \R{$s$}
-\item
-\R{\[
-P_w^s \doteq 
-\frac{P_e \paren{a_s,b_s} + P_w^{0s}P_w^{1s}}{2}
-\]}
-\item Average probability assigned by the complete tree is \R{$P_w^\lambda$} where \R{$\lambda$} is the root node.
+\item This is not the method used in the original paper, it appears in
+  a later paper by \em{Willems, Tjalkens and Ignatenko}. Available on
+  github.
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Definitions}
+\begin{itemize}
+\item \R{$s$} is a bit sequence corresponding to a node in the
+  tree. The chidren of this node are \R{$0s$} and \R{$1s$}.
+\item The sequence of past bits up to time \R{$t$} is denoted
+  \R{$x_1^{t-1}$}, the \R{$t$}'th bit is denoted \R{$X_t$}
+\item \R{$s$} determines a subsequence of \R{$x_1^{t-1}$}: the locations
+  preceded by the reverse of \R{$s$}.
+\item \R{$a_s(x_{1}^{t-1}), b_s(x_{1}^{t-1})$} count the number of 0's
+  and 1's in the subsequence corresponding to \R{$s$}
+\item     The KT estimate associated with node \R{$s$}.
+  \R{$$
+    P_e^s\paren{X_t=1 | x_1^{t-1}} = \frac{b_s(x_1^{t-1})+1/2}{a_s(x_1^{t-1})+b_s(x_1^{t-1})+1}
+          $$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Assigning probabilities to complete sequences}
+\begin{itemize}
+\item Using the chain rule, we can use a prediction rule to 
+assign probabilities to a complete sequence.
+\R{\[
+P \paren{x_1=y_1,\ldots,x_T=y_T} = p \paren{x_1=y_1} p\paren{x_2=y_2|x_1=y_1} \ldots
+\]}
+\item
+We can translate probabilities for complete sequences back into predictions.
+\R{\begin{eqnarray*}
+p \paren{ x_t=1 | x_1=y_1,\ldots,x_{t-1}=y_{t-1}} = \\
+\frac{p\paren{x_1=y_1,\ldots,x_{t-1}=y_{t-1},x_t=1}}
+{p\paren{x_1=y_1,\ldots,x_{t-1}=y_{t-1}}}
+\end{eqnarray*}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mixing Factors}
+\begin{itemize}
+\item \R{$P_w^s\paren{X_t=1 | x_1^{t-1}}$} The posterior average of
+  the predictions associated with the descendants of the node \R{$s$}.
+\item Using the chain rule we can also define unconditional
+  probabilities \R{$P_w^s\paren{x_1^{t-1}}$}
+\item The mixing factors according to the \B{Prior} distribution is
+  0.5: stop, 0.5: continue
+\item After observing \R{$x_1^{t-1}$} the odds change. The updated
+  odds are represented by \R{$\beta^s(x_1^{t-1})$}:
+\item \R{$P_w^s\paren{X_t=1 | x_1^{t-1}}$} The posterior average of
+  the predictions associated with the descendants of the node \R{$s$}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline of algorithm}
+\begin{itemize}
+\item {\bf Forward}: Traverse the tree from root to leaf.
+\item {\bf extend}: Add two children to the leaf. Initialized counts
+  to 0,1.
+\item {\bf Backward traversal}: Traverse back to root.\\
+  For each node
+  \R{$s$}
+  \begin{itemize}
+  \item compute \R{$P_e^s\paren{X_t=1 | x_1^{t-1}}$} and
+      \R{$P_w^s\paren{X_t=1 | x_1^{t-1}}$}
+    \item update counts: \R{$a^s,b^s$}.
+    \item update \R{$\beta^s$}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Slides from Frans Willems}
+\newpage
+\bf{Slides from Frans Willems}\\
+\includegraphics[width=4in]{figures/Betas1.pdf}
+
+\newpage
+\bf{Slides from Frans Willems}\\
+\includegraphics[width=4in]{figures/Betas2.pdf}
+
+\begin{frame}
+  \frametitle{Binary Tree}
+  Sequence: 0,0,1,1,0,1,0,1,0,1,1,0,1,1,1\\~\\
+  
+\includegraphics[width=4in]{figures/BinaryTree.png}
 \end{frame}
 
 % Recaping the algorithm.
@@ -325,15 +415,6 @@ P_w^s \doteq
 
 % Next class thursday.
 
-\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{XXX}
-\begin{itemize}
-\item XXX
-\end{itemize}
-\end{frame}
-
-\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
 
