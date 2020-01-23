@@ -1,8 +1,8 @@
-\beamer@endinputifotherversion {3.06pt}
+\beamer@endinputifotherversion {3.33pt}
 \select@language {english}
-\beamer@sectionintoc {1}{Review}{3}{0}{1}
+\beamer@sectionintoc {1}{Log Loss and Absolute loss}{3}{0}{1}
 \beamer@sectionintoc {2}{The general prediction game}{6}{0}{2}
-\beamer@sectionintoc {3}{Some useful loss functions}{9}{0}{3}
+\beamer@sectionintoc {3}{Analysis for specific loss functions}{9}{0}{3}
 \beamer@sectionintoc {4}{Vovk's algorithm}{16}{0}{4}
 \beamer@sectionintoc {5}{mixable loss functions}{18}{0}{5}
 \beamer@sectionintoc {6}{The convexity condition}{19}{0}{6}

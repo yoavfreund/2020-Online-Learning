@@ -1,9 +1,9 @@
-\beamer@endinputifotherversion {3.06pt}
+\beamer@endinputifotherversion {3.33pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
 \headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
 \headcommand {\beamer@framepages {2}{2}}
-\headcommand {\sectionentry {1}{Review}{3}{Review}{0}}
+\headcommand {\sectionentry {1}{Log Loss and Absolute loss}{3}{Log Loss and Absolute loss}{0}}
 \headcommand {\beamer@sectionpages {1}{2}}
 \headcommand {\beamer@subsectionpages {1}{2}}
 \headcommand {\slideentry {1}{0}{3}{3/3}{}{0}}
@@ -21,7 +21,7 @@
 \headcommand {\beamer@framepages {7}{7}}
 \headcommand {\slideentry {2}{0}{8}{8/8}{}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\sectionentry {3}{Some useful loss functions}{9}{Some useful loss functions}{0}}
+\headcommand {\sectionentry {3}{Analysis for specific loss functions}{9}{Analysis for specific loss functions}{0}}
 \headcommand {\beamer@sectionpages {6}{8}}
 \headcommand {\beamer@subsectionpages {6}{8}}
 \headcommand {\slideentry {3}{0}{9}{9/9}{}{0}}
@@ -67,7 +67,7 @@
 \headcommand {\beamer@subsectionpages {21}{21}}
 \headcommand {\slideentry {8}{0}{22}{22/22}{}{0}}
 \headcommand {\beamer@framepages {22}{22}}
-\headcommand {\beamer@subsectionpages {22}{22}}
+\headcommand {\beamer@subsectionentry {0}{8}{1}{23}{Square loss using simple averaging}}\headcommand {\beamer@subsectionpages {22}{22}}
 \headcommand {\slideentry {8}{1}{1}{23/23}{Square loss using simple averaging}{0}}
 \headcommand {\beamer@framepages {23}{23}}
 \headcommand {\sectionentry {9}{Summary table}{24}{Summary table}{0}}
