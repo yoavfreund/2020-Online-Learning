@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{times}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\begin{document} 
+ 
+\section{HW2 / CSE254 / 2020}
+
+Due: Tuesday February 4.
+~\\~\\
+
+In the Halving algorithm we assume that one of the $N$ experts never makes
+a mistake. Suppose instead the assumption is that one of the experts
+makes at most one mistake. What is the best way to predict in this
+case?
+~\\
+~\\
+~\\
+{\bf Hints}
+\begin{itemize}
+  \item Suppose you have an upper bound of $M$ on the number of
+    mistakes of your yet-to-be-born algorithm. Given that assumption,
+    can you reduce the problem to the old problem, where one of the
+    experts makes no mistake.
+  \item You will have to increase the number of experts to do this reduction.
+  \item Once you have the reduction, use the $\log_2 N$ bound on the
+    halving algorithm to get a bound on your algorithm.
+  \item You have the main pieces, and algorithm and  a bound. Next you
+    have to work on keeping everything consistent.
+  \item There is a version of this algorithm where everything is
+    planned in advance and you assume that the adversary is playing
+    optimally. There is a more sophisticated algorithm that takes
+    advantage of the mistakes of a suboptimal adversary.
+\end{itemize}
+
+\end{document}

@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
 \usepackage{amsmath,amssymb, amsthm}
 \usepackage{graphicx}
 \usepackage{times}
@@ -48,5 +48,68 @@ The best prediction, given this estimate, is
   \end{cases}
 \]
 
+How would this predictor behave? Note that the estimate $\hq$ gets
+closer and closer to $q$ as $t$ increases.
+
+Consider the case $q<1/2$ (the case $q>1/2$ is symmetric).
+As $t$ increases, the probability that $\hq>1/2$ converges to zero.
+
+How does this convergence effect the regret?
+On step $t$, the expected loss of the optimal prediction (which is 0),
+is equal to $q$, the expected loss of the other prediction (which is
+1) is equal to $1-q$. The regret if $\hq>1/2$ is $(1-q)-q = 1-2q$.
+The expected regret on iteration $t$ is therefor $P(\hq>1/2)(1-2q)$.
+Defining $\gamma = |1/2-q|$ we can rewrite this as $P(\hq > 1/2) 2
+\gamma$. The last expression is correct also for $q>1/2$.
+
+Using Hoeffding bound we get
+\[
+  P\left( |\hq-q| \geq \gamma \right) \leq e^{-2 t \gamma^2}
+\]
+
+Summing the per-iteration regrets over all 
+\[
+  Regret \leq 2\gamma \sum_{t=0}^\infty  e^{-2 t \gamma^2} = \frac{2
+    \gamma}{1-e^{-2 \gamma^2}} \approx \frac{1}{\gamma}
+\]
+
+We found a bound on the cumulative regret that depends only on
+$\gamma$. In particular, it does not depend on the length of the sequence.
+
+The hardest sequences are therefor the ones where $q$ is close to
+$1/2$.  However note that the regret for $q=1/2$ is zero, because in
+that case all predictions suffer an expected loss of $1/2$ per iteration.
+
+\subsection{Analysis for worst case scenario}
+
+Note first that, just as in the IID scenario, the only predictions
+that matter are 0 and 1.  If we look at the sequence $Y_1,\ldots,Y_T$
+in hindsight and ask what would have been the best constant
+prediction. The answer is that the best prediction is determined by
+wheter $\frac{1}{T}\sum_{t=1}^T Y_t$ is larger or smaller than
+$1/2$. And again, if it is equal to $1/2$ it does not matter which
+prediction we choose.
+
+So we care about the regret relative to two experts: one that always
+predicts 1 and one that always predicts zero. As the loss is bounded
+in $[0,1]$ we can use Hedge to combine these two experts.
+
+Assuming we know the length of the sequence we can set the learning
+rate appropriately and get the regret bound:
+
+\[ L_A - \min_i L_i  \leq \sqrt{2T\ln 2}+\ln 2 \]
+
+We get a bound that does not depend on the gap $\gamma$ but increases
+with the length of the sequence like $\sqrt{T}$.
+
+This is the price we pay for using an algorithm that works for all
+sequences, not just for the IID case.
+
+An interesting question is whether the problem is with the bound, or
+with the algorithm itself. My hunch is that the problem is with the
+algorithm itself - it keeps trying the suboptimal action whereas the
+algorithm for the IID case will make it's mind whether $q>1/2$ or
+$q<1/2$ around $t = 1/\gamma^2$ and will stick to its choice. Have fun
+trying to prove that!
 
 \end{document}
