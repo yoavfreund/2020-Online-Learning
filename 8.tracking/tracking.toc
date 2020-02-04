@@ -1,8 +1,9 @@
 \beamer@endinputifotherversion {3.33pt}
 \select@language {english}
-\beamer@sectionintoc {1}{Review}{2}{0}{1}
-\beamer@sectionintoc {2}{Tracking linear experts}{17}{0}{2}
-\beamer@sectionintoc {3}{Switching Experts}{23}{0}{3}
-\beamer@sectionintoc {4}{An inefficient algorithm}{26}{0}{4}
-\beamer@sectionintoc {5}{The fixed-share algorithm}{42}{0}{5}
-\beamer@sectionintoc {6}{The variable-share algorithm}{61}{0}{6}
+\beamer@sectionintoc {1}{Homework}{2}{0}{1}
+\beamer@sectionintoc {2}{Review}{3}{0}{2}
+\beamer@sectionintoc {3}{Tracking linear experts}{9}{0}{3}
+\beamer@sectionintoc {4}{Switching Experts}{10}{0}{4}
+\beamer@sectionintoc {5}{An inefficient algorithm}{11}{0}{5}
+\beamer@sectionintoc {6}{The fixed-share algorithm}{14}{0}{6}
+\beamer@sectionintoc {7}{The variable-share algorithm}{19}{0}{7}

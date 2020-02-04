@@ -1,66 +1,71 @@
 \beamer@endinputifotherversion {3.33pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
-\headcommand {\sectionentry {1}{Review}{2}{Review}{0}}
+\headcommand {\sectionentry {1}{Homework}{2}{Homework}{0}}
 \headcommand {\beamer@sectionpages {1}{1}}
 \headcommand {\beamer@subsectionpages {1}{1}}
-\headcommand {\slideentry {1}{0}{2}{2/6}{}{0}}
-\headcommand {\beamer@framepages {2}{6}}
-\headcommand {\slideentry {1}{0}{3}{7/8}{}{0}}
-\headcommand {\beamer@framepages {7}{8}}
-\headcommand {\slideentry {1}{0}{4}{9/13}{}{0}}
-\headcommand {\beamer@framepages {9}{13}}
-\headcommand {\slideentry {1}{0}{5}{14/16}{}{0}}
-\headcommand {\beamer@framepages {14}{16}}
-\headcommand {\sectionentry {2}{Tracking linear experts}{17}{Tracking linear experts}{0}}
-\headcommand {\beamer@sectionpages {2}{16}}
-\headcommand {\beamer@subsectionpages {2}{16}}
-\headcommand {\slideentry {2}{0}{6}{17/22}{}{0}}
-\headcommand {\beamer@framepages {17}{22}}
-\headcommand {\sectionentry {3}{Switching Experts}{23}{Switching Experts}{0}}
-\headcommand {\beamer@sectionpages {17}{22}}
-\headcommand {\beamer@subsectionpages {17}{22}}
-\headcommand {\slideentry {3}{0}{7}{23/25}{}{0}}
-\headcommand {\beamer@framepages {23}{25}}
-\headcommand {\sectionentry {4}{An inefficient algorithm}{26}{An inefficient algorithm}{0}}
-\headcommand {\beamer@sectionpages {23}{25}}
-\headcommand {\beamer@subsectionpages {23}{25}}
-\headcommand {\slideentry {4}{0}{8}{26/33}{}{0}}
-\headcommand {\beamer@framepages {26}{33}}
-\headcommand {\slideentry {4}{0}{9}{34/36}{}{0}}
-\headcommand {\beamer@framepages {34}{36}}
-\headcommand {\slideentry {4}{0}{10}{37/41}{}{0}}
-\headcommand {\beamer@framepages {37}{41}}
-\headcommand {\sectionentry {5}{The fixed-share algorithm}{42}{The fixed-share algorithm}{0}}
-\headcommand {\beamer@sectionpages {26}{41}}
-\headcommand {\beamer@subsectionpages {26}{41}}
-\headcommand {\slideentry {5}{0}{11}{42/44}{}{0}}
-\headcommand {\beamer@framepages {42}{44}}
-\headcommand {\slideentry {5}{0}{12}{45/47}{}{0}}
-\headcommand {\beamer@framepages {45}{47}}
-\headcommand {\slideentry {5}{0}{13}{48/53}{}{0}}
-\headcommand {\beamer@framepages {48}{53}}
-\headcommand {\slideentry {5}{0}{14}{54/55}{}{0}}
-\headcommand {\beamer@framepages {54}{55}}
-\headcommand {\slideentry {5}{0}{15}{56/60}{}{0}}
-\headcommand {\beamer@framepages {56}{60}}
-\headcommand {\sectionentry {6}{The variable-share algorithm}{61}{The variable-share algorithm}{0}}
-\headcommand {\beamer@sectionpages {42}{60}}
-\headcommand {\beamer@subsectionpages {42}{60}}
-\headcommand {\slideentry {6}{0}{16}{61/63}{}{0}}
-\headcommand {\beamer@framepages {61}{63}}
-\headcommand {\slideentry {6}{0}{17}{64/67}{}{0}}
-\headcommand {\beamer@framepages {64}{67}}
-\headcommand {\slideentry {6}{0}{18}{68/71}{}{0}}
-\headcommand {\beamer@framepages {68}{71}}
-\headcommand {\slideentry {6}{0}{19}{72/73}{}{0}}
-\headcommand {\beamer@framepages {72}{73}}
-\headcommand {\slideentry {6}{0}{20}{74/74}{}{0}}
-\headcommand {\beamer@framepages {74}{74}}
-\headcommand {\slideentry {6}{0}{21}{75/80}{}{0}}
-\headcommand {\beamer@framepages {75}{80}}
-\headcommand {\beamer@partpages {1}{80}}
-\headcommand {\beamer@subsectionpages {61}{80}}
-\headcommand {\beamer@sectionpages {61}{80}}
-\headcommand {\beamer@documentpages {80}}
-\headcommand {\def \inserttotalframenumber {21}}
+\headcommand {\slideentry {1}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\sectionentry {2}{Review}{3}{Review}{0}}
+\headcommand {\beamer@sectionpages {2}{2}}
+\headcommand {\beamer@subsectionpages {2}{2}}
+\headcommand {\slideentry {2}{0}{3}{3/3}{}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\slideentry {2}{0}{4}{6/6}{}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\slideentry {2}{0}{5}{7/7}{}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\slideentry {2}{0}{6}{8/8}{}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\sectionentry {3}{Tracking linear experts}{9}{Tracking linear experts}{0}}
+\headcommand {\beamer@sectionpages {3}{8}}
+\headcommand {\beamer@subsectionpages {3}{8}}
+\headcommand {\slideentry {3}{0}{7}{9/9}{}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\sectionentry {4}{Switching Experts}{10}{Switching Experts}{0}}
+\headcommand {\beamer@sectionpages {9}{9}}
+\headcommand {\beamer@subsectionpages {9}{9}}
+\headcommand {\slideentry {4}{0}{8}{10/10}{}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\sectionentry {5}{An inefficient algorithm}{11}{An inefficient algorithm}{0}}
+\headcommand {\beamer@sectionpages {10}{10}}
+\headcommand {\beamer@subsectionpages {10}{10}}
+\headcommand {\slideentry {5}{0}{9}{11/11}{}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\slideentry {5}{0}{10}{12/12}{}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {5}{0}{11}{13/13}{}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\sectionentry {6}{The fixed-share algorithm}{14}{The fixed-share algorithm}{0}}
+\headcommand {\beamer@sectionpages {11}{13}}
+\headcommand {\beamer@subsectionpages {11}{13}}
+\headcommand {\slideentry {6}{0}{12}{14/14}{}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\slideentry {6}{0}{13}{15/15}{}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {6}{0}{14}{16/16}{}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\slideentry {6}{0}{15}{17/17}{}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\slideentry {6}{0}{16}{18/18}{}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\sectionentry {7}{The variable-share algorithm}{19}{The variable-share algorithm}{0}}
+\headcommand {\beamer@sectionpages {14}{18}}
+\headcommand {\beamer@subsectionpages {14}{18}}
+\headcommand {\slideentry {7}{0}{17}{19/19}{}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {7}{0}{18}{20/20}{}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {7}{0}{19}{21/21}{}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\slideentry {7}{0}{20}{22/22}{}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {7}{0}{21}{23/23}{}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {7}{0}{22}{24/24}{}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\beamer@partpages {1}{24}}
+\headcommand {\beamer@subsectionpages {19}{24}}
+\headcommand {\beamer@sectionpages {19}{24}}
+\headcommand {\beamer@documentpages {24}}
+\headcommand {\def \inserttotalframenumber {22}}
