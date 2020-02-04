@@ -1,0 +1,70 @@
+\beamer@endinputifotherversion {3.06pt}
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\sectionentry {1}{Review}{3}{Review}{0}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\slideentry {1}{0}{3}{3/3}{}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\slideentry {1}{0}{4}{4/4}{}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\slideentry {1}{0}{5}{5/5}{}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\slideentry {1}{0}{6}{6/6}{}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\slideentry {1}{0}{7}{7/7}{}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\beamer@subsectionpages {3}{7}}
+\headcommand {\slideentry {1}{1}{1}{8/8}{mixable loss functions}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\slideentry {1}{1}{2}{9/9}{mixable loss functions}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\sectionentry {2}{Switching Experts}{10}{Switching Experts}{0}}
+\headcommand {\beamer@sectionpages {3}{9}}
+\headcommand {\beamer@subsectionpages {8}{9}}
+\headcommand {\slideentry {2}{0}{3}{10/10}{}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\sectionentry {3}{An inefficient algorithm}{11}{An inefficient algorithm}{0}}
+\headcommand {\beamer@sectionpages {10}{10}}
+\headcommand {\beamer@subsectionpages {10}{10}}
+\headcommand {\slideentry {3}{0}{4}{11/11}{}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\slideentry {3}{0}{5}{12/12}{}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {3}{0}{6}{13/13}{}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\sectionentry {4}{The fixed-share algorithm}{14}{The fixed-share algorithm}{0}}
+\headcommand {\beamer@sectionpages {11}{13}}
+\headcommand {\beamer@subsectionpages {11}{13}}
+\headcommand {\slideentry {4}{0}{7}{14/14}{}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\slideentry {4}{0}{8}{15/15}{}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {4}{0}{9}{16/16}{}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\slideentry {4}{0}{10}{17/17}{}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\slideentry {4}{0}{11}{18/18}{}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\sectionentry {5}{The variable-share algorithm}{19}{The variable-share algorithm}{0}}
+\headcommand {\beamer@sectionpages {14}{18}}
+\headcommand {\beamer@subsectionpages {14}{18}}
+\headcommand {\slideentry {5}{0}{12}{19/19}{}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {5}{0}{13}{20/20}{}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {5}{0}{14}{21/21}{}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\slideentry {5}{0}{15}{22/22}{}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {5}{0}{16}{23/23}{}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {5}{0}{17}{24/24}{}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\beamer@partpages {1}{24}}
+\headcommand {\beamer@subsectionpages {19}{24}}
+\headcommand {\beamer@sectionpages {19}{24}}
+\headcommand {\beamer@documentpages {24}}
+\headcommand {\def \inserttotalframenumber {24}}
