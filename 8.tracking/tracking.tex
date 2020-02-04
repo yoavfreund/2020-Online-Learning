@@ -1,5 +1,5 @@
-%\documentclass{beamer}
-\documentclass[handout]{beamer}
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
 % This file is a solution template for:
 
 % - Giving a talk on some subject.
@@ -88,6 +88,9 @@
 
 \begin{frame}
   \titlepage
+  Based on ``Tracking the best linear predictor'' and ``Tracking the
+  best expert'' by Herbster and Warmuth. Also, section 11.5 in
+  Prediction learning and Games.
 \end{frame}
 \section{Homework}
 \begin{frame}
@@ -189,7 +192,7 @@ Bregman divergence with respect to the square euclidean norm
   change over time.
 \item The amount of change is measured using total bregman
   divergence.
-\item Regret depends on \R{$\sum_t \Delta_F(\vu_t-1,\vu_t)$}
+\item Regret depends on \R{$\sum_t \Delta_F(\vu_{t-1},\vu_t)$}
 \item \B{The Projection Update} After computing the unconstrained
   update, project the $\vw_{t+1}$ onto a convex set.
 \item Does not allow the algorithm to over-commit to an extreme vector

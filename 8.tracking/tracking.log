@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  4 FEB 2020 06:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  4 FEB 2020 09:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -928,198 +928,502 @@ LaTeX Info: Redefining \includegraphics on input line 83.
 dftex.map}
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 104.
+LaTeX Font Info:    Try loading font information for U+msa on input line 107.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 104.
+LaTeX Font Info:    Try loading font information for U+msb on input line 107.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 104.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 107.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 104.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 107.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 104.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 107.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 104.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 107.
  [2
 
+] [3
+
 ]
-<ManfredSlides/skitch9.png, id=64, 455.7025pt x 343.2825pt>
+[4
+
+] [5
+
+] [6
+
+] [7
+
+] [8
+
+]
+<ManfredSlides/skitch9.png, id=276, 455.7025pt x 343.2825pt>
 File: ManfredSlides/skitch9.png Graphic file (type png)
 
 <use ManfredSlides/skitch9.png>
-Package pdftex.def Info: ManfredSlides/skitch9.png used on input line 107.
+Package pdftex.def Info: ManfredSlides/skitch9.png used on input line 110.
 (pdftex.def)             Requested size: 289.07999pt x 217.7672pt.
 
-<ManfredSlides/skitch6.png, id=66, 449.68pt x 344.28625pt>
+<ManfredSlides/skitch6.png, id=278, 449.68pt x 344.28625pt>
 File: ManfredSlides/skitch6.png Graphic file (type png)
 
 <use ManfredSlides/skitch6.png>
-Package pdftex.def Info: ManfredSlides/skitch6.png used on input line 108.
+Package pdftex.def Info: ManfredSlides/skitch6.png used on input line 111.
 (pdftex.def)             Requested size: 289.07999pt x 221.33533pt.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 127.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 130.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 127.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 130.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 127.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 130.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 127.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 130.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <5> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 127.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 130.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <8> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 127.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 130.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <6> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 127.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 127.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 130.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 130.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3
+ [9
 
  <./ManfredSlides/skitch9.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4 <./ManfredSlides/skitch6.png>] [5] [6
+ [10 <./ManfredSlides/skitch6.png>] [11] [12
+
+] [13
+
+] [14
+
+] [15
 
 ]
-Overfull \vbox (8.24219pt too high) detected at line 167
- []
-
-[7
-
-]
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 180.
- [8
-
-] [9
-
-] <figures/SwitchingExperts.pdf, id=132, 614.295pt x 144.54pt>
-File: figures/SwitchingExperts.pdf Graphic file (type pdf)
-
-<use figures/SwitchingExperts.pdf>
-Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 213.
-(pdftex.def)             Requested size: 325.215pt x 76.522pt.
-
-Overfull \hbox (39.82518pt too wide) in paragraph at lines 213--213
-[][][][][][][]  
- []
-
-[10
-
- <./figures/SwitchingExperts.pdf>]
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 233.
-
-[11
-
-] [12
-
-]
-Overfull \vbox (6.7489pt too high) detected at line 267
- []
-
-[13
-
-] <figures/IntermediateWeights-0.pdf, id=185, 614.295pt x 289.08pt>
-File: figures/IntermediateWeights-0.pdf Graphic file (type pdf)
-
-<use figures/IntermediateWeights-0.pdf>
-Package pdftex.def Info: figures/IntermediateWeights-0.pdf used on input line 2
-74.
-(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
-
-<figures/IntermediateWeights-1.pdf, id=186, 614.295pt x 289.08pt>
-File: figures/IntermediateWeights-1.pdf Graphic file (type pdf)
-
-<use figures/IntermediateWeights-1.pdf>
-Package pdftex.def Info: figures/IntermediateWeights-1.pdf used on input line 2
-74.
-(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
-
-<figures/IntermediateWeights-2.pdf, id=187, 614.295pt x 289.08pt>
-File: figures/IntermediateWeights-2.pdf Graphic file (type pdf)
-
-<use figures/IntermediateWeights-2.pdf>
-Package pdftex.def Info: figures/IntermediateWeights-2.pdf used on input line 2
-74.
-(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
-
-Overfull \hbox (5.69043pt too wide) in paragraph at lines 274--274
-[][][][][][][][][][]  
- []
-
-[14
-
- <./figures/IntermediateWeights-0.pdf> <./figures/IntermediateWeights-1.pdf> <.
-/figures/IntermediateWeights-2.pdf>] [15
-
-]
-File: figures/SwitchingExperts.pdf Graphic file (type pdf)
-
-<use figures/SwitchingExperts.pdf>
-Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 302.
-(pdftex.def)             Requested size: 325.215pt x 76.522pt.
-
-Overfull \hbox (39.82518pt too wide) in paragraph at lines 302--302
-[]  
+Overfull \vbox (8.24219pt too high) detected at line 170
  []
 
 [16
 
 ]
-Overfull \hbox (19.52107pt too wide) detected at line 321
+Overfull \vbox (8.24219pt too high) detected at line 170
+ []
+
+[17
+
+]
+Overfull \vbox (8.24219pt too high) detected at line 170
+ []
+
+[18
+
+]
+Overfull \vbox (8.24219pt too high) detected at line 170
+ []
+
+[19
+
+]
+Overfull \vbox (8.24219pt too high) detected at line 170
+ []
+
+[20
+
+]
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 183.
+ [21
+
+] [22
+
+] [23
+
+] [24
+
+] [25
+
+] [26
+
+] [27
+
+] [28
+
+] [29
+
+]
+<figures/SwitchingExperts.pdf, id=882, 614.295pt x 144.54pt>
+File: figures/SwitchingExperts.pdf Graphic file (type pdf)
+
+<use figures/SwitchingExperts.pdf>
+Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 216.
+(pdftex.def)             Requested size: 325.215pt x 76.522pt.
+
+Overfull \hbox (39.82518pt too wide) in paragraph at lines 216--216
+[][][][][][]  
+ []
+
+[30
+
+ <./figures/SwitchingExperts.pdf>]
+File: figures/SwitchingExperts.pdf Graphic file (type pdf)
+ <use figures/SwitchingExperts.pdf>
+Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 216.
+(pdftex.def)             Requested size: 325.215pt x 76.522pt.
+
+Overfull \hbox (39.82518pt too wide) in paragraph at lines 216--216
+[][][][][][]  
+ []
+
+[31
+
+]
+File: figures/SwitchingExperts.pdf Graphic file (type pdf)
+ <use figures/SwitchingExperts.pdf>
+Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 216.
+(pdftex.def)             Requested size: 325.215pt x 76.522pt.
+
+Overfull \hbox (39.82518pt too wide) in paragraph at lines 216--216
+[][][][][][][]  
+ []
+
+[32
+
+]
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 236.
+
+[33
+
+] [34
+
+] [35
+
+] [36
+
+] [37
+
+] [38
+
+] [39
+
+] [40
+
+] [41
+
+] [42
+
+] [43
+
+]
+Overfull \vbox (6.7489pt too high) detected at line 270
+ []
+
+[44
+
+]
+Overfull \vbox (6.7489pt too high) detected at line 270
+ []
+
+[45
+
+]
+Overfull \vbox (6.7489pt too high) detected at line 270
+ []
+
+[46
+
+]
+Overfull \vbox (6.7489pt too high) detected at line 270
+ []
+
+[47
+
+]
+Overfull \vbox (6.7489pt too high) detected at line 270
+ []
+
+[48
+
+] <figures/IntermediateWeights-0.pdf, id=1440, 614.295pt x 289.08pt>
+File: figures/IntermediateWeights-0.pdf Graphic file (type pdf)
+
+<use figures/IntermediateWeights-0.pdf>
+Package pdftex.def Info: figures/IntermediateWeights-0.pdf used on input line 2
+77.
+(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
+
+<figures/IntermediateWeights-1.pdf, id=1441, 614.295pt x 289.08pt>
+File: figures/IntermediateWeights-1.pdf Graphic file (type pdf)
+
+<use figures/IntermediateWeights-1.pdf>
+Package pdftex.def Info: figures/IntermediateWeights-1.pdf used on input line 2
+77.
+(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
+
+<figures/IntermediateWeights-2.pdf, id=1442, 614.295pt x 289.08pt>
+File: figures/IntermediateWeights-2.pdf Graphic file (type pdf)
+
+<use figures/IntermediateWeights-2.pdf>
+Package pdftex.def Info: figures/IntermediateWeights-2.pdf used on input line 2
+77.
+(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
+
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 277--277
+[][][][][][][]  
+ []
+
+[49
+
+ <./figures/IntermediateWeights-0.pdf> <./figures/IntermediateWeights-1.pdf> <.
+/figures/IntermediateWeights-2.pdf>]
+File: figures/IntermediateWeights-0.pdf Graphic file (type pdf)
+
+<use figures/IntermediateWeights-0.pdf>
+Package pdftex.def Info: figures/IntermediateWeights-0.pdf used on input line 2
+77.
+(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
+File: figures/IntermediateWeights-1.pdf Graphic file (type pdf)
+
+<use figures/IntermediateWeights-1.pdf>
+Package pdftex.def Info: figures/IntermediateWeights-1.pdf used on input line 2
+77.
+(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
+File: figures/IntermediateWeights-2.pdf Graphic file (type pdf)
+
+<use figures/IntermediateWeights-2.pdf>
+Package pdftex.def Info: figures/IntermediateWeights-2.pdf used on input line 2
+77.
+(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
+
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 277--277
+[][][][][][][][][]  
+ []
+
+[50
+
+]
+File: figures/IntermediateWeights-0.pdf Graphic file (type pdf)
+ <use figures/IntermediateWeights-0.pdf>
+Package pdftex.def Info: figures/IntermediateWeights-0.pdf used on input line 2
+77.
+(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
+File: figures/IntermediateWeights-1.pdf Graphic file (type pdf)
+
+<use figures/IntermediateWeights-1.pdf>
+Package pdftex.def Info: figures/IntermediateWeights-1.pdf used on input line 2
+77.
+(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
+File: figures/IntermediateWeights-2.pdf Graphic file (type pdf)
+
+<use figures/IntermediateWeights-2.pdf>
+Package pdftex.def Info: figures/IntermediateWeights-2.pdf used on input line 2
+77.
+(pdftex.def)             Requested size: 312.9803pt x 147.28769pt.
+
+Overfull \hbox (5.69043pt too wide) in paragraph at lines 277--277
+[][][][][][][][][][]  
+ []
+
+[51
+
+] [52
+
+] [53
+
+] [54
+
+]
+File: figures/SwitchingExperts.pdf Graphic file (type pdf)
+ <use figures/SwitchingExperts.pdf>
+Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 305.
+(pdftex.def)             Requested size: 325.215pt x 76.522pt.
+
+Overfull \hbox (39.82518pt too wide) in paragraph at lines 305--305
+[]  
+ []
+
+[55
+
+]
+File: figures/SwitchingExperts.pdf Graphic file (type pdf)
+ <use figures/SwitchingExperts.pdf>
+Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 305.
+(pdftex.def)             Requested size: 325.215pt x 76.522pt.
+
+Overfull \hbox (39.82518pt too wide) in paragraph at lines 305--305
+[]  
+ []
+
+[56
+
+]
+File: figures/SwitchingExperts.pdf Graphic file (type pdf)
+ <use figures/SwitchingExperts.pdf>
+Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 305.
+(pdftex.def)             Requested size: 325.215pt x 76.522pt.
+
+Overfull \hbox (39.82518pt too wide) in paragraph at lines 305--305
+[]  
+ []
+
+[57
+
+]
+File: figures/SwitchingExperts.pdf Graphic file (type pdf)
+ <use figures/SwitchingExperts.pdf>
+Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 305.
+(pdftex.def)             Requested size: 325.215pt x 76.522pt.
+
+Overfull \hbox (39.82518pt too wide) in paragraph at lines 305--305
+[]  
+ []
+
+[58
+
+]
+File: figures/SwitchingExperts.pdf Graphic file (type pdf)
+ <use figures/SwitchingExperts.pdf>
+Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 305.
+(pdftex.def)             Requested size: 325.215pt x 76.522pt.
+
+Overfull \hbox (39.82518pt too wide) in paragraph at lines 305--305
+[]  
+ []
+
+[59
+
+]
+File: figures/SwitchingExperts.pdf Graphic file (type pdf)
+ <use figures/SwitchingExperts.pdf>
+Package pdftex.def Info: figures/SwitchingExperts.pdf used on input line 305.
+(pdftex.def)             Requested size: 325.215pt x 76.522pt.
+
+Overfull \hbox (39.82518pt too wide) in paragraph at lines 305--305
+[]  
+ []
+
+[60
+
+]
+Overfull \hbox (19.52107pt too wide) detected at line 324
 \T1/phv/m/sl/10.95 L[] \OMS/cmsy/m/n/10.95 ^^T \T1/phv/m/sl/10.95 L[] \OT1/cmss
 /m/n/10.95 + [][]
  []
 
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 321.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 324.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 321.
-[17
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 324.
+[61
 
 ]
-Overfull \vbox (0.9564pt too high) detected at line 347
+Overfull \hbox (19.52107pt too wide) detected at line 324
+\T1/phv/m/sl/10.95 L[] \OMS/cmsy/m/n/10.95 ^^T \T1/phv/m/sl/10.95 L[] \OT1/cmss
+/m/n/10.95 + [][]
  []
 
-[18
-
-] [19
-
-] [20
-
-] [21
+[62
 
 ]
-Overfull \hbox (36.93997pt too wide) detected at line 404
+Overfull \vbox (0.9564pt too high) detected at line 350
+ []
+
+[63
+
+]
+Overfull \vbox (0.9564pt too high) detected at line 350
+ []
+
+[64
+
+]
+Overfull \vbox (0.9564pt too high) detected at line 350
+ []
+
+[65
+
+]
+Overfull \vbox (0.9564pt too high) detected at line 350
+ []
+
+[66
+
+]
+Overfull \vbox (0.9564pt too high) detected at line 350
+ []
+
+[67
+
+] [68
+
+] [69
+
+] [70
+
+] [71
+
+] [72
+
+] [73
+
+] [74
+
+] [75
+
+] [76
+
+] [77
+
+] [78
+
+]
+Overfull \hbox (36.93997pt too wide) detected at line 407
 [] [] \T1/phv/m/sl/10.95 n \OT1/cmss/m/n/10.95 + []\T1/phv/m/sl/10.95 L[] \OT1/
 cmss/m/n/10.95 + \T1/phv/m/sl/10.95 k[]
  []
 
-[22
+[79
 
-] <figures/VariableShareFigure.jpg, id=317, 659.46375pt x 463.7325pt>
+]
+Overfull \hbox (36.93997pt too wide) detected at line 407
+[] [] \T1/phv/m/sl/10.95 n \OT1/cmss/m/n/10.95 + []\T1/phv/m/sl/10.95 L[] \OT1/
+cmss/m/n/10.95 + \T1/phv/m/sl/10.95 k[]
+ []
+
+[80
+
+] <figures/VariableShareFigure.jpg, id=2409, 659.46375pt x 463.7325pt>
 File: figures/VariableShareFigure.jpg Graphic file (type jpg)
 
 <use figures/VariableShareFigure.jpg>
-Package pdftex.def Info: figures/VariableShareFigure.jpg used on input line 409
+Package pdftex.def Info: figures/VariableShareFigure.jpg used on input line 412
 .
 (pdftex.def)             Requested size: 242.77013pt x 170.71652pt.
- [23
+ [81
 
  <./figures/VariableShareFigure.jpg>]
-[24
+[82
+
+] [83
+
+] [84
+
+] [85
+
+] [86
+
+] [87
 
 ]
 \tf@nav=\write6
@@ -1131,50 +1435,47 @@ Package pdftex.def Info: figures/VariableShareFigure.jpg used on input line 409
 \tf@snm=\write8
 \openout8 = `tracking.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 428.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 428.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 431.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 431.
  (./tracking.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 428.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 428.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 431.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 431.
 Package rerunfilecheck Info: File `tracking.out' has not changed.
 (rerunfilecheck)             Checksum: B3E5268B48647D5374D8E574C1B77F01;376.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 428.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 431.
  ) 
 Here is how much of TeX's memory you used:
- 17637 strings out of 493117
- 330845 string characters out of 6135433
- 410912 words of memory out of 5000000
- 20586 multiletter control sequences out of 15000+600000
+ 17775 strings out of 493117
+ 332553 string characters out of 6135433
+ 411926 words of memory out of 5000000
+ 20600 multiletter control sequences out of 15000+600000
  80680 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,15n,56p,388b,555s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Navigation87} has been referenced but does not ex
-ist, replaced by a fixed one
-
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texl
-ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/20
-14/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts
-/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
-/urw/times/utmr8a.pfb>
-Output written on tracking.pdf (24 pages, 352840 bytes).
+ 56i,15n,56p,388b,703s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texl
+ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texliv
+e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2014/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fon
+ts/type1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/urw/times/utmr8a.pfb>
+Output written on tracking.pdf (87 pages, 521093 bytes).
 PDF statistics:
- 411 PDF objects out of 1000 (max. 8388607)
- 307 compressed objects within 4 object streams
- 57 named destinations out of 1000 (max. 500000)
+ 2714 PDF objects out of 2984 (max. 8388607)
+ 2463 compressed objects within 25 object streams
+ 182 named destinations out of 1000 (max. 500000)
  134 words of extra memory for PDF output out of 10000 (max. 10000000)
 
