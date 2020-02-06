@@ -7,10 +7,11 @@
 4. ContinExperts/talk5.tex
 5. ContextAlg/talk6.tex
 6. mixable/talk7.tex
+9. Mirror Gradient Decent, Bregman distance
 7. Follow the perturbed leader
 8. Follow the regulated leader
 8. square loss: projected OGD
-9. Mirror Gradient Decent, Bregman distance, Fenchel Dual
+
 
 
 

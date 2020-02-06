@@ -1,0 +1,268 @@
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Montpellier}
+
+  %\setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage{xmpmulti} % package that defines \multiinclude
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title %[Vovk's algorithm] %(optional, use only with long paper titles)
+{Tracking a small set of Experts}
+
+\author[Freund] % (optional, use only with lots of authors)
+{Yoav Freund}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+
+\subject{Machine Learning}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%% \AtBeginSubsection[]
+%% {
+%%   \begin{frame}<beamer>
+%%     \frametitle{Outline}
+%%     \tableofcontents[currentsection,currentsubsection]
+%%   \end{frame}
+%% }
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+\beamerdefaultoverlayspecification{<+->}
+
+\input{../macros}
+
+\begin{document}
+
+\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+  \titlepage
+  Based on ``Tracking a Small Set of Experts by Mixing Past
+  Posteriors'' by Bousquet and Warmuth.
+\end{frame}
+
+\section{Review of vovk's meta algorithm}
+\begingroup
+\small
+
+\begin{frame}
+\frametitle{Vovk's meta-algorithm}
+\begin{itemize}
+\item Fix an \B{achievable} pair \R{$(a,c)$} and set \R{$\eta=a/c$}
+\item \begin{enumerate}
+\item
+\R{$$
+	\weight{i}{t} = {1 \over N} \; e^{-\eta \TEloss{i}^{t}}
+$$}
+\item
+Choose $\gamma_t$ so that, for all $\omega^t \in \Omega$:
+\R{\[
+\lambda(\omega^t,\gamma^t) - c \ln \sum_i \weight{i}{t} 
+\leq
+- c \ln \left( \sum_i 
+      \weight{i}{t}e^{-\eta \lambda(\omega^t,\gamma_i^t)}
+        \right)
+\]}
+\end{enumerate}
+\item
+If choice of \R{$\gamma_t$} always exists, then the total loss satisfies:
+\R{\[
+\sum_t \lambda(\omega^t,\gamma^t)
+\leq
+- c \ln \sum_i \weight{i}{T+1}
+\leq
+a \BEloss + c \ln N
+\]}
+\item
+Vovk's result: \B{\em yes!} a good choice for \R{$\gamma_t$} always exists!
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The set of achievable bounds}
+\begin{itemize}
+\item 
+Fix loss function \R{$\lambda: \Omega \times \Gamma \to [0,\infty)$}
+\item
+The pair \R{$(a,c)$} is {\em achievable} if there exists 
+{\em some} prediction algorithm
+such that for \B{\em any} \R{$N>0$}, \B{\em any} set of \R{$N$} prediction
+sequences and \B{\em any} sequence of outcomes
+\R{\[
+\TAloss \leq a \BEloss + c \ln N
+\]}
+\item
+\begin{center}
+\includegraphics[height=5cm]{figures/achievable2.pdf}
+\end{center}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Definition of achievability for non-uniform prior}
+  \includegraphics[width=4in]{FromPaper/VovkForNonUniformPrior.png}
+  \begin{itemize}
+    \item Specifies \R{$c,\eta$} instead of \R{$a,c$} and
+      \R{$\eta=a/c$}
+    \item Mixable: \R{$a=1$} or equivalently \R{$\eta=1/c$}
+  \end{itemize}
+\end{frame}
+
+\section{Switching in a small set}
+
+\begin{frame}
+\frametitle{Switching in a small set}
+\begin{itemize}
+\item \B{Switching experts:} \R{$n$} experts. Algorithm's total loss
+  compared to total loss of \B{best expert sequence} with \R{$k$}
+  \B{switches}.
+\item Regret bound \R{${\bf Regret} \leq ck \log n + c \log \frac{T-1}{k}$}
+\item \includegraphics[width=3.5in]{figures/SwitchingExperts.pdf}
+\item \B{Switching in a small set}: Same, but comparator restricted to
+  a subset of \R{$m \ll n$} experts.
+\item \includegraphics[width=3.5in]{figures/switchingSmallSet.pdf}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Short term vs. long term}
+\begin{itemize}
+\item In the short term - track the sequence of switching
+  experts. Regret of \R{$k \log n$} per switch.
+\item In the long term - Identify the set of \R{$m \ll n$} experts and
+  switch only among them. Regret of \R{$c\log m$} per switch.
+\item Practical implication: when the set of models is small,
+  transitions are tracked more quickly.
+\end{itemize}
+\end{frame}
+
+\section{An inefficient algorithm}
+
+\begin{frame}
+\frametitle{An inefficient algorithm for switching experts}
+\begin{itemize}
+\item Fix:
+\begin{itemize}
+\item \R{$l$} - sequence length
+\item \R{$k$} - number of switches
+\item \R{$n$} - number of experts
+\end{itemize}
+\item Consider one \B{partition-expert} per sequence of switching experts.
+\item No. of \B{partition-expert}s : 
+\R{${l \choose k-1} n (n-1)^k = O \paren{n^{k+1} \paren{\frac{el}{k}}^k} $}
+\item The regret for a mixable loss with constant $c$ is
+\R{$c\left( (k+1) \log n + k \log \frac{l}{k} +k\right)$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{An inefficient algorithm for switching in a small set}
+\begin{itemize}
+\item Define a meta-expert for each subset $S$ of \R{$\{1,\ldots,n\}$} of size
+  \R{$m$}.
+\item There are \R{${n \choose m}$} meta-experts.
+\item Each meta-expert considers switches among the experts in $S$
+\item A standard exponential weights algorithm is used to combine all
+  meta-experts.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Regret bound for inefficient algorithm}
+\begin{itemize}
+\item For inefficient switching experts:\\
+\R{$R \approx ck \log n + ck \log \frac{l}{k}$}
+\item For inefficient switching in a small set:\\
+  \R{$R \approx ck \log m + ck \log \frac{l}{k} + cn \log \frac{n}{m} $}
+\item Remember two part coding for log loss: encode the model and
+  then the data given the model. The length of the description of
+  the model is the regret.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Efficient algorithm}
+\includegraphics[width=4.5in]{FromPaper/UpdateMixAlgorithm.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mixing in past weights}
+\includegraphics[width=4.5in]{FromPaper/Mixingweights.png}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Bound For Uniform Past}
+\includegraphics[width=4.5in]{FromPaper/UniformPast.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bound For Decaying Past}
+\includegraphics[width=4.5in]{FromPaper/DecayingPast.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments}
+Switch to paper (BousquetW02.pdf)
+\end{frame}
+
+
+\endgroup
+\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+

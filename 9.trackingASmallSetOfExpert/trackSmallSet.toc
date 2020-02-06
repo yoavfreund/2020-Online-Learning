@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Review of vovk's meta algorithm}{2}{0}{1}
+\beamer@sectionintoc {2}{Switching in a small set}{13}{0}{2}
+\beamer@sectionintoc {3}{An inefficient algorithm}{21}{0}{3}

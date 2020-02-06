@@ -14,7 +14,7 @@
 \newcommand{\boldell}{{\mbox{\cmmib \symbol{'140}}}}
 
 
-\newmcommandi{\costvec}{{\boldell}^{#1}}
+\newmcommandi{\costvec}{{\boldell}_{#1}}
 \newmcommandii{\cost}{{\ell}^{#1}_{#2}}
 
 \newmcommandi{\rd}{\tilde{#1}}
@@ -126,6 +126,12 @@
 \newcommand{\vv}{{\mathbf v}}
 \newcommand{\vx}{{\mathbf x}}
 \newcommand{\vy}{{\mathbf y}}
+\newcommand{\vw}{{\mathbf w}}
+\newcommand{\vq}{{\mathbf q}}
+
+\newcommand{\vecq}{{\bf q}}
+\newcommand{\vecp}{{\bf p}}
+
 
 \newcommand{\HedgeLoss}{L_{\mbox{\footnotesize Hedge}}}
 
@@ -135,8 +141,8 @@
 \newcommand{\vb}{\vec{b}}
 %\newcommand{\loss}{\vec{\ell}}
 \newcommand{\loss}{L}
-%\newcommand{\elloss}[2]{\ell_{#1}^{#2}} %loss of expert i at time t
 \newcommand{\elloss}[2]{\ell_{#2}\left( #1 \right)} %loss of expert i at time t
+\newcommand{\lossvec}[1]{{\mathbf \ell}_{#1}}       %loss of expert at time t
 \newcommand{\w}[1]{\makebox[12pt]{{#1}}}
 \newcommand{\Rps}{\mbox{\tt R}}
 \newcommand{\rPs}{\mbox{\tt P}}
