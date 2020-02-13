@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Linear Pattern Recognition}{7}{0}{1}
+\beamer@sectionintoc {2}{Potential Based Gradient descent}{12}{0}{2}
+\beamer@sectionintoc {3}{Duality}{22}{0}{3}
+\beamer@sectionintoc {4}{The Mirror Descent Algorithm}{59}{0}{4}
+\beamer@sectionintoc {5}{Algorithms for specific potentials}{79}{0}{5}
