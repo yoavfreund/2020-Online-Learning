@@ -1,0 +1,1518 @@
+\documentstyle[11pt,fullpage,times]{article} 
+
+%%%%%%%%%%%%%%%%%%%
+% include these lines for printing a draft (wide margins and double
+% spaced)
+%\setlength{\textwidth}{5.5in}
+%\renewcommand{\baselinestretch}{1.5}
+%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\fortypesetter}[1]{#1}  % for final draft with attachments
+\newcommand{\fortypesetter}[1]{}   % for printing without attachments
+
+
+\newcommand{\anote}[1]{\marginpar{\tiny #1}}
+
+\newtheorem{theorem}{Theorem}	
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\cludgeq}[1]{{\em \[ {#1} \]}}
+
+\newcommand{\newmcommand}[2]{\newcommand{#1}{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\renewmcommand}[2]{\renewcommand{#1}{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\newmcommandi}[2]{\newcommand{#1}[1]{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\newmcommandii}[2]{\newcommand{#1}[2]{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+\newcommand{\newmcommandiii}[2]{\newcommand{#1}[3]{{\ifmmode {#2}\else\mbox{${#2}$}\fi}}}
+
+\newfont{\msym}{msbm10}
+\newmcommand{\real}{\mbox{\msym R}}
+
+\newcommand{\paren}[1]{{\left({#1}\right)}}
+\newcommand{\floor}[1]{{\left\lfloor{#1}\right\rfloor}}
+\newcommand{\nextline}{\vspace{0.2cm}\\}   % a little space for equation arrays
+
+\newcommand{\w}[1]{\makebox[12pt]{{#1}}}
+\newcommand{\Rps}{\mbox{\tt R}}
+\newcommand{\rPs}{\mbox{\tt P}}
+\newcommand{\rpS}{\mbox{\tt S}}
+\newcommand{\rpstie}{\w{$\frac{1}{2}$}}
+\newcommand{\rpswin}{\w{$0$}}
+\newcommand{\rpsloss}{\w{$1$}}
+\newcommand{\rpsstrut}{\rule[-1.3ex]{0pt}{2.6ex}}
+
+\newmcommand{\M}{\bf M}
+\newmcommand{\dM}{\M'}
+\newmcommand{\D}{D}
+\renewmcommand{\P}{\bf P}
+\newmcommand{\Q}{\bf Q}
+\newmcommand{\Dt}{\D_t}
+\newmcommand{\Pt}{\P_t}
+\newmcommand{\Qt}{\Q_t}
+\newmcommand{\Pstar}{\P^*}	% the min/max optimal mixed strategy
+\newmcommand{\Pref}{\tilde{\P}}	% a reference mixed strategy (not
+				% necessarily min/max)
+\newmcommand{\Qstar}{\Q^*}
+\newmcommand{\Pa}{\overline{\P}}
+\newmcommand{\Qa}{\overline{\Q}}
+\newmcommand{\Qh}{\hat{\Q}}
+\newmcommandi{\trans}{{#1}^{\rm T}}
+\newmcommand{\mhx}{\M(h,x)}
+\newmcommand{\mxh}{\dM(x,h)}
+\newmcommand{\mpq}{\M(\P,\Q)}
+\newmcommand{\mpsq}{\M(\Pstar,\Q)}
+\newmcommand{\mpsqt}{\M(\Pstar,\Qt)}
+\newmcommand{\mptqt}{\M(\Pt,\Qt)}
+\newmcommand{\mptt}{\M(\Pt,t)}
+\newmcommand{\mptq}{\M(\Pt,\Q)}
+\newmcommand{\mpqt}{\M(\P,\Qt)}
+\newcommand{\minp}{\min_{\P}}
+\newcommand{\maxq}{\max_{\Q}}
+\newcommand{\RE}[2]{{\rm RE}\left( {#1} \; \parallel \; {#2} \right) }
+
+\newmcommand{\sumt}{\sum_{t=1}^T}
+\newmcommand{\sumin}{\sum_{i=1}^n}
+\newmcommand{\delt}{\Delta_{T,n}}
+
+\newcommand{\lwalg}{\mbox{\rm MW}}
+\newcommand{\lwalgvar}{\mbox{\rm vMW}}
+
+\newcommand{\proof}{\noindent{\bf Proof:} }
+\newcommand{\qed}{\rule{0.7em}{0.7em}}
+
+\newmcommand{\hyps}{\cal H}
+\newmcommand{\predt}{\hat{y}_t}
+\newmcommandii{\prob}{\Pr_{#1}\brackets{{#2}}}
+\newmcommandi{\pr}{\prob{}{#1}}
+\newcommand{\expY}{{\rm E}Y}
+\newcommand{\varY}{{\rm Var}\;Y}
+
+\newmcommand{\hfin}{h_{\it fin}}
+
+\newcommand{\half}{\mbox{$\frac{1}{2}$}}
+\newcommand{\one}{{\bf 1}}
+\newcommand{\cond}{\;\mid\;}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%% address page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fortypesetter{
+
+\mbox{}
+
+Title: Adaptive game playing using multiplicative weights\\
+
+Running head: Adaptive game playing\\
+
+Send galleys to:%
+~~~~~~~~%
+\begin{minipage}[t]{4in}
+	Yoav Freund\\
+	AT\&T Labs\\
+	Shannon Laboratory\\
+	180 Park Avenue, Room A205\\
+	Florham Park, NJ \ 07932-0971\\
+	yoav@research.att.com
+\end{minipage}
+\thispagestyle{empty}
+	
+\newpage
+~
+\thispagestyle{empty}
+\newpage
+
+\setcounter{page}{1}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%% end address page %%%%%%%%%%%%%%%%%%%%%%
+
+
+\title{Adaptive game playing using multiplicative weights}
+\author{Yoav Freund ~~~~~~~~ Robert E. Schapire\\
+	AT\&T Labs\\
+	Shannon Laboratory\\
+	180 Park Avenue\\
+	Florham Park, NJ \ 07932-0971\\
+	\{yoav, schapire\}@research.att.com\\
+	http://www.research.att.com/$\sim$\{yoav, schapire\}}
+\maketitle
+
+\begin{abstract}
+
+We present a simple algorithm for playing a repeated game.  We show
+that a player using this algorithm suffers average loss that is
+guaranteed to come close to the minimum loss achievable by any fixed
+strategy.  Our bounds are non-asymptotic and hold for any opponent.
+The algorithm, which uses the multiplicative-weight methods of
+Littlestone and Warmuth, is analyzed using the Kullback-Liebler
+divergence.  This analysis yields a new, simple proof of the minmax
+theorem, as well as a provable method of approximately solving a game.
+A variant of our game-playing algorithm is proved to be optimal in a
+very strong sense.
+
+\end{abstract}
+
+\fortypesetter{{\it Journal of Economic Literature} classification
+numbers: C44, C70, D83.}
+
+\section{Introduction} \label{sec:intro}
+
+We study the problem of learning to play a repeated game.
+Let \M\ be a matrix.
+On each of a series of rounds, one player chooses a row $i$ and the
+other chooses a column $j$.
+The selected entry $\M(i,j)$ is the loss suffered by the row player.
+We study play of the game from the row player's perspective, and
+therefore leave the column player's loss or utility unspecified.
+
+A simple goal for the row player is to suffer loss which is no worse
+than the value of the game \M\ (if viewed as a zero-sum game).
+Such a goal may be appropriate when it is expected that the opposing
+column player's
+goal is to maximize the loss of the row player (so that the game is in
+fact zero-sum).
+In this case, the row player can do no better than to play using a
+minmax mixed strategy which can be computed using linear programming,
+provided that the entire
+matrix \M\ is known ahead of time, and provided that the matrix is not
+too large.
+This approach has a number of potential drawbacks.
+For instance,
+\begin{itemize}
+\item
+\M\ may be unknown;
+\item
+\M\ may be so large that computing a minmax strategy using linear
+programming is infeasible; or
+\item
+the column player may not be truly adversarial and may behave in a
+manner that admits loss significantly smaller than the game value.
+\end{itemize}
+
+Overcoming these difficulties in the one-shot game is hopeless.
+In repeated play, however, one can hope to learn to play well against the
+particular opponent that is being faced.
+
+Algorithms of this type were first proposed by Hannan~\cite{Hannan57} and
+Blackwell~\cite{Blackwell56}, and later algorithms were proposed by
+Foster and Vohra~\cite{FosterVo93,FosterVo98,FosterVo97}.
+These algorithms have the property that the loss of the row player in
+repeated play is guaranteed to come close to the minimum loss achievable
+with respect to the sequence of plays taken by the column player.
+
+In this paper, we present a simple algorithm for solving this problem,
+and give a simple analysis of the algorithm.
+The bounds we obtain are {\em not\/} asymptotic and hold for any finite number
+of rounds.
+The algorithm and its analysis are 
+based directly on the ``on-line prediction'' methods of Littlestone and
+Warmuth~\cite{LittlestoneWa94}.
+
+The analysis of this algorithm yields a new (as far as we know) and
+simple proof of von Neumann's minmax theorem, as well as a
+provable method of approximately solving a game.
+We also give more refined variants of the algorithm for this purpose,
+and we show that one of these is optimal in a very strong sense.
+
+The paper is organized as follows. 
+In Section~\ref{sec:prelim} we define the mathematical setup and
+notation.
+In Section~\ref{sec:alg}
+we introduce the basic multiplicative weights algorithm whose
+average performance is guaranteed to be almost as good as that of the
+best fixed mixed strategy. 
+In Section~\ref{sec:online} we outline the relationship between our
+work and some of the extensive existing work on the use of
+multiplicative weights algorithms for on-line prediction.
+In Section~\ref{sec:minmax-proof} we show how the algorithm can be
+used to give a simple proof of Von-Neumann's min-max theorem.
+In Section~\ref{sec:minmax-solve} we give a version of the algorithm
+whose distributions are guaranteed to converge to an
+optimal mixed strategy. We note the possible application of this
+algorithm to solving linear programming problems and reference other
+work that have used multiplicative weights to this end.
+Finally, in Section~\ref{sec:lowerbound} we show that the convergence rate of
+the second version of the algorithm is asymptotically optimal.
+
+\section{Playing repeated games} \label{sec:prelim}
+
+We consider non-collaborative two-person games in normal form.  The
+game is defined by a matrix \M\ with $n$ rows and $m$ columns.  There
+are two players called the row player and column player.  To play the
+game, the row player chooses a row $i$, and, simultaneously, the
+column player chooses a column $j$.  The selected entry $\M(i,j)$ is
+the {\em loss\/} suffered by the row player.
+The column player's loss or utility is unspecified.
+
+For the sake of simplicity, throughout this paper,
+we assume that all the entries of the matrix \M\ are in the
+range $[0,1]$.  Simple scaling can be used to get similar
+results for general bounded ranges.
+Also, we restrict ourselves to the case where the number of
+choices available to each player is finite. However, most of the
+results translate with very mild additional assumptions to cases in
+which the number of choices is infinite. For a discussion of infinite
+matrix games see, for instance, Chapter~2 in Ferguson~\cite{Ferguson67}.
+
+Following standard terminology, we refer to the choice of a specific
+row or column as  a {\em pure strategy\/} and to a distribution over
+rows or columns as a {\em mixed strategy}. We use $\P$ to 
+denote a mixed strategy of the row player, and $\Q$ to denote a mixed
+strategy of the column player. We use $\P(i)$ to denote the
+probability that $\P$ associates with the row $i$, and
+we write $\mpq = \trans{\P} \M \Q$ to denote
+the expected loss (of the row player) when the two mixed strategies
+are used. In addition, we write $\M(\P,j)$ and $\M(i,\Q)$ to denote
+the expected loss when one side uses a pure strategy and the other a
+mixed strategy.
+Although these quantities denote {\em expected\/} losses, we will
+usually refer to them simply as losses.
+
+If we assume that the loss of the row player is the gain of the column
+player, we can think about the game as a zero-sum game. Under such an
+interpretation we use $\Pstar$ and $\Qstar$ to denote optimal mixed
+strategies for $\M$, and $v=\M(\Pstar,\Qstar)$ to denote the value of
+the game.
+
+The main subject of this paper is an algorithm for adaptively
+selecting mixed strategies. The algorithm is used to choose a mixed
+strategy for one of the players in the context of {\em repeated
+play}.
+We usually associate the algorithm with the row player.
+To emphasize the roles of the two players in our context, we
+sometimes refer to the row and column players as the {\em learner\/} and
+the {\em environment}, respectively.
+An instance of repeated play is a sequence of {\em rounds} of
+interactions between the learner and the environment.
+The game matrix $\M$ used in the interactions is fixed but is unknown
+to the learner. The learner only knows the number of choices that it
+has, i.e., the number of rows.
+On round $t=1,\ldots,T$:
+\begin{enumerate}
+\item
+the learner chooses mixed strategy \Pt;
+\item
+the environment chooses mixed strategy \Qt\ (which may be chosen with
+knowledge of \Pt)
+\item
+the learner is permitted to observe the loss $\M(i,\Qt)$ for each row
+$i$; this is the loss it would have suffered had it played using pure
+strategy $i$;
+\item
+the learner suffers loss \mptqt.
+\end{enumerate}
+
+The basic goal of the learner is to minimize its total loss
+$\sum_{t=1}^T \mptqt$. If the environment is maximally adversarial
+then a related goal is to approximate the optimal mixed row strategy
+$\Pstar$.
+However, in more benign environments, the goal may be to suffer the
+minimum loss possible, which may be much better than the value of the
+game.
+
+Finally, in what follows, we find it useful to measure the distance
+between two distributions $\P_1$ and $\P_2$ using the
+{\em Kullback-Leibler divergence}, also called the {\em relative
+entropy}, which is defined to be
+\[
+\RE{\P_1}{\P_2} \doteq \sum_{i=1}^n \P_1(i) \ln \paren{\P_1(i) \over \P_2(i)}~.
+\]
+As is well known, the relative entropy is a measure of discrepancy
+between distributions in that it is non-negative and is equal to zero
+if and only if $\P_1=\P_2$.
+For real numbers $p_1, p_2 \in [0,1]$, we use the shorthand
+$\RE{p_1}{p_2}$ to denote the relative entropy between Bernoulli
+distributions with parameters $p_1$ and $p_2$, i.e.,
+\[
+\RE{p_1}{p_2} \doteq p_1 \ln\paren{\frac{p_1}{p_2}}
+                + (1-p_1) \ln\paren{\frac{1-p_1}{1-p_2}}.
+\]
+
+\section{The basic algorithm} \label{sec:alg}
+
+We now describe our basic algorithm for repeated play, which we 
+call \lwalg\ for ``multiplicative weights.''
+This algorithm is a direct
+generalization of Littlestone and Warmuth's ``weighted majority
+algorithm''~\cite{LittlestoneWa94}, which was discovered
+independently by Fudenberg and Levine~\cite{FudenbergLe95}.
+
+The learning algorithm \lwalg\ starts with some initial mixed strategy
+$\P_1$ which it
+uses for the first round of the game.
+After each round $t$, the learner computes a new mixed strategy
+$\P_{t+1}$ by a simple multiplicative rule:
+\[
+   \P_{t+1}(i) = \P_{t}(i) {\beta^{\M(i,\Qt)} \over Z_t}
+\]
+where $Z_t$ is a normalization factor:
+\[
+Z_t = \sum_{i=1}^n \P_{t}(i) \beta^{\M(i,\Qt)}~,
+\]
+and $\beta\in [0,1)$ is a parameter of the algorithm.
+
+The main theorem concerning this algorithm is the following:
+
+\begin{theorem} \label{thm:lw}
+For any matrix \M\ with $n$ rows and entries in $[0,1]$, and for any
+sequence of mixed strategies $\Q_1,\ldots,\Q_T$ played by the
+environment,
+the sequence of mixed strategies $\P_1,\ldots,\P_T$
+produced by algorithm \lwalg\ satisfies:
+{\em
+\[
+   \sumt \mptqt \leq
+        \minp \brackets{a_\beta \sumt \mpqt + c_\beta \RE{\P}{\P_1}}
+\]
+}%
+where
+\[
+a_\beta =  \frac{\ln(1/\beta)}{1-\beta}
+ \mbox{~~~~~~~~}
+c_\beta = \frac{1}{1-\beta}.
+\]
+\end{theorem}
+
+Our proof uses a kind of ``amortized analysis'' in which relative entropy
+is used as a ``potential'' function.
+This method of analysis for on-line learning algorithms is due to
+Kivinen and Warmuth~\cite{KivinenWa97}.
+The heart of the proof is in the following lemma, which bounds the
+change in potential before and after a single round.
+
+\begin{lemma} \label{lemma:single-step}
+For any iteration $t$ where \lwalg\ is used with parameter $\beta$,
+and for any mixed strategy \Pref,
+\[
+\RE{\Pref}{\P_{t+1}} - \RE{\Pref}{\P_t} 
+\leq
+\paren{\ln {1 \over \beta}} \M(\Pref,\Q_t) 
++
+\ln \left( 1-(1-\beta)\M(\Pt,\Qt) \right).
+\]
+\end{lemma}
+\proof
+The proof of the lemma can be summarized by 
+the following sequence of inequalities:
+\begin{eqnarray}
+\lefteqn{
+\RE{\Pref}{\P_{t+1}} - \RE{\Pref}{\P_t}} \nonumber \\
+&=& 
+\sum_{i=1}^n \Pref(i) \ln {\Pref(i) \over \P_{t+1}(i)}
+- \sum_{i=1}^n \Pref(i) \ln {\Pref(i) \over \P_t(i)} \label{step:REdef}\\
+&=&
+\sum_{i=1}^n \Pref(i) \ln {\P_t(i) \over \P_{t+1}(i)}\\
+&=&
+\sum_{i=1}^n \Pref(i) \ln {Z_t \over \beta^{\M(i,\Qt)}} \label{step:algdef}\\
+&=&
+\left( \ln {1 \over \beta} \right) \sum_{i=1}^n \Pref(i) \M(i,\Qt)
++ \ln Z_t \label{step:Zt}\\
+&\leq&
+\left( \ln {1 \over \beta} \right) \M(\Pref,\Qt)
++
+\ln\brackets{\sum_{i=1}^n \P_{t}(i) \left( 1- (1-\beta) \M(i,\Qt) \right)}
+\label{step:convexity}
+\\
+&=&
+\paren{\ln {1 \over \beta}} \M(\Pref,\Q_t) 
++
+\ln \left( 1-(1-\beta)\M(\Pt,\Qt) \right).
+\nonumber
+\end{eqnarray}
+Line~(\ref{step:REdef}) follows from the definition of relative entropy.
+Line~(\ref{step:algdef}) follows from the update rule of \lwalg and 
+line~(\ref{step:Zt}) follows by simple algebra.
+Finally, line~(\ref{step:convexity}) follows from the definition
+of $Z_t$ combined with the fact that, by convexity, $\beta^x \leq
+1-(1-\beta)x$ for $\beta\geq 0$ and $x\in [0,1]$.
+\qed
+
+{\noindent \bf Proof of Theorem~\ref{thm:lw}:} 
+Let \Pref\ be any mixed row strategy.
+We first simplify the last term in the inequality of
+Lemma~\ref{lemma:single-step} by using the fact that 
+$\ln(1-x) \leq -x$ for any $x < 1$ which implies that
+\[
+\RE{\Pref}{\P_{t+1}} - \RE{\Pref}{\P_t} 
+\leq
+\paren{\ln {1 \over \beta}} \M(\Pref,\Q_t) 
+-(1-\beta)\M(\Pt,\Qt)
+\]
+Summing this inequality over $t=1,\ldots,T$ we get
+\[
+\RE{\Pref}{\P_{T+1}} - \RE{\Pref}{\P_1}
+\leq
+\paren{\ln {1 \over \beta}} \sum_{t=1}^T \M(\Pref,\Q_t) 
+-(1-\beta) \sum_{t=1}^T \M(\Pt,\Qt).
+\]
+Noting that $\RE{\Pref}{\P_{T+1}} \geq 0$, rearranging the
+inequality and noting that \Pref\ was chosen arbitrarily gives the
+statement of the theorem.
+\qed.
+
+In order to use \lwalg, we need to choose the initial distribution
+$\P_1$ and the parameter $\beta$. We start with the choice of $\P_1$.
+In general, the closer $\P_1$ is to a good mixed strategy $\Pref$, the
+better the bound on the total loss \lwalg. However, even if we have no
+prior knowledge about the good mixed strategies, we can achieve
+reasonable performance by using the uniform distribution over the rows
+as the initial strategy. This gives us a performance bound that 
+holds uniformly for all games with $n$ rows:
+
+\begin{corollary}
+If \lwalg\ is used with $\P_1$ set to the uniform distribution then its
+total loss is bounded by
+\[
+   \sumt \mptqt \leq a_\beta \minp \sumt \mpqt + c_\beta \ln n
+\]
+where $a_\beta$ and $c_\beta$ are as defined in Theorem~\ref{thm:lw}.
+\end{corollary}
+
+\proof
+If $\P_1(i) = 1/n$ for all $i$ then $\RE{\P}{\P_1}\leq \ln n$ for all
+$\P$.
+\qed
+
+Next we discuss the choice of the parameter $\beta$.  As $\beta$
+approaches $1$, $a_\beta$ approaches $1$ from above while $c_\beta$
+increases to
+infinity. On the other hand, if we fix $\beta$ and let the number of
+rounds $T$ increase, the second term $c_\beta \ln n$ becomes
+negligible (since it is fixed) relative to $T$.
+Thus, by choosing $\beta$ as a function of $T$ which approaches $1$
+for $T \to \infty$, the learner can ensure that its average per-trial loss will
+not be much worse than the loss of the best strategy.  This is
+formalized in the following corollary:
+
+\begin{corollary}
+\label{cor:lw}
+Under the conditions of Theorem~\ref{thm:lw} and with $\beta$ set to
+\[\frac{1}{1+\sqrt{\frac{2 \ln n}{T}}}, \]
+the average per-trial loss suffered by the learner is
+\[
+   \frac{1}{T} \sumt \mptqt \leq
+    \minp \frac{1}{T} \sumt \mpqt + \delt
+\]
+where
+\[
+\delt = \sqrt{2 \ln n \over T} + {\ln n \over T} 
+= O\paren{\sqrt{\frac{\ln n}{T}}}.
+\]
+\end{corollary}
+
+\proof
+It can be shown that $-\ln \beta \leq (1-\beta^2)/(2\beta)$ for $\beta
+\in (0,1]$. Applying this approximation and the given choice of
+$\beta$ yields the result.
+\qed
+
+Since $\delt \rightarrow 0$ as $T \rightarrow \infty$, we see that the
+amount by which the average per-trial loss of the learner exceeds that
+of the best mixed strategy can be made arbitrarily small for large
+$T$.
+
+Note that in the analysis we made no assumption about the strategy used
+by the environment. Theorem~\ref{thm:lw} guarantees that its cumulative loss
+is not much larger than that of {\em any} fixed mixed strategy.
+As shown below, this implies that
+the loss cannot be much larger than the game value. However,
+if the environment is non-adversarial, there might be a better 
+row strategy, in which case the algorithm is guaranteed
+to be almost as good as this better strategy.
+
+\begin{corollary} \label{cor:almost-min/max}
+Under the conditions of Corollary~\ref{cor:lw},
+\[
+   \frac{1}{T} \sumt \mptqt \leq v + \delt
+\]
+where $v$ is the value of the game \M.
+\end{corollary}
+
+\proof
+Let \Pstar\ be a minmax strategy for \M\ so that for all column strategies
+\Q, $\mpsq \leq v$.
+Then, by Corollary~\ref{cor:lw},
+\[
+   \frac{1}{T} \sumt \mptqt \leq
+     \frac{1}{T} \sumt \mpsqt + \delt
+  \leq v + \delt.
+\]
+\qed
+
+\subsection{Convergence with probability one}
+
+Suppose that the mixed strategies that are generated by \lwalg\ are
+used to select one of the rows at each iteration. From 
+Theorem~\ref{thm:lw} and Corollary~\ref{cor:lw} we know that the
+expected per-iteration loss of \lwalg\ approaches the optimal
+achievable value for any fixed strategy as $T \to \infty$.
+However, we might want a stronger assurance of the performance of
+\lwalg; for example, we would like to know that the {\em actual\/} 
+per-iteration loss is, with high probability, close to the expected value.
+As the following lemma shows, the per-trial loss of any algorithm for
+the repeated game is, with high probability, at most $O(1/\sqrt{T})$
+away from the expected value. The only required game property is that
+the game matrix elements are all in $[0,1]$.
+
+\begin{lemma} \label{lemma:azuma}
+Let the players of a matrix game use any pair of methods for choosing
+their mixed strategies on iteration $t$ based on past game events.
+Let $\P_t$ and $\Q_t$ denote the mixed strategies used by the players
+on iteration $t$ and let $\M(i_t,j_t)$ denote the actual game outcome
+on iteration $t$ that is chosen at random according to $\P_t$ and $\Q_t$. 
+Then, for every $\epsilon>0$,
+\[
+\prob{}{{1 \over T} 
+                      \left| \sum_{t=1}^T \paren{\M(i_t,j_t) - \M(\Pt,\Qt)}
+                      \right| > \epsilon
+                     }
+\leq 2 \exp \left( -{1 \over 2} T \epsilon^2 \right)~,
+\]
+where probability is taken with respect to the random choice of rows
+${i_1,\ldots,i_T}$ and columns ${j_1,\ldots,j_T}$.
+\end{lemma}
+
+\proof 
+The proof follows directly from a theorem proved by
+Hoeffding~\cite{Hoeffding63} about
+the convergence of a sum of bounded-step martingales which is commonly
+called ``Azuma's lemma.''
+The sequence of random variables $Y_t = \M(i_t,j_t) - \M(\Pt,\Qt)$ is
+a martingale difference sequence. As the entries of $\M$ are bounded
+in $[0,1]$ we have that $|Y_t| \leq 1$. Thus we can directly apply
+Azuma's Lemma and get that, for any $a>0$
+\[
+\prob{}{\left| \sum_{t=1}^TY_t \right| > a}
+   \leq 
+2\exp \left( -{a^2 \over 2T} \right).
+\]
+Substituting $a=\epsilon T$ we get the statement of the lemma.
+\qed
+
+If we want to have an algorithm whose performance will converge to the
+optimal performance we need the value of $\beta$
+to approach $1$ as the length of the sequence increases. One way of
+doing this, which we describe here, is to have the row player 
+divide the time sequence into ``epochs.''  In each epoch, the row player
+restarts the algorithm \lwalg\ (resetting all the row distribution to
+the uniform distribution) and uses a different value of $\beta$ 
+which is tuned according to the length of the epoch. 
+We show that such a procedure can guarantee, almost surely, that the 
+long term per-iteration loss is at most the expected loss of any
+fixed mixed strategy.
+
+\newcommand{\k}{k}
+We denote the length of the $\k$th epoch
+by $T_{\k}$ and the value of $\beta$ used for that epoch by $\beta_{\k}$.
+One choice of epochs that gives convergence with probability one is
+the following:
+\begin{equation} \label{eqn:epochs-choice}
+T_{\k} = \k^2,\;\;
+\beta_{\k}=\frac{1}{1+\sqrt{\frac{2 \ln n}{\k^2}}}~.
+\end{equation}
+The convergence properties of this strategy are given in the following theorem:
+
+\begin{theorem} \label{thm:prob1conv}
+Suppose the repeated game is continued for an unbounded number of
+rounds.
+Let $\P_t$ be chosen according to the method of
+epochs with the parameters described in
+Equation~(\ref{eqn:epochs-choice}),
+and let $i_t$ be chosen at random according to $\P_t$.
+Let the environment choose $j_t$ as an arbitrary stochastic function
+of past plays.
+Then, for every $\epsilon>0$,
+with
+probability one with respect to the randomization used by both players, the
+following inequality holds for all but a finite number of values of $T$:
+\[
+{1 \over T} \sum_{t=1}^T \M(i_t,j_t)
+\leq \minp {1 \over T} \sum_{t=1}^T \M(\P,j_t)
++ \epsilon.
+\]
+\end{theorem}
+
+\proof
+For each epoch $\k$ we select the accuracy parameter
+$\epsilon_{\k} = 2 \sqrt{\ln \k} / \k$. 
+We denote the sequence of iterations that constitute the $\k$'th
+epoch by $S_{\k}$. We call the $\k$th epoch ``good'' if the
+average per trial loss for that epoch is within $\epsilon_{\k}$ from its
+expected value, i.e., if
+\begin{equation} \label{eqn:good}
+\sum_{t \in S_{\k}} \M(i_t,j_t) 
+\leq
+\sum_{t \in S_{\k}} \M(\P_t,j_t) + T_{\k} \epsilon_{\k}.
+\end{equation}
+From Lemma~\ref{lemma:azuma} (where we define $Q_t$ to be the mixed strategy
+which gives probability one to $j_t$),
+we get that the probability that the $\k$th epoch is bad is bounded by
+\[
+2 \exp \left( -{1 \over 2} T_{\k} \epsilon_{\k}^2 \right)
+=
+{2 \over \k^2}~.
+\]
+The sum of this bound over all $\k$ from 1 to $\infty$ is finite. Thus,
+by the Borel-Cantelli lemma, we know that with probability one
+all but a finite number of epochs are good. Thus for the sake of
+computing the
+average loss for $T \to \infty$ we can ignore the influence of the bad
+epochs.
+
+We now use Corollary~\ref{cor:lw} to bound the expected total
+loss.
+We apply this corollary in the case that $\Q_t$ is again defined to be
+the mixed strategy which gives probability one to $j_t$.
+We have from the corollary:
+\begin{equation} \label{eqn:expectation}
+\sum_{t \in S_{\k}} \M(\P_t,j_t)
+\leq
+\min_{\P} \sum_{t \in S_{\k}} \M(\P,j_t) + \sqrt{2 T_{\k} \ln n } + {\ln n}~.
+\end{equation}
+
+Combining Equations~(\ref{eqn:good}) and~(\ref{eqn:expectation}) we
+find that if the $\k$th epoch is good then, for any distribution
+$\Pref$ over the actions of the algorithm
+\begin{eqnarray*}
+\sum_{t \in S_{\k}} \M(i_t,j_t) 
+&\leq&
+ \sum_{t \in S_{\k}} \M(\Pref,j_t) 
+ + \sqrt{2 T_{\k} \ln n } + {\ln n} + T_{\k} \epsilon_{\k} \\
+&\leq& 
+ \sum_{t \in S_{\k}} \M(\Pref,j_t) 
++ {\k \sqrt{2 \ln n}} + {\ln n} + 2 \k \sqrt{\ln \k}~.
+\end{eqnarray*}
+Thus the total loss over the first $m$ epochs (ignoring the finite
+number of bad iterations whose influence is negligible) is bounded by
+\begin{eqnarray*}
+\sum_{t \in S_1 \cup \ldots \cup S_m} \M(i_t,j_t) & \leq &
+\sum_{t \in S_1 \cup \ldots \cup S_m} \M(\Pref,j_t) 
++ \sum_{\k=1}^m 
+  \left[{\k \sqrt{2 \ln n}} + {\ln n} + 2 \k \sqrt{\ln \k} \right] \\
+& \leq &
+ \sum_{t \in S_1 \cup \ldots \cup S_m} \M(\Pref,j_t) 
++m^2 \sqrt{\ln m} \left[\sqrt{2 \ln n} + {\ln n} + 2 \right]~.
+\end{eqnarray*}
+As the total number of rounds in the first $m$ epochs is
+$\sum_{\k=1}^m \k^2 = O(m^3)$ we find that, after dividing both sides by
+the number of rounds, the error term decreases to zero.
+\qed
+
+\section{Relation to on-line learning} \label{sec:online}
+
+One interesting use of game theory is in the context of predictive
+decision making (see, for instance, Blackwell and
+Girshick~\cite{BlackwellGi54} or Ferguson~\cite{Ferguson67}).
+On-Line decision making can be viewed as a repeated
+game between a decision maker and nature.
+The entry $\M(i,t)$ represents the loss of (or negative utility for)
+the prediction
+algorithm if it chooses action $i$ at time $t$.  The goal of the
+algorithm is to adaptively generate distributions over actions so
+that its expected cumulative loss will not be much worse than the
+cumulative loss it would have incurred had it been able to choose a
+{\em single fixed distribution} with prior knowledge of the whole
+sequence of columns.
+
+This is a non-standard framework for analyzing on-line decision
+algorithms in that one makes no statistical
+assumptions regarding the relationship between actions and their
+losses. The only assumption is that there exists some fixed mixed strategy
+(distribution over actions) whose expected performance is nontrivial.
+{This approach was previously described in one of our earlier
+papers~\cite{FreundSc96b}; the
+current paper expands and refines the results given there.}
+
+The algorithm \lwalg\ was originally suggested by
+Littlestone and Warmuth~\cite{LittlestoneWa94} and (in a somewhat more
+sophisticated form) by Vovk~\cite{Vovk90} in the context of on-line
+prediction.
+The algorithm was also discovered independently by Fudenberg and
+Levine~\cite{FudenbergLe95}.
+Research on the use of the multiplicative weights
+algorithm for on-line prediction is extensive and on-going, and it is
+out of the scope of this paper to give a complete review of
+it. However, we try to sketch some of the main connections between the
+work described in this paper and this expanding line of research.
+
+The on-line prediction framework is a refinement of the decision
+theoretic framework described above. Here the prediction algorithm
+generates distributions over {\em predictions}, nature chooses an {\em
+outcome} and the loss incurred by the prediction algorithm is a known
+{\em loss function} which maps action/outcome pairs to real values.
+This framework restricts the choices that can be made by nature
+because once the predictions have been fixed, the only loss columns
+that are possible are those that correspond to possible outcomes.
+This is the reason that for various loss functions one can prove
+better bounds than in the less structured context of on-line decision
+making.
+The approach is closely related to work by Dawid~\cite{Dawid84},
+Foster~\cite{Foster91} and Vovk~\cite{Vovk90}.
+
+One loss function that has received particular attention is the log
+loss function. Here the prediction is assumed to be a distribution $P$
+over some domain $X$, the outcome is an element from the domain $x \in
+X$, and the loss is $-\log P(x)$. This loss has several important
+interpretations which connect it to likelihood analysis and to coding
+theory. Note that as the probability of an element can be arbitrarily
+small, the loss can be arbitrarily high.
+On-Line algorithms for making predictions in this case have been
+extensively studied in information theory under the name {\em
+universal compression of individual sequences}~\cite{Ziv78,Shtarkov87}. 
+In particular, a well-known result is that the
+multiplicative weights algorithm, with $\beta$ set to $1/e$ is a
+near-optimal algorithm in this context. 
+It is also interesting to note that this version of the multiplicative
+weights algorithm is equivalent to the Bayes prediction rule, where the
+generated distributions over the rows are equal to the Bayesian
+posterior distributions. On the other hand, this equivalence holds
+{\em only} for the log-loss; for other loss functions there is no
+simple relationship between the multiplicative weights algorithm and the
+Bayesian algorithm.
+
+Cover and Ordentlich~\cite{Cover91,CoverOr96} and
+later Helmbold~et~al.~\cite{HelmboldScSiWa98}
+extended the log-loss analysis to the design of
+algorithms for ``universal portfolios.''  There is an extensive
+literature on on-line prediction with other specific loss functions.
+For example, for work on prediction loss, see Feder, Merhav and
+Gutman~\cite{FederMeGu92},
+Cesa-Bianchi~et~al.~\cite{CesabianchiFrHeHaScWa97} and for work on
+more general
+families of loss functions see Vovk~\cite{Vovk98} and Kivinen and
+Warmuth~\cite{KivinenWa97}.
+
+Another extension of the on-line decision problem that is worth
+mentioning here is making decisions when the feedback given is a
+single entry of the game matrix. In other words, we assume that after
+the row player has chosen a distribution over the rows, a single row
+is chosen at random according to the distribution. The row player
+suffers the loss associated with the selected row and the column
+chosen by its opponent, and the game
+repeats.
+The goal of the row player is the same as before---to minimize its
+expected average loss over a sequence of repeated games. Clearly, the
+goal is much harder here since only a single entry of the matrix is
+revealed on each round.
+Auer et al.~\cite{AuerCeFrSc95} study this model in detail and
+show that a
+variant of the multiplicative weights algorithm converges to the
+performance of the best row distribution in repeated play.
+
+\section{Proof of the minmax theorem} \label{sec:minmax-proof}
+
+Corollary~\ref{cor:almost-min/max} shows that the loss of \lwalg\ can never
+exceed the value of the game \M\ by more than \delt.
+More interestingly, Corollary~\ref{cor:lw} can be used to derive a
+very simple proof of von Neumann's minmax theorem.
+To prove this theorem, we need to show that
+{\em
+\begin{equation} \label{eq3}
+   \minp \maxq \mpq \leq \maxq \minp \mpq.
+\end{equation}
+}%
+(Proving that {\em $\minp \maxq \mpq \geq \maxq \minp \mpq$} is relatively
+straightforward and so is omitted.)
+
+Suppose that we run algorithm \lwalg\ against a maximally adversarial
+environment which always chooses strategies which maximize the
+learner's loss.
+That is, on each round $t$, the environment chooses
+{\em
+\begin{equation} \label{eq4}
+   \Qt = \arg \maxq \mptq.
+\end{equation}
+}%
+Let $\Pa = \frac{1}{T} \sumt \Pt$ and
+$\Qa = \frac{1}{T} \sumt \Qt$.
+Clearly, \Pa\ and \Qa\ are probability distributions.
+
+Then we have:
+{\em
+\[
+\begin{array}{rcll}
+{\displaystyle{\minp \maxq \trans{\P}\M\Q}} 
+ &\leq&
+\displaystyle{\maxq \trans{\Pa}\M\Q} &\nextline
+  &=&
+\displaystyle{\maxq \frac{1}{T} \sumt \trans{\Pt}\M\Q}
+                       &\mbox{\rm by definition of~~\Pa}\nextline
+  &\leq&
+\displaystyle{\frac{1}{T} \sumt \maxq \trans{\Pt}\M\Q} &\nextline
+  &=&
+\displaystyle{\frac{1}{T} \sumt \trans{\Pt}\M\Qt}
+                       &\mbox{\rm by definition of~~\Qt}\nextline
+  &\leq&
+\displaystyle{\minp \frac{1}{T} \sumt \trans{\P}\M\Qt + \delt}
+                       &\mbox{\rm by Corollary~\ref{cor:lw}}\nextline
+  &=&
+\displaystyle{\minp \trans{\P}\M\Qa + \delt}
+                       &\mbox{\rm by definition of~~\Qa}\nextline
+  &\leq&
+\displaystyle{\maxq \minp \trans{\P}\M\Q + \delt.} &
+\end{array}
+\]
+}%
+Since $\delt$ can be made arbitrarily close to zero, this proves
+Eq.~(\ref{eq3}) and the minmax theorem.
+
+\section{Approximately solving a game} \label{sec:minmax-solve}
+
+Aside from yielding a proof for a famous theorem that by now has many
+proofs, the preceding derivation shows that algorithm \lwalg\ can be
+used to find an approximate minmax or maxmin strategy.
+Finding these ``optimal'' strategies is called {\em solving\/} the
+game \M.
+
+We give three methods for solving a game using exponential weights. In
+Section~\ref{sec:solve-fix-beta} we show how one can use the average
+of the generated row distributions over $T$ iterations as an
+approximate solution for the game. This method sets $T$ and $\beta$ as
+a function of the desired accuracy before starting the iterative process.
+
+In Section~\ref{sec:solve-var-beta} we show that if an upper bound $u$
+on the value of the game is known ahead of time then one can use a
+variant of \lwalg\ that generates a sequence of row distributions
+such that the expected loss of the $t$th distribution approaches $u$.
+Finally, in Section~\ref{sec:solve-col-dist} we describe a related
+adaptive method that generates a sparse approximate solution for the
+column distribution.
+At the end of the paper, in Section~\ref{sec:lowerbound}, we show
+that the convergence rate of the two last methods is asymptotically
+optimal.
+
+\subsection{Using the average of the row distributions}
+\label{sec:solve-fix-beta}
+
+Skipping the first inequality of the sequence of equalities and
+inequalities at the end of Section~\ref{sec:minmax-proof}, 
+we see that
+{\em
+\begin{eqnarray*}
+ \maxq \M(\Pa,\Q) &\leq& \maxq \minp \M(\P,\Q) + \delt 
+       = v + \delt.
+\end{eqnarray*}
+}%
+Thus, the vector \Pa\ is an approximate minmax strategy in the sense
+that for all column strategies \Q, $\M(\Pa,\Q)$ does not exceed the
+game value $v$ by more than $\delt$.
+Since \delt\ can be made arbitrarily small, this approximation can be
+made arbitrarily tight.
+
+Similarly, ignoring the last inequality of this derivation, we have
+that
+{\em
+\[ \minp \M(\P,\Qa) \geq v - \delt \]
+}%
+so \Qa\ also is an approximate maxmin strategy.
+Furthermore, it can be shown that a column strategy \Qt\ satisfying
+Eq.~(\ref{eq4}) can always be chosen to be a pure strategy (i.e., a
+mixed strategy concentrated on a single column of \M).
+Therefore, the approximate maxmin strategy \Qa\ has the additional
+favorable property of being {\em sparse\/} in the sense that at most
+$T$ of its entries will be nonzero.
+
+\subsection{Using the final row distribution}
+\label{sec:solve-var-beta}
+
+In the analysis presented so far we have shown that the {\em average}
+of the strategies used by \lwalg\ converges to an optimal
+strategy. Now we show that if the row player knows an upper bound $u$ on
+the value of the game $v$ then it can use a variant of \lwalg\ to
+generate a sequence of mixed strategies that approach 
+a strategy which achieves loss $u$.\footnote{If no such upper bound is
+known, one can use the standard trick of solving the larger game
+matrix 
+\[
+\left(
+\begin{array}{cc}
+M & {\bf 0} \\
+{\bf 0} & -\trans{M}
+\end{array}
+\right)~,
+\]
+whose value is always zero.}
+To do that we have the algorithm select a different value of $\beta$
+for each round of the game. If the expected loss on the $t$th
+iteration $\M(\Pt,\Qt)$ is less than $u$, then the row player does
+not change the mixed strategy, because, in a sense, it is ``good
+enough.''  However, if $\M(\Pt,\Qt) \geq u$ then the row player uses
+\lwalg\ with parameter
+\[
+\beta_t = {u (1 - \M(\Pt,\Qt)) \over (1-u) \M(\Pt,\Qt)}~.
+\]
+We call this algorithm \lwalgvar\ (the ``v'' stands for ``variable'').
+For this algorithm, as the following theorem shows, the distance between
+$\P_t$ and any mixed strategy that achieves $u$ decreases by an amount
+that is a function of the divergence between $\M(\Pt,\Qt)$ and $u$.
+
+\begin{theorem} \label{thm:convergence}
+Let $\Pref$ be any mixed strategy for the rows such that 
+$\maxq \M(\Pref,\Q) \leq u$.
+Then on any iteration of algorithm \lwalgvar\ in which 
+$\M(\Pt,\Qt) \geq u$ the relative entropy between $\Pref$ and $\P_{t+1}$
+satisfies
+\[
+\RE{\Pref}{\P_{t+1}} \leq \RE{\Pref}{\Pt} - \RE{u}{\M(\Pt,\Qt)}~.
+\]
+\end{theorem}
+
+\proof
+Note that when $u \leq \M(\Pt,\Qt)$ we get that $\beta_t \leq 1$.
+Combining this observation with the definition of 
+$\Pref$ and the statement of 
+Lemma~\ref{lemma:single-step} we get that
+\begin{eqnarray}
+\lefteqn{\RE{\Pref}{\P_{t+1}} - \RE{\Pref}{\P_t}} \nonumber \\
+&\leq&
+\M(\Pref,\Q_t) \ln(1 / \beta_t)
++
+\ln \left( 1-(1-\beta_t)\M(\Pt,\Qt) \right) \label{eqn:var-re-bnd} \\
+&\leq&
+u \ln(1 / \beta_t)
++
+\ln \left( 1-(1-\beta_t)\M(\Pt,\Qt) \right). \nonumber
+\end{eqnarray}
+The choice of $\beta_t$ was chosen to minimize the last expression. 
+Plugging the given choice of $\beta_t$ into this last expression we
+get the statement of the theorem.
+\qed
+
+Suppose $\M(\Pt,\Qt)\geq u$ for all $t$.
+Then the main inequality of this theorem can be applied repeatedly yielding the
+bound
+\[
+\RE{\Pref}{\P_{T+1}} \leq \RE{\Pref}{\P_1}
+   - \sum_{t=1}^{T} \RE{u}{\M(\Pt, \Qt)}.
+\]
+Since relative entropy is nonnegative, and since the inequality holds
+for all $T$, we have
+\begin{equation} \label{eqn:sumt-bnd}
+\sum_{t=1}^{\infty} \RE{u}{\M(\Pt, \Qt)} \leq \RE{\Pref}{\P_1}.
+\end{equation}
+Assuming that $\RE{\Pref}{\P_1}$ is finite (as it will be, for
+example, if $\P_1$ is uniform), this inequality implies, for instance,
+that $\M(\Pt, \Qt)$ can exceed $u+\epsilon$ at most finitely often for
+any $\epsilon>0$. More specifically, we can prove the following:
+
+\begin{corollary} \label{cor:re-upper}
+Suppose that \lwalgvar\ is used to play a game $\M$ whose value is
+known to be at most $u$.
+Suppose also that we choose $\P_1$ to be the uniform distribution.
+Then for any sequence of column strategies $\Q_1,\Q_2,\ldots$, the
+number of rounds on which the loss $\mptqt \geq u+\epsilon$ is at most
+\[ \frac{\ln n}{\RE{u}{u+\epsilon}}. \]
+\end{corollary}
+
+\proof
+Since rounds on which $\mptqt < u$ are effectively ignored by
+\lwalgvar, we assume without loss of generality that $\mptqt\geq u$
+for all rounds $t$.
+Let $S = \{t : \mptqt \geq u + \epsilon\}$ be the set of rounds for
+which the loss is at least $u+\epsilon$, and let \Pstar\ be a minmax
+strategy.
+By Eq.~(\ref{eqn:sumt-bnd}), we have that
+\begin{eqnarray*}
+\sum_{t\in S} \RE{u}{u+\epsilon}
+  &\leq& \sum_{t\in S} \RE{u}{\mptqt} \\
+  &\leq& \sum_{t=1}^\infty \RE{u}{\mptqt} \\
+  &\leq& \RE{\Pstar}{\P_1} \leq \ln n.
+\end{eqnarray*}
+Therefore,
+\[ |S| \leq \frac{\ln n}{\RE{u}{u+\epsilon}}. \]
+\qed   
+
+In Section~\ref{sec:lowerbound}, we show that this dependence on $n$,
+$u$ and $\epsilon$ cannot be improved by any constant factor.
+
+\subsection{Convergence of a column distribution}
+\label{sec:solve-col-dist}
+When $\beta$ is fixed, we showed in Section~\ref{sec:solve-fix-beta}
+that the average \Qa\
+of the $\Qt$'s is an approximate solution of the game, i.e., that
+there are no rows $i$ for which $\M(i,\Qa)$ is less than $v-\delt$.
+For the algorithm described above in which $\beta_t$ varies, we can
+derive a more refined bound of this kind for a weighted mixture of the
+$\Q_t$'s.
+
+\begin{theorem} \label{thm:column-dist}
+Assume that on every iteration of algorithm \lwalgvar, we have that
+$\M(\Pt,\Qt)\geq u$.
+Let
+\[
+\Qh = \frac{\sum_{t=1}^T \Qt \ln(1/\beta_t)}
+           {\sum_{t=1}^T \ln(1/\beta_t)}.
+\]
+Then
+\[
+\sum_{i: \M(i,\Qh) \leq u} \P_1(i)
+     \leq \exp\paren{-\sum_{t=1}^T \RE{u}{\M(\Pt,\Qt)}}.
+\]
+\end{theorem}
+
+\proof
+If $\M(\Pref,\Qh) \leq u$, then,
+combining Eq.~\ref{eqn:var-re-bnd} for $t=1,\ldots,T$, we have
+\begin{eqnarray*}
+\RE{\Pref}{\P_{T+1}} - \RE{\Pref}{\P_1} % \\
+&\leq&
+\sum_{t=1}^T \M(\Pref,\Q_t) \ln(1 / \beta_t)
++
+\sum_{t=1}^T
+   \ln \left( 1-(1-\beta_t)\M(\Pt,\Qt) \right) \\
+&=&
+\M(\Pref,\Qh) \sum_{t=1}^T \ln(1 / \beta_t)
++
+\sum_{t=1}^T
+   \ln \left( 1-(1-\beta_t)\M(\Pt,\Qt) \right)\\
+&\leq&
+{u\cdot \sum_{t=1}^T \ln(1 / \beta_t)
++
+\sum_{t=1}^T
+   \ln \left( 1-(1-\beta_t)\M(\Pt,\Qt) \right)}  \\
+&=&
+-\sum_{t=1}^T \RE{u}{\M(\Pt,\Qt)}
+\end{eqnarray*}
+for our choice of $\beta_t$.
+In particular, if $i$ is a row for which $\M(i, \Qh) \leq u$, then,
+setting $\Pref$ to the associated pure strategy, we get
+\[
+\ln\paren{\frac{\P_1(i)}{\P_{T+1}(i)}} \leq -\sum_{t=1}^T \RE{u}{\M(\Pt,\Qt)}
+\]
+so
+\begin{eqnarray*}
+\sum_{i: \M(i,\Qh) \leq u} \P_1(i)
+  &\leq&
+\sum_{i: \M(i,\Qh) \leq u} \P_{T+1}(i)
+       \exp\paren{-\sum_{t=1}^T \RE{u}{\M(\Pt,\Qt)}} \\
+ &\leq& \exp\paren{-\sum_{t=1}^T \RE{u}{\M(\Pt,\Qt)}}
+\end{eqnarray*}
+since $\P_{T+1}$ is a distribution.
+\qed
+
+Thus, if $\M(\Pt,\Qt)$ is bounded away from $u$, the fraction of rows
+$i$ (as measured by $\P_1$) for which $\M(i,\Qh)\leq u$ drops to zero
+exponentially fast.
+This will be the case, for instance, if Eq.~(\ref{eq4}) holds and
+$u\leq v - \epsilon$ for some $\epsilon>0$ where $v$ is the value of
+\M. 
+
+Thus a single application of the exponential weights algorithm yields
+approximate solutions for both the column and row players. The
+solution for the row player consists of the multiplicative weights,
+while the solution for the column player consists of the distribution
+on the observed columns as described in
+Theorem~\ref{thm:column-dist}.
+
+Given a game matrix $\M$, we have a choice of whether to solve $\M$ or
+$-\trans{\M}$. One natural choice would be to choose the orientation which
+minimizes the number of rows.
+In a related paper~\cite{FreundSc96b}, we studied
+the relationship between solving \M\ or $-\trans{\M}$
+using the multiplicative weights algorithm in the
+context of machine learning. In that context, the solution for game
+matrix \M\ is related to the
+on-line prediction problem described in Section~\ref{sec:online}, while
+the ``dual'' solution for $-\trans{\M}$ corresponds to a method of
+learning called ``boosting.''
+
+\subsection{Application to linear programming} \label{sec:linearprogramming}
+
+It is well known that any linear programming problem can be reduced to
+the problem of solving a game (see, for instance,
+Owen~\cite[Theorem~III.2.6]{Owen82}).
+Thus, the algorithms we have presented for approximately solving a
+game can be applied more generally for approximate linear programming.
+
+Similar and closely related methods of approximately solving linear
+programming problems have previously appeared, for instance, in the
+work of Young~\cite{Young95}, Grigoriadis and
+Khachiyan~\cite{GrigoriadisKh91,GrigoriadisKh95} and Plotkin, Shmoys
+and Tardos~\cite{PlotkinShTa95}.
+
+Although, in principle, our algorithms are applicable to general
+linear programming problems, they are best suited to problems of a
+particular form.
+Specifically, they may be most appropriate for the setting we have
+described of approximately solving a game when an oracle is available
+for choosing columns of the matrix on every round.
+When such an oracle is available, our algorithm can be applied even
+when the number of columns of the matrix is very large or even
+infinite, a setting that is clearly infeasible for some of the other,
+more traditional linear programming algorithms.
+Solving linear programming problems in the presence of such an oracle
+was also studied by Young~\cite{Young95} and Plotkin, Shmoys
+and Tardos~\cite{PlotkinShTa95}.
+See also our earlier paper~\cite{FreundSc96b} for detailed examples of
+problems arising naturally in the field of machine learning with
+exactly these characteristics.
+
+\section{Optimality of the convergence rate} \label{sec:lowerbound}
+
+In Corollary~\ref{cor:re-upper}, we showed that using the algorithm
+\lwalgvar\ starting from the uniform distribution over the rows
+guarantees that the number of times that $\M(\Pt, \Qt)$ can exceed
+$u+\epsilon$ is bounded by $(\ln n) / \RE{u}{u+\epsilon}$ where $u$ is
+a known upper bound on the value of the game \M.
+In this section,
+we show that this dependence of the rate of convergence on $n$, $u$ and
+$\epsilon$ is optimal in the sense that
+no adaptive game-playing
+algorithm can beat this bound even by a constant factor.
+This result is formalized by Theorem~\ref{thm:lowerbound} below.
+
+A related lower bound result is proved by Klein and
+Young~\cite{KleinYo99} in the context of approximately solving linear
+programs.
+
+\begin{theorem} \label{thm:lowerbound}
+Let $0 < u < u+\epsilon < 1$, and let $n$ be a sufficiently large
+integer.
+Then for any adaptive game-playing algorithm $A$,
+there exists a game matrix \M\
+of $n$ rows and a sequence of column strategies such that:
+\begin{enumerate}
+\item \label{item-val}
+the value of game \M\ is at most $u$; and
+\item \label{item-loss}
+the loss \mptqt\ suffered by $A$ on each round $t=1,\ldots, T$ is at
+least $u+\epsilon$, where
+\[ T = \floor{\frac{\ln n - 5 \ln \ln n}{\RE{u}{u+\epsilon}}}
+     \geq \frac{(1-o(1))\ln n}{\RE{u}{u+\epsilon}}. \]
+\end{enumerate}
+\end{theorem}
+
+\proof
+The proof uses a probabilistic argument to show that
+for any algorithm, there exists a matrix (and sequence of column
+strategies) with the properties stated in the theorem.
+That is, for the purposes of the proof, we imagine choosing the matrix
+\M\ at random according to an appropriate distribution, and we show
+that the stated properties hold with strictly positive probability,
+implying that there must exist at least one matrix for which they hold.
+
+Let $r = u +\epsilon$.
+The random matrix \M\ has $n$ rows and $T$ columns, and is chosen by
+selecting each entry $\M(i,j)$ independently to be $1$ with
+probability $r$, and $0$
+with probability $1-r$.
+On round $t$, the row player (algorithm $A$) chooses a row
+distribution \Pt, and, for the purposes of our construction, we assume
+that the
+column player responds with column $t$.
+That is, the column strategy \Qt\ chosen on round $t$ is concentrated
+on column $t$.
+
+Given this random construction, we need to show that properties~1
+and~2 hold with positive probability for $n$ sufficiently large.
+
+We begin with property~\ref{item-loss}.
+On round $t$, the row player chooses a distribution \Pt, and the
+column player responds with column $t$.
+We require that the loss \mptt\ be at least $r = u+\epsilon$.
+Since the matrix \M\ is chosen at random, we need a lower bound on the
+probability that $\mptt \geq r$.
+Moreover, because the row player has sole control over the choice of
+\Pt, we need a lower bound on this probability which is independent of
+\Pt.
+To this end, we prove the following lemma:
+
+\begin{lemma} \label{lem:prob-bnd}
+For every $r\in (0,1)$, there exists a number $B_r > 0$ with the
+following property:
+Let $n$ be any positive integer, and let $\alpha_1,\ldots,\alpha_n$ be
+nonnegative numbers such that $\sum_{i=1}^n \alpha_i = 1$.
+Let $X_1,\ldots,X_n$ be independent Bernoulli random variables with
+$\pr{X_i=1} = r$ and $\pr{X_i=0} = 1-r$.
+Then
+\[
+\pr{\sum_{i=1}^n \alpha_i X_i \geq r} \geq B_r > 0.
+\]
+\end{lemma}
+
+\proof
+See appendix.
+\qed
+
+To apply the lemma, let $\alpha_i = \Pt(i)$ and let $X_i = \M(i,t)$.
+Then the lemma implies that 
+\[\pr{\mptt \geq r} \geq B_r\]
+where $B_r$
+is a positive number which depends on $r$ but which is independent of $n$
+and \Pt.
+It follows that
+\[\pr{\forall t: \mptt \geq r} \geq B_r^T.\]
+In other words, property~\ref{item-loss} holds with probability at
+least $B_r^T$.
+
+We next show that property~\ref{item-val} fails to hold with
+probability strictly smaller than $B_r^T$ so that both properties must
+hold simultaneously with positive probability.
+
+Define the {\em weight\/} of row $i$, denoted $W(i)$, to be the fraction of
+$1$'s in the row: $W(i) = \sum_{j=1}^T \M(i,j) / T$.
+We say that a row is {\em light\/} if $W(i)\leq u - 1/T$.
+Let $\P'$ be a row distribution which is uniform over the light
+rows and zero on the heavy rows.
+We will show that, with high probability, $\max_j \M(\P',j) \leq u$,
+implying an upper bound of $u$ on the value of game $\M$.
+
+Let $\lambda$ denote the probability that a given row $i$ is
+light; this will be the same probability for all rows.
+Let $n'$ be the number of light rows.
+
+We show first that $n'\geq \lambda n/2$ with high probability.
+The expected value of $n'$ is $\lambda n$.
+Using a form of Chernoff bounds proved by Angluin and
+Valiant~\cite{AngluinVa79}, we have that
+\begin{equation}  \label{eqn:n-bnd}
+ \pr{n' < \lambda n / 2} \leq \exp(-\lambda n / 8).
+\end{equation}
+
+We next upper bound the probability that $\M(\P',j)$ exceeds $u$ for
+any column $j$.
+Conditional on $i$ being a light row, the probability that $\M(i,j) =
+1$ is at most $u-1/T$.
+Moreover, if $i_1$ and $i_2$ are distinct rows, then $\M(i_1,j)$ and
+$\M(i_2,j)$ are independent, even if we condition on both being light
+rows.
+Therefore, applying Hoeffding's inequality~\cite{Hoeffding63}
+to column $j$ and the $n'$ light rows, we have that, for all $j$,
+\[
+\pr{\M(\P',j) > u \cond n'} \leq e^{-2n' / T^2}.
+\]
+Thus,
+\[
+\pr{\max_j \M(\P',j) > u \cond n'} \leq T e^{-2n' / T^2}
+\]
+and so
+\[
+\pr{\max_j \M(\P',j) > u \cond n' \geq \lambda n / 2} \leq
+        T e^{-\lambda n/ T^2}.
+\]
+Combined with Eq.~(\ref{eqn:n-bnd}), this implies that
+\[
+\pr{\max_j \M(\P',j) > u} \leq e^{-\lambda n / 2} + T e^{-\lambda n / T^2}
+     \leq (T+1) e^{-\lambda n / T^2}
+\]
+for $T\geq 3$.
+
+Therefore, the probability that either of properties~1 or~2 fails to
+hold is at most
+\[  (T+1) e^{-\lambda n / T^2} + 1 - B_r^T. \]
+If this quantity is strictly less than~1, then there must exist at
+least one matrix \M\ for which both properties~1 and~2 hold.
+This will be the case if and only if
+\begin{equation} \label{eqn:lam-req}
+\lambda > \frac{T^2}{n} \paren{T\ln(1/B_r) + \ln(T+1)}.
+\end{equation}
+Therefore, to complete the proof, we need only prove
+Eq.~(\ref{eqn:lam-req}) by lower bounding $\lambda$.
+
+We have that
+\begin{eqnarray*}
+\lambda &=& \pr{W(i)\cdot T \leq T u - 1} \\
+ &\geq& \pr{W(i)\cdot T = \floor{T u - 1}} \\
+ &\geq& \frac{1}{T+1} \exp\paren{-T \cdot \RE{\floor{T u - 1}/T}{u+\epsilon}}\\
+ &\geq& \frac{1}{T+1} \exp\paren{-T \cdot \RE{u - 2/T}{u+\epsilon}}.
+\end{eqnarray*}
+The second inequality follows from Cover and
+Thomas~\cite[Theorem~12.1.4]{CoverTh91}.
+
+By straightforward algebra,
+\begin{eqnarray*}
+T \cdot \RE{u - 2/T}{u+\epsilon} &=&
+     T \cdot (\RE{u}{u+\epsilon} - \RE{u}{u - 2/T}) \\
+ && + 2 \ln\paren{\frac{1-u+2/T}{1-u-\epsilon}\cdot
+                  \frac{u+\epsilon}{u-2/T}} \\
+ &\leq& T\cdot \RE{u}{u+\epsilon} + C
+\end{eqnarray*}
+for $T$ sufficiently large, where $C$ is the constant
+\[ C = 2\ln\paren{\frac{1-u/2}{1-u-\epsilon}\cdot \frac{u+\epsilon}{u/2}}.\]
+
+Thus,
+\[\lambda \geq \frac{e^{-C}}{T+1} \exp\paren{-T\cdot \RE{u}{u+\epsilon}}\]
+and therefore, Eq.~(\ref{eqn:lam-req}) holds if
+\[
+T\cdot \RE{u}{u+\epsilon}
+  < \ln n - C - \ln\paren{T^2(T+1)(T\ln(1/B_r)+\ln(T+1))}.
+\]
+By our choice of $T$, we have that the left hand side of this
+inequality is at most $\ln n - 5\ln\ln n$, and the right hand side is
+$\ln n - (4+o(1))\ln\ln n$.
+Therefore, the inequality holds for $n$ sufficiently large.
+\qed
+
+\section*{Acknowledgments}
+
+We are especially grateful to Neal Young for many helpful discussions,
+and for bringing much of the relevant literature to our attention.
+Dean Foster and Rakesh Vohra also helped us to locate relevant literature.
+Thanks finally to Colin Mallows and Joel Spencer for their help in
+proving Lemma~\ref{lem:prob-bnd}.
+
+\bibliographystyle{plain}
+\bibliography{/home/schapire/latex/bib}
+
+\appendix
+
+\section{Proof of Lemma~\protect{\ref{lem:prob-bnd}}}
+
+Let
+\[
+Y = \frac{\sum_{i=1}^n \alpha_i X_i - r} {\sqrt{\sum_{i=1}^n \alpha_i^2}}.
+\]
+Our goal is to derive a lower bound on $\pr{Y\geq 0}$.
+Let $s=r(1-r)$.
+It can be easily verified that $\expY=0$ and $\varY=s$.
+In addition, by Hoeffding's inequality~\cite{Hoeffding63}, it
+can be shown that, for all $\epsilon > 0$,
+\begin{equation} \label{eqn:tail-bnd}
+\pr{Y\geq \epsilon} \leq e^{-2\epsilon^2}
+\end{equation}
+and
+\[\pr{Y\leq -\epsilon} \leq e^{-2\epsilon^2}.\]
+
+For $x\in \real$, let $D(x) = \pr{Y=x}$.
+Throughout this proof, we use $\sum_x$ to denote summation over a
+finite set of $x$'s which includes all $x$ for which $D(x)>0$.
+Restricted summations (such as $\sum_{x>0}$) are defined analogously.
+
+Let $d>0$ be any number.
+We define the following quantities:
+\begin{eqnarray*}
+G &=& \sum_{0 < x < d} D(x)\\
+R &=& -\sum_{-d < x < 0} x D(x)\\
+E_1 &=& \sum_{x \geq d} x D(x)\\
+E_2 &=& \sum_{x \leq -d} x^2 D(x)\\
+E_3 &=& \sum_{x \geq d} x^2 D(x).
+\end{eqnarray*}
+We prove the lemma by deriving a lower bound on $G\leq \pr{Y\geq 0}$.
+
+The expected value of $Y$ is:
+\begin{eqnarray*}
+0 = \expY &=& \sum_x x D(x) \\
+ &=& \sum_{x \leq -d} x D(x)
+   + \sum_{-d < x < 0} x D(x)
+   + \sum_{0 < x < d} x D(x)
+   + \sum_{x \geq d} x D(x)\\
+ &\leq& 
+     0 - R + d G + E_1.
+\end{eqnarray*}
+Thus,
+\begin{equation}  \label{eqn:r-up}
+R\leq d G + E_1.
+\end{equation}
+
+Next, we have that
+\begin{eqnarray*}
+s = \varY &=& \sum_x x^2 D(x) \\
+ &=& \sum_{x \leq -d} x^2 D(x)
+   + \sum_{-d < x < 0} x^2 D(x)
+   + \sum_{0 < x < d} x^2 D(x)
+   + \sum_{x \geq d} x^2 D(x)\\
+ &\leq& 
+     E_2 + d R + d^2 G + E_3.
+\end{eqnarray*}
+Combined with Eq.~(\ref{eqn:r-up}), it follows that
+\begin{equation}  \label{eqn:s-up}
+ s \leq 2d^2 G + d E_1 + E_2 + E_3.
+\end{equation}
+
+We next upper bound $E_1$, $E_2$ and $E_3$.
+This will allow us to immediately lower bound $G$ using Eq.~(\ref{eqn:s-up}).
+To bound $E_1$, note that
+\begin{equation}  \label{eqn:e1-up}
+d E_1 = d \sum_{x \geq d} x D(x) \leq \sum_{x \geq d} x^2 D(x) = E_3.
+\end{equation}
+
+To bound $E_3$, let $d=y_0 < y_1 < \cdots < y_m$ be a sequence of
+numbers such that if $D(x)>0$ and $x\geq d$ then $x=y_i$ for some
+$i$.  In other words, every $x\geq d$ with positive probability is
+represented by some $y_i$.
+Let $S(y) = \sum_{x \geq y} D(x)$.
+By Eq.~(\ref{eqn:tail-bnd}), $S(y) \leq e^{-2y^2}$ for $y>0$.
+We can compute $E_3$ as follows:
+\begin{eqnarray*}
+E_3 = \sum_{x \geq d} x^2 D(x)
+ &=& \sum_{i=0}^m y_i^2 D(y_i) \\
+ &=& y_0^2 \sum_{j=0}^m D(y_j)
+       + \sum_{i=0}^{m-1} \brackets{(y_{i+1}^2 - y_i^2) \sum_{j=i+1}^{m}D(y_j)}\\
+ &=& y_0^2 S(y_0) + \sum_{i=0}^{m-1} (y_{i+1}^2 - y_i^2) S(y_{i+1})\\
+ &\leq& d^2 e^{-2d^2} 
+    + \sum_{i=0}^{m-1} (y_{i+1}^2 - y_i^2) e^{-2y_{i+1}^2}.
+\end{eqnarray*}
+To bound the summation, note that
+\begin{eqnarray*}
+\sum_{i=0}^{m-1} (y_{i+1}^2 - y_i^2) e^{-2y_{i+1}^2}
+ &=&
+\sum_{i=0}^{m-1} \int_{y_i}^{y_{i+1}} 2 x e^{-2y_{i+1}^2} dx \\
+ &\leq&
+\sum_{i=0}^{m-1} \int_{y_i}^{y_{i+1}} 2 x e^{-2x^2} dx \\
+ &=&
+\int_{y_0}^{y_m} 2 x e^{-2x^2} dx \\
+ &=&
+\half (e^{-2y_0^2} - e^{-2y_m^2}) \leq
+\half e^{-2d^2}.
+\end{eqnarray*}
+Thus, $E_3 \leq (d^2 + 1/2) e^{-2d^2}$.
+A bound on $E_2$ follows by symmetry.
+
+Combining with Eqs.~(\ref{eqn:s-up}) and (\ref{eqn:e1-up}), we have
+\[s \leq 2d^2 G + 3(d^2 + 1/2) e^{-2d^2}\]
+and so
+\[ \pr{Y\geq 0} \geq G \geq \frac{s - 3(d^2 + 1/2) e^{-2d^2}}{2d^2}.\]
+Since this holds for all $d$, we have that $\pr{Y\geq 0}\geq B_r$
+where
+\[ B_r = \sup_{d>0}  \frac{s - 3(d^2 + 1/2) e^{-2d^2}}{2d^2}\]
+and $s = r(1-r)$.
+This number is clearly positive since the numerator of the inside
+expression can be made positive by choosing $d$ sufficiently large.
+(For instance, it can be shown that this expression is positive when we
+set $d=\sqrt{1/s}$.)
+\qed
+
+%%%%%%%%%%%%%%%%%%% footnotes page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fortypesetter{
+
+\newpage
+
+\section*{Footnotes}
+
+\footnotesize
+
+\mbox{}
+
+\footnotemark[1]%
+However, Hannan's algorithm requires prior knowledge of
+the {\em entire\/} game matrix.
+
+\footnotemark[2]%
+If no such upper bound is
+known, one can use the standard trick of solving the larger game
+matrix 
+\[
+\left(
+\begin{array}{cc}
+M & {\bf 0} \\
+{\bf 0} & -\trans{M}
+\end{array}
+\right)~,
+\]
+whose value is always zero.
+
+\thispagestyle{empty}
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%% end footnotes page %%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
+
+

@@ -1,0 +1,575 @@
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\mode<presentation>
+{
+  \usetheme{Montpellier}
+
+  %\setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage{xmpmulti} % package that defines \multiinclude
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title [Learning in repeated games] %(optional, use only with long paper titles)
+{Online learning \\ in \\ repeated matrix games}
+
+\author[Freund] % (optional, use only with lots of authors)
+{Yoav Freund}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+
+\subject{Machine Learning}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%% \AtBeginSubsection[]
+%% {
+%%   \begin{frame}<beamer>
+%%     \frametitle{Outline}
+%%     \tableofcontents[currentsection,currentsubsection]
+%%   \end{frame}
+%% }
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+\beamerdefaultoverlayspecification{<+->}
+
+\input{../macros}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+Based on ``Adaptive Game Playing Using Multiplicative Weights'' Freund
+and Schapire.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[pausesections]
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+\section{Repeated Matrix Games}
+
+\begin{frame}
+\frametitle{Zero sum games in matrix form}
+\begin{itemize}
+\item Game between two players.
+\item Defined by \R{$n \times m$} matrix \R{$\M$}
+\item \B{Row} player chooses \R{$i \in \{1,\ldots,n\}$}
+\item \B{Column} player chooses \R{$j \in \{1,\ldots,m\}$}
+\item \B{Row} player gains \R{$\M(i,j) \in [0,1]$}
+\item \B{Column} player looses \R{$\M(i,j)$}
+\item Game repeated many times.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Pure vs. mixed strategies}
+  \begin{itemize}
+  \item Choosing a \B{single} action = \B{pure} strategy.
+  \item Choosing a \B{Distribution} over actions = \B{mixed} strategy.
+  \item \B{Row} player chooses dist. over rows \R{$\P$}
+  \item \B{Column} player chooses dist. over columns \R{$\Q$}
+  \item \B{Row} player gains \R{$\M(\P,\Q)$}.
+  \item \B{Column} player looses \R{$\M(\P,\Q)$}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mixed strategies in matrix notation}
+  \includegraphics[width=8cm]{figures/matrixProduct.jpg}
+\begin{itemize}
+\item  \R{$\Q$} is a \B{column} vector. \R{$\P^T$} is a row vector.
+\item  \R{$\M(\P,\Q) = \P^T \M \Q = \sum_{i=1}^n \sum_{j=1}^m \P(i)
+    \M(i,j) \Q(j)$}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The minmax Theorem}
+~\\
+When using pure strategies, second player has an advantage.
+~\\~\\ ~\pause
+\B{John von Neumann, 1928.}
+\\ ~ \\ 
+\R{\[ \minp \maxq \mpq = \maxq \minp \mpq \]}
+\\ ~ \\ 
+In words:
+\begin{itemize}
+  \item for \B{pure} strategies, choosing second can be better.
+  \item for \B{mixed} strategies, choosing second gives no advantage.
+  \item There are min-max optimal mixed Strategies: \R{$\P^*,\Q^*$}
+  \item \R{$M(\P^*,\Q^*)$} is the \B{value} of the game.
+\end{itemize}
+\end{frame}
+
+
+\section{Specific games}
+
+\begin{frame}
+\frametitle{Online Learning as matrix game}
+  \begin{itemize}
+  \item Row = action
+  \item Column = iteration.
+  \item Player chooses mixed strategy \R{$\P_t$}
+  \item adversary chooses pure strategy \R{$\Q_t = \langle 0,\cdots,0,1,0,
+      \cdots, 0\rangle$} the \R{$1$} is at position \R{$t$}
+%  \item Loss: \R{$L_T = \sum_{t=1}^T \M(\P_t,\Q_t)$}
+  \item Goal  - minimize regret: \R{$\sum_{t=1}^T \M(\P_t,\Q_t) -
+      \sum_{t=1}^T \M(\P^*,\Q_t)$}
+  \end{itemize}
+\[  \begin{array}{l|c|c|c}
+      & t=1 & t=2 & \ldots  \\
+      \hline
+    expert 1 & 0    & 1 & \ldots\\
+    expert 2 & 0.2    & 0.1  & \ldots\\
+    expert 3 & 0.5    & 0.2  & \ldots\\
+      \ldots & \ldots    & \ldots  & \ldots\\
+      \hline
+    Master & 0.35 & 0.13 & \ldots 
+    \end{array}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Boosting as a matrix game (1)}
+  \begin{itemize}
+  \item Row = example \R{$(x,y)$}
+  \item Column = Weak Rule \R{$h_t$}
+  \item Matrix entry for \R{$(x,y),h_t$} is \R{$0$} if \R{$h_t(x)=y$},
+    \R{$1$} \R{$h_t(x) \neq y$}
+\end{itemize}
+\[  \begin{array}{l|c|c|c}
+      & h_1 & h_2 & \ldots  \\
+      \hline
+    example 1 & 0    & 1 & \ldots\\
+    example 2 & 1    & 0  & \ldots\\
+    example 3 & 0    & 0  & \ldots\\
+      \ldots & \ldots    & \ldots  & \ldots\\
+      \hline
+    \end{array}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Boosting as a matrix game (2)}
+  \begin{itemize}
+\item Boosting assumption: for any distribution over examples, there
+    exists a weak rule with weighted error \R{$<1/2$}
+  \item In game terms: For any \B{mixed strategy} of the row player \R{$\P$},
+    there is a \B{pure strategy} for column player \R{$\Q = \langle 0,\cdots,0,1,0,
+      \cdots, 0\rangle$} such that \R{$M(\P,\Q)<1/2$)}
+  \item From Min-Max theorem: There exists a column mixed strategy (a
+    distribution over weak rules), that has expected value larger than
+    zero for any row pure strategy ( = any example).
+  \item The weighted majority vote over the weak rule is \B{\bf always} correct. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Adaboost as a repeated matrix game}
+\begin{itemize}
+\item Booster chooses distribution over examples = mixed strategy
+  over rows \R{$\P_t$}
+\item adversary chooses weak rule \R{$\Q_t = \langle 0,\cdots,0,1,0,
+    \cdots, 0\rangle$} the \R{$1$} is at position \R{$t$}
+  % \item Loss: \R{$L_T = \sum_{t=1}^T \M(\P_t,\Q_t)$}
+\item \B{\bf Goal 1:} produce a weighted majority rule that is highly
+  accurate.
+\item \B{\bf Goal 2:} Find a \B{``hard''} distribution over the training examples.
+\end{itemize}
+\[  \begin{array}{l|c|c|c}
+      & h_1 & h_2 & \ldots  \\
+      \hline
+      example 1 & 0    & 1 & \ldots\\
+      example 2 & 1    & 0  & \ldots\\
+      example 3 & 0    & 0  & \ldots\\
+      \ldots & \ldots    & \ldots  & \ldots \\
+                                     \hline
+    \end{array}
+  \]
+\end{frame}
+
+
+
+\section{Minmax vs. Regret}
+
+\begin{frame}
+\frametitle{Minmax is weaker than diminishing regret}
+\begin{itemize}
+\item The minmax theorem proves the existence of an \B{Equilibrium}.
+\item Learning guarantees no regret with respect to the past.
+\item If all sides use learning, then game will converge to minmax equilibrium.
+\item If opponent is not optimally adversarial (limited by knowledge, computationa power...) then learning gives \B{better} performance than min-max.
+\item Our goal is to minimize regret.
+\end{itemize}
+\end{frame}
+
+\section{Fictitious play}
+
+\begin{frame}
+\frametitle{Fictitious play}
+\begin{itemize}
+\item also called \B{``Follow the leader''}
+\item Choose the best action with respect to the sum of past loss vectors.
+\item Might not converge to optimal mixed strategy.
+\item Consider playing the matching coins game against an adversary
+  that alternates \B{HTHTHTHTHT}
+\item If \#H > \#T the next element is T
+\item If \#T > \#H the next element is H
+\item follow the leader makes an error on each iteration.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Randomized Fictitious play}
+\begin{itemize}
+\item Also called \B{'Follow the perturbed leader'}
+\item Choose the best action with respect to the sum of past loss
+  vectors \R{plus noise}.
+\item Adding noise allows us to choose responses that are slightly
+  worse than best response.
+\item \B{Hannan 1957} Randomized ficticus play converges to regret
+  minimizing strategy.
+  \item regret is \R{$O(1/\sqrt{n})$} where \R{$n$} is number of actions.
+\end{itemize}
+\end{frame}
+
+
+\section{Strategy using Hedge}
+
+\begin{frame}
+\frametitle{The basic algorithm}
+\begin{itemize}
+\item Choose an initial distribution \R{$\P_1$}
+\item \R{$$\P_{t+1}(i) = \P_{t}(i) {e^{-\eta \M(i,\Qt)} \over Z_t}$$}
+\item Where \R{$Z_t = \sum_{i=1}^n \P_{t}(i) e^{-\eta \M(i,\Qt)}$}
+\item \R{$\eta>0$} is the learning rate.
+\end{itemize}
+\end{frame}
+
+
+\section{The basic analysis}
+
+\begin{frame}
+  \frametitle{Generalized regret bound}
+  \begin{itemize}
+  \item Regret relative to the best {\em pure strategy}
+    \R{$i$}
+    \R{\small{\[
+          \sumt \mptqt \leq \paren{\frac{1}{1-e^{-\eta}}}\;
+          \min_i \brac{\eta\; \sumt \M(i,\Qt) - \ln \P_1(i)}
+        \]}}
+  \item    regret with respect the the best {\em mixed strategy}
+    \R{$\P$}:
+    \R{\small{\[
+          \sumt \mptqt \leq \paren{\frac{1}{1-e^{-\eta}}}\;
+          \minp \brac{\eta\; \sumt \mpqt + \RE{\P}{\P_1}}
+        \]}}
+  \item \small{Where \R{$$ \RE{\P}{\Q}\doteq \sum_{i=1}^n \P(i) \ln \frac{\P(i)}{\Q(i)}$$}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Main Theorem}
+\begin{itemize}
+\item For \B{any} game matrix $\M$.
+\item Any sequence of mixed strat. \R{$\Q_1,\ldots,\Q_T$}
+\item The sequence \R{$\P_1,\ldots,\P_T$} produced by \\
+basic alg using \R{$\eta>0$} satisfies
+\R{\[
+   \sumt \mptqt \leq \paren{\frac{1}{1-e^{-\eta}}}\;
+        \minp \brac{\eta\; \sumt \mpqt + \RE{\P}{\P_1}}
+\]}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Corollary}
+\begin{itemize}
+\item Setting \R{$ \eta = \ln \paren{ 1+\sqrt{\frac{2\ln n}{T}} }$}
+\item the average per-trial loss is
+\R{\[
+   \frac{1}{T} \sumt \mptqt \leq
+    \minp \frac{1}{T} \sumt \mpqt + \delt
+\]}
+\item Where 
+\R{\[
+\delt = \sqrt{2 \ln n \over T} + {\ln n \over T} 
+= O\paren{\sqrt{\frac{\ln n}{T}}}.
+\]}
+\end{itemize}
+\end{frame}
+
+% \iffalse
+% \begin{frame}
+% \frametitle{Main Lemma}
+
+% On any iteration \R{$t$}
+% \\ ~ \\ \pause
+% For any mixed strategy \R{$\Pref$}
+% \\ ~ \\ \pause
+% \R{$
+% \RE{\Pref}{\P_{t+1}} - \RE{\Pref}{\P_t} \leq 
+% \eta \M(\Pref,\Q_t)  - (1-e^{-\eta})\M(\Pt,\Qt)
+% $}
+% \end{frame}
+% \fi
+
+\begin{frame}
+  \frametitle{Visual intuition}
+  \begin{itemize}
+  \item \R{$\ouralg$} : {\bf If} \R{$ \M(\P_t,\Q_t) \gg \M(\Pref,\Q_t)
+      $} {\bf then:} \\
+    distance between \R{$\P_{t+1}$} and \R{$\Pref$} smaller than \\
+    distance between \R{$\P_{t}$} and \R{$\Pref$}
+    
+  \item
+    \R{$
+      \RE{\Pref}{\P_{t+1}} - \RE{\Pref}{\P_t} \leq
+      \eta \M(\Pref,\Q_t) 
+      -
+      (1-e^{-\eta})\M(\Pt,\Qt)
+      $}
+  \end{itemize}
+  \includegraphics[width=10cm]{figures/divergenceAnalysis.pdf}
+\end{frame}
+
+% \iffalse
+% \begin{frame}
+% \frametitle{Proof of Lemma (1)}
+% \R{\begin{eqnarray*}
+% \lefteqn{
+% \RE{\Pref}{\P_{t+1}} - \RE{\Pref}{\P_t}} \pause \\
+% &=& 
+% \sum_{i=1}^n \Pref(i) \ln {\Pref(i) \over \P_{t+1}(i)}
+% - \sum_{i=1}^n \Pref(i) \ln {\Pref(i) \over \P_t(i)} \pause \\
+% &=&
+% \sum_{i=1}^n \Pref(i) \ln {\P_t(i) \over \P_{t+1}(i)}\pause \\
+% &=&
+% \sum_{i=1}^n \Pref(i) \ln {Z_t \over e^{\eta \M(i,\Qt)}}
+% \end{eqnarray*}
+% }
+% \end{frame}
+
+
+% \begin{frame}
+% \frametitle{Proof of Lemma (2)}
+% \R{\begin{eqnarray*}
+% &=&
+% \eta \sum_{i=1}^n \Pref(i) \M(i,\Qt) + \ln Z_t \pause \\
+% &\leq&
+% \eta \M(\Pref,\Qt)
+% +
+% \ln\brac{\sum_{i=1}^n \P_{t}(i) \left( 1- (1-e^{-\eta}) \M(i,\Qt) \right)}
+% \pause
+% \\
+% &=&
+% \eta \M(\Pref,\Q_t) 
+% +
+% \ln \left( 1-(1-e^{-\eta})\M(\Pt,\Qt) \right)
+% \pause \\
+% & \leq &
+% \eta \M(\Pref,\Q_t)  + (1-e^{-\eta})\M(\Pt,\Qt)
+% \end{eqnarray*}
+% }
+% \end{frame}
+% \fi
+
+\section{Proof of minmax theorem}
+
+\begin{frame}
+\frametitle{The minmax Theorem}
+~\\
+John von Neumann, 1928.
+\\ ~ \\ \pause
+\R{\[ \minp \maxq \mpq = \maxq \minp \mpq \]}
+\\ ~ \\ \pause
+In words: for \B{mixed} strategies, choosing second gives no advantage.
+\end{frame}
+
+\begin{frame}
+\frametitle{Proving minmax Theorem using online learning (1)}
+~\\
+Row player chooses \R{$\P_t$} using learning alg. \\ \pause 
+Column player chooses \R{$\Q_t$} \B{after row player} so that
+\R{$\Qt = \arg \maxq \mptq$}
+\\ \pause
+Let \R{$\Pa \doteq \frac{1}{T} \sumt \Pt$} and
+\R{$\Qa \doteq \frac{1}{T} \sumt \Qt$}
+\\ \pause
+\R{\em
+\[
+\begin{array}{rcll}
+{\displaystyle{\minp \maxq \trans{\P}\M\Q}} 
+ &\leq&
+\displaystyle{\maxq \trans{\Pa}\M\Q} & \nextline
+\pause
+  &=&
+\displaystyle{\maxq \frac{1}{T} \sumt \trans{\Pt}\M\Q}
+                       &\mbox{\rm by definition of~~\Pa}\nextline
+\pause
+  &\leq&
+\displaystyle{\frac{1}{T} \sumt \maxq \trans{\Pt}\M\Q} &
+\end{array}
+\]
+}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Proving minmax Theorem using online learning (2)}
+\R{\em
+\[
+\begin{array}{rcll}
+  &=&
+\displaystyle{\frac{1}{T} \sumt \trans{\Pt}\M\Qt}
+                       &\mbox{\rm by definition of~~\Qt}\nextline
+\pause
+  &\leq&
+\displaystyle{\minp \frac{1}{T} \sumt \trans{\P}\M\Qt + \delt}
+                       &\mbox{\rm by the Corollary} \nextline
+\pause
+  &=&
+\displaystyle{\minp \trans{\P}\M\Qa + \delt}
+                       &\mbox{\rm by definition of~~\Qa}\nextline
+\pause
+  &\leq&
+\displaystyle{\maxq \minp \trans{\P}\M\Q + \delt.} &
+\end{array}
+\]
+}
+\pause
+but \R{$\delt$} can be set arbitrarily small.
+\end{frame}
+
+% \iffalse
+% \begin{frame}
+% \frametitle{Minmax is weaker than diminishing regret}
+% \begin{itemize}
+% \item The minmax theorem proves the existence of an \B{Equilibrium}.
+% \item Learning guarantees no regret with respect to the past.
+% \item If all sides use learning, then game will converge to minmax equilibrium.
+% \item If opponent is not optimally adversarial (limited by knowledge, computationa power...) then learning gives \B{better} performance than min-max.
+% \item Is it realistic to assume that markets are at equilibrium?
+% \item If game is not zero sum (allows incentives to collaborate) and all players
+% use learning then game converges to \B{correlated equilibrium}.
+% \end{itemize}
+% \end{frame}
+% \fi
+
+%\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Approximately solving games}
+
+\begin{frame}
+  \frametitle{Solving a game}
+  \begin{itemize}
+    \item to \B{solve} a game is to find the min-max mixed strategies
+      \R{$\P,\Q$}
+    \item Suppose that \ouralg is playing \R{$\P_1,\P_2,$} against a
+      worst case adversary that playes second: 
+      adversary that plays \R{$\Q_1,\Q_2,\ldots$} such that \R{$\Qt =
+        \arg \maxq \mptq$}.
+    \item Without loss of generality \R{$\Qt$} is a pure strategy
+      (prob. 1 on a single action).
+     \item Let \R{$\Pa \doteq \frac{1}{T} \sumt \Pt$}, \R{$\Qa \doteq \frac{1}{T} \sumt \Qt$}
+  \end{itemize}
+\end{frame}
+
+\subsection{Fixed Learning rate}
+\begin{frame}
+\frametitle{Using average distributions}
+\begin{itemize}
+\item Von Neumann Min/Max Thm: \R{$ v \doteq \minp \maxq \mpq = \maxq \minp \mpq $}
+\item Fixing \R{$T$} and letting \R{$ \eta = \ln \paren{ 1+\sqrt{\frac{2\ln n}{T}} }$}
+\item Two immediate corrolaries of the proof of the min/max Thm:
+\R{ \[    \maxq \M(\Pa,\Q) \leq v + \delt.
+          \minp \M(\P,\Qa) \geq v - \delt \]}
+
+\end{itemize}
+\end{frame}
+
+\subsection{Variable learning rate}
+\begin{frame}
+\frametitle{Using the final row distribution \R{\lwalgvar}}
+\begin{itemize}
+\item Can we make the row distribution converge?
+\item Suppose we have an upper bound on the value of the game \R{$u
+  \geq v$}
+\item {\bf Good Enough:} If \R{$\M(\Pt,\Qt) \leq u$} the row player does nothing
+\R{$\P_{t+1}=\P_t$}
+\item {\bf Learn:} If \R{$\M(\Pt,\Qt) > u$} set
+  \R{$$
+     \eta= \ln { (1-u) \M(\Pt,\Qt) \over u (1 - \M(\Pt,\Qt))}~.
+    $$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Bound for \R{\lwalgvar}}
+\begin{itemize}
+\item Let \R{$\Pref$} be any mixed strategy for the rows such that 
+\R{$\maxq \M(\Pref,\Q) \leq u$}
+\item
+  Then on any iteration of algorithm \R{\lwalgvar} in which 
+\R{$\M(\Pt,\Qt) \geq u$} the relative entropy between \R{$\Pref$} and \R{$\P_{t+1}$}
+satisfies
+\R{\[
+\RE{\Pref}{\P_{t+1}} \leq \RE{\Pref}{\Pt} - \RE{u}{\M(\Pt,\Qt)}~.
+\]}
+\end{itemize}
+\end{frame}
+
+\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
