@@ -1,0 +1,255 @@
+% $Header: /data/cvsroot/Courses/OnlineLearning/talks/talk4/talk4.tex,v 1.4 2006/01/24 08:08:47 yfreund Exp $
+
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+% This file is a solution template for:
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Montpellier}
+
+  %\setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage{xmpmulti} % package that defines \multiinclude
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\title[Internal Regret and Calibration]% (optional, use only with long paper titles)
+{Internal Regret \\ and \\ Calibration}
+
+\author[Freund] % (optional, use only with lots of authors)
+{Yoav Freund}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+
+\subject{Machine Learning}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%% \AtBeginSubsection[]
+%% {
+%%   \begin{frame}<beamer>
+%%     \frametitle{Outline}
+%%     \tableofcontents[currentsection,currentsubsection]
+%%   \end{frame}
+%% }
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+\beamerdefaultoverlayspecification{<+->}
+
+%\newcommand{\R}[1]{{\color{red}{#1}}}
+%\newcommand{\vp}{{\mathbf p}}
+%\newcommand{\HedgeLoss}{L_{\mbox{\footnotesize Hedge}}}
+
+\input{../macros}
+
+\begin{document}
+
+%\iffalse %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[pausesections]
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+\section{External and Internal Regret}
+
+\begin{frame}
+\frametitle{External regret}
+\begin{itemize}
+\item \R{$L_i$} - The cumulative loss of action \R{$i$}
+\item \R{$L_A$} - The cumulative loss of the algorithm.
+\item \B{External Regret} \R{$R_i = L_A - L_i$}
+\item We seek a uniform bound on the regret: hold simultanously for
+  all \R{$R_i, i=1\ldots N$}
+\item For the bounded loss \R{$\ell_i^y \in [0,1]$} we have 
+\R{$\max_i R_i^n = O(\sqrt{n \ln N})$}
+\item For log loss we have \R{$\max_i R_i^n = O(\ln N)$}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Internal regret}
+\begin{itemize}
+\item \RM{R_{(i,j),n}} regret for not taking action \RM{j} instead of
+  each action \RM{i} during iterations \RM{1\ldots n}
+\item We want an algorithm such that \R{$\max_{(i,j)} R_{(i,j),n} = o(n)$}
+\end{itemize}
+\end{frame}
+
+\section{Types of Equilibria}
+
+\begin{frame}
+\frametitle{Zero-Sum vs. Non Zero-Sum}
+\begin{itemize}
+\item In a zero sum game the gain of the row player is the loss of the
+  column player.
+\item Zero sum games have a unique \B{\bf MiniMax} equilibrium: neither side
+  has an incentive to move from their optimal mixed strategy. Whether
+  the other side plays optimally or not.
+\item In general games the gains of the players are
+  unconstrained.
+\item In general games There might not be a \B{\bf MiniMax} equilibrium 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Nash Equilibrium}
+\begin{itemize}
+\item In general games There might not be a \B{\bf MiniMax}
+  equilibrium.
+\item \B{\bf Nash} any general game there are one or more equilibria
+  of the following form.
+\item Equilibrium no. \R{$i$}: mixed strategies \R{$\P(i), \Q(i)$} such that row
+  player will not deviate from \R{$\P(i)$} if it knows that column player
+  will play \R{$\Q(i)$}, and vice versa.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prisoner's Dilemma}
+  \includegraphics[width=8cm]{figures/PrisonersDilemma.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Driving Game}
+  \includegraphics[width=8cm]{figures/DrivingGame.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Correlated Equilibrium}
+  \begin{itemize}
+  \item {\bf correlated equilibrium} proposed by Aumann [1974] much
+    after {\bf Nash equilibrium} [1951] (earlier by Cournot [1838])
+  \item A correlation device: a state that can be read by all players.
+  \item Examples: counter, clock, stoplight.
+  \item Strategy is a mapping from state of device to a distribution
+    over actions.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Game Of Chicken}
+  \includegraphics[width=8cm]{figures/CorrelatedEquilibrium.png}
+\end{frame}
+
+\section{Correlated equilibrium and Internal Regret}
+
+\begin{frame}
+  \frametitle{Finding the equilibrium mixed strategy}
+  \begin{itemize}
+  \item {\bf MiniMax} known matrix: Linear programming.
+  \item {\bf MiniMax} Minimizing External Regret: Exponential weights or follow
+    the perturbed leader.
+  \item {\bf Nash equilibrium} known matrix - {\bf NP hard}
+  \item {\bf Correlated Equilibrium} Minimizing Internal Regret.
+  \end{itemize}
+\end{frame}
+
+\section{Calibration}
+\begin{frame}
+\frametitle{Calibration}
+\begin{itemize}
+\item Observe a binary sequence \R{$y_1,\ldots,y_{t-1}$} and make
+  prediction \R{$q_t$} for the probability that \R{$y_t=1$}
+\item Average outcomes: 
+\R{
+$$\rho_n^{\epsilon}(x) = 
+\frac{\sum_{t=1}^n y_t {\bf 1}[q_t \in (x-\epsilon,x+\epsilon)]}
+{\sum_{t=1}^n {\bf 1}[q_t \in (x-\epsilon,x+\epsilon)]}
+$$}
+\item $\epsilon$-calibrated predictions:
+\R{
+$$ \forall x \in [0,1];\;\; \limsup_{n \to \infty} \left|
+  \rho_n^{\epsilon}(x) -x \right| \leq \epsilon
+$$}
+\item No deterministic algorithm can be calibrated for all sequences.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Calibration through bounded internal regret}
+\begin{itemize}
+\item Consider only the predictions \R{$0,{1 \over N},{2 \over
+      N},\ldots,{N \over N}$} for \R{$N>1$}
+\item Use the square loss (Brier Loss) \R{$\sum_t (q_t - y_t)^2$}
+\item Use a prediction algorithm that minimizes internal regret.
+\item If the prediction is not $\epsilon$ calibrated, then the
+  internal regret has to be large.
+\end{itemize}
+\end{frame}
+
+\newcommand{\bp}{{\bf p}}
+
+\section{Using an external regret algorithm to minimize internal regret}
+\begin{frame}
+\frametitle{From External to internal Regret}
+\begin{itemize}
+\item At time $t$ we need to produce a distribution \R{$\bp_t$} over
+  \R{$N$} \B{actions}, so that the internal regret is small.
+\item For each action pair \R{$i \neq j$} we define a 
+{\em modified strategy} \R{$\bp_t^{i \to j}$} by setting the \R{$i$}th
+coordinate in \R{$\bp_t$} to \R{$0$} and adding that mass to the
+\R{$j$}th coordinate.
+\item We use~ $\ouralg$ to combine the \R{$N(N-1)$} modified
+  strategies. \R{$\sum_{i \neq j} \Delta_{(i,j),t} \bp_t^{i \to j}$}
+\item But we need a distribution over \R{$N$} actions not \R{$N(N-1)$}
+  modified strategies.
+\item We solve the fixed point equation
+\R{$$
+\bp_t=
+\sum_{i \neq j} \Delta_{(i,j),t} \bp_t^{i \to j} 
+$$} 
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+

@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {english}
+\beamer@sectionintoc {1}{External and Internal Regret}{3}{0}{1}
+\beamer@sectionintoc {2}{Types of Equilibria}{5}{0}{2}
+\beamer@sectionintoc {3}{Correlated equilibrium and Internal Regret}{11}{0}{3}
+\beamer@sectionintoc {4}{Calibration}{12}{0}{4}
+\beamer@sectionintoc {5}{Using an external regret algorithm to minimize internal regret}{14}{0}{5}
